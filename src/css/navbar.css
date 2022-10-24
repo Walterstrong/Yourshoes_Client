@@ -1,0 +1,45 @@
+.home_navbar {
+  width: 100%;
+  height: 773px;
+  display: flex;
+  background: url("/public/restaurant/header_restaurant.png");
+  background-size: cover;
+}
+
+.home_navbar .navbar_config {
+  width: 1244.69px;
+  height: 46px;
+  margin-left: 26px;
+  margin-top: 55px;
+}
+
+.home_navbar .navbar_links {
+  width: 752px;
+  height: 46px;
+}
+
+.home_navbar a {
+  text-decoration: none;
+}
+
+.home_navbar .hover-line a {
+  color: white;
+}
+
+.home_navbar .underline {
+  display: block;
+  content: "";
+  border-bottom: solid 2px #d7b686;
+}
+
+.home_navbar .hover-line:after {
+  display: block;
+  content: "";
+  border-bottom: solid 2px #d7b686;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.home_navbar .hover-line:hover::after {
+  transform: scaleX(1);
+}
