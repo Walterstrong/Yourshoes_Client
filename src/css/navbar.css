@@ -1,8 +1,24 @@
-.home_navbar {
+.format.home_navbar {
   width: 100%;
   height: 773px;
   display: flex;
   background: url("/public/restaurant/header_restaurant.png");
+  background-size: cover;
+}
+
+.format_restaurant.home_navbar {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  background: url("/public/restaurant/header_restaurant_main.png");
+  background-size: cover;
+}
+
+.format_others.home_navbar {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  background: url("/public/others/others_header.png");
   background-size: cover;
 }
 
@@ -42,4 +58,48 @@
 
 .home_navbar .hover-line:hover::after {
   transform: scaleX(1);
+}
+
+.home_navbar .head_information {
+  display: flex;
+  flex-direction: row;
+  width: 1290px;
+  height: 477px;
+}
+.home_navbar .define_restaurant {
+  position: relative;
+  width: 484px;
+  height: 143px;
+  margin-top: 40px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 75px;
+  color: white;
+}
+
+.home_navbar .timeline_service {
+  position: relative;
+  width: 466px;
+  height: 28px;
+  margin-top: 30px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: white;
+}
+
+.home_navbar .big_img {
+  position: relative;
+  width: 277px;
+  height: 277px;
+  margin-top: 41px;
+  margin-left: 494px;
+  background: url("/public/home/blister5.png");
+  border-radius: 90px 0 0 0;
+  filter: invert(46%) blur(1px);
+  background-size: cover;
 }

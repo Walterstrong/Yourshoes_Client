@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/App.css";
 import "../css/navbar.css";
 
@@ -16,15 +16,17 @@ import { NavbarRestaurant } from "./components/headers/restaurant";
 import { NavbarOthers } from "./components/headers/others";
 
 function App() {
+  const [path, setPath] = useState();
   const main_path = window.location.pathname;
+
   return (
     <Router>
-      {main_path === "/" ? (
-        <NavbarHome />
+      {main_path == "/" ? (
+        <NavbarHome setPath={setPath} />
       ) : main_path.includes("/restaurant") ? (
-        <NavbarRestaurant />
+        <NavbarRestaurant setPath={setPath} />
       ) : (
-        <NavbarOthers />
+        <NavbarOthers setPath={setPath} />
       )}
 
       {/* <nav>
