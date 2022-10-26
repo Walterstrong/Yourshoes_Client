@@ -108,4 +108,66 @@
   position: relative;
   width: 340px;
   height: 206px;
+  color: #e2e4e4;
+}
+
+.main_footer_container .find_us {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 297px;
+  height: 210.99px;
+  margin-left: 96.39px;
+}
+
+.find_us .find {
+  position: relative;
+  width: 116.87px;
+  height: 32.91px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 34px;
+  color: #c5c8c9;
+}
+
+.find_us .divider {
+  position: relative;
+  width: 45px;
+  height: 1.91px;
+  background: #e3c08d;
+  margin-top: 5.81px;
+}
+
+.find_us .details {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 295px;
+  height: 33px;
+}
+.details .detail_first {
+  position: relative;
+  width: 15.01px;
+  height: 32.91px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 34px;
+  color: #c5c8c9;
+}
+
+.details .detail_second {
+  position: relative;
+  width: 269.12px;
+  height: 32.91px;
+  margin-left: 11.79px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 34px;
+  color: #e3c08d;
 }

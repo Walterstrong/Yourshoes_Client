@@ -16,7 +16,7 @@ export function Footer() {
           <Stack flexDirection={"row"} style={{ height: "242px" }}>
             <Stack className="info" flexDirection={"column"}>
               <Box>
-                <img src="/icons/Papay.svg" />
+                <img src="/icons/Papay2.svg" />
               </Box>
               <Box className="main_text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -44,9 +44,23 @@ export function Footer() {
                 Bosh Sahifa Oshxonalar Jamiyat Yordam
               </Box>
             </Stack>
-            <Stack></Stack>
+            <Stack className="find_us">
+              <Box className="find">Bizni top</Box>
+              <Box className="divider"></Box>
+              <Stack className="details" sx={{ mt: "19px" }}>
+                <Box className="detail_first">L.</Box>
+                <Box className="detail_second">Uzbekistan</Box>
+              </Stack>
+              <Stack className="details" sx={{ mt: "42px" }}>
+                <Box className="detail_first">P.</Box>
+                <Box className="detail_second">+998 - 99 266 25 62</Box>
+              </Stack>
+              <Stack className="details" sx={{ mt: "9px" }}>
+                <Box className="detail_first">E.</Box>
+                <Box className="detail_second">Papays@restaurant.com</Box>
+              </Stack>
+            </Stack>
           </Stack>
-
           <Box className="liner"></Box>
           <Box className="copyrights">
             Copyright Papays 2022, All riht reserved.
