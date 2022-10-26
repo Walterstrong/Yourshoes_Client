@@ -47,3 +47,19 @@
   text-align: center;
   color: #e3c08d;
 }
+
+.homepage .top_restaurant_frame {
+  width: 100%;
+  height: 605px;
+  display: flex;
+  background: #0b0e11;
+}
+
+.homepage .category_title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  color: #e3c08d;
+}
