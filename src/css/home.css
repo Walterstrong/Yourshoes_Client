@@ -1,0 +1,49 @@
+.homepage .static_frame {
+  width: 100%;
+  background: #2c261e;
+}
+
+.homepage .personage_img.left {
+  width: 204px;
+  height: 200px;
+  background: url("/public/home/papays\ 1.png");
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  background-size: cover;
+}
+
+.homepage .personage_img.right {
+  width: 204px;
+  height: 200px;
+  background: url("/public/home/papays\ 1.png");
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  background-size: cover;
+}
+
+.homepage .static_box {
+  width: 191px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage .static_box .static_num {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 54px;
+  line-height: 81px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.homepage .static_box .static_text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #e3c08d;
+}
