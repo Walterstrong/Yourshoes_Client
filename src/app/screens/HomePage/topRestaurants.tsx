@@ -75,7 +75,7 @@ export function TopRestaurants() {
                       color: "rgba(0,0,0,.4)",
                     }}
                   >
-                    <Favorite style={{ fill: "white" }} />
+                    <Favorite style={{ fill: "red" }} />
                   </IconButton>
                   <Typography
                     level="body3"

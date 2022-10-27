@@ -63,3 +63,10 @@
   line-height: 42px;
   color: #e3c08d;
 }
+
+.homepage .best_restaurant_frame {
+  width: 100%;
+  height: 755px;
+  display: flex;
+  background: #0b0e11;
+}
