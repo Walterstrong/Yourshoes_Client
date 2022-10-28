@@ -1,0 +1,204 @@
+.restaurant_page {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: #0b0e11;
+}
+
+.restaurant_page .all_restaurant .fil_search_box {
+  position: relative;
+  width: 100%;
+  height: 33px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant_page .all_restaurant .fil_box {
+  position: relative;
+  width: 420px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant_page .all_restaurant .fil_box a {
+  position: relative;
+  display: flex;
+  font-family: "Quicksand";
+  font-style: normal;
+  font-size: 20px;
+  line-height: 25px;
+  color: #ffffff;
+}
+
+.restaurant_page .all_restaurant .fil_box a::before,
+.fil_box a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.restaurant_page .all_restaurant .fil_box a::before {
+  background-color: #d7b686;
+  height: 2px;
+  bottom: 0;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.restaurant_page .all_restaurant .fil_box a::after {
+  content: attr(data-replace);
+  height: 100%;
+  top: 0;
+  transform-origin: 100% 50%;
+  transform: translate3d(200%, 0, 0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  color: #d7b686;
+}
+
+.restaurant_page .all_restaurant .fil_box a:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+
+.restaurant_page .all_restaurant .fil_box a:hover::after {
+  transform: translate3d(0, 0, 0);
+}
+
+.restaurant_page .all_restaurant .fil_box a span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.restaurant_page .all_restaurant .fil_box a:hover span {
+  transform: translate3d(-200%, 0, 0);
+}
+
+.restaurant_page .all_restaurant .fil_box a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 700;
+  vertical-align: top;
+}
+
+.restaurant_page .all_restaurant .search_big_box {
+  position: relative;
+  width: 360px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  background: #fffcfc;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 4px 4px rgba(213, 213, 213, 0.25);
+  border-radius: 18.5px;
+  box-sizing: border-box;
+}
+
+.restaurant_page .all_restaurant .search_form {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant_page .all_restaurant .searchInput {
+  position: relative;
+  width: 245px;
+  height: 29px;
+  margin-left: 10px;
+  display: flex;
+  border: none;
+  border-radius: 10px 0px 0px 10px;
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: #4f547b;
+}
+
+.restaurant_page .all_restaurant .button_search {
+  position: relative;
+  width: 100px;
+  height: 33px;
+  display: flex;
+  border-radius: 18.5px;
+  background: #f8be69;
+}
+
+.restaurant_page .all_restaurant .all_res_box {
+  position: relative;
+  width: 1305px;
+  height: auto;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.restaurant_page .all_restaurant .restaurant_box {
+  margin: 13px;
+  padding: 5px;
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #ededed;
+  border-radius: 8px;
+}
+
+.restaurant_page .all_restaurant .restaurant_img {
+  width: 280px;
+  height: 330px;
+  border-radius: 5px;
+  background-size: cover;
+}
+
+.restaurant_page .all_restaurant .restaurant_desc {
+  width: 280px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant_page .all_restaurant .restaurant_title_text {
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 26px;
+  text-transform: capitalize;
+  color: #140342;
+}
+
+.restaurant_page a.all_restaurant .restaurant_desc_text {
+  margin-top: 6px;
+  font-family: "?????";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  color: #4f547b;
+}
+
+.restaurant_page .all_restaurant .bottom_box {
+  position: relative;
+  width: 100%;
+  height: 168px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
