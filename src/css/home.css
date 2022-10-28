@@ -266,7 +266,7 @@
   padding: 10px;
   display: flex;
   width: 90%;
-  height: auto;
+  height: 160px;
   bottom: 5px;
   background: #ffffff;
   border-radius: 8px;
@@ -356,4 +356,123 @@
 .homepage .swiper-pagination-bullet-active {
   background: #007aff;
   border-radius: 50%;
+}
+
+.homepage .top_article_frame {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+.homepage .article_main {
+  margin-top: 32px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.homepage .article_main .article_container {
+  width: 568px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.homepage .article_main .article_category {
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 44px;
+  color: #ffffff;
+}
+
+.homepage .article_container .article_box {
+  margin-top: 18px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: row;
+  background: #fff;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+}
+
+.homepage .article_container .article_news {
+  width: 100%;
+  border-radius: 20px;
+  height: 380px;
+  display: flex;
+  margin-bottom: 10px;
+  flex-direction: row;
+  overflow: hidden;
+  justify-content: center;
+  box-shadow: 0px 4px 40px rgba(83, 38, 208, 0.25);
+}
+
+.homepage .article_box .article_img {
+  width: 150px;
+  height: 153px;
+  border-radius: 0px;
+  background-size: cover;
+  object-fit: contain;
+  background-repeat: no-repeat;
+}
+
+.homepage .article_box .article_info {
+  padding: 10px 0px;
+  width: 318px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+.homepage .article_info .article_main_info {
+  width: 92%;
+  height: 95%;
+}
+
+.homepage .article_main_info .article_author {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.homepage .article_author .author_username {
+  margin-left: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.homepage .article_main_info .author_title {
+  margin-top: 18px;
+  display: flex;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  color: #e3c08d;
+}
+
+.homepage .article_main_info .article_desc {
+  margin-top: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #808080;
 }
