@@ -1,5 +1,4 @@
 import React from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { Container, Stack, Box, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Pagination from "@mui/material/Pagination";
@@ -10,8 +9,6 @@ import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import AspectRatio from "@mui/joy/AspectRatio";
 import { Link } from "@mui/joy";
 import Card from "@mui/joy/Card";
-import CardCover from "@mui/joy/CardCover";
-import CardContent from "@mui/joy/CardContent";
 import CardOverflow from "@mui/joy/CardOverflow";
 import IconButton from "@mui/joy/IconButton";
 import CallIcon from "@mui/icons-material/Call";
@@ -84,7 +81,6 @@ export function AllRestaurants() {
                           borderRadius: "50%",
                           right: "1rem",
                           bottom: 0,
-
                           transform: "translateY(50%)",
                           color: "rgba(0, 0, 0,.4)",
                         }}

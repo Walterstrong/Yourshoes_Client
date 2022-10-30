@@ -61,7 +61,7 @@ export function Events() {
           </Box>
           <Swiper
             className={"event_info swiper-wrapper"}
-            slidesPerView={"auto"}
+            slidesPerView={"auto"} //
             centeredSlides={true}
             spaceBetween={30}
             navigation={{
@@ -71,7 +71,7 @@ export function Events() {
             pagination={{ el: ".swiper-pagination", clickable: true }}
             autoplay={{
               delay: 2000,
-              disableOnInteraction: true,
+              disableOnInteraction: true, //onclick with touch
             }}
           >
             {events_list.map((value, number) => {
