@@ -6,12 +6,11 @@ import Checkbox from "@mui/material/Checkbox";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 import { Favorite, FavoriteBorder, MonetizationOn } from "@mui/icons-material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
-const restaurant_list = Array.from(Array(10).keys());
-const product_list = Array.from(Array(8).keys());
+const restaurant_list = Array.from(Array(4).keys());
+const product_list = Array.from(Array(2).keys());
 
 export function OneRestaurant() {
   return (
@@ -20,7 +19,7 @@ export function OneRestaurant() {
         <Stack flexDirection="column" alignItems="center">
           <Stack className="avatar_big_box">
             <Box className="top_text">
-              <p>Texas De Brazil Restaurant</p>
+              <p>TexasDeBrazil Restaurant</p>
               <Box className="Single_search_big_box">
                 <form className="Single_search_form" action="" method="">
                   <input
@@ -45,7 +44,7 @@ export function OneRestaurant() {
             flexDirection={"row"}
             sx={{ mt: "35px" }}
           >
-            <Box className="prev_btn restaurant-prev">
+            <Box className="prev_btn_restaurant-prev">
               <ArrowBackRoundedIcon
                 sx={{ fontSize: 40 }}
                 style={{ color: "white" }}
@@ -75,7 +74,7 @@ export function OneRestaurant() {
               })}
             </Swiper>
             <Box
-              className="next_btn restaurant-next"
+              className="next_btn_restaurant-next"
               style={{ color: "white" }}
             >
               <ArrowForwardRoundedIcon sx={{ fontSize: 40 }} />
@@ -129,7 +128,7 @@ export function OneRestaurant() {
                 <Box className="dish_box">
                   <Box
                     className="dish_img"
-                    sx={{ backgroundImage: `url("/restaurant/top.jpg")` }}
+                    sx={{ backgroundImage: `url("/restaurant/top5.jpg")` }}
                   >
                     <div className="dish_sale">{size_volume}</div>
                     <Button className="like_view_btn" style={{ left: "36px" }}>

@@ -202,3 +202,144 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.restaurant_page .single_restaurant {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: #0b0e11;
+}
+.restaurant_page .single_restaurant .avatar_big_box {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.restaurant_page .single_restaurant .top_text {
+  position: relative;
+  width: 100%;
+  height: 46px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant_page .single_restaurant .top_text p {
+  position: relative;
+  width: auto;
+  height: 46px;
+  margin-left: auto;
+  font-family: "Roboto";
+  font-style: normal;
+  margin-right: 109px;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 50px;
+
+  color: #e3c08d;
+}
+
+.restaurant_page .single_restaurant .Single_search_big_box {
+  position: relative;
+  width: 360px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  background: #fffcfc;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 4px 4px rgba(213, 213, 213, 0.25);
+  border-radius: 18.5px;
+  box-sizing: border-box;
+}
+
+.restaurant_page .single_restaurant .Single_search_form {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant_page .single_restaurant .Single_searchInput {
+  position: relative;
+  width: 245px;
+  height: 29px;
+  margin-left: 10px;
+  display: flex;
+  border: none;
+  border-radius: 10px 0px 0px 10px;
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: #4f547b;
+}
+
+.restaurant_page .single_restaurant .Single_button_search {
+  position: relative;
+  width: 100px;
+  height: 33px;
+  display: flex;
+  border-radius: 18.5px;
+  background: #f8be69;
+}
+
+.restaurant_page .single_restaurant .prev_btn_restaurant-prev {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.restaurant_page .restaurant_avatars_wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.restaurant_page .restaurant_avatars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurant_page .restaurant_avatars img {
+  border-radius: 50%;
+  width: 108px;
+  height: 108px;
+  cursor: pointer;
+}
+
+.restaurant_page .restaurant_avatars span {
+  margin-top: 14px;
+  font-family: "Solway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #fffcfc;
+}
+
+.restaurant_page .single_restaurant .next_btn_restaurant-prev {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
