@@ -9,8 +9,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Favorite, FavoriteBorder, MonetizationOn } from "@mui/icons-material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
-const restaurant_list = Array.from(Array(4).keys());
-const product_list = Array.from(Array(2).keys());
+const restaurant_list = Array.from(Array(10).keys());
+const product_list = Array.from(Array(4).keys());
 
 export function OneRestaurant() {
   return (
@@ -44,7 +44,7 @@ export function OneRestaurant() {
             flexDirection={"row"}
             sx={{ mt: "35px" }}
           >
-            <Box className="prev_btn_restaurant-prev">
+            <Box className="prev_btn restaurant-prev">
               <ArrowBackRoundedIcon
                 sx={{ fontSize: 40 }}
                 style={{ color: "white" }}
@@ -74,7 +74,7 @@ export function OneRestaurant() {
               })}
             </Swiper>
             <Box
-              className="next_btn_restaurant-next"
+              className="next_btn restaurant-next"
               style={{ color: "white" }}
             >
               <ArrowForwardRoundedIcon sx={{ fontSize: 40 }} />
@@ -102,7 +102,7 @@ export function OneRestaurant() {
               </Button>
             </Box>
           </Stack>
-          <Stack className="dish_category_box">
+          <Stack className="dish_category_box" flexDirection={"column"}>
             <div className="dish_category_main">
               <Button variant="contained" color="secondary">
                 boshqa
@@ -192,7 +192,7 @@ export function OneRestaurant() {
               return (
                 <Box className="review_box">
                   <Box className="flex" justifyContent={"center"}>
-                    <img src={"/community/top5.jpg"} className="review_img" />
+                    <img src={"/restaurant/top5.jpg"} className="review_img" />
                   </Box>
                   <span className="review_name">Rayhon Asadova</span>
                   <span className="review_prof">Foydalanuvchi</span>
@@ -259,6 +259,7 @@ export function OneRestaurant() {
           <Box className="category_title">Oshxona manzili</Box>
           <iframe
             style={{ marginTop: "60px" }}
+            src="https://www.google.com/maps/place/%D0%A0%D0%B0%D0%B9%D1%85%D0%BE%D0%BD/@41.3225422,69.230487,15.47z/data=!4m5!3m4!1s0x0:0x9c5015eab678e435!8m2!3d41.3226993!4d69.2289191?hl=ko"
             width="1320"
             height={"500"}
             referrerPolicy="no-referrer-when-downgrade"
