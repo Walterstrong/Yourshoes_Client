@@ -39,7 +39,6 @@ function App() {
         </Route>
         <Route path="/orders">
           <OrdersPage />
-          ``
         </Route>
         <Route path="/member-page">
           <MemberPage />
