@@ -1,0 +1,208 @@
+.community_page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.community_page .community_frame {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: #0b0e11;
+}
+.community_page .chat_frame {
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: #e3f2fd;
+  border-radius: 34px;
+}
+
+.community_page .community_all_frame {
+  width: 68%;
+  height: auto;
+  background: #0b0e11;
+  border: 1px solid #9e2828;
+  border-radius: 34px;
+}
+
+.community_page .chat_frame .chat_top {
+  width: 100%;
+  height: 94px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 54px;
+  color: #000000;
+  border: 1px solid rgba(117, 114, 114, 0.83);
+}
+
+.community_page .chat_content {
+  position: relative;
+  padding: 17px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.community_page .chat_content .chat_main {
+  position: relative;
+  /* padding: 17px; */
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.community_page .chat_frame .chat_bott {
+  width: 100%;
+  height: 94px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(117, 114, 114, 0.83);
+}
+
+.community_page .chat_frame .msg_input {
+  width: 276px;
+  height: 50px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f7f7f7;
+  border-radius: 28px;
+  border: none;
+  outline-color: #257677;
+  font-family: "Poppins";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.community_page .chat_frame .send_msg_btn {
+  margin-left: 14px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #55a99d 0%, #007665 100%);
+}
+
+.community_page .chat_main .msg_left {
+  margin-left: 10px;
+  padding: 9px;
+  width: auto;
+  height: auto;
+  display: flex;
+  background: rgba(228, 228, 228, 0.83);
+  border-radius: 20px 20px 20px 0px;
+}
+
+.community_page .chat_main .msg_right {
+  padding: 9px;
+  width: auto;
+  margin-right: 10px;
+  height: auto;
+  display: flex;
+  background: #d0ece8;
+  border-radius: 20px 20px 0px 20px;
+}
+
+.community_all_frame .article_tabs {
+  width: 100%;
+  height: 94px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(228, 228, 228, 0.83);
+}
+
+.article_bott {
+  width: 100%;
+  height: 94px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(228, 228, 228, 0.83);
+}
+
+.article_main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.community_page .all_article_box {
+  margin-top: 20px;
+  width: 100%;
+  position: relative;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  background: #182226;
+  border-radius: 30px;
+}
+
+.community_page .all_article_box .all_article_img {
+  width: 25%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  border-radius: 30px 0px 0px 30px;
+}
+
+.community_page .all_article_container {
+  width: 70%;
+  height: auto;
+}
+.community_page .article_bottom_side {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin: 10px;
+  width: auto;
+  height: 40px;
+}
+
+.community_page .all_article_author_user {
+  margin: 10px;
+  margin-left: 15px;
+  padding-top: 8px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  /* or 162% */
+
+  color: #ffffff;
+}
+.community_page .all_article_desc {
+  width: 70%;
+  height: auto;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+
+  color: #e3c08d;
+}
