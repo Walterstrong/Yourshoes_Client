@@ -6,8 +6,7 @@ import { borderRadius } from "@mui/system";
 
 const finishedOrders = [
   [1, 2, 3],
-  [1, 2, 3],
-  [1, 2, 3],
+  [1, 2],
 ];
 
 export default function FinishedOrders(props: any) {
@@ -35,7 +34,10 @@ export default function FinishedOrders(props: any) {
                   );
                 })}
               </Box>
-              <Box className="total_price_box_gray">
+              <Box
+                className="total_price_box_gray"
+                style={{ background: "#FF3434" }}
+              >
                 <Box className="boxTotal">
                   <p>
                     <u> mahsulot narxi </u>
@@ -51,22 +53,6 @@ export default function FinishedOrders(props: any) {
                     <u>jami narx</u>
                   </p>
                   <p>$24</p>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    size="small"
-                    style={{ borderRadius: "10px", marginLeft: "15px" }}
-                  >
-                    bekor qo'lish
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    style={{ borderRadius: "10px", marginLeft: "10px" }}
-                  >
-                    to'lash
-                  </Button>
                 </Box>
               </Box>
             </Box>

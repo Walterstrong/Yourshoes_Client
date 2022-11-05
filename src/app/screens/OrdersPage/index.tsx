@@ -42,14 +42,31 @@ export function OrdersPage() {
                   value={value}
                   aria-label="basic tabs example"
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
                     borderBottomColor: "1px solid white",
+                    margin: "15px",
                   }}
                 >
-                  <Tab label="Buyurtmalarim" value={"1"} />
-                  <Tab label="Jarayon" value={"2"} />
-                  <Tab label="Yakunlangan" value={"3"} />
+                  <Tab
+                    label="Buyurtmalarim"
+                    value={"1"}
+                    style={{
+                      marginRight: "80px",
+                    }}
+                  />
+                  <Tab
+                    label="Jarayon"
+                    value={"2"}
+                    style={{
+                      marginRight: "60px",
+                    }}
+                  />
+                  <Tab
+                    label="Yakunlangan"
+                    value={"3"}
+                    style={{
+                      marginLeft: "50px",
+                    }}
+                  />
                 </TabList>
               </Box>
             </Box>

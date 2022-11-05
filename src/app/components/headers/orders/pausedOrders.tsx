@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 const pausedOrders = [
   [1, 2, 3],
   [1, 2, 3],
-  [1, 2, 3],
 ];
 
 export default function PausedOrders() {

@@ -259,7 +259,7 @@ export function OneRestaurant() {
           <Box className="category_title">Oshxona manzili</Box>
           <iframe
             style={{ marginTop: "60px" }}
-            src="https://www.google.com/maps/place/%D0%A0%D0%B0%D0%B9%D1%85%D0%BE%D0%BD/@41.3225422,69.230487,15.47z/data=!4m5!3m4!1s0x0:0x9c5015eab678e435!8m2!3d41.3226993!4d69.2289191?hl=ko"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d808.5723673239509!2d128.75845152922642!3d35.841904985907384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35660c41f3208191%3A0x6721175b4ea598fb!2s479%20Bujeok-ri%2C%20Amnyang-myeon%2C%20Gyeongsan%2C%20Gyeongsangbuk-do%2C%20South%20Korea!5e0!3m2!1sen!2sus!4v1667560907844!5m2!1sen!2sus"
             width="1320"
             height={"500"}
             referrerPolicy="no-referrer-when-downgrade"

@@ -32,16 +32,21 @@ export function ChosenDish() {
               return (
                 <SwiperSlide>
                   <img
-                    style={{ width: "100%", height: "100%" }}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "15px",
+                    }}
                     src={image_path}
                   />
                 </SwiperSlide>
               );
             })}
           </Swiper>
-          {/* <Swiper
+          <Swiper
+            className="dish_swiper2"
             loop={true}
-            spaceBetween={10}
+            spaceBetween={5}
             slidesPerView={4}
             freeMode={true}
             watchSlidesProgress={true}
@@ -58,7 +63,7 @@ export function ChosenDish() {
                 </SwiperSlide>
               );
             })}
-          </Swiper> */}
+          </Swiper>
         </Stack>
         <Stack className="chosen_dish_info_container">
           <Box className="chosen_dish_info_box">

@@ -2,7 +2,7 @@ import React from "react";
 import TabPanel from "@mui/lab/TabPanel";
 import { Box, Stack, Container } from "@mui/material";
 import Button from "@mui/material/Button";
-
+import moment from "moment";
 const processOrders = [
   [1, 2, 3],
   [1, 2, 3],
@@ -34,7 +34,10 @@ export default function ProcessOrders() {
                   );
                 })}
               </Box>
-              <Box className="total_price_box_gray">
+              <Box
+                className="total_price_box_gray"
+                style={{ background: "rgba(140, 102, 242, 0.81)" }}
+              >
                 <Box className="boxTotal">
                   <p>
                     <u> mahsulot narxi </u>
@@ -56,7 +59,7 @@ export default function ProcessOrders() {
                     size="small"
                     style={{ borderRadius: "10px", marginLeft: "15px" }}
                   >
-                    bekor qo'lish
+                    {moment().format("YY-MM-DD HH:mm")}
                   </Button>
                   <Button
                     variant="contained"

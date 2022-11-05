@@ -38,46 +38,29 @@ export function TargetArticles(props: any) {
                 <span className="all_article_author_user">@walter</span>
               </Box>
               <Box display="flex" flexDirection="column" sx={{ mt: "15px" }}>
-                {/* <span className="all_article_title">evaluation</span> */}
                 <p className="all_article_desc">
                   Texas De Brazil is best of the best
                 </p>
               </Box>
-
-              <Box className="article_bottom_side">
-                <Box>
-                  <VisibilityIcon
-                    sx={{ fontSize: 20, marginLeft: "20px", marginTop: "5px" }}
-                  />
-                </Box>
-                <span
-                  style={{
-                    fontSize: 20,
-                    marginLeft: "15px",
-                    // marginTop: "5px",
-                  }}
-                >
-                  1000
-                </span>
-                <Box>
-                  <Favorite
-                    style={{
-                      color: "red",
-                      marginTop: "10px",
-                      fontSize: 20,
-                      marginLeft: "15px",
-                    }}
-                  />
-                </Box>
-                <span
-                  style={{
-                    fontSize: 20,
-                    marginLeft: "15px",
-                    // marginTop: "5px",
-                  }}
-                >
-                  500
-                </span>
+              <Box
+                className="article_share_main"
+                style={{
+                  color: "#fff",
+                  marginLeft: "150px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <span>{moment().format("YY-MM-DD HH:mm")}</span>
+                <Checkbox
+                  sx={{ ml: "40px" }}
+                  icon={<FavoriteBorder />}
+                  checkedIcon={<Favorite style={{ color: "red" }} />}
+                  checked={false}
+                />
+                <span style={{ marginLeft: "18px" }}>100</span>
+                <RemoveRedEyeIcon style={{ marginLeft: "18px" }} />
+                <span style={{ marginLeft: "18px" }}>1000</span>
               </Box>
             </Box>
           </Link>

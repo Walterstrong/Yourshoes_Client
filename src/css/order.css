@@ -28,6 +28,15 @@
   border-radius: 16px;
 }
 
+.order_page .order_nav_frame {
+  width: 98%;
+  height: 94px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid rgba(228, 228, 228, 0.83);
+}
 .order_page .order_right .order_info_box {
   padding: 20px;
   width: 372px;

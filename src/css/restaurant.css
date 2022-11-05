@@ -851,3 +851,30 @@
   display: flex;
   margin-top: 20px;
 }
+
+.chosen_dish_page .chosen_dish_slider {
+  width: 48%;
+  height: 690px;
+}
+
+.chosen_dish_page .dish_swiper {
+  --swiper-navigation-color: #fff;
+  --swiper-pagination-color: #fff;
+  width: 100%;
+  height: 452px;
+}
+
+.chosen_dish_page .dish_swiper2 {
+  margin-top: 20px;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  height: 107px;
+}
+
+.chosen_dish_page .dish_swiper2 img {
+  width: 160.54px;
+  height: 107px;
+  border-radius: 15px;
+}
