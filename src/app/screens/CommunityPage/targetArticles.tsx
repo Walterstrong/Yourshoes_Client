@@ -13,7 +13,7 @@ export function TargetArticles(props: any) {
   return (
     <Stack>
       {props.targetBoArticles?.map((article: any, index: string) => {
-        const art_image_url = "/restaurant/top5.jpg";
+        const art_image_url = "/restaurant/texas.png";
         return (
           <Link
             className="all_article_box"

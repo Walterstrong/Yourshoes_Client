@@ -65,7 +65,7 @@ export function AllRestaurants() {
                   >
                     <CardOverflow>
                       <AspectRatio ratio="1">
-                        <img src="/restaurant/top5.jpg" />
+                        <img src="/restaurant/top50.jpg" />
                       </AspectRatio>
                       <IconButton
                         aria-label="Like minimal photograpy"

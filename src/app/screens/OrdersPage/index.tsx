@@ -82,7 +82,7 @@ export function OrdersPage() {
           <Box className="order_info_box">
             <Box display="flex" flexDirection="column" alignItems="center">
               <div className="order_user_img">
-                <img src="/restaurant/top5.jpg" className="order_user_avatar" />
+                <img src="/restaurant/kaka.png" className="order_user_avatar" />
                 <p className="order_user_name">Ismoilov Akmaljon</p>
                 <p className="user">Foydalanuvchi</p>
               </div>

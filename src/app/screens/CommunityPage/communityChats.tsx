@@ -32,7 +32,7 @@ export function CommunityChats() {
             style={{ display: "flex" }}
             sx={{ m: "10px 0px" }}
           >
-            <Avatar alt={"walter"} src={"/restaurant/top5.jpg"} />
+            <Avatar alt={"walter"} src={"/restaurant/avatar.jpg"} />
             <div className="msg_left">Bu yerda boshqalarni xabari</div>
           </Box>
         </Stack>

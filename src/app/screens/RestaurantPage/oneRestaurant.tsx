@@ -10,7 +10,7 @@ import { Favorite, FavoriteBorder, MonetizationOn } from "@mui/icons-material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 const restaurant_list = Array.from(Array(10).keys());
-const product_list = Array.from(Array(4).keys());
+const product_list = Array.from(Array(8).keys());
 
 export function OneRestaurant() {
   return (
@@ -67,7 +67,7 @@ export function OneRestaurant() {
                     key={index}
                     className="restaurant_avatars"
                   >
-                    <img src={"/restaurant/top5.jpg"} />
+                    <img src={"/restaurant/texas.png"} />
                     <span>Burak</span>
                   </SwiperSlide>
                 );
@@ -128,7 +128,7 @@ export function OneRestaurant() {
                 <Box className="dish_box">
                   <Box
                     className="dish_img"
-                    sx={{ backgroundImage: `url("/restaurant/top5.jpg")` }}
+                    sx={{ backgroundImage: `url("/restaurant/top555.jpg")` }}
                   >
                     <div className="dish_sale">{size_volume}</div>
                     <Button className="like_view_btn" style={{ left: "36px" }}>
@@ -192,7 +192,10 @@ export function OneRestaurant() {
               return (
                 <Box className="review_box">
                   <Box className="flex" justifyContent={"center"}>
-                    <img src={"/restaurant/top5.jpg"} className="review_img" />
+                    <img
+                      src={"/restaurant/rayhona.png"}
+                      className="review_img"
+                    />
                   </Box>
                   <span className="review_name">Rayhon Asadova</span>
                   <span className="review_prof">Foydalanuvchi</span>
