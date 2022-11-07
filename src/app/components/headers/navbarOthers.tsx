@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Button,
@@ -6,12 +7,11 @@ import {
   Stack,
   Badge,
 } from "@mui/material";
-import React from "react";
 import { NavLink } from "react-router-dom";
 
-export function NavbarHome(props: any) {
+export function NavbarOthers(props: any) {
   return (
-    <div className="format home_navbar">
+    <div className="format_others home_navbar">
       <Container>
         <Stack
           flexDirection={"row"}
@@ -28,9 +28,7 @@ export function NavbarHome(props: any) {
             className="navbar_links"
           >
             <Box className="hover-line" onClick={props.setPath}>
-              <NavLink to="/" activeClassName="underline">
-                Bosh Sahifa
-              </NavLink>
+              <NavLink to="/">Bosh Sahifa</NavLink>
             </Box>
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/restaurant" activeClassName="underline">
@@ -40,6 +38,11 @@ export function NavbarHome(props: any) {
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/orders" activeClassName="underline">
                 Buyurtma
+              </NavLink>
+            </Box>
+            <Box className="hover-line" onClick={props.setPath}>
+              <NavLink to="/member-page" activeClassName="underline">
+                Sahifam
               </NavLink>
             </Box>
             <Box className="hover-line" onClick={props.setPath}>
@@ -74,37 +77,6 @@ export function NavbarHome(props: any) {
                 KIRISH
               </Button>
             </Box>
-          </Stack>
-        </Stack>
-        <Stack className="head_information">
-          <Stack
-            justifyContent={"column"}
-            style={{ marginTop: "86px", marginLeft: "24px" }}
-          >
-            <Box>
-              <img src="/icons/wellcome.svg" />
-            </Box>
-            <Box className="define_restaurant">
-              {" "}
-              The Authentic Restaurant and Cafe
-            </Box>
-            <Box className="timeline_service">24 soat ximatingizdamiz</Box>
-            <Box sx={{ mt: "90px" }}>
-              <Button
-                variant="contained"
-                style={{
-                  width: "210px",
-                  height: "60px",
-                  background: "#1976d2",
-                  color: "#FFFFFF",
-                }}
-              >
-                RO'YHATDAN O'TISH
-              </Button>
-            </Box>
-          </Stack>
-          <Stack>
-            <Box className="big_img"></Box>
           </Stack>
         </Stack>
       </Container>

@@ -6,15 +6,16 @@ import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { RestaurantPage } from "./screens/RestaurantPage";
 import { CommunityPage } from "./screens/CommunityPage";
-import { MemberPage } from "./screens/MemberPage";
+
 import { OrdersPage } from "./screens/OrdersPage";
 import { HelpPage } from "./screens/HelpPage";
 import { LoginPage } from "./screens/LoginPage";
 import { HomePage } from "./screens/HomePage";
 import { Footer } from "./components/headers/footer";
-import { NavbarRestaurant } from "./components/headers/restaurant";
-import { NavbarOthers } from "./components/headers/others";
-import { NavbarHome } from "./components/headers";
+import { NavbarRestaurant } from "./components/headers/navbarRestaurant";
+import { NavbarOthers } from "./components/headers/navbarOthers";
+import { NavbarHome } from "./components/headers/navbarHome";
+import { MemberPage } from "./screens/MemberPage";
 
 function App() {
   const [path, setPath] = useState();

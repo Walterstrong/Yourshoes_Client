@@ -1,0 +1,567 @@
+.my_page {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background: #0b0e11;
+}
+
+.my_page .css-heg063-MuiTabs-flexContainer {
+  flex-direction: column;
+}
+
+.my_page .css-mn3ro6-MuiTabs-indicator {
+  height: 0px;
+  width: 0px;
+}
+
+.my_page .css-1ujnqem-MuiTabs-root {
+  width: 100%;
+}
+
+.my_page .my_page_frame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.my_page_frame .my_page_left {
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page_left .menu_name {
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ffffff;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 45px;
+  color: #ffffff;
+}
+
+.my_page_left .menu_content {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page_left .write_content {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page .menu_content .post_content {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page .all_article_box {
+  margin-top: 20px;
+  width: 100%;
+  height: 170px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #182226;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+}
+
+.my_page .all_article_box .all_article_img {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 30px 0px 0px 30px;
+  /*background: url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3160&q=80");*/
+  background-size: cover;
+}
+
+.my_page .all_article_box .all_article_container {
+  margin-left: 15px;
+  width: 75%;
+  height: 90%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page .all_article_author_user {
+  margin-left: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #ffffff;
+}
+
+.my_page .all_article_title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  color: #e3c08d;
+}
+
+.my_page .all_article_desc {
+  margin-top: 5px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #ffffff;
+}
+
+.my_page .article_share {
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.my_page .article_share .article_share_main {
+  width: 330px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.my_page .menu_content .follow_box {
+  margin-top: 15px;
+  padding: 25px 45px;
+  width: 100%;
+  height: 140px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 112, 129, 0.9) 0%,
+    rgba(21, 61, 70, 0.9) 100%
+  );
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15),
+    inset 3px 2px 9px rgba(255, 255, 255, 0.25);
+  border-radius: 17px;
+}
+
+.my_page .follow_box .username_text {
+  margin-top: 10px;
+  width: 100%;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 12px;
+  color: #ffffff;
+}
+
+.my_page .follow_box .name_text {
+  margin-top: 16px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+.my_page .follow_box .follow_btn {
+  width: 175px;
+  height: 57px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: #30945e;
+  border: 1px solid #ffffff;
+  box-shadow: 1px 4px 6px rgba(211, 211, 211, 0.25),
+    inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+  border-radius: 43px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+.my_page .follow_box .follow_cancel_btn {
+  width: 185px;
+  height: 57px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: #e81010b8;
+  border: 1px solid #ffffff;
+  box-shadow: 1px 4px 6px rgba(211, 211, 211, 0.25),
+    inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+  border-radius: 43px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+.my_page .follow_box .following_already {
+  margin-left: 11px;
+  width: 160px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: #68c5cb;
+  box-shadow: 1px 4px 6px rgba(211, 211, 211, 0.25),
+    inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+  border-radius: 26px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+}
+
+.my_page_frame .my_page_right {
+  margin-left: 30px;
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page .order_info_box {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 16px rgba(242, 189, 87, 0.04);
+  border-radius: 16px;
+}
+
+.my_page .order_info_box .settings_btn {
+  position: absolute;
+  top: 6%;
+  right: 19%;
+  cursor: pointer;
+}
+
+.my_page .order_info_box .order_user_img {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my_page .order_info_box .order_user_img .order_user_avatar {
+  width: 117px;
+  height: 112px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 37px;
+}
+
+.my_page .order_info_box .order_user_icon_box {
+  position: absolute;
+  padding: 5px;
+  width: 37px;
+  height: 37px;
+  top: 81%;
+  right: 0;
+  display: flex;
+  background: rgb(209 209 209 / 33%);
+  border-radius: 37px;
+}
+
+.my_page .order_user_icon_box .order_user_prof_img {
+  /*filter: brightness(0) invert(1);*/
+}
+
+.my_page .order_info_box .order_user_name {
+  margin-top: 10px;
+  font-family: "Commissioner";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  color: #08090d;
+}
+
+.my_page .order_info_box .order_user_prof {
+  font-family: "Commissioner";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 36px;
+  color: #a1a1a1;
+}
+
+.my_page .order_info_box .user_media_box {
+  margin-top: 10px;
+  width: 60%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.my_page .order_info_box .user_desc {
+  margin-top: 30px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #616164;
+}
+
+.my_page .order_info_box .follows {
+  margin-top: 30px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #616164;
+}
+
+.my_page .order_info_box .css-1e3kzd4-MuiButtonBase-root-MuiButton-root {
+  margin-top: 15px;
+  min-width: 90%;
+  height: 44px;
+
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 38px;
+  color: #ffffff;
+}
+
+.my_page .my_page_menu {
+  margin-top: 40px;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my_page_menu .menu_box {
+  margin-bottom: 10px;
+  padding: 0px 20px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 20px 20px 20px 20px;
+  background: #ffffff;
+  box-shadow: inset 1px 4px 4px rgb(172 87 87 / 25%),
+    inset 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.my_page .active {
+  background: red;
+}
+
+.my_page .menu_box img {
+  width: 25px;
+}
+
+.my_page .menu_box span {
+  margin-left: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 38px;
+  color: #000000;
+}
+
+.my_page .my_settings_page {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page .my_settings_page .input_frame {
+  margin-top: 25px;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.my_page .my_settings_page .short_input {
+  width: 49%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page .my_settings_page .long_input {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page .my_settings_page .spec_label {
+  font-family: "Source Serif Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: #ffffff;
+}
+
+.my_page .my_settings_page .spec_input {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 20px;
+  width: 100%;
+  height: 54px;
+  border: none;
+
+  background: #f7f7f7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: #4f547b;
+}
+
+.my_page .my_settings_page .spec_textarea {
+  position: relative;
+  margin-top: 10px;
+  padding: 20px;
+  width: 100%;
+  height: 200px;
+  border: none;
+
+  background: #f7f7f7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: #4f547b;
+}
+
+.my_page .my_settings_page .member_media_frame {
+  margin-top: 25px;
+  position: relative;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  border-radius: 5px;
+  background: #f7f7f7;
+}
+
+.my_page .my_settings_page .media_change_box {
+  position: relative;
+  margin-left: 20px;
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.my_page .my_settings_page .media_change_box span {
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #140342;
+}
+
+.my_page .my_settings_page .media_change_box p {
+  margin: 10px 0px 14px 0px;
+  font-family: "GT Walsheim Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #4f547b;
+}
+
+.my_page .my_settings_page .up_del_box {
+  position: relative;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  background: #cbcbcb;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.my_page .my_settings_page .up_del_box input {
+  position: absolute;
+  width: 20px;
+  height: 16px;
+  padding: 0;
+  background: red;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

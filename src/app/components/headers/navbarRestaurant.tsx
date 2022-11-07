@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-export function NavbarOthers(props: any) {
+export function NavbarRestaurant(props: any) {
   return (
-    <div className="format_others home_navbar">
+    <div className="format_restaurant home_navbar">
       <Container>
         <Stack
           flexDirection={"row"}
@@ -38,6 +38,11 @@ export function NavbarOthers(props: any) {
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/orders" activeClassName="underline">
                 Buyurtma
+              </NavLink>
+            </Box>
+            <Box className="hover-line" onClick={props.setPath}>
+              <NavLink to="/member-page" activeClassName="underline">
+                Sahifam
               </NavLink>
             </Box>
             <Box className="hover-line" onClick={props.setPath}>
