@@ -19,6 +19,8 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { TuiEditor } from "../../components/tuiEditor/TuiEditor";
+import TViewer from "../../components/tuiEditor/TViewer";
 
 export function VisitMyPage(props: any) {
   /** INITIALIZATIONS **/
@@ -83,11 +85,13 @@ export function VisitMyPage(props: any) {
                 <TabPanel value={"4"}>
                   <Box className={"menu_name"}>Maqola yozish</Box>
                   <Box className={"write_content"}></Box>
+                  <TuiEditor />
                 </TabPanel>
 
                 <TabPanel value={"5"}>
                   <Box className={"menu_name"}>Tanlangan Maqola</Box>
                   <Box className={"menu_content"}></Box>
+                  <TViewer />
                 </TabPanel>
 
                 <TabPanel value={"6"}>
