@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import Button from "@mui/material/Button";
 import {
-  Stack,
   Box,
+  Button,
   FormControl,
   MenuItem,
+  Stack,
   Typography,
   Select,
   TextField,
@@ -18,32 +18,35 @@ export const TuiEditor = (props: any) => {
   return (
     <Stack>
       <Stack
-        direction="row"
+        direction={"row"}
         style={{ margin: "40px" }}
         justifyContent="space-evenly"
       >
         <Box className="form_row" style={{ width: "300px" }}>
           <Typography
-            style={{ color: "rgb(255 255 233", margin: "10px" }}
+            style={{ color: "rgb(225 255 233", margin: "10px" }}
             variant="h3"
           >
             Category
           </Typography>
           <FormControl sx={{ width: "100%", background: "white" }}>
             <Select
-              value="celebrity"
+              value={"celebrity"}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
             >
-              <MenuItem value="celebrity">Mashhurlar</MenuItem>
-              <MenuItem value="evaluation">Restaurant baho</MenuItem>
-              <MenuItem value="story">Mening Hikoyam</MenuItem>
+              <MenuItem value="">
+                <span>Categoriyani tanlang</span>
+              </MenuItem>
+              <MenuItem value={"celebrity"}>Mashhurlar</MenuItem>
+              <MenuItem value={"evaluation"}>Restoranga baho</MenuItem>
+              <MenuItem value={"story"}>Mening Hikoyam</MenuItem>
             </Select>
           </FormControl>
         </Box>
         <Box className="form_row" style={{ width: "300px" }}>
           <Typography
-            style={{ color: "rgb(255 255 233)", margin: "10px" }}
+            style={{ color: "rgb(225 255 233", margin: "10px" }}
             variant="h3"
           >
             Mavzu
@@ -56,7 +59,7 @@ export const TuiEditor = (props: any) => {
           />
         </Box>
       </Stack>
-      {/* @ts-ignore */}
+      {/*@ts-ignore*/}
       <Editor
         ref={editorRef}
         placeholder="Type here"
@@ -64,16 +67,9 @@ export const TuiEditor = (props: any) => {
         height="640px"
         initialEditType="WYSIWYG"
         toolbarItems={[
-          "headings",
-          "bold",
-          "italic",
-          "strike",
-          "image",
-          "table",
-          "link",
-          "ul",
-          "ol",
-          "task",
+          ["heading", "bold", "italic", "strike"],
+          ["image", "table", "link"],
+          ["ul", "ol", "task"],
         ]}
         hooks={{
           addImageBlobHook: async (image: any, callback: any) => {

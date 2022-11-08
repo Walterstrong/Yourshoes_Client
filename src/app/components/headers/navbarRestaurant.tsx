@@ -40,11 +40,11 @@ export function NavbarRestaurant(props: any) {
                 Buyurtma
               </NavLink>
             </Box>
-            <Box className="hover-line" onClick={props.setPath}>
+            {/* <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/member-page" activeClassName="underline">
                 Sahifam
               </NavLink>
-            </Box>
+            </Box> */}
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/community" activeClassName="underline">
                 Jamiyat

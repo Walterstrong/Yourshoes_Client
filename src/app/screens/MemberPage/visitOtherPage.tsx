@@ -16,10 +16,10 @@ import TViewer from "../../components/tuiEditor/TViewer";
 
 export function VisitOtherPage(props: any) {
   /** INITIALIZATIONS **/
-  const [value, setValue] = useState("5");
+  const [value, setValue] = useState("4");
 
   /** HANDLERS **/
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (event: any, newValue: string) => {
     setValue(newValue);
   };
 
