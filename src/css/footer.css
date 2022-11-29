@@ -4,7 +4,7 @@
   flex-direction: column;
   width: 100%;
   height: 509px;
-  background-color: #2c261e;
+  background: #2c261e;
 }
 
 .footer_config .main_footer_container {
@@ -19,67 +19,74 @@
 
 .main_footer_container .main_text {
   position: relative;
-  margin-top: 19px;
   width: 340px;
   height: 97.22px;
+  margin-top: 19px;
+
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 34px;
+  /* or 212% */
+
   color: #e3c08d;
 }
 
 .main_footer_container .contact_links {
   position: relative;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin-top: 11.3px;
+  flex-direction: row;
   width: 125.28px;
   height: 15.14px;
+  margin-top: 11.3px;
 }
 
 .main_footer_container .parts {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-left: 283px;
-  width: 118.28px;
+  width: 118px;
   height: 188px;
+  margin-left: 283px;
 }
 
 .parts .part_subject {
   position: relative;
-  width: 109px;
+  width: 109.98px;
   height: 32.41px;
+
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 34px;
+  /* or 142% */
   color: #c5c8c9;
 }
 
 .parts .divider {
   position: relative;
-  width: 45px;
+  width: 45.4px;
   height: 1.91px;
+  margin-top: 11.44px;
   background: #e3c08d;
-  margin-top: 5.72px;
 }
 
 .parts .targets {
   position: relative;
-  width: 117px;
+  width: 118.05px;
   height: 129.63px;
   margin-top: 19.6px;
+
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 34px;
+  /* or 212% */
+
   color: #e3c08d;
 }
 
@@ -89,7 +96,7 @@
   height: 0px;
   margin-top: 86px;
   opacity: 0.2;
-  border: 1 px solid #c5c8c9;
+  border: 1px solid #c5c8c9;
 }
 
 .footer_config .copyrights {
@@ -97,10 +104,14 @@
   width: 344px;
   height: 32px;
   margin-top: 15px;
+
   font-family: "Poppins";
   font-style: normal;
+  font-weight: 400;
   font-size: 16px;
   line-height: 34px;
+  /* or 212% */
+
   color: #e3c08d;
 }
 
@@ -108,7 +119,6 @@
   position: relative;
   width: 340px;
   height: 206px;
-  color: #e2e4e4;
 }
 
 .main_footer_container .find_us {
@@ -124,20 +134,22 @@
   position: relative;
   width: 116.87px;
   height: 32.91px;
+
   font-family: "Poppins";
   font-style: normal;
-  font-size: 24px;
   font-weight: 600;
+  font-size: 24px;
   line-height: 34px;
+  /* or 142% */
   color: #c5c8c9;
 }
 
 .find_us .divider {
   position: relative;
-  width: 45px;
+  width: 45.4px;
   height: 1.91px;
+  margin-top: 6.81px;
   background: #e3c08d;
-  margin-top: 5.81px;
 }
 
 .find_us .details {
@@ -147,6 +159,7 @@
   width: 295px;
   height: 33px;
 }
+
 .details .detail_first {
   position: relative;
   width: 15.01px;
@@ -156,6 +169,7 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 34px;
+  /* or 189% */
   color: #c5c8c9;
 }
 
@@ -164,10 +178,13 @@
   width: 269.12px;
   height: 32.91px;
   margin-left: 11.79px;
+
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 34px;
+  /* or 212% */
+
   color: #e3c08d;
 }

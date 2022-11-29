@@ -1,22 +1,22 @@
 import React from "react";
-import { Container, Stack, Box, Button } from "@mui/material";
+import { Box, Button, Container, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
-import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import AspectRatio from "@mui/joy/AspectRatio";
-import { Link } from "@mui/joy";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { CssVarsProvider } from "@mui/joy/styles";
 import Card from "@mui/joy/Card";
 import CardOverflow from "@mui/joy/CardOverflow";
+import AspectRatio from "@mui/joy/AspectRatio";
 import IconButton from "@mui/joy/IconButton";
-import CallIcon from "@mui/icons-material/Call";
+import Favorite from "@mui/icons-material/Favorite";
 import Typography from "@mui/joy/Typography";
-import { CssVarsProvider } from "@mui/joy/styles";
-import { Favorite, Search } from "@mui/icons-material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import Link from "@mui/joy/Link";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import CallIcon from "@mui/icons-material/Call";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const order_list = Array.from(Array(8).keys());
 
@@ -25,32 +25,32 @@ export function AllRestaurants() {
     <div className="all_restaurant">
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
-          <Box className="fil_search_box">
-            <Box className="fil_box">
+          <Box className={"fil_search_box"}>
+            <Box className={"fil_box"}>
               <a>Zo'r</a>
               <a>Mashhur</a>
-              <a>Trenddagi</a>
+              <a>Trendagi</a>
               <a>Yangi</a>
             </Box>
-            <Box className="search_big_box">
-              <form className="search_form" action="" method="">
+            <Box className={"search_big_box"}>
+              <form className={"search_form"} action={""} method={""}>
                 <input
-                  type="search"
-                  className="searchInput"
-                  name="resSearch"
-                  placeholder="Qidiriuv"
+                  type={"search"}
+                  className={"searchInput"}
+                  name={"resSearch"}
+                  placeholder={"Qidiruv"}
                 />
                 <Button
-                  className="button_search"
+                  className={"button_search"}
                   variant="contained"
                   endIcon={<SearchIcon />}
                 >
-                  Izlash
+                  Izash
                 </Button>
               </form>
             </Box>
           </Box>
-          <Stack className="all_res_box">
+          <Stack className={"all_res_box"}>
             <CssVarsProvider>
               {order_list.map((ele) => {
                 return (
@@ -65,10 +65,10 @@ export function AllRestaurants() {
                   >
                     <CardOverflow>
                       <AspectRatio ratio="1">
-                        <img src="/restaurant/top50.jpg" />
+                        <img src={"/restaurant/burak.jpeg"} alt="" />
                       </AspectRatio>
                       <IconButton
-                        aria-label="Like minimal photograpy"
+                        aria-label="Like minimal photography"
                         size="md"
                         variant="solid"
                         color="neutral"
@@ -82,17 +82,24 @@ export function AllRestaurants() {
                           right: "1rem",
                           bottom: 0,
                           transform: "translateY(50%)",
-                          color: "rgba(0, 0, 0,.4)",
+                          color: "rgba(0,0,0,.4)",
                         }}
                       >
-                        <Favorite style={{ color: "white" }} />
+                        <Favorite
+                          /*@ts-ignore*/
+                          style={{ color: "white" }}
+                        />
                       </IconButton>
                     </CardOverflow>
                     <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
-                      Texas De Brazil
+                      Texas De Brazil restaurant
                     </Typography>
                     <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
-                      <Link href="" startDecorator={<LocationOnRoundedIcon />}>
+                      <Link
+                        href=""
+                        startDecorator={<LocationOnRoundedIcon />}
+                        textColor="neutral.700"
+                      >
                         Tashkent, Yunus Abad 4-1
                       </Link>
                     </Typography>
@@ -102,7 +109,7 @@ export function AllRestaurants() {
                         startDecorator={<CallIcon />}
                         textColor="neutral.700"
                       >
-                        998999999777
+                        99890 7654789
                       </Link>
                     </Typography>
                     <CardOverflow
@@ -111,7 +118,7 @@ export function AllRestaurants() {
                         display: "flex",
                         gap: 1.5,
                         py: 1.5,
-                        px: "var(--Card-padding",
+                        px: "var(--Card-padding)",
                         borderTop: "1px solid",
                         borderColor: "neutral.outlinedBorder",
                         bgcolor: "background.level1",
@@ -126,7 +133,7 @@ export function AllRestaurants() {
                           display: "flex",
                         }}
                       >
-                        1000{""}{" "}
+                        1000{" "}
                         <VisibilityIcon
                           sx={{ fontSize: 20, marginLeft: "5px" }}
                         />
@@ -152,23 +159,24 @@ export function AllRestaurants() {
               })}
             </CssVarsProvider>
           </Stack>
-          <Stack className="bottom_box">
-            <img className="line_img" src="/restaurant/line.svg" />
+
+          <Stack className={"bottom_box"}>
+            <img className={"line_img"} src={"/restaurant/line.svg"} />
             <Pagination
               count={3}
               page={1}
               renderItem={(item) => (
                 <PaginationItem
                   components={{
-                    previous: ArrowBackRoundedIcon,
-                    next: ArrowForwardRoundedIcon,
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
                   }}
                   {...item}
                   color={"secondary"}
                 />
               )}
             />
-            <img className="line_img_two" src="/restaurant/line_two.svg" />
+            <img className={"line_img_two"} src={"/restaurant/line_two.svg"} />
           </Stack>
         </Stack>
       </Container>

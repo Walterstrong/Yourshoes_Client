@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
+
 import {
   Box,
   Button,
@@ -18,13 +19,13 @@ export const TuiEditor = (props: any) => {
   return (
     <Stack>
       <Stack
-        direction={"row"}
+        direction="row"
         style={{ margin: "40px" }}
         justifyContent="space-evenly"
       >
-        <Box className="form_row" style={{ width: "300px" }}>
+        <Box className={"form_row"} style={{ width: "300px" }}>
           <Typography
-            style={{ color: "rgb(225 255 233", margin: "10px" }}
+            style={{ color: "rgb(225 255 233)", margin: "10px" }}
             variant="h3"
           >
             Category
@@ -39,26 +40,27 @@ export const TuiEditor = (props: any) => {
                 <span>Categoriyani tanlang</span>
               </MenuItem>
               <MenuItem value={"celebrity"}>Mashhurlar</MenuItem>
-              <MenuItem value={"evaluation"}>Restoranga baho</MenuItem>
+              <MenuItem value={"evaluation"}>Restaurant baho</MenuItem>
               <MenuItem value={"story"}>Mening Hikoyam</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        <Box className="form_row" style={{ width: "300px" }}>
+        <Box className={"form_row"} style={{ width: "300px" }}>
           <Typography
-            style={{ color: "rgb(225 255 233", margin: "10px" }}
+            style={{ color: "rgb(225 255 233)", margin: "10px" }}
             variant="h3"
           >
             Mavzu
           </Typography>
           <TextField
             id="filled-basic"
-            label="Mavzu"
+            label="Mazvu"
             variant="filled"
             style={{ width: "300px", background: "white" }}
           />
         </Box>
       </Stack>
+
       {/*@ts-ignore*/}
       <Editor
         ref={editorRef}
@@ -76,7 +78,9 @@ export const TuiEditor = (props: any) => {
             return false;
           },
         }}
-        events={{ load: function (param: any) {} }}
+        events={{
+          load: function (param: any) {},
+        }}
       />
       <Stack direction="row" justifyContent="center">
         <Button

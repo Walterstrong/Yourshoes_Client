@@ -16,10 +16,10 @@ import TViewer from "../../components/tuiEditor/TViewer";
 
 export function VisitOtherPage(props: any) {
   /** INITIALIZATIONS **/
-  const [value, setValue] = useState("4");
+  const [value, setValue] = useState("1");
 
   /** HANDLERS **/
-  const handleChange = (event: any, newValue: string) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
@@ -51,12 +51,12 @@ export function VisitOtherPage(props: any) {
 
                 <TabPanel value={"4"}>
                   <Box className={"menu_name"}>Tanlangan Maqola</Box>
-                  <Box className={"menu_content"}></Box>
-                  <TViewer />
+                  <Box className={"menu_content"}>
+                    <TViewer text={`<h3>Hello</h3>`} />
+                  </Box>
                 </TabPanel>
               </Box>
             </Stack>
-
             <Stack className={"my_page_right"}>
               <Box className={"order_info_box"}>
                 <Box

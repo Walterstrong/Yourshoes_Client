@@ -84,14 +84,16 @@ export function VisitMyPage(props: any) {
 
                 <TabPanel value={"4"}>
                   <Box className={"menu_name"}>Maqola yozish</Box>
-                  <Box className={"write_content"}></Box>
-                  <TuiEditor />
+                  <Box className={"write_content"}>
+                    <TuiEditor />
+                  </Box>
                 </TabPanel>
 
                 <TabPanel value={"5"}>
                   <Box className={"menu_name"}>Tanlangan Maqola</Box>
-                  <Box className={"menu_content"}></Box>
-                  <TViewer />
+                  <Box className={"menu_content"}>
+                    <TViewer text={`<h3>Hello</h3>`} />
+                  </Box>
                 </TabPanel>
 
                 <TabPanel value={"6"}>

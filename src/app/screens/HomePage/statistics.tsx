@@ -1,21 +1,21 @@
+import { Box, Container, Stack } from "@mui/material";
 import React from "react";
-import { Container, Stack, Box } from "@mui/material";
-import Marginer from "../../components/headers/marginer";
+import Marginer from "../../components/marginer";
 
 export function Statistics() {
   return (
     <div className="static_frame">
       <Container>
         <Stack
-          flexDirection="row"
-          justifyContent="space-between"
-          alignItems="center"
+          flexDirection={"row"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
           style={{ height: "236px" }}
         >
           <div className="personage_img left"></div>
           <Stack className="static_box">
             <Box className="static_num">12</Box>
-            <Box className="static_text">Restaurant</Box>
+            <Box className="static_text">Restaurants</Box>
           </Stack>
           <Marginer direction="vertical" height="64" width="2" bg="#E3C08D" />
           <Stack className="static_box">

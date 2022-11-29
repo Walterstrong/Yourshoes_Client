@@ -1,39 +1,26 @@
+import { Box, Container, Stack } from "@mui/material";
 import React from "react";
-import { Container, Stack, Box, Button } from "@mui/material";
-import Card from "@mui/joy/Card";
-import CardCover from "@mui/joy/CardCover";
-import CardContent from "@mui/joy/CardContent";
-import CardOverflow from "@mui/joy/CardOverflow";
-import IconButton from "@mui/joy/IconButton";
-import Typography from "@mui/joy/Typography";
-import { CssVarsProvider } from "@mui/joy/styles";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import AspectRatio from "@mui/joy/AspectRatio";
-import { Favorite, MonetizationOn } from "@mui/icons-material";
-import { Link } from "@mui/joy";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import CallIcon from "@mui/icons-material/Call";
-import { url } from "inspector";
+import MonetizationOn from "@mui/icons-material/MonetizationOn";
 
 export function BestDishes() {
   return (
     <div className="best_dishes_frame">
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
-          <Box className="category_title">Trenddagi ovqatlar</Box>
+          <Box className="category_title">Trendagi Ovqatlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"}>
             <Box className="dish_box">
               <Stack
                 className="dish_img"
                 sx={{
                   backgroundImage: `url(
-                    "https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "https://images.unsplash.com/photo-1602253057119-44d745d9b860?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlzaHxlbnwwfHwwfHw%3D&w=1000&q=80"
                   )`,
                 }}
               >
-                <div className="dish_sale">normal size</div>
-                <div className="view_btn">
-                  Batafsil ko'rish
+                <div className={"dish_sale"}>normal size</div>
+                <div className={"view_btn"}>
+                  <div>Batafsil ko'rish</div>
                   <img
                     src={"/icons/arrow_right.svg"}
                     style={{ marginLeft: "9px" }}
@@ -53,13 +40,13 @@ export function BestDishes() {
                 className="dish_img"
                 sx={{
                   backgroundImage: `url(
-                    "https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "https://images.unsplash.com/photo-1602253057119-44d745d9b860?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlzaHxlbnwwfHwwfHw%3D&w=1000&q=80"
                   )`,
                 }}
               >
-                <div className="dish_sale">normal size</div>
-                <div className="view_btn">
-                  Batafsil ko'rish
+                <div className={"dish_sale"}>normal size</div>
+                <div className={"view_btn"}>
+                  <div>Batafsil ko'rish</div>
                   <img
                     src={"/icons/arrow_right.svg"}
                     style={{ marginLeft: "9px" }}
@@ -79,13 +66,13 @@ export function BestDishes() {
                 className="dish_img"
                 sx={{
                   backgroundImage: `url(
-                    "https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "https://images.unsplash.com/photo-1602253057119-44d745d9b860?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlzaHxlbnwwfHwwfHw%3D&w=1000&q=80"
                   )`,
                 }}
               >
-                <div className="dish_sale">normal size</div>
-                <div className="view_btn">
-                  Batafsil ko'rish
+                <div className={"dish_sale"}>normal size</div>
+                <div className={"view_btn"}>
+                  <div>Batafsil ko'rish</div>
                   <img
                     src={"/icons/arrow_right.svg"}
                     style={{ marginLeft: "9px" }}
@@ -105,13 +92,13 @@ export function BestDishes() {
                 className="dish_img"
                 sx={{
                   backgroundImage: `url(
-                    "https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "https://images.unsplash.com/photo-1602253057119-44d745d9b860?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGlzaHxlbnwwfHwwfHw%3D&w=1000&q=80"
                   )`,
                 }}
               >
-                <div className="dish_sale">normal size</div>
-                <div className="view_btn">
-                  Batafsil ko'rish
+                <div className={"dish_sale"}>normal size</div>
+                <div className={"view_btn"}>
+                  <div>Batafsil ko'rish</div>
                   <img
                     src={"/icons/arrow_right.svg"}
                     style={{ marginLeft: "9px" }}

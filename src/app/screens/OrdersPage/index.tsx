@@ -1,76 +1,50 @@
 import React, { useEffect, useState } from "react";
+import { Container, Stack, Box } from "@mui/material";
 import "../../../css/order.css";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { Box, Stack, Container } from "@mui/material";
-import PausedOrders from "../../components/headers/orders/pausedOrders";
-import ProcessOrders from "../../components/headers/orders/processOrders";
-import FinisheddOrders from "../../components/headers/orders/finishedOrders";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import Typography from "@mui/joy/Typography";
-import Marginer from "../../components/headers/marginer";
-import TextField from "@mui/material/TextField";
-import FormControl, { useFormControl } from "@mui/material/FormControl";
-import Textarea from "@mui/joy/Textarea";
-import FinishedOrders from "../../components/headers/orders/finishedOrders";
-import { borderBottomColor } from "@mui/system";
+
+import PausedOrders from "../../components/orders/pausedOrders";
+import ProcessOrders from "../../components/orders/processOrders";
+import FinishedOrders from "../../components/orders/finishedOrders";
 
 export function OrdersPage() {
-  //INITIALIZATIONS
+  /** INITIALIZATIONS **/
   const [value, setValue] = useState("1");
+  console.log("PASSED HERE");
+  console.log("value:", value);
 
-  //HANDLERS
+  /** HANDLERS **/
   const handleChange = (event: any, newValue: string) => {
+    console.log("newValue", newValue);
     setValue(newValue);
   };
 
   return (
-    <div className="order_page">
+    <div className={"order_page"}>
       <Container
-        maxWidth="lg"
         style={{ display: "flex", flexDirection: "row" }}
         sx={{ mt: "50px", mb: "50px" }}
       >
-        <Stack className="order_left">
+        <Stack className={"order_left"}>
           <TabContext value={value}>
-            <Box className="order_nav_frame">
+            <Box className={"order_nav_frame"}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <TabList
                   onChange={handleChange}
                   value={value}
                   aria-label="basic tabs example"
-                  style={{
-                    borderBottomColor: "1px solid white",
-                    margin: "15px",
-                  }}
+                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <Tab
-                    label="Buyurtmalarim"
-                    value={"1"}
-                    style={{
-                      marginRight: "80px",
-                    }}
-                  />
-                  <Tab
-                    label="Jarayon"
-                    value={"2"}
-                    style={{
-                      marginRight: "60px",
-                    }}
-                  />
-                  <Tab
-                    label="Yakunlangan"
-                    value={"3"}
-                    style={{
-                      marginLeft: "50px",
-                    }}
-                  />
+                  <Tab label="Buyurtmalarim" value={"1"} />
+                  <Tab label="Jarayon" value={"2"} />
+                  <Tab label="Yakunlangan" value={"3"} />
                 </TabList>
               </Box>
             </Box>
-            <Stack className="order_main_content">
+            <Stack className={"order_main_content"}>
               <PausedOrders />
               <ProcessOrders />
               <FinishedOrders />
@@ -78,86 +52,79 @@ export function OrdersPage() {
           </TabContext>
         </Stack>
 
-        <Stack className="order_right">
-          <Box className="order_info_box">
-            <Box display="flex" flexDirection="column" alignItems="center">
-              <div className="order_user_img">
-                <img src="/restaurant/kaka.png" className="order_user_avatar" />
-                <p className="order_user_name">Ismoilov Akmaljon</p>
-                <p className="user">Foydalanuvchi</p>
-              </div>
-              <div className="masdfsfdrginer">
-                <Marginer
-                  direction="horizontal"
-                  height="1"
-                  width="323"
-                  bg="#A1A1A1"
+        <Stack className={"order_right"}>
+          <Box className={"order_info_box"}>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              alignItems={"center"}
+            >
+              <div className={"order_user_img"}>
+                <img
+                  src={"/auth/default_user.svg"}
+                  className={"order_user_avatar"}
                 />
+                <div className={"order_user_icon_box"}>
+                  <img
+                    src={"/icons/user_icon.svg"}
+                    className={"order_user_prof_img"}
+                  />
+                </div>
               </div>
-              <p>
-                <img src="/icons/location.svg" />
-                SEOUL
-              </p>
+              <span className={"order_user_name"}>martin</span>
+              <span className={"order_user_prof"}>Foydalanuvchi</span>
+            </Box>
+            <Box
+              style={{ border: "1px solid #A1A1A1" }}
+              width={"100%"}
+              sx={{ mt: "40px", mb: "8px" }}
+            ></Box>
+            <Box className={"order_user_address"}>
+              <div style={{ display: "flex" }}>
+                <LocationOnIcon />
+              </div>
+              <div className={"spec_address_txt"}>Tashkent, Yunus Abad 4</div>
             </Box>
           </Box>
-          <Box className="order_form_box">
-            <Box
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="space-between"
+          <Box className={"order_info_box"} sx={{ mt: "15px" }}>
+            <input
+              type={"text"}
+              name={"card_number"}
+              placeholder={"Card number : 5243 4090 2002 7495"}
+              className={"card_input"}
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
             >
               <input
-                type="text"
-                name="card_number"
-                className="card_number"
-                placeholder="Card number: 5423 4090 2002 7495"
-                required
+                type={"text"}
+                name={"card_period"}
+                placeholder={"07 / 24"}
+                className={"card_half_input"}
               />
-              <Box
-                className="date_cvv"
-                display="flex"
-                flexDirection="row"
-                justifyContent={"space-between"}
-              >
-                <input
-                  type="text"
-                  name="expire_date"
-                  className="expire_date"
-                  placeholder="07 / 24"
-                  required
-                />
-                <input
-                  type="text"
-                  name="cvv_number"
-                  className="cvv_number"
-                  placeholder="CVV : 010"
-                  required
-                />
-              </Box>
-
               <input
-                type="text"
-                name="user_name"
-                className="user_name"
-                placeholder="Umarov Abdulloh"
-                required
+                type={"text"}
+                name={"card_cvv"}
+                placeholder={"CVV : 010"}
+                className={"card_half_input"}
               />
-            </Box>
-            <Box className="payment_brands">
-              <div>
-                <img src="/icons/westernUnion.svg" className="brands_avatars" />
-              </div>
-              <div>
-                <img src="/icons/masterCard.svg" className="brands_avatars" />
-              </div>
-              <div>
-                <img src="/icons/paypal.svg" className="brands_avatars" />
-              </div>
-              <div>
-                <img src="/icons/visa.svg" className="brands_avatars" />
-              </div>
-            </Box>
+            </div>
+            <input
+              type={"text"}
+              name={"card_creator"}
+              placeholder={"Umarov Abdulloh"}
+              className={"card_input"}
+            />
+            <div className={"cards_box"}>
+              <img src={"/icons/western_card.svg"} />
+              <img src={"/icons/master_card.svg"} />
+              <img src={"/icons/paypal_card.svg"} />
+              <img src={"/icons/visa_card.svg"} />
+            </div>
           </Box>
         </Stack>
       </Container>

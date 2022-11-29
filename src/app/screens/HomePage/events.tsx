@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Stack, Box } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 SwiperCore.use([Autoplay, Navigation, Pagination]);
@@ -7,114 +8,118 @@ SwiperCore.use([Autoplay, Navigation, Pagination]);
 export function Events() {
   const events_list = [
     {
-      title: "Mazzali Chickenga marhabo!",
-      desc: "Yangicha uslubda va Yangicha tam va yangicha His",
-      author: "Chicken House",
-      date: "2022/09/09",
-      location: "Toshkent, Nurafshon ko'cha",
-      img: "/restaurant/chicken.jpg",
-    },
-    {
-      title: "Bizni Nusratning Steaklari sizga muntasir",
-      desc: "Tuzni o'zingiz sepasiz, Nusretchasiga!",
-      author: "Steak House",
-      date: "2022/01/01",
-      location: "Toshkent, Yangihayot ko'cha",
-      img: "/restaurant/beef.jpg",
-    },
-    {
-      title: "Hotdog emas Hot-Hot",
-      desc: "Yengilgina bo'lish uchun yengil bizni taomlarga kelib turing",
-      author: "Yengil",
-      date: "2022/05/05",
-      location: "Toshkent, Mustaqillik ko'cha",
-      img: "/restaurant/hotdog.jpg",
-    },
-    {
-      title: "Murabboli musqaymoq keldi, siz ham keling!",
-      desc: "Bu yemabsiz, bu dunyoga kelmabsiz",
-      author: " Ice Cream",
+      title: "Boyin Foodga marhamat",
+      desc: "Yangicha Uslubda Yangicha Tam va Yangicha his",
+      author: "Abdurahmon Mufid",
       date: "2022/09/01",
-      location: "Toshkent, Zafar ko'cha",
-      img: "/restaurant/sweet.jpg",
+      location: "Toshkent, Nurafshon ko'cha",
+      img: "/restaurant/boyinfood.jpg",
+    },
+    {
+      title: "Katta Chegirma endi Belissimoda",
+      desc: "Faqat 25 ~ 31- iyul kunlari antiqa Pitsa yegani tashrif buyuring!",
+      author: "BelissimodUz",
+      date: "2022/07/25",
+      location: "Toshkent, Chilonzod",
+      img: "/restaurant/belissimo.jpg",
+    },
+    {
+      title: "Hali his qilmagan hisni his qilmoqchimisiz?",
+      desc: "Merhaba promokodi orqali 50% skidgani qo'lga kiriting",
+      author: "Chicken House",
+      date: "2022/09/10",
+      location: "Toshkent, Qo'yliq",
+      img: "/restaurant/merhaba.jpg",
+    },
+    {
+      title: "Yangicha Yondashuv Endi O'zbekistonda!!",
+      desc: "🥬 O’zbekistondagi eng yirik ulgurji bozor.\n",
+      author: "Food City",
+      date: "2022/08/01",
+      location: "Toshkent, Yangi Qo'yliq bozori",
+      img: "/restaurant/food_city.jpg",
     },
   ];
 
   return (
-    <div className="event_frame">
+    <div className={"events_frame"}>
       <Container sx={{ overflow: "hidden" }}>
-        <Stack className="event_main">
-          <Box className="event_text">
-            <span className="category_title">Hodisalar</span>
+        <Stack className={"events_main"}>
+          <Box className={"events_text"}>
+            <span className={"category_title"}>Hodisalar</span>
           </Box>
-          <Box className="prev_next_frame">
+          <Box className={"prev_next_frame"}>
             <img
               src={"/icons/arrow-right.svg"}
               className={"swiper-button-prev"}
-              style={{ transform: "rotate(-180deg)" }}
             />
-            <div className="dot_frame_pagination swiper-pagination"></div>
+            <div className={"dot_frame_pagination swiper-pagination"}></div>
             <img
               src={"/icons/arrow-right.svg"}
               className={"swiper-button-next"}
+              style={{ transform: "rotate(-180deg)" }}
             />
           </Box>
           <Swiper
-            className={"event_info swiper-wrapper"}
-            slidesPerView={"auto"} //
+            className={"events_info swiper-wrapper"}
+            slidesPerView={"auto"}
             centeredSlides={true}
             spaceBetween={30}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
-            pagination={{ el: ".swiper-pagination", clickable: true }}
+            pagination={{
+              el: ".swiper-pagination",
+              clickable: true,
+            }}
             autoplay={{
               delay: 2000,
-              disableOnInteraction: true, //onclick with touch
+              disableOnInteraction: true,
             }}
           >
             {events_list.map((value, number) => {
               return (
-                <SwiperSlide className="event_info_frame">
-                  <div className="event_img">
-                    <img src={value.img} className="event_img" />
+                <SwiperSlide className={"events_info_frame"}>
+                  <div className={"events_img"}>
+                    <img src={value.img} className={"events_img"} />
                   </div>
-                  <Box className="event_desc">
-                    <Box className="event_bott">
-                      <Box className="bott_left">
-                        <div className="event_title_speaker">
+                  <Box className={"events_desc"}>
+                    <Box className={"events_bott"}>
+                      <Box className={"bott_left"}>
+                        <div className={"event_title_speaker"}>
                           <strong>{value.title}</strong>
-                          <div className="event_organizator">
+                          <div className={"event_organizator"}>
                             <img
-                              src="/icons/speaker.svg" //speaker
+                              src={"/icons/speaker.svg"}
                               style={{ width: "20px", marginRight: "10px" }}
                             />
                             <p className={"spec_text_author"}>{value.author}</p>
                           </div>
                         </div>
+
                         <p
                           className={"text_desc"}
                           style={{ marginTop: "10px" }}
                         >
-                          {""}
-                          {value.desc}
-                          {""}
+                          {" "}
+                          {value.desc}{" "}
                         </p>
+
                         <div
-                          className="bott_info"
+                          className={"bott_info"}
                           style={{ marginTop: "10px" }}
                         >
-                          <div className="bott_info_main">
+                          <div className={"bott_info_main"}>
                             <img
-                              src="/icons/calendar.svg" //calendar
+                              src={"/icons/calendar.svg"}
                               style={{ marginRight: "10px" }}
                             />
                             {value.date}
                           </div>
-                          <div className="bott_info_main">
+                          <div className={"bott_info_main"}>
                             <img
-                              src="/icons/location.svg" //location
+                              src={"/icons/location.svg"}
                               style={{ marginRight: "10px" }}
                             />
                             {value.location}

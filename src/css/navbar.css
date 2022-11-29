@@ -39,7 +39,7 @@
 }
 
 .home_navbar .hover-line a {
-  color: white;
+  color: #ffffff;
 }
 
 .home_navbar .underline {
@@ -50,13 +50,13 @@
 
 .home_navbar .hover-line:after {
   display: block;
+
   content: "";
   border-bottom: solid 2px #d7b686;
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
-
-.home_navbar .hover-line:hover::after {
+.home_navbar .hover-line:hover:after {
   transform: scaleX(1);
 }
 
@@ -66,17 +66,19 @@
   width: 1290px;
   height: 477px;
 }
+
 .home_navbar .define_restaurant {
   position: relative;
   width: 484px;
   height: 143px;
   margin-top: 40px;
-  font-family: Poppins;
+
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
   font-size: 50px;
   line-height: 75px;
-  color: white;
+  color: #ffffff;
 }
 
 .home_navbar .timeline_service {
@@ -84,12 +86,13 @@
   width: 466px;
   height: 28px;
   margin-top: 30px;
-  font-family: Poppins;
+
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
-  color: white;
+  color: #d5d5d5;
 }
 
 .home_navbar .big_img {

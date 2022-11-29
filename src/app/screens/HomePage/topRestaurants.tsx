@@ -1,13 +1,13 @@
+import { Box, Container } from "@mui/material";
+import { Stack } from "@mui/system";
 import React from "react";
-import { Container, Stack, Box } from "@mui/material";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
-import CardOverflow from "@mui/joy/CardOverflow";
-import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import { CssVarsProvider } from "@mui/joy/styles";
+import { CardOverflow, IconButton } from "@mui/joy";
 import { Favorite } from "@mui/icons-material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
@@ -20,7 +20,7 @@ export function TopRestaurants() {
           alignItems={"center"}
           sx={{ mt: "45px" }}
         >
-          <Box className="category_title">TOP Restaurantlar</Box>
+          <Box className="category_title">TOP Restauranlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"} m={"16px"}>
             <CssVarsProvider>
               <Card
@@ -32,7 +32,7 @@ export function TopRestaurants() {
                 }}
               >
                 <CardCover>
-                  <img src="/restaurant/top1.png" loading="lazy" alt="" />
+                  <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
                 </CardCover>
                 <CardCover
                   sx={{
@@ -61,7 +61,7 @@ export function TopRestaurants() {
                   }}
                 >
                   <IconButton
-                    aria-label="like minimal photography"
+                    aria-label="Like minimal photography"
                     size="md"
                     variant="solid"
                     color="neutral"
@@ -75,8 +75,9 @@ export function TopRestaurants() {
                       color: "rgba(0,0,0,.4)",
                     }}
                   >
-                    <Favorite style={{ fill: "red" }} />
+                    <Favorite style={{ fill: "white" }} />
                   </IconButton>
+
                   <Typography
                     level="body3"
                     sx={{
@@ -86,7 +87,7 @@ export function TopRestaurants() {
                       display: "flex",
                     }}
                   >
-                    100
+                    100{" "}
                     <VisibilityIcon sx={{ fontSize: 20, marginLeft: "5px" }} />
                   </Typography>
                   <Box sx={{ width: 2, bgcolor: "divider" }} />
@@ -112,7 +113,7 @@ export function TopRestaurants() {
                 }}
               >
                 <CardCover>
-                  <img src="/restaurant/top2.png" loading="lazy" alt="" />
+                  <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
                 </CardCover>
                 <CardCover
                   sx={{
@@ -122,7 +123,7 @@ export function TopRestaurants() {
                 />
                 <CardContent sx={{ justifyContent: "flex-end" }}>
                   <Typography level="h2" fontSize="lg" textColor="#fff" mb={1}>
-                    Rayhon
+                    Texas De Brazil
                   </Typography>
                   <Typography
                     startDecorator={<LocationOnRoundedIcon />}
@@ -141,7 +142,7 @@ export function TopRestaurants() {
                   }}
                 >
                   <IconButton
-                    aria-label="like minimal photography"
+                    aria-label="Like minimal photography"
                     size="md"
                     variant="solid"
                     color="neutral"
@@ -157,6 +158,7 @@ export function TopRestaurants() {
                   >
                     <Favorite style={{ fill: "white" }} />
                   </IconButton>
+
                   <Typography
                     level="body3"
                     sx={{
@@ -166,7 +168,7 @@ export function TopRestaurants() {
                       display: "flex",
                     }}
                   >
-                    100
+                    100{" "}
                     <VisibilityIcon sx={{ fontSize: 20, marginLeft: "5px" }} />
                   </Typography>
                   <Box sx={{ width: 2, bgcolor: "divider" }} />
@@ -192,7 +194,7 @@ export function TopRestaurants() {
                 }}
               >
                 <CardCover>
-                  <img src="/restaurant/top3.png" loading="lazy" alt="" />
+                  <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
                 </CardCover>
                 <CardCover
                   sx={{
@@ -202,7 +204,7 @@ export function TopRestaurants() {
                 />
                 <CardContent sx={{ justifyContent: "flex-end" }}>
                   <Typography level="h2" fontSize="lg" textColor="#fff" mb={1}>
-                    Amir
+                    Texas De Brazil
                   </Typography>
                   <Typography
                     startDecorator={<LocationOnRoundedIcon />}
@@ -221,7 +223,7 @@ export function TopRestaurants() {
                   }}
                 >
                   <IconButton
-                    aria-label="like minimal photography"
+                    aria-label="Like minimal photography"
                     size="md"
                     variant="solid"
                     color="neutral"
@@ -237,6 +239,7 @@ export function TopRestaurants() {
                   >
                     <Favorite style={{ fill: "white" }} />
                   </IconButton>
+
                   <Typography
                     level="body3"
                     sx={{
@@ -246,7 +249,7 @@ export function TopRestaurants() {
                       display: "flex",
                     }}
                   >
-                    100
+                    100{" "}
                     <VisibilityIcon sx={{ fontSize: 20, marginLeft: "5px" }} />
                   </Typography>
                   <Box sx={{ width: 2, bgcolor: "divider" }} />
@@ -272,7 +275,7 @@ export function TopRestaurants() {
                 }}
               >
                 <CardCover>
-                  <img src="/restaurant/top4.png" loading="lazy" alt="" />
+                  <img src="/restaurant/burak.jpeg" loading="lazy" alt="" />
                 </CardCover>
                 <CardCover
                   sx={{
@@ -282,7 +285,7 @@ export function TopRestaurants() {
                 />
                 <CardContent sx={{ justifyContent: "flex-end" }}>
                   <Typography level="h2" fontSize="lg" textColor="#fff" mb={1}>
-                    Kavsar
+                    Texas De Brazil
                   </Typography>
                   <Typography
                     startDecorator={<LocationOnRoundedIcon />}
@@ -301,7 +304,7 @@ export function TopRestaurants() {
                   }}
                 >
                   <IconButton
-                    aria-label="like minimal photography"
+                    aria-label="Like minimal photography"
                     size="md"
                     variant="solid"
                     color="neutral"
@@ -317,6 +320,7 @@ export function TopRestaurants() {
                   >
                     <Favorite style={{ fill: "white" }} />
                   </IconButton>
+
                   <Typography
                     level="body3"
                     sx={{
@@ -326,7 +330,7 @@ export function TopRestaurants() {
                       display: "flex",
                     }}
                   >
-                    100
+                    100{" "}
                     <VisibilityIcon sx={{ fontSize: 20, marginLeft: "5px" }} />
                   </Typography>
                   <Box sx={{ width: 2, bgcolor: "divider" }} />
