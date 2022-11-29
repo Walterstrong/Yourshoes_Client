@@ -10,10 +10,10 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { MemberPosts } from "./memberPosts";
-import { MemberFollowers } from "./memberFollowers";
-import { MemberFollowing } from "./memberFollowing";
-import { MySettings } from "./mySettings";
+import { MemberPosts } from "./memberposts";
+import { MemberFollowers } from "./memberfollowers";
+import { MemberFollowing } from "./memberfollowing";
+import { MySettings } from "./mysettings";
 // OTHERS
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";

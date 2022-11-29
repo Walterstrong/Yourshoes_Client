@@ -14,6 +14,8 @@ export function NavbarHome(props: any) {
   const [count, setCount] = useState(0);
   const [value, setValue] = useState(true);
   // SetValue change value, value change SetCount, SetCount change count
+  // useState=>pageda actionlar orqali o'zgarishlar qilish uchun
+  // useEffect=>backenddan malumotlarni chaqirish uchun ishlatiladi
 
   useEffect(() => {
     setCount(count + 1);
