@@ -5,14 +5,15 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { MemberPosts } from "./memberposts";
-import { MemberFollowers } from "./memberfollowers";
-import { MemberFollowing } from "./memberfollowing";
+
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TViewer from "../../components/tuiEditor/TViewer";
+import { MemberFollowers } from "./memberfollowers";
+import { MemberFollowing } from "./memberfollowing";
+import { MemberPosts } from "./memberposts";
 
 export function VisitOtherPage(props: any) {
   /** INITIALIZATIONS **/

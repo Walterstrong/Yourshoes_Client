@@ -3,14 +3,15 @@ import { Box, Container, Stack } from "@mui/material";
 import Tab from "@mui/material/Tab";
 import Pagination from "@mui/material/Pagination";
 import "../../../css/community.css";
-import { TargetArticles } from "./targetArticles";
-import { CommunityChats } from "./communityChats";
+
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { CommunityChats } from "./communityChats";
+import { TargetArticles } from "./targetArticles";
 
 export function CommunityPage(props: any) {
   /** INITIALIZATIONS **/

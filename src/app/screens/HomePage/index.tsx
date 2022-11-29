@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import { Statistics } from "./statistics";
-import { TopRestaurants } from "./toprestaurants";
-import { BestRestaurants } from "./bestrestaurants";
-import { BestDishes } from "./bestdishes";
+
+import "../../../css/home.css";
 import { Advertisements } from "./advertisements";
+import { BestDishes } from "./bestdishes";
+import { BestRestaurants } from "./bestrestaurants";
 import { Events } from "./events";
 import { Recommendations } from "./recommendations";
-import "../../../css/home.css";
+import { Statistics } from "./statistics";
+import { TopRestaurants } from "./toprestaurants";
 
 export function HomePage() {
   useEffect(() => {
