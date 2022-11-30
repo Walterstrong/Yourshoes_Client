@@ -42,7 +42,7 @@ export function BestRestaurants() {
           <Box className="category_title">Zo’r Restaurantlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"}>
             {bestRestaurants.map((ele: Restaurant) => {
-              const image_path = `${serverApi}/${ele.mb_image}}`;
+              const image_path = `${serverApi}/${ele.mb_image}`;
               return (
                 <CssVarsProvider>
                   <Card

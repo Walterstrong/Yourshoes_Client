@@ -48,7 +48,7 @@ export function BestDishes() {
           <Box className="category_title">Trendagi Ovqatlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"}>
             {trendProducts.map((product: Product) => {
-              const image_path = `${serverApi}/${product.product_images[0]}}`;
+              const image_path = `${serverApi}/${product.product_images[0]}`;
               const size_volume =
                 product.product_collection === "drink"
                   ? product.product_volume + "l"
