@@ -1,6 +1,5 @@
 import { Box, Container } from "@mui/material";
 import { Stack } from "@mui/system";
-import React from "react";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
@@ -12,14 +11,12 @@ import { Favorite } from "@mui/icons-material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
 // REDUX
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { setTopRestaurants } from "../../screens/homepage/slice";
 import { retrieveTopRestaurants } from "./selector";
 import { Restaurant } from "../../../types/user";
-import RestaurantApiService from "../../apiServices/restaurantApiService";
-import { serviceApi } from "../../lib/config";
+import { serverApi } from "../../lib/config";
+
 // REDUX SELECTOR
 const topRestaurantsRetriever = createSelector(
   retrieveTopRestaurants,
@@ -29,10 +26,9 @@ const topRestaurantsRetriever = createSelector(
 );
 
 export function TopRestaurants() {
-  //*/
+  //** INITIALIZATION */
   const { topRestaurants } = useSelector(topRestaurantsRetriever);
 
-  console.log("topRestaurants", topRestaurants);
   return (
     <div className="top_restaurant_frame">
       <Container>
@@ -44,7 +40,7 @@ export function TopRestaurants() {
           <Box className="category_title">TOP Restauranlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"} m={"16px"}>
             {topRestaurants.map((ele: Restaurant) => {
-              const image_path = `${serviceApi}/${ele.mb_image}}`;
+              const image_path = `${serverApi}/${ele.mb_image}}`;
               return (
                 <CssVarsProvider key={ele._id}>
                   <Card
