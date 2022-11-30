@@ -1,6 +1,5 @@
 import { createSelector } from "reselect";
 import { AppRootState } from "../../../types/screen";
-import { HomePage } from "./index";
 
 const selectHomePage = (state: AppRootState) => state.homePage;
 
