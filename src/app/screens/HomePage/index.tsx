@@ -10,8 +10,13 @@ import { Statistics } from "./statistics";
 import { TopRestaurants } from "./toprestaurants";
 
 export function HomePage() {
+  //selector: store=>data
+
   useEffect(() => {
-    console.log("componentDidMount=>Data fetchCount");
+    // backend data request =>data
+
+    // slice: data => store
+
     return () => {
       console.log("componentWillUnmount process");
     };
