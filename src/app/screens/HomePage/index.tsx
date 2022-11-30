@@ -15,13 +15,13 @@ import { createSelector } from "reselect";
 import { setTopRestaurants } from "../../screens/homepage/slice";
 import { retrieveTopRestaurants } from "./selector";
 import { Restaurant } from "../../../types/user";
+import RestaurantApiService from "../../apiServices/restaurantApiService";
 
 // REDUC SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
   setTopRestaurants: (data: Restaurant[]) => dispatch(setTopRestaurants(data)),
 });
 
-// REDUX SELECTOR
 const topRestaurantsRetriever = createSelector(
   retrieveTopRestaurants,
   (topRestaurants) => ({
@@ -32,15 +32,17 @@ const topRestaurantsRetriever = createSelector(
 export function HomePage() {
   // ** INITIALIZATION *
   const { setTopRestaurants } = actionDispatch(useDispatch());
-  const topRestaurants = useSelector(topRestaurantsRetriever);
-  //selector: store=>data
 
   useEffect(() => {
-    // backend data request =>data
-
-    setTopRestaurants([]);
-    // slice: data => store
+    const restaurantService = new RestaurantApiService();
+    restaurantService
+      .getTopRestaurants()
+      .then((data) => {
+        setTopRestaurants(data);
+      })
+      .catch((err) => console.log(err));
   }, []);
+
   return (
     <div className="homepage">
       <Statistics />
