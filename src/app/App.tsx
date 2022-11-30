@@ -16,6 +16,7 @@ import { Footer } from "./components/footer";
 import { NavbarHome } from "./components/header";
 import { NavbarRestaurant } from "./components/header/restaurant";
 import { NavbarOthers } from "./components/header/others";
+import { HomePage } from "./screens/homepage";
 
 function App() {
   const [path, setPath] = useState();
@@ -51,8 +52,8 @@ function App() {
           <LoginPage />
         </Route>
         <Route path="/">
-          {/* <HomePage /> */}
-          <Car />
+          <HomePage />
+          {/* <Car /> */}
         </Route>
       </Switch>
 
