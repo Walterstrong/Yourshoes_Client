@@ -16,7 +16,7 @@ import { MemberFollowing } from "./memberfollowing";
 import { MemberPosts } from "./memberposts";
 
 export function VisitOtherPage(props: any) {
-  /** INITIALIZATIONS **/
+  /** INITIALIZATIONSS **/
   const [value, setValue] = useState("1");
 
   /** HANDLERS **/

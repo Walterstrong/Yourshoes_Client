@@ -11,7 +11,7 @@ import ProcessOrders from "../../components/orders/processOrders";
 import FinishedOrders from "../../components/orders/finishedOrders";
 
 export function OrdersPage() {
-  /** INITIALIZATIONS **/
+  /** INITIALIZATIONSS **/
   const [value, setValue] = useState("1");
   console.log("PASSED HERE");
   console.log("value:", value);

@@ -8,18 +8,17 @@ import {
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import {
+  sweetTopSuccessAlert,
+  sweetTopSmallSuccessAlert,
+} from "../../lib/sweetAlert";
 
 export function NavbarHome(props: any) {
-  //**INITIALIZATIONS**/
-  const [count, setCount] = useState(0);
-  const [value, setValue] = useState(true);
+  //**INITIALIZATIONSS**/
   // SetValue change value, value change SetCount, SetCount change count
   // useState=>pageda actionlar orqali o'zgarishlar qilish uchun
   // useEffect=>backenddan malumotlarni chaqirish uchun ishlatiladi
 
-  useEffect(() => {
-    setCount(count + 1);
-  }, [value]);
   return (
     <div className="format home_navbar">
       <Container>
@@ -80,6 +79,7 @@ export function NavbarHome(props: any) {
               <Button
                 variant="contained"
                 style={{ color: "#FFFFFF", background: "#1976d2" }}
+                onClick={props.handleLoginOpen}
               >
                 KIRISH
               </Button>
@@ -98,9 +98,7 @@ export function NavbarHome(props: any) {
             <Box className="define_restaurant">
               The Authentic Restaurant & Cafe
             </Box>
-            <Box className="timeline_service">
-              {count} soat xizmatingizdamiz.
-            </Box>
+            <Box className="timeline_service">24 soat xizmatingizdamiz.</Box>
             <Box sx={{ mt: "90px" }}>
               <Button
                 variant="contained"
@@ -110,7 +108,7 @@ export function NavbarHome(props: any) {
                   background: "#1976d2",
                   color: "#FFFFFF",
                 }}
-                onClick={() => setValue(!value)}
+                onClick={props.handleSignUpOpen}
               >
                 RO’YHATDAN O’TISH
               </Button>

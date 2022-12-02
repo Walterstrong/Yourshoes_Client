@@ -14,7 +14,7 @@ import { CommunityChats } from "./communityChats";
 import { TargetArticles } from "./targetArticles";
 
 export function CommunityPage(props: any) {
-  /** INITIALIZATIONS **/
+  /** INITIALIZATIONSS **/
   const [value, setValue] = React.useState("1");
 
   /** HANDLERS **/

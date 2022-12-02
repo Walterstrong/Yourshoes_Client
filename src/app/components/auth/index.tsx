@@ -6,6 +6,10 @@ import Fade from "@material-ui/core/Fade";
 import { Fab, Stack, TextField } from "@mui/material";
 import styled from "styled-components";
 import LoginIcon from "@mui/icons-material/Login";
+import { sweetErrorHandling } from "../../lib/sweetAlert";
+import { Definer } from "../../lib/Definer";
+import assert from "assert";
+import MemberApiService from "../../apiServices/memberApiService";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -31,9 +35,67 @@ const ModalImg = styled.img`
 `;
 
 export default function AuthenticationModal(props: any) {
+  //**INITIALIZATIONS **/
   const classes = useStyles();
-  const signUpOpen = false;
-  const loginOpen = false;
+  let mb_nick: string = "",
+    mb_phone: number = 0,
+    mb_password = "";
+
+  //**HANDLERS*/
+  const handleUsername = (e: any) => {
+    mb_nick = e.target.value;
+    console.log(mb_nick);
+  };
+  const handlePhone = (e: any) => {
+    mb_phone = e.target.value;
+  };
+  const handlePassword = (e: any) => {
+    mb_password = e.target.value;
+    console.log(mb_password);
+  };
+
+  const handleSignupRequest = async () => {
+    try {
+      const is_fulfilled = mb_nick != "" && mb_phone != 0 && mb_password != "";
+      assert.ok(is_fulfilled, Definer.input_err1);
+      const signup_data = {
+        mb_nick: mb_nick,
+        mb_phone: mb_phone,
+        mb_password: mb_password,
+      };
+      console.log(mb_nick);
+      const memberApiService = new MemberApiService();
+      await memberApiService.signupRequest(signup_data);
+
+      props.handleSignUpClose();
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+      props.handleSignupClose();
+      sweetErrorHandling(err).then();
+    }
+  };
+
+  const handleLoginRequest = async () => {
+    try {
+      const is_fulfilled = mb_nick != "" && mb_password != "";
+      assert.ok(is_fulfilled, Definer.input_err1);
+      const login_data = {
+        mb_nick: mb_nick,
+        mb_password: mb_password,
+      };
+      console.log(mb_nick);
+      const memberApiService = new MemberApiService();
+      await memberApiService.loginRequest(login_data);
+
+      props.handleLoginClose();
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+      props.handleLoginClose();
+      sweetErrorHandling(err).then();
+    }
+  };
 
   return (
     <div>
@@ -42,15 +104,15 @@ export default function AuthenticationModal(props: any) {
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={signUpOpen}
-        // onClose={}
+        open={props.signUpOpen}
+        onClose={props.handleSignUpClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={signUpOpen}>
+        <Fade in={props.signUpOpen}>
           <Stack
             className={classes.paper}
             direction={"row"}
@@ -60,27 +122,27 @@ export default function AuthenticationModal(props: any) {
             <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
               <h2>SignUp Form</h2>
               <TextField
-                // onChange={}
+                onChange={handleUsername}
                 sx={{ marginTop: "7px" }}
                 id="outlined-basic"
                 label="username"
                 variant="outlined"
               />
               <TextField
-                // onChange={}
+                onChange={handlePhone}
                 sx={{ my: "17px" }}
                 id="outlined-basic"
                 label="phone number"
                 variant="outlined"
               />
               <TextField
-                // onChange={}
+                onChange={handlePassword}
                 id="outlined-basic"
                 label="password"
                 variant="outlined"
               />
               <Fab
-                // onClick={}
+                onClick={handleSignupRequest}
                 sx={{ marginTop: "30px", width: "120px" }}
                 variant="extended"
                 color="primary"
@@ -98,15 +160,15 @@ export default function AuthenticationModal(props: any) {
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={loginOpen}
-        // onClose={}
+        open={props.loginOpen}
+        onClose={props.handleLoginClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={loginOpen}>
+        <Fade in={props.loginOpen}>
           <Stack
             className={classes.paper}
             direction={"row"}
@@ -122,20 +184,20 @@ export default function AuthenticationModal(props: any) {
             >
               <h2>Login Form</h2>
               <TextField
-                // onChange={}
+                onChange={handleUsername}
                 id="outlined-basic"
                 label="username"
                 variant="outlined"
                 sx={{ my: "10px" }}
               />
               <TextField
-                // onChange={}
+                onChange={handlePassword}
                 id="outlined-basic"
                 label="password"
                 variant="outlined"
               />
               <Fab
-                // onClick={}
+                onClick={handleLoginRequest}
                 sx={{ marginTop: "27px", width: "120px" }}
                 variant="extended"
                 color="primary"

@@ -24,7 +24,7 @@ import TViewer from "../../components/tuiEditor/TViewer";
 import { MySettings } from "./mysettings";
 
 export function VisitMyPage(props: any) {
-  /** INITIALIZATIONS **/
+  /** INITIALIZATIONSS **/
   const [value, setValue] = useState("1");
 
   /** HANDLERS **/

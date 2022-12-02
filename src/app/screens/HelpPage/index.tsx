@@ -13,7 +13,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import "../../../css/help.css";
 
 export function HelpPage() {
-  /** INITIALIZATIONS **/
+  /** INITIALIZATIONSS **/
   const [value, setValue] = React.useState("1");
   const faq = [
     {
