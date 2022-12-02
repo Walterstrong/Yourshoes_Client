@@ -11,16 +11,15 @@ import { TopRestaurants } from "./toprestaurants";
 // REDUX
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-
 import {
   setBestRestaurants,
   setTopRestaurants,
 } from "../../screens/homepage/slice";
-
 import { Restaurant } from "../../../types/user";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 
 // REDUX SLICE
+// bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
 const actionDispatch = (dispatch: Dispatch) => ({
   setTopRestaurants: (data: Restaurant[]) => dispatch(setTopRestaurants(data)),
   setBestRestaurants: (data: Restaurant[]) =>
@@ -34,6 +33,7 @@ export function HomePage() {
   );
 
   useEffect(() => {
+    // backend data request
     const restaurantService = new RestaurantApiService();
     restaurantService
       .getTopRestaurants()

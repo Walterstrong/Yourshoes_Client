@@ -1,6 +1,8 @@
 import { createSelector } from "reselect";
 import { AppRootState } from "../../../types/screen";
 
+//bu yerda har birini malumotlarni selector orqali malumotlarini olib olinayabdi
+
 const selectHomePage = (state: AppRootState) => state.homePage;
 
 export const retrieveTopRestaurants = createSelector(

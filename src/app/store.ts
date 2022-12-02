@@ -6,7 +6,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(reduxLogger),
   reducer: {
-    homePage: HomePageReducer,
+    homePage: HomePageReducer, // slicedan  reducerni chaqirib olish
   },
 });
 

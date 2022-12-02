@@ -9,6 +9,7 @@ class ProductApiService {
 
   constructor() {
     this.path = serverApi;
+    // bu yerda url pathi hosil qilib olinayabdi
   }
 
   async getTargetProducts(data: ProductSearchObj) {
