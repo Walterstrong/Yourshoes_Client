@@ -19,7 +19,10 @@ import { Restaurant } from "../../../types/user";
 import { serverApi } from "../../lib/config";
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
-import { sweetErrorHandling } from "../../lib/sweetAlert";
+import {
+  sweetErrorHandling,
+  sweetTopSmallSuccessAlert,
+} from "../../lib/sweetAlert";
 import MemberApiService from "../../apiServices/memberApiService";
 
 // REDUX SELECTOR
@@ -42,10 +45,7 @@ export function TopRestaurants() {
   };
   const targetLikeTop = async (e: any, id: string) => {
     try {
-      console.log("1");
       assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
-      console.log("2");
-
       const memberService = new MemberApiService();
       const like_result = await memberService.memberLikeTarget({
         like_ref_id: id,
@@ -60,6 +60,8 @@ export function TopRestaurants() {
         e.target.style.fill = "white";
         refs.current[like_result.like_ref_id].innerHTML--;
       }
+
+      await sweetTopSmallSuccessAlert("success", 700, false);
     } catch (err: any) {
       console.log("targetLikeTop,ERROR:", err);
       sweetErrorHandling(err).then();
@@ -135,6 +137,9 @@ export function TopRestaurants() {
                           bottom: 45,
                           transform: "translateY(50%)",
                           color: "rgba(0,0,0,.4)",
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
                         }}
                       >
                         <Favorite
