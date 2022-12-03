@@ -71,7 +71,10 @@ export function BestRestaurants() {
                         <Favorite
                           /*@ts-ignore*/
                           style={{
-                            color: "white",
+                            fill:
+                              ele?.me_liked && ele?.me_liked[0]?.my_favorite
+                                ? "red"
+                                : "white",
                           }}
                         />
                       </IconButton>

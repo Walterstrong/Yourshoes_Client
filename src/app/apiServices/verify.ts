@@ -1,10 +1,11 @@
-import Cookie from "universal-cookie";
+import { CookieSharp } from "@mui/icons-material";
+import Cookies from "universal-cookie";
 import MemberApiService from "./memberApiService";
 
-const cookie = new Cookie();
+const cookies = new Cookies();
 let member_data: any = null;
 
-if (cookie.get("access_token")) {
+if (cookies.get("access_token")) {
   const memberDataJson: any = localStorage.getItem("member_data")
     ? localStorage.getItem("member_data")
     : null;
