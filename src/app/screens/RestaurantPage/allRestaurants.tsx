@@ -24,6 +24,7 @@ import {
   sweetTopSmallSuccessAlert,
 } from "../../lib/sweetAlert";
 import MemberApiService from "../../apiServices/memberApiService";
+import { useHistory } from "react-router-dom";
 // REDUX
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
@@ -57,6 +58,7 @@ const targetRestaurantsRetriever = createSelector(
 
 export function AllRestaurants() {
   // ** INITIALIZATIONS *
+  const history = useHistory();
   const { setTargetRestaurants } = actionDispatch(useDispatch());
   const { targetRestaurants } = useSelector(targetRestaurantsRetriever);
   const [targetSearchObject, setTargetSearchObject] = useState<SearchObj>({
@@ -67,7 +69,6 @@ export function AllRestaurants() {
   const refs: any = useRef([]);
 
   useEffect(() => {
-    // TODO Retieve targetRestaurants
     const restaurantService = new RestaurantApiService();
     restaurantService
       .getRestaurants(targetSearchObject)
@@ -76,6 +77,10 @@ export function AllRestaurants() {
   }, [targetSearchObject]);
 
   //** HANDLERS */
+  const chosenRestaurantHandler = (id: string) => {
+    history.push(`/restaurant/${id}`);
+  };
+
   const searchHandler = (category: string) => {
     targetSearchObject.page = 1;
     targetSearchObject.order = category;
@@ -145,12 +150,14 @@ export function AllRestaurants() {
                 const image_path = `${serverApi}/${ele.mb_image}`;
                 return (
                   <Card
+                    onClick={() => chosenRestaurantHandler(ele._id)}
                     variant="outlined"
                     sx={{
                       minHeight: 410,
                       minWidth: 290,
                       mx: "17px",
                       my: "20px",
+                      cursor: "pointer",
                     }}
                   >
                     <CardOverflow>
