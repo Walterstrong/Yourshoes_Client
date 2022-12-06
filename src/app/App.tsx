@@ -4,8 +4,6 @@ import "../css/App.css";
 import "../css/navbar.css";
 import "../css/footer.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import Car from "./screens/testCar";
 import { RestaurantPage } from "./screens/restaurantpage";
 import { CommunityPage } from "./screens/communitypage";
 import { OrdersPage } from "./screens/orderspage";
