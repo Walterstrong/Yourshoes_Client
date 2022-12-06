@@ -24,6 +24,7 @@ import {
   sweetTopSmallSuccessAlert,
 } from "../../lib/sweetAlert";
 import MemberApiService from "../../apiServices/memberApiService";
+import RestaurantApiService from "../../apiServices/restaurantApiService";
 
 // REDUX SELECTOR
 const topRestaurantsRetriever = createSelector(
@@ -42,6 +43,8 @@ export function TopRestaurants() {
   //** HANDLERS */
   const chosenRestaurantHandler = (id: string) => {
     history.push(`/restaurant/${id}`);
+    // const restaurantService = new RestaurantApiService();
+    // restaurantService.getChosenRestaurant(`${id}`);
   };
   const targetLikeTop = async (e: any, id: string) => {
     try {

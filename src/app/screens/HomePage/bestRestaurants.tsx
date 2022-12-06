@@ -26,6 +26,7 @@ import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
 } from "../../lib/sweetAlert";
+import RestaurantApiService from "../../apiServices/restaurantApiService";
 
 // REDUX SELECTOR
 const bestRestaurantsRetriever = createSelector(
@@ -44,6 +45,8 @@ export function BestRestaurants() {
   //** HANDLERS */
   const chosenRestaurantHandler = (id: string) => {
     history.push(`/restaurant/${id}`);
+    // const restaurantService = new RestaurantApiService();
+    // restaurantService.getChosenRestaurant(`${id}`);
   };
   const goRestaurantHandler = () => history.push("/restaurant");
   const targetLikeBest = async (e: any, id: string) => {

@@ -14,7 +14,7 @@ export interface Product {
   product_left_cnt: number;
   product_size: string;
   product_volume: number;
-  product_description: number;
+  product_description: string;
   product_images: string[];
   product_likes: number;
   product_views: number;

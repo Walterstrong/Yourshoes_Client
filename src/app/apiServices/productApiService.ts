@@ -28,6 +28,36 @@ class ProductApiService {
       throw err;
     }
   }
+
+  // async getChosenDish(dish_id: string) {
+  //   try {
+  //     const url = `/products/${dish_id}/`;
+  //     const result = await axios.get(this.path + url, {
+  //       withCredentials: true,
+  //     });
+  //     assert.ok(result, Definer.general_err1);
+  //     console.log("state:::", result.data.state);
+  //     const product: Product = result.data.data;
+  //     return product;
+  //   } catch (err: any) {
+  //     console.log(`ERROR::: getChosenDish ${err.message}`);
+  //   }
+  // }
+
+  async getChosenDish(dish_id: string): Promise<Product> {
+    try {
+      const url = `/products/${dish_id}/`;
+      const result = await axios.get(this.path + url, {
+        withCredentials: true,
+      });
+      assert.ok(result, Definer.general_err1);
+      console.log("state:::", result.data.state);
+      const product: Product = result.data.data;
+      return product;
+    } catch (err: any) {
+      console.log(`ERROR::: getChosenDish ${err.message}`);
+    }
+  }
 }
 
 export default ProductApiService;

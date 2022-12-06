@@ -79,6 +79,8 @@ export function AllRestaurants() {
   //** HANDLERS */
   const chosenRestaurantHandler = (id: string) => {
     history.push(`/restaurant/${id}`);
+    // const restaurantService = new RestaurantApiService();
+    // restaurantService.getChosenRestaurant(`${id}`);
   };
 
   const searchHandler = (category: string) => {

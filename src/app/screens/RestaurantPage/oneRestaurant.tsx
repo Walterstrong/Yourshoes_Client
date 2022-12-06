@@ -72,14 +72,21 @@ const targetProductsRetriever = createSelector(
 export function OneRestaurant() {
   //** INITIALIZATIONS */
   const history = useHistory();
+
   let { restaurant_id } = useParams<{ restaurant_id: string }>();
+
   const { setRandomRestaurants, setChosenRestaurant, setTargetProducts } =
     actionDispatch(useDispatch());
+
   const { randomRestaurants } = useSelector(randomRestaurantsRetriever);
+
   const { chosenRestaurant } = useSelector(chosenRestaurantRetriever);
+
   const { targetProducts } = useSelector(targetProductsRetriever);
+
   const [chosenRestaurantId, setChosenRestaurantId] =
     useState<string>(restaurant_id);
+
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
       page: 1,
@@ -88,7 +95,9 @@ export function OneRestaurant() {
       restaurant_mb_id: restaurant_id,
       product_collection: "dish",
     });
+
   const [productRebuild, setProductRebuild] = useState<Date>(new Date());
+
   useEffect(() => {
     const restaurantService = new RestaurantApiService();
     restaurantService
@@ -99,12 +108,18 @@ export function OneRestaurant() {
       })
       .then((data) => setRandomRestaurants(data))
       .catch((err) => console.log(err));
+
+    restaurantService
+      .getChosenRestaurant(chosenRestaurantId)
+      .then((data) => setChosenRestaurant(data))
+      .catch((err) => console.log(err));
+
     const productService = new ProductApiService();
     productService
       .getTargetProducts(targetProductSearchObj)
       .then((data) => setTargetProducts(data))
       .catch((err) => console.log(err));
-  }, [targetProductSearchObj, productRebuild]);
+  }, [chosenRestaurantId, targetProductSearchObj, productRebuild]);
 
   //** HANDLERS */
   const searchOrderHandler = (order: string) => {
@@ -123,6 +138,9 @@ export function OneRestaurant() {
     setTargetProductsSearchObj({ ...targetProductSearchObj });
     history.push(`/restaurant/${id}`);
   };
+  const chosenDishHandler = (id: string) => {
+    history.push(`/restaurant/dish/${id}`);
+  };
   const targetLikeProduct = async (e: any) => {
     try {
       assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
@@ -140,13 +158,14 @@ export function OneRestaurant() {
       sweetErrorHandling(err).then();
     }
   };
+
   return (
     <div className={"single_restaurant"}>
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Stack className={"avatar_big_box"}>
             <Box className={"top_text"}>
-              <p>Texas De Brazil Restaurant</p>
+              <p>{chosenRestaurant?.mb_address}</p>
               <Box className={"Single_search_big_box"}>
                 <form className={"Single_search_form"} action={""} method={""}>
                   <input
@@ -428,12 +447,12 @@ export function OneRestaurant() {
           <Box
             className={"about_left"}
             sx={{
-              backgroundImage: `url('/restaurant/texasDeBrazil.jpeg')`,
+              backgroundImage: `url(${serverApi}/${chosenRestaurant?.mb_image})`,
             }}
           >
             <div className={"about_left_desc"}>
-              <span>Burak</span>
-              <p>Eng mazzali oshxona</p>
+              <span>{chosenRestaurant?.mb_nick}</span>
+              <p>{chosenRestaurant?.mb_description}</p>
             </div>
           </Box>
           <Box className={"about_right"}>
@@ -462,7 +481,7 @@ export function OneRestaurant() {
             alignItems: "center",
           }}
         >
-          <Box className={"category_title"}>Oshxona Manzili</Box>
+          <Box className={"category_title"}>{chosenRestaurant?.mb_address}</Box>
           <iframe
             style={{ marginTop: "60px" }}
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.363734762081!2d69.2267250514616!3d41.322703307863044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b9a0a33281d%3A0x9c5015eab678e435!2z0KDQsNC50YXQvtC9!5e0!3m2!1sko!2skr!4v1655461169573!5m2!1sko!2skr"

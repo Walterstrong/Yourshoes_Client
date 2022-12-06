@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Stack, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -13,11 +13,78 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import Checkbox from "@mui/material/Checkbox";
 
+// REDUX
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { Restaurant } from "../../../types/user";
+import { serverApi } from "../../lib/config";
+import { Definer } from "../../lib/Definer";
+import assert from "assert";
+import {
+  sweetErrorHandling,
+  sweetTopSmallSuccessAlert,
+} from "../../lib/sweetAlert";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "@reduxjs/toolkit";
+import {
+  setChosenProduct,
+  setChosenRestaurant,
+} from "../../screens/restaurantpage/slice";
+import { Product } from "../../../types/product";
+import { retrieveChosenRestaurant, retrieveChosenProduct } from "./selector";
+import { useHistory, useParams } from "react-router-dom";
+import ProductApiService from "../../apiServices/productApiService";
+import RestaurantApiService from "../../apiServices/restaurantApiService";
+
+// REDUX SLICE
+const actionDispatch = (dispatch: Dispatch) => ({
+  setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
+  setChosenRestaurant: (data: Restaurant) =>
+    dispatch(setChosenRestaurant(data)),
+});
+// REDUX SELECTOR
+const chosenRestaurantRetriever = createSelector(
+  retrieveChosenRestaurant,
+  (chosenRestaurant) => ({
+    chosenRestaurant,
+  })
+);
+const chosenProductRetriever = createSelector(
+  retrieveChosenProduct,
+  (chosenProduct) => ({
+    chosenProduct,
+  })
+);
 const chosen_list = Array.from(Array(3).keys());
 
 export function ChosenDish() {
+  //** INITIALIZATIONS */
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  let { dish_id } = useParams<{ dish_id: string }>();
+  const { setChosenRestaurant, setChosenProduct } = actionDispatch(
+    useDispatch()
+  );
+  const { chosenRestaurant } = useSelector(chosenRestaurantRetriever);
+  const { chosenProduct } = useSelector(chosenProductRetriever);
 
+  const dishRelatedProcess = async () => {
+    try {
+      const productService = new ProductApiService();
+      const product: Product = await productService.getChosenDish(dish_id);
+      setChosenProduct(product);
+      const restaurantService = new RestaurantApiService();
+      const restaurant = await restaurantService.getChosenRestaurant(
+        product.restaurant_mb_id
+      );
+      setChosenRestaurant(restaurant);
+    } catch (err: any) {
+      console.log(`dishRelatedProcess, ERROR`, err);
+    }
+  };
+
+  useEffect(() => {
+    dishRelatedProcess().then();
+  });
   return (
     <div className="chosen_dish_page">
       <Container className="dish_container">
