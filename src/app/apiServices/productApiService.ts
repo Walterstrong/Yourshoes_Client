@@ -29,30 +29,16 @@ class ProductApiService {
     }
   }
 
-  // async getChosenDish(dish_id: string) {
-  //   try {
-  //     const url = `/products/${dish_id}/`;
-  //     const result = await axios.get(this.path + url, {
-  //       withCredentials: true,
-  //     });
-  //     assert.ok(result, Definer.general_err1);
-  //     console.log("state:::", result.data.state);
-  //     const product: Product = result.data.data;
-  //     return product;
-  //   } catch (err: any) {
-  //     console.log(`ERROR::: getChosenDish ${err.message}`);
-  //   }
-  // }
-
-  async getChosenDish(dish_id: string): Promise<Product> {
+  async getChosenDish(dish_id: string) {
     try {
       const url = `/products/${dish_id}/`;
       const result = await axios.get(this.path + url, {
         withCredentials: true,
       });
-      assert.ok(result, Definer.general_err1);
+      assert.ok(result?.data, Definer.general_err1);
+      assert.ok(result?.data?.state != "fail", Definer.general_err1);
       console.log("state:::", result.data.state);
-      const product: Product = result.data.data;
+      const product: any = result.data?.data;
       return product;
     } catch (err: any) {
       console.log(`ERROR::: getChosenDish ${err.message}`);
