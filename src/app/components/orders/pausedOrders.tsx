@@ -5,7 +5,7 @@ import React from "react";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-import { retrievePausedOrders } from "../../screens/orderspage/selector";
+import { retrievePausedOrders } from "../../screens/OrdersPage/selector";
 const pausedOrders = [
   [1, 2],
   [1, 2, 3, 4, 5, 6],

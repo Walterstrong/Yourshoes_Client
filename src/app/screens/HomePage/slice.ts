@@ -1,4 +1,4 @@
-import { HomePageState } from "./../../../types/screen";
+import { HomePageState } from "../../../types/screen";
 import { createSlice } from "@reduxjs/toolkit";
 //
 

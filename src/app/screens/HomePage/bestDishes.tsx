@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setTrendProducts } from "../../screens/homepage/slice";
+import { setTrendProducts } from "./slice";
 import { createSelector } from "reselect";
 import { serverApi } from "../../lib/config";
 import { Product } from "../../../types/product";

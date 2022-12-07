@@ -1,4 +1,4 @@
-import { OrdersPageState } from "./../../../types/screen";
+import { OrdersPageState } from "../../../types/screen";
 import { createSlice } from "@reduxjs/toolkit";
 //
 

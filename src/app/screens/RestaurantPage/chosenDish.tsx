@@ -26,10 +26,7 @@ import {
 } from "../../lib/sweetAlert";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import {
-  setChosenProduct,
-  setChosenRestaurant,
-} from "../../screens/restaurantpage/slice";
+import { setChosenProduct, setChosenRestaurant } from "./slice";
 import { Product } from "../../../types/product";
 import { retrieveChosenRestaurant, retrieveChosenProduct } from "./selector";
 import { useParams } from "react-router-dom";
@@ -120,7 +117,7 @@ export function ChosenDish() {
             modules={[FreeMode, Navigation, Thumbs]}
           >
             {chosenProduct?.product_images.map((ele: string) => {
-              const image_path = `${serverApi}/${ele}}`;
+              const image_path = `${serverApi}/${ele}`;
               return (
                 <SwiperSlide>
                   <img
@@ -143,7 +140,7 @@ export function ChosenDish() {
             style={{ width: "450px", height: "245px", marginTop: "20px" }}
           >
             {chosenProduct?.product_images.map((ele: string) => {
-              const image_path = `${serverApi}/${ele}}`;
+              const image_path = `${serverApi}/${ele}`;
               return (
                 <SwiperSlide
                   style={{

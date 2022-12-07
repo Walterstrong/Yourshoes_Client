@@ -1,4 +1,4 @@
-import { RestaurantPageState } from "./../../../types/screen";
+import { RestaurantPageState } from "../../../types/screen";
 import { createSlice } from "@reduxjs/toolkit";
 //
 

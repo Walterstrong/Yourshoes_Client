@@ -29,7 +29,7 @@ import {
   setChosenRestaurant,
   setRandomRestaurants,
   setTargetProducts,
-} from "../../screens/restaurantpage/slice";
+} from "./slice";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { ProductSearchObj, SearchObj } from "../../../types/others";
 import { Product } from "../../../types/product";
@@ -322,7 +322,11 @@ export function OneRestaurant() {
                     : product.product_size + "size";
 
                 return (
-                  <Box className={"dish_box"} key={product._id}>
+                  <Box
+                    className={"dish_box"}
+                    key={product._id}
+                    onClick={() => chosenDishHandler(product._id)}
+                  >
                     <Box
                       className={"dish_img"}
                       sx={{
@@ -333,6 +337,9 @@ export function OneRestaurant() {
                       <Button
                         className={"like_view_btn"}
                         style={{ left: "36px" }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
                       >
                         <Badge
                           badgeContent={product.product_likes}

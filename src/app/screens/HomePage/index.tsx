@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
 import "../../../css/home.css";
 import { Advertisements } from "./advertisements";
-import { BestDishes } from "./bestdishes";
-import { BestRestaurants } from "./bestrestaurants";
+import { BestDishes } from "./bestDishes";
+import { BestRestaurants } from "./bestRestaurants";
 import { Events } from "./events";
 import { Recommendations } from "./recommendations";
 import { Statistics } from "./statistics";
-import { TopRestaurants } from "./toprestaurants";
+import { TopRestaurants } from "./topRestaurants";
 
 // REDUX
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import {
-  setBestRestaurants,
-  setTopRestaurants,
-} from "../../screens/homepage/slice";
+import { setBestRestaurants, setTopRestaurants } from "./slice";
 import { Restaurant } from "../../../types/user";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 

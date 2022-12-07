@@ -5,7 +5,7 @@ import moment from "moment";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-import { retrieveProcessOrders } from "../../screens/orderspage/selector";
+import { retrieveProcessOrders } from "../../screens/OrdersPage/selector";
 const processOrders = [
   [1, 2, 3],
   [1, 2, 3],

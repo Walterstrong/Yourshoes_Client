@@ -11,9 +11,9 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TViewer from "../../components/tuiEditor/TViewer";
-import { MemberFollowers } from "./memberfollowers";
-import { MemberFollowing } from "./memberfollowing";
-import { MemberPosts } from "./memberposts";
+import { MemberFollowers } from "./memberFollowers";
+import { MemberFollowing } from "./memberFollowing";
+import { MemberPosts } from "./memberPosts";
 
 export function VisitOtherPage(props: any) {
   /** INITIALIZATIONSS **/

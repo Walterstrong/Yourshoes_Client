@@ -10,9 +10,9 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { MemberPosts } from "./memberposts";
-import { MemberFollowers } from "./memberfollowers";
-import { MemberFollowing } from "./memberfollowing";
+import { MemberPosts } from "./memberPosts";
+import { MemberFollowers } from "./memberFollowers";
+import { MemberFollowing } from "./memberFollowing";
 
 // OTHERS
 import Pagination from "@mui/material/Pagination";
@@ -21,7 +21,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TuiEditor } from "../../components/tuiEditor/TuiEditor";
 import TViewer from "../../components/tuiEditor/TViewer";
-import { MySettings } from "./mysettings";
+import { MySettings } from "./mySettings";
 
 export function VisitMyPage(props: any) {
   /** INITIALIZATIONSS **/

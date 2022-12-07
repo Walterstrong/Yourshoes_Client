@@ -35,7 +35,7 @@ import { serverApi } from "../../lib/config";
 // REDUX
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setTargetRestaurants } from "../../screens/restaurantpage/slice";
+import { setTargetRestaurants } from "./slice";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { SearchObj } from "../../../types/others";
 

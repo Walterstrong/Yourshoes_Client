@@ -4,7 +4,7 @@ import React from "react";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-import { retrieveFinishedOrders } from "../../screens/orderspage/selector";
+import { retrieveFinishedOrders } from "../../screens/OrdersPage/selector";
 const finishedOrders = [
   [1, 2, 3],
   [1, 2, 3],
