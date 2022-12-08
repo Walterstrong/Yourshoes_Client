@@ -21,7 +21,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TuiEditor } from "../../components/tuiEditor/TuiEditor";
 import TViewer from "../../components/tuiEditor/TViewer";
-import { MySettings } from "./mySettings";
+import { MySettings } from "./mySettings"
 
 export function VisitMyPage(props: any) {
   /** INITIALIZATIONSS **/

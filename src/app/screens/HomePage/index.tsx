@@ -1,20 +1,19 @@
 import React, { useEffect } from "react";
 import "../../../css/home.css";
-import { Advertisements } from "./advertisements";
-import { BestDishes } from "./bestDishes";
+import { Advertisements } from "./advertisements"
+import { BestDishes } from "./bestDishes"
 import { BestRestaurants } from "./bestRestaurants";
-import { Events } from "./events";
-import { Recommendations } from "./recommendations";
-import { Statistics } from "./statistics";
-import { TopRestaurants } from "./topRestaurants";
+import { Events } from "./events"
+import { Recommendations } from "./recommendations"
+import { Statistics } from "./statistics"
+import { TopRestaurants } from "./topRestaurants"
 
 // REDUX
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setBestRestaurants, setTopRestaurants } from "./slice";
+import { setBestRestaurants, setTopRestaurants } from "./slice"
 import { Restaurant } from "../../../types/user";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
-
 
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,

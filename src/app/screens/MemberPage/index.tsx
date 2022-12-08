@@ -4,7 +4,7 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 import "../../../css/my_page.css";
 import { VisitOtherPage } from "./VisitOtherPage";
-import { VisitMyPage } from "./VisitMyPage";
+import { VisitMyPage } from "./VisitMyPage"
 
 export function MemberPage() {
   let member = useRouteMatch();

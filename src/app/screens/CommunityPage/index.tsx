@@ -10,8 +10,8 @@ import TabPanel from "@mui/lab/TabPanel";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { CommunityChats } from "./communityChats";
-import { TargetArticles } from "./targetArticles";
+import { CommunityChats } from "./communityChats"
+import { TargetArticles } from "./targetArticles"
 
 export function CommunityPage(props: any) {
   /** INITIALIZATIONSS **/
