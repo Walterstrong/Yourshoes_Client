@@ -16,6 +16,8 @@ import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setFinishedOrders, setPausedOrders, setProcessOrders } from "./slice";
 import OrderApiService from "../../apiServices/orderApiService";
+import { verifiedMemberData } from "../../apiServices/verify";
+import { Member } from "../../../types/user";
 
 /** REDUX SLICE  **/
 
@@ -29,7 +31,7 @@ export function OrdersPage(props: any) {
   const { setPausedOrders, setProcessOrders, setFinishedOrders } =
     actionDispatch(useDispatch());
   const [value, setValue] = useState("1");
-
+  const verifiedMemberData: Member | null = props.verifiedMemberData;
   useEffect(() => {
     const orderService = new OrderApiService();
     orderService
@@ -91,7 +93,11 @@ export function OrdersPage(props: any) {
             >
               <div className={"order_user_img"}>
                 <img
-                  src={"/auth/default_user.svg"}
+                  src={
+                    verifiedMemberData?.mb_image
+                      ? verifiedMemberData.mb_image
+                      : "/auth/default_user.svg"
+                  }
                   className={"order_user_avatar"}
                 />
                 <div className={"order_user_icon_box"}>
@@ -101,8 +107,12 @@ export function OrdersPage(props: any) {
                   />
                 </div>
               </div>
-              <span className={"order_user_name"}>martin</span>
-              <span className={"order_user_prof"}>Foydalanuvchi</span>
+              <span className={"order_user_name"}>
+                {verifiedMemberData?.mb_nick}
+              </span>
+              <span className={"order_user_prof"}>
+                {verifiedMemberData?.mb_type ?? "Foydalanuvchi"}
+              </span>
             </Box>
             <Box
               style={{ border: "1px solid #A1A1A1" }}
@@ -113,7 +123,9 @@ export function OrdersPage(props: any) {
               <div style={{ display: "flex" }}>
                 <LocationOnIcon />
               </div>
-              <div className={"spec_address_txt"}>Tashkent, Yunus Abad 4</div>
+              <div className={"spec_address_txt"}>
+                {verifiedMemberData?.mb_address ?? "manzil kitirilmagan"}
+              </div>
             </Box>
           </Box>
           <Box className={"order_info_box"} sx={{ mt: "15px" }}>
