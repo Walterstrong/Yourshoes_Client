@@ -16,6 +16,7 @@ import {
   sweetTopSuccessAlert,
   sweetTopSmallSuccessAlert,
 } from "../../lib/sweetAlert";
+import Basket from "./basket";
 
 export function NavbarHome(props: any) {
   //**INITIALIZATIONSS**/
@@ -71,7 +72,7 @@ export function NavbarHome(props: any) {
                 Yordam
               </NavLink>
             </Box>
-            <Box className="hover-line">
+            {/* <Box className="hover-line">
               <IconButton
                 aria-label="cart"
                 id="basic-button"
@@ -84,7 +85,8 @@ export function NavbarHome(props: any) {
                   <img src={"/icons/shopping_cart.svg"} />
                 </Badge>
               </IconButton>
-            </Box>
+            </Box> */}
+            <Basket />
             <Box>
               {!props.verifiedMemberData ? (
                 <Button

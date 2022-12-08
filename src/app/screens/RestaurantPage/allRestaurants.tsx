@@ -31,8 +31,6 @@ import { createSelector } from "reselect";
 import { retrieveTargetRestaurants } from "./selector";
 import { Restaurant } from "../../../types/user";
 import { serverApi } from "../../lib/config";
-
-// REDUX
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setTargetRestaurants } from "./slice";

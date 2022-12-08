@@ -69,21 +69,19 @@ const targetProductsRetriever = createSelector(
     targetProducts,
   })
 );
-export function OneRestaurant() {
+export function OneRestaurant(props: any) {
   //** INITIALIZATIONS */
   const history = useHistory();
-
+  //**//
   let { restaurant_id } = useParams<{ restaurant_id: string }>();
-
+  //**//
   const { setRandomRestaurants, setChosenRestaurant, setTargetProducts } =
     actionDispatch(useDispatch());
-
+  //**//
   const { randomRestaurants } = useSelector(randomRestaurantsRetriever);
-
   const { chosenRestaurant } = useSelector(chosenRestaurantRetriever);
-
   const { targetProducts } = useSelector(targetProductsRetriever);
-
+  //**//
   const [chosenRestaurantId, setChosenRestaurantId] =
     useState<string>(restaurant_id);
 
@@ -127,20 +125,24 @@ export function OneRestaurant() {
     targetProductSearchObj.order = order;
     setTargetProductsSearchObj({ ...targetProductSearchObj });
   };
+  //
   const searchCollectionHandler = (collection: string) => {
     targetProductSearchObj.page = 1;
     targetProductSearchObj.product_collection = collection;
     setTargetProductsSearchObj({ ...targetProductSearchObj });
   };
+  //
   const chosenRestaurantHandler = (id: string) => {
     setChosenRestaurantId(id);
     targetProductSearchObj.restaurant_mb_id = id;
     setTargetProductsSearchObj({ ...targetProductSearchObj });
     history.push(`/restaurant/${id}`);
   };
+  //
   const chosenDishHandler = (id: string) => {
     history.push(`/restaurant/dish/${id}`);
   };
+  //
   const targetLikeProduct = async (e: any) => {
     try {
       assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
@@ -185,7 +187,6 @@ export function OneRestaurant() {
               </Box>
             </Box>
           </Stack>
-
           <Stack
             style={{ width: "100%", display: "flex" }}
             flexDirection={"row"}
@@ -359,7 +360,13 @@ export function OneRestaurant() {
                           />
                         </Badge>
                       </Button>
-                      <Button className={"view_btn"}>
+                      <Button
+                        className={"view_btn"}
+                        onClick={(e) => {
+                          props.onAdd(product);
+                          e.stopPropagation();
+                        }}
+                      >
                         <img
                           src={"/icons/shopping_cart.svg"}
                           style={{ display: "flex" }}

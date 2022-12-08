@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Basket from "./basket";
 
 export function NavbarOthers(props: any) {
   return (
@@ -63,20 +64,7 @@ export function NavbarOthers(props: any) {
                 Yordam
               </NavLink>
             </Box>
-            <Box className="hover-line">
-              <IconButton
-                aria-label="cart"
-                id="basic-button"
-                aria-controls={undefined}
-                aria-haspopup="true"
-                aria-expanded={undefined}
-                // onClick={handleClick}
-              >
-                <Badge badgeContent={3} color="secondary">
-                  <img src={"/icons/shopping_cart.svg"} />
-                </Badge>
-              </IconButton>
-            </Box>
+            <Basket />
             <Box>
               {!props.verifiedMemberData ? (
                 <Button
