@@ -2,7 +2,7 @@ import { BoArticle } from "./boArticle";
 import { Order } from "./order";
 import { Product } from "./product";
 import { Restaurant } from "./user";
-import { OrdersPage } from "../app/screens/orderspage/index";
+import { OrdersPage } from "../app/screens/OrdersPage/index";
 
 //**REACT APP STATE */
 export interface AppRootState {
