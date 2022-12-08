@@ -5,7 +5,7 @@ import React from "react";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-import { retrievePausedOrders } from "../../screens/OrdersPage/selector";
+import { retrievePausedOrders } from "../../screens/orderspage/selector";
 import { Order } from "../../../types/order";
 import { Product } from "../../../types/product";
 import { serverApi } from "../../lib/config";

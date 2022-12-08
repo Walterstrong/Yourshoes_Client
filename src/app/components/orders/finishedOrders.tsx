@@ -4,7 +4,7 @@ import React from "react";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-import { retrieveFinishedOrders } from "../../screens/OrdersPage/selector";
+import { retrieveFinishedOrders } from "../../screens/orderspage/selector";
 import { Order } from "../../../types/order";
 import { Product } from "../../../types/product";
 import { serverApi } from "../../lib/config";

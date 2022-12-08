@@ -4,17 +4,17 @@ import "../css/App.css";
 import "../css/navbar.css";
 import "../css/footer.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { RestaurantPage } from "./screens/RestaurantPage";
-import { CommunityPage } from "./screens/CommunityPage";
-import { OrdersPage } from "./screens/OrdersPage";
-import { MemberPage } from "./screens/MemberPage";
-import { HelpPage } from "./screens/HelpPage";
-import { LoginPage } from "./screens/LoginPage";
+import { RestaurantPage } from "./screens/restaurantpage";
+import { CommunityPage } from "./screens/communitypage";
+import { OrdersPage } from "./screens/orderspage";
+import { MemberPage } from "./screens/memberpage";
+import { HelpPage } from "./screens/helppage";
+import { LoginPage } from "./screens/loginpage";
 import { Footer } from "./components/footer";
 import { NavbarHome } from "./components/header";
 import { NavbarRestaurant } from "./components/header/restaurant";
 import { NavbarOthers } from "./components/header/others";
-import { HomePage } from "./screens/HomePage";
+import { HomePage } from "./screens/homepage";
 import AuthenticationModal from "./components/auth";
 import { Member } from "../types/user";
 import { serverApi } from "./lib/config";
@@ -25,10 +25,9 @@ import {
 import { Definer } from "./lib/Definer";
 import MemberApiService from "./apiServices/memberApiService";
 import { verifiedMemberData } from "./apiServices/verify";
-import Cookie from "universal-cookie";
+
 import { CartItem } from "../types/others";
 import { Product } from "../types/product";
-import { Z_DATA_ERROR } from "zlib";
 
 function App() {
   //** INITIALIZATIONS *

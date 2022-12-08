@@ -15,6 +15,7 @@ import { setBestRestaurants, setTopRestaurants } from "./slice";
 import { Restaurant } from "../../../types/user";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 
+
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
 const actionDispatch = (dispatch: Dispatch) => ({

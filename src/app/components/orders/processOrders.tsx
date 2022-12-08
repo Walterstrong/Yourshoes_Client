@@ -5,7 +5,7 @@ import moment from "moment";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
-import { retrieveProcessOrders } from "../../screens/OrdersPage/selector";
+import { retrieveProcessOrders } from "../../screens/orderspage/selector";
 import { Product } from "../../../types/product";
 import { serverApi } from "../../lib/config";
 import OrderApiService from "../../apiServices/orderApiService";
