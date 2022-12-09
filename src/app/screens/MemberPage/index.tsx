@@ -3,8 +3,8 @@ import { Container } from "@mui/material";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 import "../../../css/my_page.css";
-import { VisitOtherPage } from "./VisitOtherPage";
-import { VisitMyPage } from "./VisitMyPage"
+import { VisitOtherPage } from "./visitOtherPage";
+import { VisitMyPage } from "./visitMyPage";
 
 export function MemberPage() {
   let member = useRouteMatch();
