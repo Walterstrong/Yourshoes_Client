@@ -23,6 +23,7 @@ class CommunityApiService {
       assert.ok(result?.data, Definer.general_err1);
       assert.ok(result?.data?.state != "fail", result?.data?.message);
       console.log("state:", result.data.state);
+
       const articles: BoArticle[] = result.data.data;
       return articles;
     } catch (err: any) {
@@ -31,3 +32,5 @@ class CommunityApiService {
     }
   }
 }
+
+export default CommunityApiService;
