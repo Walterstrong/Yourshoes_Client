@@ -7,7 +7,7 @@ import { Follower, Following } from "./follow";
 
 //**REACT APP STATE */
 export interface AppRootState {
-  memberPage: any;
+  memberPage: MemberPageState;
   homePage: HomePageState;
   restaurantPage: RestaurantPageState;
   ordersPage: OrdersPageState;

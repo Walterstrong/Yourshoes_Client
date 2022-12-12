@@ -10,7 +10,7 @@ const initialState: MemberPageState = {
   memberFollowings: [],
 };
 
-const MemberPageSlice = createSlice({
+const memberPageSlice = createSlice({
   name: "memberPage",
   initialState,
   reducers: {
@@ -38,7 +38,7 @@ export const {
   setChosenSingleBoArticle,
   setMemberFollowers,
   setMemberFollowings,
-} = MemberPageSlice.actions;
+} = memberPageSlice.actions;
 
-const MemberPageReducer = MemberPageSlice.reducer;
+const MemberPageReducer = memberPageSlice.reducer;
 export default MemberPageReducer;
