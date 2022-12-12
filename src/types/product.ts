@@ -4,6 +4,12 @@ export interface MeLiked {
   my_favorite: boolean;
 }
 
+export interface MeViewed {
+  mb_id: string;
+  view_ref_id: string;
+  my_view: boolean;
+}
+
 export interface Product {
   _id: string;
   product_name: string;
@@ -22,4 +28,5 @@ export interface Product {
   createdAt: Date;
   updatedAt: Date;
   me_liked: MeLiked[];
+  me_viewed: MeViewed[];
 }

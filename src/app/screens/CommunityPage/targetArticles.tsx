@@ -105,7 +105,17 @@ export function TargetArticles(props: any) {
                     <span style={{ marginRight: "18px" }}>
                       {article?.art_likes}
                     </span>
-                    <RemoveRedEyeIcon />
+                    <Checkbox
+                      icon={<RemoveRedEyeIcon style={{ color: "white" }} />}
+                      checkedIcon={
+                        <RemoveRedEyeIcon style={{ color: "red" }} />
+                      }
+                      checked={
+                        article?.me_viewed && article?.me_viewed[0]?.my_view
+                          ? true
+                          : false
+                      }
+                    />
                     <span style={{ marginLeft: "18px" }}>
                       {article?.art_views}
                     </span>

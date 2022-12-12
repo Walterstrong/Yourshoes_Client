@@ -1,4 +1,4 @@
-import { MeLiked } from "./product";
+import { MeLiked, MeViewed } from "./product";
 import { Member } from "./user";
 
 export interface BoArticle {
@@ -15,6 +15,7 @@ export interface BoArticle {
   updatedAt: Date;
   member_data: Member;
   me_liked: MeLiked[];
+  me_viewed: MeViewed[];
 }
 
 export interface SearchArticlesObj {

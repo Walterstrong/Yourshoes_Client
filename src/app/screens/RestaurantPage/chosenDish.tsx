@@ -187,7 +187,21 @@ export function ChosenDish(props: any) {
                   <span>{chosenProduct?.product_likes} ta</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                  <RemoveRedEyeIcon sx={{ mr: "10px" }} />
+                  <Checkbox
+                    icon={
+                      <RemoveRedEyeIcon
+                        style={{ color: "white" }}
+                        sx={{ mr: "10px" }}
+                      />
+                    }
+                    checkedIcon={<RemoveRedEyeIcon style={{ color: "red" }} />}
+                    checked={
+                      chosenProduct?.me_viewed &&
+                      chosenProduct?.me_viewed[0]?.my_view
+                        ? true
+                        : false
+                    }
+                  />
                   <span>{chosenProduct?.product_views} ta</span>
                 </div>
               </div>

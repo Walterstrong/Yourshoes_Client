@@ -332,9 +332,17 @@ export function OneRestaurant(props: any) {
                       className={"dish_img"}
                       sx={{
                         backgroundImage: `url(${image_path})`,
+                        cursor: "pointer",
                       }}
                     >
                       <div className={"dish_sale"}>{size_volume}</div>
+                      <div className={"ordered"}>
+                        <span>Batafsil ko'rish</span>
+                        <img
+                          src={"/icons/arrow_right.svg"}
+                          style={{ marginLeft: "9px" }}
+                        />
+                      </div>
                       <Button
                         className={"like_view_btn"}
                         style={{ left: "36px" }}
@@ -383,6 +391,15 @@ export function OneRestaurant(props: any) {
                           <Checkbox
                             icon={
                               <RemoveRedEyeIcon style={{ color: "white" }} />
+                            }
+                            checkedIcon={
+                              <RemoveRedEyeIcon style={{ color: "red" }} />
+                            }
+                            checked={
+                              product?.me_viewed &&
+                              product?.me_viewed[0]?.my_view
+                                ? true
+                                : false
                             }
                           />
                         </Badge>

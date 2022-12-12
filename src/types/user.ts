@@ -1,5 +1,5 @@
 import { MeFollowed } from "./follow";
-import { MeLiked } from "./product";
+import { MeLiked, MeViewed } from "./product";
 
 export interface Restaurant {
   _id: string;
@@ -19,6 +19,7 @@ export interface Restaurant {
   mb_subscriber_cnt: number;
   createdAt: Date;
   me_liked: MeLiked[];
+  me_viewed: MeViewed[];
 }
 
 export interface Member {
@@ -39,5 +40,6 @@ export interface Member {
   mb_subscriber_cnt: number;
   createdAt: Date;
   me_liked: MeLiked[];
+  me_viewed: MeViewed[];
   me_followed: MeFollowed[];
 }
