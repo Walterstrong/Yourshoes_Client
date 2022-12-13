@@ -12,7 +12,7 @@ const TViewer = (props: any) => {
         <Viewer
           // @ts-ignore
           ref={editorRef}
-          initialValue={props.text}
+          initialValue={props.chosenSingleBoArticle?.art_content}
           height={"600px"}
         />
       </Box>
