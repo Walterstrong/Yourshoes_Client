@@ -309,7 +309,11 @@ export function VisitMyPage(props: any) {
               <Box className={"my_page_menu"}>
                 <TabList
                   onChange={handleChange}
-                  aria-label="lab API tabs example"
+                  orientation="vertical"
+                  variant="scrollable"
+                  value={value}
+                  aria-label="Vertical tabs example"
+                  sx={{ borderRight: 1, borderColor: "divider", width: "98%" }}
                 >
                   <Tab
                     style={{ flexDirection: "column" }}
