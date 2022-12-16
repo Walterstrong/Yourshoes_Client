@@ -26,11 +26,9 @@ import {
 } from "app/lib/sweetAlert";
 
 // REDUX SLICE
-
 const actionDispatch = (dispatch: Dispatch) => ({
   setMemberFollowers: (data: Follower[]) => dispatch(setMemberFollowers(data)),
 });
-
 // REDUX SELECTOR
 const memberFollowersRetriever = createSelector(
   retrieveMemberFollowers,
@@ -57,7 +55,6 @@ export function MemberFollowers(props: any) {
   }, [followersSearchObj, followRebuild]);
 
   //** HANDLERS */
-
   const handlePaginationChange = (event: any, value: number) => {
     followersSearchObj.page = value;
     setFollowersSearchObj({ ...followersSearchObj });
@@ -77,6 +74,7 @@ export function MemberFollowers(props: any) {
       sweetErrorHandling(err).then();
     }
   };
+
   return (
     <Stack>
       {memberFollowers.map((follower: Follower) => {

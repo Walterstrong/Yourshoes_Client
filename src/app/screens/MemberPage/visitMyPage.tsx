@@ -44,7 +44,6 @@ import CommunityApiService from "app/apiServices/communityApiService";
 import MemberApiService from "app/apiServices/memberApiService";
 
 // REDUX SLICE
-
 const actionDispatch = (dispatch: Dispatch) => ({
   setChosenMember: (data: Member) => dispatch(setChosenMember(data)),
   setChosenMemberBoArticles: (data: BoArticle[]) =>
@@ -85,11 +84,13 @@ export function VisitMyPage(props: any) {
   const { chosenMemberBoArticles } = useSelector(
     chosenMemberBoArticlesRetriever
   );
-  const [value, setValue] = useState("1");
+
   const [memberArticlesSearchObj, setMemberArticlesSearchObj] =
     useState<SearchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 5 });
+  const [value, setValue] = useState("1");
   const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
   const [followRebuild, setFollowRebuild] = useState<boolean>(false);
+
   useEffect(() => {
     if (!localStorage.getItem("member_data")) {
       sweetFailureProvider("Please login first", true, true);
@@ -105,7 +106,12 @@ export function VisitMyPage(props: any) {
       .getChosenMember(verifiedMemberData?._id)
       .then((data) => setChosenMember(data))
       .catch((err) => console.log(err));
-  }, [memberArticlesSearchObj, articlesRebuild, followRebuild]);
+  }, [
+    memberArticlesSearchObj,
+    articlesRebuild,
+    followRebuild,
+    verifiedMemberData,
+  ]);
   /** HANDLERS **/
   const handleChange = (event: any, newValue: string) => {
     setValue(newValue);
