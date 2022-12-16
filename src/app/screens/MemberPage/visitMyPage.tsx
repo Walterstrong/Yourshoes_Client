@@ -86,7 +86,7 @@ export function VisitMyPage(props: any) {
   );
 
   const [memberArticlesSearchObj, setMemberArticlesSearchObj] =
-    useState<SearchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 5 });
+    useState<SearchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 4 });
   const [value, setValue] = useState("1");
   const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
   const [followRebuild, setFollowRebuild] = useState<boolean>(false);
@@ -211,7 +211,10 @@ export function VisitMyPage(props: any) {
                 <TabPanel value={"4"}>
                   <Box className={"menu_name"}>Maqola yozish</Box>
                   <Box className={"write_content"}>
-                    <TuiEditor />
+                    <TuiEditor
+                      setValue={setValue}
+                      setArticlesRebuild={setArticlesRebuild}
+                    />
                   </Box>
                 </TabPanel>
 
