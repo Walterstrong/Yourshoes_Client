@@ -64,10 +64,6 @@ export function MySettings(props: any) {
 
   const handleSubmitButton = async () => {
     try {
-      assert.ok(
-        memberUpdate.mb_nick !== "" || memberUpdate.mb_phone !== "",
-        Definer.input_err1
-      );
       const memberService = new MemberApiService();
       const result = await memberService.updateMemberData(memberUpdate);
 
