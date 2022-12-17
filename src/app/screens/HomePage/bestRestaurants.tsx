@@ -27,6 +27,7 @@ import {
   sweetTopSmallSuccessAlert,
 } from "../../lib/sweetAlert";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
+import { verifiedMemberData } from "app/apiServices/verify";
 
 // REDUX SELECTOR
 const bestRestaurantsRetriever = createSelector(
@@ -51,7 +52,7 @@ export function BestRestaurants() {
   const goRestaurantHandler = () => history.push("/restaurant");
   const targetLikeBest = async (e: any, id: string) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifiedMemberData, Definer.auth_err1);
       const memberService = new MemberApiService();
       const like_result = await memberService.memberLikeTarget({
         like_ref_id: id,

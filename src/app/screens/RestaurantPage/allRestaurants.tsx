@@ -36,6 +36,7 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { setTargetRestaurants } from "./slice";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { SearchObj } from "../../../types/others";
+import { verifiedMemberData } from "app/apiServices/verify";
 
 const order_list = Array.from(Array(8).keys());
 
@@ -93,7 +94,7 @@ export function AllRestaurants() {
 
   const targetLikeHandler = async (e: any, id: string) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifiedMemberData, Definer.auth_err1);
       const memberService = new MemberApiService();
       const like_result = await memberService.memberLikeTarget({
         like_ref_id: id,

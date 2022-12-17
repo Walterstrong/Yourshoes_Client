@@ -10,6 +10,7 @@ import {
   MenuItem,
   ListItem,
 } from "@mui/material";
+import { verifiedMemberData } from "app/apiServices/verify";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Basket from "./basket";
@@ -40,7 +41,7 @@ export function NavbarRestaurant(props: any) {
                 Oshhona
               </NavLink>
             </Box>
-            {props.verifiedMemberData ? (
+            {verifiedMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/orders" activeClassName="underline">
                   Buyurtma
@@ -52,7 +53,7 @@ export function NavbarRestaurant(props: any) {
                 Jamiyat
               </NavLink>
             </Box>
-            {props.verifiedMemberData ? (
+            {verifiedMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/member-page" activeClassName="underline">
                   Sahifam
@@ -73,7 +74,7 @@ export function NavbarRestaurant(props: any) {
               setOrderRebuild={props.setOrderRebuild}
             />
             <Box>
-              {!props.verifiedMemberData ? (
+              {!verifiedMemberData ? (
                 <Button
                   variant="contained"
                   style={{ color: "#FFFFFF", background: "#1976d2" }}
@@ -88,7 +89,7 @@ export function NavbarRestaurant(props: any) {
                     height: "48px",
                     borderRadius: "24px",
                   }}
-                  src={props.verifiedMemberData.mb_image}
+                  src={verifiedMemberData.mb_image}
                   onClick={props.handleLogOutClick}
                 />
               )}

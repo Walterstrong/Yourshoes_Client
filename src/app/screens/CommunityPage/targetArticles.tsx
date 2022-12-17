@@ -14,6 +14,7 @@ import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
 } from "app/lib/sweetAlert";
+import { verifiedMemberData } from "app/apiServices/verify";
 
 export function TargetArticles(props: any) {
   const refs: any = useRef([]);
@@ -21,7 +22,7 @@ export function TargetArticles(props: any) {
   const targetLikeProduct = async (e: any) => {
     const { setArticlesRebuild } = props;
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifiedMemberData, Definer.auth_err1);
       const memberService = new MemberApiService();
       const like_result = await memberService.memberLikeTarget({
         like_ref_id: e.target.id,

@@ -10,6 +10,7 @@ import {
   MenuItem,
   ListItem,
 } from "@mui/material";
+import { verifiedMemberData } from "app/apiServices/verify";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -48,7 +49,7 @@ export function NavbarHome(props: any) {
                 Oshhona
               </NavLink>
             </Box>
-            {props.verifiedMemberData ? (
+            {verifiedMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/orders" activeClassName="underline">
                   Buyurtma
@@ -60,7 +61,7 @@ export function NavbarHome(props: any) {
                 Jamiyat
               </NavLink>
             </Box>
-            {props.verifiedMemberData ? (
+            {verifiedMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/member-page" activeClassName="underline">
                   Sahifam
@@ -72,20 +73,7 @@ export function NavbarHome(props: any) {
                 Yordam
               </NavLink>
             </Box>
-            {/* <Box className="hover-line">
-              <IconButton
-                aria-label="cart"
-                id="basic-button"
-                aria-controls={undefined}
-                aria-haspopup="true"
-                aria-expanded={undefined}
-                // onClick={handleClick}
-              >
-                <Badge badgeContent={3} color="secondary">
-                  <img src={"/icons/shopping_cart.svg"} />
-                </Badge>
-              </IconButton>
-            </Box> */}
+
             <Basket
               cartItems={props.cartItems}
               onAdd={props.onAdd}
@@ -95,7 +83,7 @@ export function NavbarHome(props: any) {
               setOrderRebuild={props.setOrderRebuild}
             />
             <Box>
-              {!props.verifiedMemberData ? (
+              {!verifiedMemberData ? (
                 <Button
                   variant="contained"
                   style={{ color: "#FFFFFF", background: "#1976d2" }}
@@ -110,7 +98,7 @@ export function NavbarHome(props: any) {
                     height: "48px",
                     borderRadius: "24px",
                   }}
-                  src={props.verifiedMemberData.mb_image}
+                  src={verifiedMemberData.mb_image}
                   onClick={props.handleLogOutClick}
                 />
               )}
@@ -172,7 +160,7 @@ export function NavbarHome(props: any) {
             </Box>
             <Box className="timeline_service">24 soat xizmatingizdamiz.</Box>
             <Box sx={{ mt: "90px" }}>
-              {!props.verifiedMemberData ? (
+              {!verifiedMemberData ? (
                 <Button
                   variant="contained"
                   style={{

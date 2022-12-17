@@ -31,7 +31,7 @@ export function OrdersPage(props: any) {
   const { setPausedOrders, setProcessOrders, setFinishedOrders } =
     actionDispatch(useDispatch());
   const [value, setValue] = useState("1");
-  const verifiedMemberData: Member | null = props.verifiedMemberData;
+
   useEffect(() => {
     const orderService = new OrderApiService();
     orderService

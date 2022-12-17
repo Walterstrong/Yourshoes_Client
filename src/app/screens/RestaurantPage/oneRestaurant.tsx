@@ -40,6 +40,7 @@ import {
 } from "./selector";
 import { useHistory, useParams } from "react-router-dom";
 import ProductApiService from "../../apiServices/productApiService";
+import { verifiedMemberData } from "app/apiServices/verify";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -145,7 +146,7 @@ export function OneRestaurant(props: any) {
   //
   const targetLikeProduct = async (e: any) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifiedMemberData, Definer.auth_err1);
       const memberService = new MemberApiService();
       const like_result = await memberService.memberLikeTarget({
         like_ref_id: e.target.id,

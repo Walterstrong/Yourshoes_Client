@@ -49,6 +49,7 @@ import {
 import assert from "assert";
 import FollowApiService from "app/apiServices/followApiService";
 import { Definer } from "app/lib/Definer";
+import { verifiedMemberData } from "app/apiServices/verify";
 
 // REDUX SLICE
 
@@ -87,7 +88,7 @@ export function VisitOtherPage(props: any) {
     setChosenMemberBoArticles,
     setChosenSingleBoArticle,
   } = actionDispatch(useDispatch());
-  const { verifiedMemberData, chosen_mb_id, chosen_art_id } = props;
+  const { chosen_mb_id, chosen_art_id } = props;
   const { chosenMember } = useSelector(chosenMemberRetriever);
   const { chosenSingleBoArticle } = useSelector(chosenSingleBoArticleRetriever);
   const { chosenMemberBoArticles } = useSelector(
@@ -163,7 +164,7 @@ export function VisitOtherPage(props: any) {
 
   const subscribeHandler = async (e: any) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifiedMemberData, Definer.auth_err1);
 
       const followService = new FollowApiService();
       await followService.subscribe(e.target.value);
@@ -178,7 +179,7 @@ export function VisitOtherPage(props: any) {
 
   const unsubscribeHandler = async (e: any) => {
     try {
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifiedMemberData, Definer.auth_err1);
 
       const followService = new FollowApiService();
       await followService.unsubscribe(e.target.value);

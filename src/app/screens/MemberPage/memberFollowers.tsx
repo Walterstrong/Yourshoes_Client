@@ -25,6 +25,7 @@ import {
   sweetTopSmallSuccessAlert,
 } from "app/lib/sweetAlert";
 import { useHistory } from "react-router-dom";
+import { verifiedMemberData } from "app/apiServices/verify";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -65,7 +66,7 @@ export function MemberFollowers(props: any) {
   const subscribeHandler = async (e: any, id: string) => {
     try {
       e.stopPropagation();
-      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+      assert.ok(verifiedMemberData, Definer.auth_err1);
       const followService = new FollowApiService();
       await followService.subscribe(id);
 
