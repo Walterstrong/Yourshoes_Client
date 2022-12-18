@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -37,20 +37,21 @@ const ModalImg = styled.img`
 export default function AuthenticationModal(props: any) {
   //**INITIALIZATIONS **/
   const classes = useStyles();
-  let mb_nick: string = "",
-    mb_phone: number = 0,
-    mb_password = "";
+
+  const [mb_nick, set_mb_nick] = useState<string>("");
+  const [mb_phone, set_mb_phone] = useState<number>(0);
+  const [mb_password, set_mb_password] = useState<string>("");
 
   //**HANDLERS*/
   const handleUsername = (e: any) => {
-    mb_nick = e.target.value;
+    set_mb_nick(e.target.value);
     console.log(mb_nick);
   };
   const handlePhone = (e: any) => {
-    mb_phone = e.target.value;
+    set_mb_phone(e.target.value);
   };
   const handlePassword = (e: any) => {
-    mb_password = e.target.value;
+    set_mb_password(e.target.value);
     console.log(mb_password);
   };
 
@@ -97,6 +98,14 @@ export default function AuthenticationModal(props: any) {
     }
   };
 
+  const passwordKeyDownHandler = (e: any) => {
+    if (e.key == "Enter" && props.signUpOpen) {
+      handleSignupRequest();
+    } else if (e.key == "Enter" && props.loginOpen) {
+      handleLoginRequest();
+    }
+  };
+
   return (
     <div>
       {/*@ts-ignore*/}
@@ -140,6 +149,7 @@ export default function AuthenticationModal(props: any) {
                 id="outlined-basic"
                 label="password"
                 variant="outlined"
+                onKeyPress={passwordKeyDownHandler}
               />
               <Fab
                 onClick={handleSignupRequest}
@@ -195,6 +205,7 @@ export default function AuthenticationModal(props: any) {
                 id="outlined-basic"
                 label="password"
                 variant="outlined"
+                onKeyPress={passwordKeyDownHandler}
               />
               <Fab
                 onClick={handleLoginRequest}
