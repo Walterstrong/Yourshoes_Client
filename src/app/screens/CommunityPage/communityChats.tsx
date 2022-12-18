@@ -1,14 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Avatar, Box, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { SocketContext } from "app/context/socket";
 
 export function CommunityChats() {
   /** INITIALIZATIONSS **/
   const [messagesList, setMessagesList] = useState([]);
+  const socket = useContext(SocketContext);
+  const [onlineUsers, setOnlineUsers] = useState<number>(0);
 
+  useEffect(() => {
+    socket.connect();
+    console.log("SOCKET CONNECTED");
+
+    socket?.on("connect", function () {
+      console.log("CLIENT: connected!");
+    });
+
+    socket?.on("newMsg", function (new_message: any) {
+      console.log("CLIENT: new message!");
+      alert(new_message);
+    });
+
+    socket?.on("greetMsg", function (new_message: any) {
+      console.log("CLIENT: greet message!");
+    });
+
+    socket?.on("infoMsg", function (msg: any) {
+      console.log("CLIENT: info message!");
+      setOnlineUsers(msg.total);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [socket]);
   return (
     <Stack className={"chat_frame"}>
-      <Box className={"chat_top"}>Jonli Muloqot</Box>
+      <Box className={"chat_top"}>Jonli Muloqot {onlineUsers}</Box>
       <Box className={"chat_content"}>
         <Stack className={"chat_main"}>
           <Box
@@ -67,4 +96,7 @@ export function CommunityChats() {
       </Box>
     </Stack>
   );
+}
+function setOnlineUsers(total: any) {
+  throw new Error("Function not implemented.");
 }
