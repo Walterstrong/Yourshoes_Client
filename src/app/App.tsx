@@ -205,7 +205,6 @@ function App() {
         </Route>
         <Route path="/">
           <HomePage />
-          {/* <Car /> */}
         </Route>
       </Switch>
       <Footer />
