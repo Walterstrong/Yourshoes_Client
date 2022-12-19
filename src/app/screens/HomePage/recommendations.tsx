@@ -96,7 +96,7 @@ export function Recommendations() {
       })
       .then((data) => setNewsBoArticles(data))
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   //** HANDLERS */
   const chosenArticleHandler = (id: string) => {
