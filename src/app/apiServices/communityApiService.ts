@@ -115,6 +115,23 @@ class CommunityApiService {
       throw err;
     }
   }
+
+  public async ArticleDelte(art_id: string) {
+    try {
+      let url = `/community/article/delete/${art_id}`;
+      const result = await axios.get(this.path + url, {
+        withCredentials: true,
+      });
+      assert.ok(result?.data, Definer.general_err1);
+      assert.ok(result?.data?.state != "fail", result?.data?.message);
+      console.log("state:", result.data.state);
+
+      return true;
+    } catch (err: any) {
+      console.log(`ERROR::: getChosenArticle ,${err.message}`);
+      throw err;
+    }
+  }
 }
 
 export default CommunityApiService;

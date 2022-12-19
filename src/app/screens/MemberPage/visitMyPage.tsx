@@ -145,6 +145,7 @@ export function VisitMyPage(props: any) {
                   <Box className={"menu_name"}>Mening Maqolalarim</Box>
                   <Box className={"menu_content"}>
                     <MemberPosts
+                      actions_enabled={true}
                       chosenMemberBoArticles={chosenMemberBoArticles}
                       renderChosenArticleHandler={renderChosenArticleHandler}
                       setArticlesRebuild={setArticlesRebuild}

@@ -34,6 +34,7 @@ export default function ProcessOrders(props: any) {
         const orderService = new OrderApiService();
         await orderService.updateOrderStatus(data);
         props.setOrderRebuild(new Date());
+        props.setValue("3");
       }
     } catch (err) {
       console.log("deleteOrderHandler, ERROR:", err);

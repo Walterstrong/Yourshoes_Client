@@ -122,7 +122,7 @@ export function VisitOtherPage(props: any) {
       .getMemberCommunityArticles(memberArticlesSearchObj)
       .then((data) => setChosenMemberBoArticles(data))
       .catch((err) => console.log(err));
-  }, [memberArticlesSearchObj, chosen_mb_id, articlesRebuild]);
+  }, [memberArticlesSearchObj, chosen_mb_id, articlesRebuild, followRebuild]);
 
   useEffect(() => {
     if (chosen_mb_id === verifiedMemberData?._id) {
@@ -202,6 +202,7 @@ export function VisitOtherPage(props: any) {
                   <Box className={"menu_name"}>Maqolalar</Box>
                   <Box className={"menu_content"}>
                     <MemberPosts
+                      actions_enabled={false}
                       chosenMemberBoArticles={chosenMemberBoArticles}
                       renderChosenArticleHandler={renderChosenArticleHandler}
                       setArticlesRebuild={setArticlesRebuild}

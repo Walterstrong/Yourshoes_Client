@@ -9,7 +9,7 @@ export function Footer() {
           <Stack flexDirection={"row"} style={{ height: "242px" }}>
             <Stack className="info" flexDirection={"column"}>
               <Box>
-                <img src={"/papay_footer.svg"} />
+                <img src={"/icons/papay_footer.svg"} />
               </Box>
               <Box className="main_text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

@@ -9,12 +9,14 @@ import { serverApi } from "app/lib/config";
 import { BoArticle } from "types/boArticle";
 import assert from "assert";
 import { Definer } from "app/lib/Definer";
+import DeleteIcon from "@mui/icons-material/Delete";
 import MemberApiService from "app/apiServices/memberApiService";
 import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
 } from "app/lib/sweetAlert";
 import { verifiedMemberData } from "app/apiServices/verify";
+import CommunityApiService from "app/apiServices/communityApiService";
 
 export function MemberPosts(props: any) {
   const {
@@ -41,6 +43,25 @@ export function MemberPosts(props: any) {
       sweetErrorHandling(err).then();
     }
   };
+
+  const ArticleDelteHAndler = async (art_id: string) => {
+    try {
+      // stopPropagation();
+      assert.ok(verifiedMemberData, Definer.auth_err1);
+      let confirmation = window.confirm("Are you sure to delete your article?");
+      if (confirmation) {
+        const communityService = new CommunityApiService();
+        const like_result = await communityService.ArticleDelte(art_id);
+        assert.ok(like_result, Definer.auth_err1);
+        await sweetTopSmallSuccessAlert("success", 700, false);
+        setArticlesRebuild(new Date());
+      }
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  };
+
   return (
     <Box className={"post_content"}>
       {chosenMemberBoArticles.map((article: BoArticle) => {
@@ -97,12 +118,15 @@ export function MemberPosts(props: any) {
                       display: "flex",
                       alignItems: "center",
                     }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
                   >
                     <span>
                       {moment(article?.createdAt).format("YY-MM-DD HH:mm")}
                     </span>
                     <Checkbox
-                      sx={{ ml: "40px" }}
+                      sx={{ ml: "30px" }}
                       icon={<FavoriteBorder />}
                       id={article?._id}
                       checkedIcon={<Favorite style={{ color: "red" }} />}
@@ -129,9 +153,14 @@ export function MemberPosts(props: any) {
                           : false
                       }
                     />
-                    <span style={{ marginLeft: "18px" }}>
-                      {article?.art_views}
-                    </span>
+                    <span>{article?.art_views}</span>
+
+                    {props.actions_enabled && (
+                      <DeleteIcon
+                        style={{ color: "white", marginLeft: "18px" }}
+                        onClick={() => ArticleDelteHAndler(article?._id)}
+                      />
+                    )}
                   </Box>
                 </Box>
               </Box>
