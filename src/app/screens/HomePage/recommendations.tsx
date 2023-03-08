@@ -101,8 +101,6 @@ export function Recommendations() {
   //** HANDLERS */
   const chosenArticleHandler = (id: string) => {
     history.push(`/community/single-article/${id}`);
-    // const restaurantService = new RestaurantApiService();
-    // restaurantService.getChosenRestaurant(`${id}`);
   };
   return (
     <div className={"top_article_frame"}>

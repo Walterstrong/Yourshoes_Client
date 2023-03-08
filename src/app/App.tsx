@@ -1,5 +1,5 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../css/App.css";
 import "../css/navbar.css";
 import "../css/footer.css";
@@ -16,8 +16,6 @@ import { NavbarRestaurant } from "./components/header/restaurant";
 import { NavbarOthers } from "./components/header/others";
 import { HomePage } from "./screens/HomePage/index";
 import AuthenticationModal from "./components/auth";
-import { Member } from "../types/user";
-import { serverApi } from "./lib/config";
 import {
   sweetFailureProvider,
   sweetTopSmallSuccessAlert,
@@ -25,7 +23,6 @@ import {
 import { Definer } from "./lib/Definer";
 import MemberApiService from "./apiServices/memberApiService";
 import { verifiedMemberData } from "./apiServices/verify";
-
 import { CartItem } from "../types/others";
 import { Product } from "../types/product";
 

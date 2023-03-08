@@ -140,7 +140,7 @@ export function AllRestaurants() {
                   variant="contained"
                   endIcon={<SearchIcon />}
                 >
-                  Izash
+                  Izlash
                 </Button>
               </form>
             </Box>
@@ -195,7 +195,7 @@ export function AllRestaurants() {
                       </IconButton>
                     </CardOverflow>
                     <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
-                      {ele.mb_nick}restaurant
+                      {ele.mb_nick} restaurant
                     </Typography>
                     <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
                       <Link

@@ -16,7 +16,9 @@ import { useHistory } from "react-router-dom";
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
 import MemberApiService from "../../apiServices/memberApiService";
+
 // REDUX
+
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrieveBestRestaurants } from "./selector";
@@ -29,7 +31,8 @@ import {
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { verifiedMemberData } from "app/apiServices/verify";
 
-// REDUX SELECTOR
+//** REDUX SELECTOR */
+
 const bestRestaurantsRetriever = createSelector(
   retrieveBestRestaurants,
   (bestRestaurants) => ({
@@ -39,15 +42,15 @@ const bestRestaurantsRetriever = createSelector(
 
 export function BestRestaurants() {
   //** INITIALIZATIONS */
+
   const history = useHistory();
   const { bestRestaurants } = useSelector(bestRestaurantsRetriever);
   const refs: any = useRef([]);
 
   //** HANDLERS */
+
   const chosenRestaurantHandler = (id: string) => {
     history.push(`/restaurant/${id}`);
-    // const restaurantService = new RestaurantApiService();
-    // restaurantService.getChosenRestaurant(`${id}`);
   };
   const goRestaurantHandler = () => history.push("/restaurant");
   const targetLikeBest = async (e: any, id: string) => {

@@ -848,7 +848,7 @@
 
 .restaurant_page .chosen_dish_page {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -864,16 +864,78 @@
   padding-bottom: 60px;
 }
 
+.chosen_dish_page .chosen_dish_comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  width: 558px;
+  height: auto;
+  display: flex;
+  background: #ffffff;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 15px 15px 0;
+}
+.chosen_dish_comment .comment {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+}
+
+.chosen_dish_comment .metadata {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12.25px;
+  line-height: 15px;
+  color: rgba(0, 0, 0, 0.4);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding-bottom: 5px;
+}
+
+.days {
+  padding-right: 35px;
+}
+
+.comment_avatar {
+  border-radius: 5px;
+}
+.text {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.chosen_dish_comment .comment_author {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 17px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
 .chosen_dish_page .chosen_dish_slider {
   width: 48%;
-  height: 581px;
+  height: auto;
 }
 
 .chosen_dish_page .dish_swiper {
   --swiper-navigation-color: #fff;
   --swiper-pagination-color: #fff;
-  width: 100%;
-  height: 1020px;
+  width: 80%;
+  height: 452px;
 }
 
 .chosen_dish_page .chosen_dish_info_container {

@@ -26,6 +26,7 @@ export interface CartItem {
   price: number;
   image: string;
 }
+
 export interface ChatMessage {
   msg: string;
   mb_id: string;

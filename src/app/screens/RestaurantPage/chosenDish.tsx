@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container, Stack, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -34,6 +34,7 @@ import ProductApiService from "../../apiServices/productApiService";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import MemberApiService from "../../apiServices/memberApiService";
 import { verifiedMemberData } from "app/apiServices/verify";
+import { Comment, Icon } from "semantic-ui-react";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -54,7 +55,6 @@ const chosenProductRetriever = createSelector(
     chosenProduct,
   })
 );
-const chosen_list = Array.from(Array(3).keys());
 
 export function ChosenDish(props: any) {
   //** INITIALIZATIONS */
@@ -72,7 +72,6 @@ export function ChosenDish(props: any) {
       const productService = new ProductApiService();
       const product: Product = await productService.getChosenDish(dish_id);
       setChosenProduct(product);
-      console.log("rasmlarrrr:", product);
       const restaurantService = new RestaurantApiService();
       const restaurant = await restaurantService.getChosenRestaurant(
         product.restaurant_mb_id
@@ -114,7 +113,7 @@ export function ChosenDish(props: any) {
             loop={true}
             spaceBetween={10}
             navigation={true}
-            // thumbs={{ swiper: thumbsSwiper }}
+            //thumbs={{ swiper: thumbsSwiper }}
             modules={[FreeMode, Navigation, Thumbs]}
           >
             {chosenProduct?.product_images.map((ele: string) => {
@@ -138,7 +137,7 @@ export function ChosenDish(props: any) {
             watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
             className="mySwiper"
-            style={{ width: "450px", height: "245px", marginTop: "20px" }}
+            style={{ width: "100%", height: "245px", marginTop: "20px" }}
           >
             {chosenProduct?.product_images.map((ele: string) => {
               const image_path = `${serverApi}/${ele}`;
@@ -154,6 +153,35 @@ export function ChosenDish(props: any) {
               );
             })}
           </Swiper>
+          <Stack className={"chosen_dish_comment"} style={{ display: "flex" }}>
+            <Comment.Group>
+              <Comment class={"comment"}>
+                <Comment.Avatar
+                  sx={{ br: "10px" }}
+                  src="https://react.semantic-ui.com/images/avatar/small/stevie.jpg"
+                />
+                <Comment.Content style={{ padding: "0 10px 5px" }}>
+                  <Comment.Author
+                    className="comment_author"
+                    style={{ padding: "0 0 5px" }}
+                  >
+                    Stevie Feliciano
+                  </Comment.Author>
+                  <Comment.Metadata className="metadata">
+                    <div className="days">2 days ago</div>
+                    <div>
+                      <Icon name="star" />5 Faves
+                    </div>
+                  </Comment.Metadata>
+                  <Comment.Text className="text">
+                    Hey guys, I hope this example fjlkasjfdlk jasdklfjsklaf
+                    jslkadfjlkjsd lkajdslkfja comment is helping you read this
+                    documentation.
+                  </Comment.Text>
+                </Comment.Content>
+              </Comment>
+            </Comment.Group>
+          </Stack>
         </Stack>
         <Stack className={"chosen_dish_info_container"}>
           <Box className={"chosen_dish_info_box"}>
