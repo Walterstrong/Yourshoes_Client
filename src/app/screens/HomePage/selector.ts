@@ -5,14 +5,18 @@ import { AppRootState } from "../../../types/screen";
 
 const selectHomePage = (state: AppRootState) => state.homePage;
 
-export const retrieveTopRestaurants = createSelector(
+export const retrieveRandomRestaurants = createSelector(
   selectHomePage,
-  (HomePage) => HomePage.topRestaurants
+  (HomePage) => HomePage.randomRestaurants
+);
+export const retrieveNewProducts = createSelector(
+  selectHomePage,
+  (HomePage) => HomePage.newProducts
 );
 
-export const retrieveBestRestaurants = createSelector(
+export const retrieveBestProducts = createSelector(
   selectHomePage,
-  (HomePage) => HomePage.bestRestaurants
+  (HomePage) => HomePage.bestProducts
 );
 
 export const retrieveTrendProducts = createSelector(

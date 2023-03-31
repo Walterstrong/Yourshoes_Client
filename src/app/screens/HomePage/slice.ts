@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 //
 
 const initialState: HomePageState = {
-  topRestaurants: [],
-  bestRestaurants: [],
+  randomRestaurants: [],
+  newProducts: [],
+  bestProducts: [],
   trendProducts: [],
   bestBoArticles: [],
   trendBoArticles: [],
@@ -15,11 +16,14 @@ const HomePageSlice = createSlice({
   name: "homePage",
   initialState,
   reducers: {
-    setTopRestaurants: (state, action) => {
-      state.topRestaurants = action.payload;
+    setRandomRestaurants: (state, action) => {
+      state.randomRestaurants = action.payload;
     },
-    setBestRestaurants: (state, action) => {
-      state.bestRestaurants = action.payload;
+    setNewProducts: (state, action) => {
+      state.newProducts = action.payload;
+    },
+    setBestProducts: (state, action) => {
+      state.bestProducts = action.payload;
     },
     setTrendProducts: (state, action) => {
       state.trendProducts = action.payload;
@@ -37,8 +41,9 @@ const HomePageSlice = createSlice({
 });
 
 export const {
-  setTopRestaurants,
-  setBestRestaurants,
+  setRandomRestaurants,
+  setNewProducts,
+  setBestProducts,
   setTrendProducts,
   setBestBoArticles,
   setTrendBoArticles,

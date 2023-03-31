@@ -8,6 +8,7 @@ const initialState: RestaurantPageState = {
   chosenRestaurant: null,
   targetProducts: [],
   chosenProduct: null,
+  targetComments: [],
 };
 
 const restaurantPageSlice = createSlice({
@@ -23,11 +24,15 @@ const restaurantPageSlice = createSlice({
     setChosenRestaurant: (state, action) => {
       state.chosenRestaurant = action.payload;
     },
+
     setTargetProducts: (state, action) => {
       state.targetProducts = action.payload;
     },
     setChosenProduct: (state, action) => {
       state.chosenProduct = action.payload;
+    },
+    setTargetComments: (state, action) => {
+      state.targetComments = action.payload;
     },
   },
 });
@@ -38,6 +43,7 @@ export const {
   setChosenRestaurant,
   setTargetProducts,
   setChosenProduct,
+  setTargetComments,
 } = restaurantPageSlice.actions;
 
 const RestaurantPageReducer = restaurantPageSlice.reducer;

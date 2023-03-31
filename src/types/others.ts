@@ -11,6 +11,25 @@ export interface ProductSearchObj {
   order: string;
   restaurant_mb_id?: string;
   product_collection?: string;
+  product_size?: string;
+  product_color?: string;
+  product_type?: string;
+}
+export interface ProductSearch {
+  page: number;
+  limit: number;
+  order: string;
+  restaurant_mb_id?: string;
+  product_collection?: string;
+  product_size?: string;
+  product_color?: string;
+  product_type?: string;
+}
+
+export interface CommentsSearchObj {
+  page: number;
+  limit: number;
+  comment_ref_product_id?: string;
 }
 
 export interface MemberLiken {
@@ -39,4 +58,14 @@ export interface ChatGreetMsg {
 
 export interface ChatInforMsg {
   total: number;
+}
+
+export interface ProductNew {
+  page: number;
+  limit: number;
+  order: string;
+  product_collection?: string;
+  product_size?: string;
+  product_color?: string;
+  product_type?: string;
 }

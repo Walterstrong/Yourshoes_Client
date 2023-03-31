@@ -3,7 +3,7 @@ import { Order } from "./order";
 import { Product } from "./product";
 import { Member, Restaurant } from "./user";
 import { OrdersPage } from "../app/screens/OrdersPage/index";
-import { Follower, Following } from "./follow";
+import { Follower, Following, Comments } from "./follow";
 
 //**REACT APP STATE */
 export interface AppRootState {
@@ -16,8 +16,9 @@ export interface AppRootState {
 
 //**HOMEPAGE */
 export interface HomePageState {
-  topRestaurants: Restaurant[];
-  bestRestaurants: Restaurant[];
+  randomRestaurants: Restaurant[];
+  newProducts: Product[];
+  bestProducts: Product[];
   trendProducts: Product[];
   bestBoArticles: BoArticle[];
   trendBoArticles: BoArticle[];
@@ -31,6 +32,7 @@ export interface RestaurantPageState {
   chosenRestaurant: Restaurant | null;
   targetProducts: Product[];
   chosenProduct: Product | null;
+  targetComments: Comments[];
 }
 
 //**ORDERS PAGE */

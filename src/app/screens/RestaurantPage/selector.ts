@@ -29,3 +29,8 @@ export const retrieveChosenProduct = createSelector(
   selectRestaurantPage,
   (RestaurantPage) => RestaurantPage.chosenProduct
 );
+
+export const retrieveTargetComments = createSelector(
+  selectRestaurantPage,
+  (RestaurantPage) => RestaurantPage.targetComments
+);

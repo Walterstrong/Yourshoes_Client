@@ -38,8 +38,6 @@ import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { SearchObj } from "../../../types/others";
 import { verifiedMemberData } from "app/apiServices/verify";
 
-const order_list = Array.from(Array(8).keys());
-
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -122,10 +120,10 @@ export function AllRestaurants() {
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Box className={"fil_search_box"}>
             <Box className={"fil_box"} style={{ cursor: "pointer" }}>
-              <a onClick={() => searchHandler("mb_point")}>Zo'r</a>
-              <a onClick={() => searchHandler("mb_views")}>Mashhur</a>
-              <a onClick={() => searchHandler("mb_likes")}>Trendagi</a>
-              <a onClick={() => searchHandler("createdAt")}>Yangi</a>
+              <a onClick={() => searchHandler("mb_point")}>Best</a>
+              <a onClick={() => searchHandler("mb_views")}>Common</a>
+              <a onClick={() => searchHandler("mb_likes")}>Trend</a>
+              <a onClick={() => searchHandler("createdAt")}>New</a>
             </Box>
             <Box className={"search_big_box"}>
               <form className={"search_form"} action={""} method={""}>
@@ -133,14 +131,14 @@ export function AllRestaurants() {
                   type={"search"}
                   className={"searchInput"}
                   name={"resSearch"}
-                  placeholder={"Qidiruv"}
+                  placeholder={"Searching"}
                 />
                 <Button
                   className={"button_search"}
                   variant="contained"
                   endIcon={<SearchIcon />}
                 >
-                  Izlash
+                  Searching
                 </Button>
               </form>
             </Box>
@@ -154,8 +152,8 @@ export function AllRestaurants() {
                     onClick={() => chosenRestaurantHandler(ele._id)}
                     variant="outlined"
                     sx={{
-                      minHeight: 410,
-                      minWidth: 290,
+                      minHeight: 380,
+                      minWidth: 300,
                       mx: "17px",
                       my: "20px",
                       cursor: "pointer",
@@ -195,26 +193,9 @@ export function AllRestaurants() {
                       </IconButton>
                     </CardOverflow>
                     <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
-                      {ele.mb_nick} restaurant
+                      {ele.mb_nick}
                     </Typography>
-                    <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
-                      <Link
-                        href=""
-                        startDecorator={<LocationOnRoundedIcon />}
-                        textColor="neutral.700"
-                      >
-                        {ele.mb_address}
-                      </Link>
-                    </Typography>
-                    <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
-                      <Link
-                        href=""
-                        startDecorator={<CallIcon />}
-                        textColor="neutral.700"
-                      >
-                        {ele.mb_phone}
-                      </Link>
-                    </Typography>
+
                     <CardOverflow
                       variant="soft"
                       sx={{
@@ -268,7 +249,7 @@ export function AllRestaurants() {
           </Stack>
 
           <Stack className={"bottom_box"}>
-            <img className={"line_img"} src={"/restaurant/line.svg"} />
+            <img className={"line_img_right"} src={"/home/papay.png"} />
             <Pagination
               count={
                 targetSearchObject.page >= 3 ? targetSearchObject.page + 1 : 3
@@ -286,7 +267,7 @@ export function AllRestaurants() {
               )}
               onChange={handlePaginationChange}
             />
-            <img className={"line_img_two"} src={"/restaurant/line_two.svg"} />
+            <img className={"line_img_left"} src={"/home/papay.png"} />
           </Stack>
         </Stack>
       </Container>

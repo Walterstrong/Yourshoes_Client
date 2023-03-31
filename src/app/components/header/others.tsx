@@ -24,45 +24,53 @@ export function NavbarOthers(props: any) {
           className="navbar_config"
           justifyContent={"space-between"}
         >
-          <Box>
-            <img src="/icons/papay.svg" />
-          </Box>
+          <NavLink to="/">
+            <img
+              style={{
+                width: "100px",
+                height: "100px",
+                cursor: "pointer",
+                // borderRadius: "24px",
+              }}
+              src="/icons/yourshoes.png"
+            />
+          </NavLink>
           <Stack
             flexDirection={"row"}
-            justifyContent="space-evenly"
+            justifyContent="space-around"
             alignItems={"center"}
             className="navbar_links"
           >
             <Box className="hover-line" onClick={props.setPath}>
-              <NavLink to="/">Bosh Sahifa</NavLink>
+              <NavLink to="/">Home</NavLink>
             </Box>
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/restaurant" activeClassName="underline">
-                Oshhona
+                Shop
               </NavLink>
             </Box>
             {verifiedMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/orders" activeClassName="underline">
-                  Buyurtma
+                  Order
                 </NavLink>
               </Box>
             ) : null}
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/community" activeClassName="underline">
-                Jamiyat
+                Community
               </NavLink>
             </Box>
             {verifiedMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/member-page" activeClassName="underline">
-                  Sahifam
+                  My page
                 </NavLink>
               </Box>
             ) : null}
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/help" activeClassName="underline">
-                Yordam
+                Help
               </NavLink>
             </Box>
             <Basket
@@ -77,10 +85,10 @@ export function NavbarOthers(props: any) {
               {!verifiedMemberData ? (
                 <Button
                   variant="contained"
-                  style={{ color: "#FFFFFF", background: "#1976d2" }}
+                  style={{ color: "#FFFFFF", background: "#755BB4" }}
                   onClick={props.handleLoginOpen}
                 >
-                  KIRISH
+                  Login
                 </Button>
               ) : (
                 <img
@@ -129,11 +137,25 @@ export function NavbarOthers(props: any) {
               >
                 <MenuItem onClick={props.handleLogOutRequest}>
                   <ListItem>
-                    <Logout fontSize="small" style={{ color: "blue" }} />
+                    <Logout
+                      fontSize="small"
+                      style={{ color: "#FFFFFF", background: "#755BB4" }}
+                    />
                     Logout
                   </ListItem>
                 </MenuItem>
               </Menu>
+            </Box>
+            <Box>
+              {!verifiedMemberData ? (
+                <Button
+                  variant="contained"
+                  style={{ color: "#FFFFFF", background: "#755BB4" }}
+                  onClick={props.handleSignUpOpen}
+                >
+                  Sign Up
+                </Button>
+              ) : null}
             </Box>
           </Stack>
         </Stack>

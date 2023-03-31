@@ -4,6 +4,7 @@ import { serverApi } from "../lib/config";
 import { Restaurant } from "../../types/user";
 import { SearchObj } from "../../types/others";
 import { Definer } from "../lib/Definer";
+import { Product } from "types/product";
 
 class RestaurantApiService {
   private readonly path: string;
@@ -12,7 +13,7 @@ class RestaurantApiService {
     this.path = serverApi;
   }
 
-  async getTopRestaurants() {
+  async getNewProducts() {
     try {
       const url = "/restaurants?order=top&page=1&limit=4";
       const result = await axios.get(this.path + url, {
@@ -21,10 +22,29 @@ class RestaurantApiService {
       assert.ok(result?.data, Definer.general_err1);
       assert.ok(result?.data?.state != "fail", result?.data?.message);
       console.log("state:", result.data.state);
-      const top_restaurants: Restaurant[] = result.data.data;
-      return top_restaurants;
+      const new_products: Product[] = result.data.data;
+      return new_products;
     } catch (err: any) {
       console.log(`ERR::: getTopRestaurants ${err.message}`);
+      throw err;
+    }
+  }
+
+  async getBestProducts(data: SearchObj) {
+    try {
+      const url = `/restaurants?order=${data.order}&page=${data.page}&limit=${data.limit}`;
+      const result = await axios.get(this.path + url, {
+        withCredentials: true,
+      });
+
+      assert.ok(result?.data, Definer.general_err1);
+      assert.ok(result?.data?.state != "fail", result?.data?.message);
+      console.log("state:", result.data.state);
+
+      const products: Product[] = result.data.data;
+      return products;
+    } catch (err: any) {
+      console.log(`ERR::: getRestaurants ${err.message}`);
       throw err;
     }
   }

@@ -1,57 +1,94 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../../css/home.css";
-import { Advertisements } from "./advertisements"
-import { BestDishes } from "./bestDishes"
-import { BestRestaurants } from "./bestRestaurants";
-import { Events } from "./events"
-import { Recommendations } from "./recommendations"
-import { Statistics } from "./statistics"
-import { TopRestaurants } from "./topRestaurants"
+import { Advertisements } from "./advertisements";
+import { BestDishes } from "./bestDishes";
+import { BestProducts } from "./bestProducts";
+import { Events } from "./events";
+import { Recommendations } from "./recommendations";
+import { NewProducts } from "./newProducts";
 
 // REDUX
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setBestRestaurants, setTopRestaurants } from "./slice"
+import { setNewProducts, setRandomRestaurants, setBestProducts } from "./slice";
 import { Restaurant } from "../../../types/user";
+import ProductApiService from "../../apiServices/productApiService";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
+import { RandomRestaurants } from "./randomRestaurants";
+import { Product } from "types/product";
+import { ProductSearch, ProductSearchObj } from "types/others";
 
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
+
 const actionDispatch = (dispatch: Dispatch) => ({
-  setTopRestaurants: (data: Restaurant[]) => dispatch(setTopRestaurants(data)),
-  setBestRestaurants: (data: Restaurant[]) =>
-    dispatch(setBestRestaurants(data)),
+  setNewProducts: (data: Product[]) => dispatch(setNewProducts(data)),
+  setBestProducts: (data: Product[]) => dispatch(setBestProducts(data)),
+  setRandomRestaurants: (data: Restaurant[]) =>
+    dispatch(setRandomRestaurants(data)),
 });
 
-export function HomePage() {
+export function HomePage(props: any) {
   // ** INITIALIZATIONS *
-  const { setTopRestaurants, setBestRestaurants } = actionDispatch(
-    useDispatch()
-  );
+  const { setNewProducts, setBestProducts, setRandomRestaurants } =
+    actionDispatch(useDispatch());
+
+  const [targetProductSearchObj, setTargetProductsSearchObj] =
+    useState<ProductSearchObj>({
+      page: 1,
+      limit: 25,
+      order: "createdAt",
+      restaurant_mb_id: "all",
+      product_collection: "all",
+      product_size: "all",
+      product_color: "all",
+      product_type: "all",
+    });
+
+  const [targetProduct, setTargetProduct] = useState<ProductSearch>({
+    page: 1,
+    limit: 25,
+    order: "product_likes",
+    restaurant_mb_id: "all",
+    product_collection: "all",
+    product_size: "all",
+    product_color: "all",
+    product_type: "all",
+  });
 
   useEffect(() => {
     // backend data request
-    const restaurantService = new RestaurantApiService();
-    restaurantService
-      .getTopRestaurants()
+    const productApiService = new ProductApiService();
+    productApiService
+      .getTargetProducts(targetProductSearchObj)
       .then((data) => {
-        setTopRestaurants(data);
+        setNewProducts(data);
       })
       .catch((err) => console.log(err));
 
-    restaurantService
-      .getRestaurants({ page: 1, limit: 4, order: "mb_point" })
+    productApiService
+      .getTargetProducts(targetProduct)
       .then((data) => {
-        setBestRestaurants(data);
+        setBestProducts(data);
       })
+      .catch((err) => console.log(err));
+
+    const restaurantApiService = new RestaurantApiService();
+    restaurantApiService
+      .getRestaurants({
+        page: 1,
+        limit: 10,
+        order: "random",
+      })
+      .then((data) => setRandomRestaurants(data))
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div className="homepage">
-      <Statistics />
-      <TopRestaurants />
-      <BestRestaurants />
+      <RandomRestaurants />
+      <NewProducts onAdd={props.onAdd} />
+      <BestProducts onAdd={props.onAdd} />
       <BestDishes />
       <Advertisements />
       <Events />

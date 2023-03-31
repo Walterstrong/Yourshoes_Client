@@ -1,4 +1,5 @@
-import { Member } from "./user";
+import { MeLiked } from "./product";
+import { Member, MemberComment } from "./user";
 
 export interface MeFollowed {
   follow_id: string;
@@ -29,4 +30,17 @@ export interface FollowSearchObj {
   page: number;
   limit: number;
   mb_id: string;
+}
+export interface Comments {
+  _id: string;
+  comment_content: string;
+  comment_status: string;
+  comment_likes: number;
+  mb_id: string;
+  comment_ref_product_id: string;
+  comment_ref_restaurant_id: string;
+  product_rating: number;
+  createdAt?: Date;
+  member_data: MemberComment;
+  me_liked: MeLiked[];
 }

@@ -1,5 +1,27 @@
 import { useState, useEffect } from "react";
-import { Box, Button, Container, Stack } from "@mui/material";
+import {
+  // Accordion,
+  Box,
+  Button,
+  Container,
+  FormControl,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
+  Stack,
+} from "@mui/material";
+import { Pagination } from "swiper";
+import RadioGroup, { useRadioGroup } from "@mui/material/RadioGroup";
+import FormControlLabel, {
+  FormControlLabelProps,
+} from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+// import AccordionSummary from "@mui/material/AccordionSummary";
+// import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -11,6 +33,15 @@ import Favorite from "@mui/icons-material/Favorite";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
+import MuiAccordionSummary, {
+  AccordionSummaryProps,
+} from "@mui/material/AccordionSummary";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+
 // REDUX
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
@@ -41,8 +72,7 @@ import {
 import { useHistory, useParams } from "react-router-dom";
 import ProductApiService from "../../apiServices/productApiService";
 import { verifiedMemberData } from "app/apiServices/verify";
-
-// REDUX SLICE
+import { Navigation } from "swiper";
 const actionDispatch = (dispatch: Dispatch) => ({
   setRandomRestaurants: (data: Restaurant[]) =>
     dispatch(setRandomRestaurants(data)),
@@ -50,6 +80,41 @@ const actionDispatch = (dispatch: Dispatch) => ({
     dispatch(setChosenRestaurant(data)),
   setTargetProducts: (data: Product[]) => dispatch(setTargetProducts(data)),
 });
+const Accordion = styled((props: AccordionProps) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  border: `1px solid ${theme.palette.divider}`,
+  "&:not(:last-child)": {
+    borderBottom: 0,
+  },
+  "&:before": {
+    display: "none",
+  },
+}));
+
+const AccordionSummary = styled((props: AccordionSummaryProps) => (
+  <MuiAccordionSummary
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
+    {...props}
+  />
+))(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? "rgba(255, 255, 255, .05)"
+      : "rgba(0, 0, 0, .03)",
+  flexDirection: "row-reverse",
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    transform: "rotate(90deg)",
+  },
+  "& .MuiAccordionSummary-content": {
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  borderTop: "1px solid rgba(0, 0, 0, .125)",
+}));
 
 // REDUX SELECTOR
 const randomRestaurantsRetriever = createSelector(
@@ -70,7 +135,14 @@ const targetProductsRetriever = createSelector(
     targetProducts,
   })
 );
+
 export function OneRestaurant(props: any) {
+  const [expanded, setExpanded] = useState<string | false>("panel1");
+
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+      setExpanded(newExpanded ? panel : false);
+    };
   //** INITIALIZATIONS */
   const history = useHistory();
   //**//
@@ -92,11 +164,13 @@ export function OneRestaurant(props: any) {
       limit: 8,
       order: "createdAt",
       restaurant_mb_id: restaurant_id,
-      product_collection: "dish",
+      product_collection: "all",
+      product_size: "all",
+      product_color: "all",
+      product_type: "all",
     });
 
   const [productRebuild, setProductRebuild] = useState<Date>(new Date());
-
   useEffect(() => {
     const restaurantService = new RestaurantApiService();
     restaurantService
@@ -107,6 +181,10 @@ export function OneRestaurant(props: any) {
       })
       .then((data) => setRandomRestaurants(data))
       .catch((err) => console.log(err));
+  }, [chosenRestaurantId]);
+
+  useEffect(() => {
+    const restaurantService = new RestaurantApiService();
 
     restaurantService
       .getChosenRestaurant(chosenRestaurantId)
@@ -133,6 +211,25 @@ export function OneRestaurant(props: any) {
     setTargetProductsSearchObj({ ...targetProductSearchObj });
   };
   //
+  const searchTypeHandler = (type: string) => {
+    targetProductSearchObj.page = 1;
+    targetProductSearchObj.product_type = type;
+    setTargetProductsSearchObj({ ...targetProductSearchObj });
+  };
+  //
+  const searchSizeHandler = (size: string) => {
+    targetProductSearchObj.page = 1;
+    targetProductSearchObj.product_size = size;
+    setTargetProductsSearchObj({ ...targetProductSearchObj });
+  };
+  //
+  const searchColorHandler = (color: string) => {
+    targetProductSearchObj.page = 1;
+    targetProductSearchObj.product_color = color;
+    setTargetProductsSearchObj({ ...targetProductSearchObj });
+  };
+  //
+
   const chosenRestaurantHandler = (id: string) => {
     setChosenRestaurantId(id);
     targetProductSearchObj.restaurant_mb_id = id;
@@ -175,23 +272,23 @@ export function OneRestaurant(props: any) {
                     type={"search"}
                     className={"Single_searchInput"}
                     name={"Single_resSearch"}
-                    placeholder={"Qidiruv"}
+                    placeholder={"Searching"}
                   />
                   <Button
                     className={"Single_button_search"}
-                    variant="contained"
+                    // variant="contained"
                     endIcon={<SearchIcon />}
                   >
-                    Izash
+                    Searching
                   </Button>
                 </form>
               </Box>
             </Box>
           </Stack>
           <Stack
-            style={{ width: "100%", display: "flex" }}
+            style={{ width: "90%", display: "flex" }}
             flexDirection={"row"}
-            sx={{ mt: "35px" }}
+            sx={{ mt: "25px" }}
           >
             <Box className={"prev_btn restaurant-prev"}>
               <ArrowBackIosNewIcon
@@ -233,95 +330,241 @@ export function OneRestaurant(props: any) {
           </Stack>
 
           <Stack
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"flex-end"}
-            width={"90%"}
-            sx={{ mt: "65px" }}
-          >
-            <Box className={"dishs_filter_box"} sx={{ cursor: "pointer" }}>
-              <Button
-                variant={"contained"}
-                color="secondary"
-                onClick={() => searchOrderHandler("createdAt")}
-              >
-                new
-              </Button>
-              <Button
-                variant={"contained"}
-                color="secondary"
-                onClick={() => searchOrderHandler("product_price")}
-              >
-                price
-              </Button>
-              <Button
-                variant={"contained"}
-                color="secondary"
-                onClick={() => searchOrderHandler("product_likes")}
-              >
-                likes
-              </Button>
-              <Button
-                variant={"contained"}
-                color="secondary"
-                onClick={() => searchOrderHandler("product_views")}
-              >
-                views
-              </Button>
-            </Box>
-          </Stack>
-
-          <Stack
-            style={{ width: "100%", display: "flex", minHeight: "600px" }}
+            style={{ width: "100%", display: "flex", minHeight: "1000px" }}
             flexDirection={"row"}
           >
             <Stack className={"dish_category_box"}>
-              <div className={"dish_category_main"}>
-                <Button
-                  variant={"contained"}
-                  color="secondary"
-                  onClick={() => searchCollectionHandler("etc")}
+              <Stack>
+                <Accordion
+                  expanded={expanded === "panel1"}
+                  onChange={handleChange("panel1")}
+                  className="filter_box"
                 >
-                  boshqa
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color="secondary"
-                  onClick={() => searchCollectionHandler("dessert")}
+                  <AccordionSummary
+                    aria-controls="panel1d-content"
+                    id="panel1d-header"
+                  >
+                    <Typography>Collection</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      <RadioGroup name="use-radio-group" defaultValue="all">
+                        <FormControlLabel
+                          value="all"
+                          label="All"
+                          onClick={() => searchCollectionHandler("all")}
+                          control={<Radio />}
+                        />
+                        <FormControlLabel
+                          value="formal"
+                          label="Formal"
+                          onClick={() => searchCollectionHandler("formal")}
+                          control={<Radio />}
+                        />
+                        <FormControlLabel
+                          value="running"
+                          label="Running"
+                          onClick={() => searchCollectionHandler("running")}
+                          control={<Radio />}
+                        />
+                        <FormControlLabel
+                          value="training"
+                          label="Training"
+                          onClick={() => searchCollectionHandler("training")}
+                          control={<Radio />}
+                        />
+                        <FormControlLabel
+                          value="sports"
+                          label="Sports"
+                          onClick={() => searchCollectionHandler("sports")}
+                          control={<Radio />}
+                        />
+                      </RadioGroup>
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>{" "}
+                <Accordion
+                  expanded={expanded === "panel5"}
+                  onChange={handleChange("panel5")}
                 >
-                  dessert
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color="secondary"
-                  onClick={() => searchCollectionHandler("drink")}
+                  <AccordionSummary
+                    aria-controls="panel4d-content"
+                    id="panel4d-header"
+                  >
+                    <Typography>Sorting by</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <RadioGroup name="use-radio-group" defaultValue="createdAt">
+                      <FormControlLabel
+                        value="createdAt"
+                        label="New"
+                        onClick={() => searchOrderHandler("createdAt")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="product_price"
+                        label="Price"
+                        onClick={() => searchOrderHandler("product_price")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="product_likes"
+                        label="Likes"
+                        onClick={() => searchOrderHandler("product_likes")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="product_views"
+                        label="Views"
+                        onClick={() => searchOrderHandler("product_views")}
+                        control={<Radio />}
+                      />
+                    </RadioGroup>
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion
+                  expanded={expanded === "panel2"}
+                  onChange={handleChange("panel2")}
                 >
-                  ichimlik
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color="secondary"
-                  onClick={() => searchCollectionHandler("salad")}
+                  <AccordionSummary
+                    aria-controls="panel2d-content"
+                    id="panel2d-header"
+                  >
+                    <Typography>Type</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      <RadioGroup name="use-radio-group" defaultValue="All">
+                        <FormControlLabel
+                          value="All"
+                          label="All"
+                          onClick={() => searchTypeHandler("all")}
+                          control={<Radio />}
+                        />
+                        <FormControlLabel
+                          value="men"
+                          label="Men"
+                          onClick={() => searchTypeHandler("men")}
+                          control={<Radio />}
+                        />
+                        <FormControlLabel
+                          value="women"
+                          label="Women"
+                          onClick={() => searchTypeHandler("women")}
+                          control={<Radio />}
+                        />
+                      </RadioGroup>
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion
+                  expanded={expanded === "panel3"}
+                  onChange={handleChange("panel3")}
                 >
-                  salad
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color="secondary"
-                  onClick={() => searchCollectionHandler("dish")}
+                  <AccordionSummary
+                    aria-controls="panel3d-content"
+                    id="panel3d-header"
+                  >
+                    <Typography>Color</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <RadioGroup name="use-radio-group" defaultValue="All">
+                      <FormControlLabel
+                        value="All"
+                        label="All"
+                        onClick={() => searchColorHandler("all")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="white"
+                        label="White"
+                        onClick={() => searchColorHandler("white")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="green"
+                        label="Green"
+                        onClick={() => searchColorHandler("green")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="blue"
+                        label="Blue"
+                        onClick={() => searchColorHandler("blue")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="red"
+                        label="Red"
+                        onClick={() => searchColorHandler("red")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="black"
+                        label="Black"
+                        onClick={() => searchColorHandler("black")}
+                        control={<Radio />}
+                      />
+                    </RadioGroup>
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion
+                  expanded={expanded === "panel4"}
+                  onChange={handleChange("panel4")}
+                  className="filter_box_2"
                 >
-                  ovqatlar
-                </Button>
-              </div>
+                  <AccordionSummary
+                    aria-controls="panel4d-content"
+                    id="panel4d-header"
+                  >
+                    <Typography>Size</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <RadioGroup name="use-radio-group" defaultValue="All">
+                      <FormControlLabel
+                        value="All"
+                        label="All"
+                        onClick={() => searchSizeHandler("all")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="270"
+                        label="270"
+                        onClick={() => searchSizeHandler("270")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="275"
+                        label="275"
+                        onClick={() => searchSizeHandler("275")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="280"
+                        label="280"
+                        onClick={() => searchSizeHandler("280")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="285"
+                        label="285"
+                        onClick={() => searchSizeHandler("285")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="290"
+                        label="290"
+                        onClick={() => searchSizeHandler("290")}
+                        control={<Radio />}
+                      />
+                    </RadioGroup>
+                  </AccordionDetails>
+                </Accordion>
+              </Stack>
             </Stack>
-
             <Stack className={"dish_wrapper"}>
               {targetProducts.map((product: Product) => {
                 const image_path = `${serverApi}/${product.product_images[0]}`;
-                const size_volume =
-                  product.product_collection === "drink"
-                    ? product.product_volume + "l"
-                    : product.product_size + "size";
 
                 return (
                   <Box
@@ -336,14 +579,6 @@ export function OneRestaurant(props: any) {
                         cursor: "pointer",
                       }}
                     >
-                      <div className={"dish_sale"}>{size_volume}</div>
-                      <div className={"ordered"}>
-                        <span>Batafsil ko'rish</span>
-                        <img
-                          src={"/icons/arrow_right.svg"}
-                          style={{ marginLeft: "9px" }}
-                        />
-                      </div>
                       <Button
                         className={"like_view_btn"}
                         style={{ left: "36px" }}
@@ -407,9 +642,17 @@ export function OneRestaurant(props: any) {
                       </Button>
                     </Box>
                     <Box className={"dish_desc"}>
+                      <div className={"review_stars"}>
+                        <StarIcon style={{ color: "#F2BD57" }} />
+                        <StarIcon style={{ color: "#F2BD57" }} />
+                        <StarIcon style={{ color: "white" }} />
+                        <StarIcon style={{ color: "white" }} />
+                        <StarIcon style={{ color: "white" }} />
+                      </div>
                       <span className={"dish_title_text"}>
                         {product.product_name}
                       </span>
+
                       <div className={"dish_desc_text"}>
                         <MonetizationOnIcon />
                         {product.product_price}
@@ -423,7 +666,7 @@ export function OneRestaurant(props: any) {
         </Stack>
       </Container>
 
-      <div className={"review_for_restaurant"}>
+      {/* <div className={"review_for_restaurant"}>
         <Container
           sx={{ mt: "100px" }}
           style={{
@@ -431,8 +674,8 @@ export function OneRestaurant(props: any) {
             flexDirection: "column",
             alignItems: "center",
           }}
-        >
-          <Box className={"category_title"}>Oshxona haqida fikrlar</Box>
+        > */}
+      {/* <Box className={"category_title"}>Oshxona haqida fikrlar</Box>
           <Stack
             flexDirection={"row"}
             display={"flex"}
@@ -521,8 +764,8 @@ export function OneRestaurant(props: any) {
             height="500"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
-        </Stack>
-      </Container>
+        </Stack> */}
+      {/* </Container> */}
     </div>
   );
 }

@@ -45,14 +45,12 @@ export default function AuthenticationModal(props: any) {
   //**HANDLERS*/
   const handleUsername = (e: any) => {
     set_mb_nick(e.target.value);
-    console.log(mb_nick);
   };
   const handlePhone = (e: any) => {
     set_mb_phone(e.target.value);
   };
   const handlePassword = (e: any) => {
     set_mb_password(e.target.value);
-    console.log(mb_password);
   };
 
   const handleSignupRequest = async () => {

@@ -30,47 +30,55 @@ export function NavbarHome(props: any) {
           className="navbar_config"
           justifyContent={"space-between"}
         >
-          <Box>
-            <img src="/icons/papay.svg" />
-          </Box>
+          <NavLink to="/">
+            <img
+              style={{
+                width: "100px",
+                height: "100px",
+                cursor: "pointer",
+                // borderRadius: "24px",
+              }}
+              src="/icons/yourshoes.png"
+            />
+          </NavLink>
           <Stack
             flexDirection={"row"}
-            justifyContent="space-evenly"
+            justifyContent="space-between"
             alignItems={"center"}
             className="navbar_links"
           >
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/" activeClassName="underline">
-                Bosh Sahifa
+                Home
               </NavLink>
             </Box>
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/restaurant" activeClassName="underline">
-                Oshhona
+                Shop
               </NavLink>
             </Box>
             {verifiedMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/orders" activeClassName="underline">
-                  Buyurtma
+                  Order
                 </NavLink>
               </Box>
             ) : null}
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/community" activeClassName="underline">
-                Jamiyat
+                Community
               </NavLink>
             </Box>
             {verifiedMemberData ? (
               <Box className="hover-line" onClick={props.setPath}>
                 <NavLink to="/member-page" activeClassName="underline">
-                  Sahifam
+                  My page
                 </NavLink>
               </Box>
             ) : null}
             <Box className="hover-line" onClick={props.setPath}>
               <NavLink to="/help" activeClassName="underline">
-                Yordam
+                Help
               </NavLink>
             </Box>
 
@@ -85,11 +93,12 @@ export function NavbarHome(props: any) {
             <Box>
               {!verifiedMemberData ? (
                 <Button
+                  className="loginBtn"
                   variant="contained"
-                  style={{ color: "#FFFFFF", background: "#1976d2" }}
+                  style={{ color: "#FFFFFF", background: "#755BB4" }}
                   onClick={props.handleLoginOpen}
                 >
-                  KIRISH
+                  Login
                 </Button>
               ) : (
                 <img
@@ -138,16 +147,31 @@ export function NavbarHome(props: any) {
               >
                 <MenuItem onClick={props.handleLogOutRequest}>
                   <ListItem>
-                    <Logout fontSize="small" style={{ color: "blue" }} />
+                    <Logout
+                      fontSize="small"
+                      style={{ color: "#FFFFFF", background: "#755BB4" }}
+                    />
                     Logout
                   </ListItem>
                 </MenuItem>
               </Menu>
             </Box>
+            <Box>
+              {!verifiedMemberData ? (
+                <Button
+                  className="loginBtn"
+                  variant="contained"
+                  style={{ color: "#FFFFFF", background: "#755BB4" }}
+                  onClick={props.handleSignUpOpen}
+                >
+                  Sign Up
+                </Button>
+              ) : null}
+            </Box>
           </Stack>
         </Stack>
 
-        <Stack className="head_information" justifyContent={"row"}>
+        {/* <Stack className="head_information" justifyContent={"row"}>
           <Stack
             justifyContent={"column"}
             style={{ marginTop: "86px", marginLeft: "24px" }}
@@ -177,7 +201,7 @@ export function NavbarHome(props: any) {
             </Box>
           </Stack>
           <Box className="big_img"></Box>
-        </Stack>
+        </Stack> */}
       </Container>
     </div>
   );

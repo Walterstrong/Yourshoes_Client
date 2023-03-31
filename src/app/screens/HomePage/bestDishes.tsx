@@ -53,14 +53,14 @@ export function BestDishes() {
     <div className="best_dishes_frame">
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
-          <Box className="category_title">Trendagi Ovqatlar</Box>
+          <Box className="category_title">New Arrivals</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"}>
             {trendProducts.map((product: Product) => {
               const image_path = `${serverApi}/${product.product_images[0]}`;
-              const size_volume =
-                product.product_collection === "drink"
-                  ? product.product_volume + "l"
-                  : product.product_size + "size";
+              // const size_volume =
+              //   product.product_collection === "drink"
+              //     ? product.product_volume + "l"
+              //     : product.product_size + "size";
               return (
                 <Box className="dish_box">
                   <Stack
@@ -71,7 +71,7 @@ export function BestDishes() {
                   )`,
                     }}
                   >
-                    <div className={"dish_sale"}>{size_volume}</div>
+                    {/* <div className={"dish_sale"}>{size_volume}</div> */}
                     <div className={"view_btn"}>
                       <div onClick={() => chosenDishHandler(product._id)}>
                         Batafsil ko'rish

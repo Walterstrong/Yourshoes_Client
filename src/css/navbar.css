@@ -1,32 +1,65 @@
 .format.home_navbar {
   width: 100%;
-  height: 773px;
+  height: 850px;
+  overflow: hidden;
+  position: relative;
   display: flex;
-  background: url("/public/restaurant/header_restaurant.png");
+  background-image: url("/public/home/fon1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  text-align: center;
+  justify-content: center;
+  animation: change 10s infinite ease-in-out;
 }
 
+/* @keyframes change {
+  0% {
+    background-image: url("/public/home/fon3.jpg");
+  }
+  100% {
+    background-image: url("/public/home/fon1.jpg");
+  }
+  /* 40% {
+    background-image: url("/public/home/fon3.jpg");
+  }
+  60% {
+    background-image: url("/public/home/fon1.jpg");
+  }
+  80% {
+    background-image: url("/public/home/fon2.jpg");
+  }
+  100% {
+    background-image: url("/public/home/fon3.jpg");
+  } */
+/* } */
 .format_restaurant.home_navbar {
   width: 100%;
   height: 400px;
+  overflow: hidden;
+  position: relative;
   display: flex;
-  background: url("/public/restaurant/header_restaurant_main.png");
+  background-image: url("/public/home/fon1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  text-align: center;
+  justify-content: center;
 }
 
 .format_others.home_navbar {
   width: 100%;
   height: 400px;
   display: flex;
-  background: url("/public/others/others_header.png");
+
   background-size: cover;
 }
 
 .home_navbar .navbar_config {
   width: 1244.69px;
   height: 46px;
-  margin-left: 26px;
-  margin-top: 55px;
+  margin-left: 10px;
+  margin-top: 30px;
 }
 
 .home_navbar .navbar_links {
@@ -39,20 +72,48 @@
 }
 
 .home_navbar .hover-line a {
-  color: #ffffff;
+  color: #755bb4;
+  font-family: "Arial Rounded MT Bold";
+
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 20px;
+}
+
+.home_navbar .hover-line a:hover {
+  background: #755bb4;
+  width: auto;
+  height: auto;
+  transition-delay: 0.2s;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.loginBtn:hover {
+  background: #755bb4;
+  width: auto;
+  height: auto;
+  transition-delay: 0.2s;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .home_navbar .underline {
   display: block;
   content: "";
-  border-bottom: solid 2px #d7b686;
+  font-size: 20px;
+  border: solid 2px #755bb4;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .home_navbar .hover-line:after {
   display: block;
-
   content: "";
-  border-bottom: solid 2px #d7b686;
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
@@ -95,17 +156,17 @@
   color: #d5d5d5;
 }
 
-.home_navbar .big_img {
+/* .home_navbar .big_img {
   position: relative;
   width: 277px;
   height: 277px;
   margin-top: 41px;
   margin-left: 494px;
-  background: url("/public/home/blister5.png");
+  background: url("/public/home/blister555.png");
   border-radius: 90px 0 0 0;
   filter: invert(46%) blur(1px);
   background-size: cover;
-}
+} */
 
 /* START BASKET */
 

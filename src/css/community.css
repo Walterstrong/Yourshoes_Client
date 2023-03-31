@@ -201,7 +201,7 @@
 
 .community_page .article_share {
   width: 100%;
-  height: 10%;
+  height: auto;
 
   display: flex;
   flex-direction: row;
@@ -229,9 +229,9 @@
 }
 
 .community_page .review_box {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
-  height: 250px;
+  height: auto;
 
   display: flex;
   background: #182226;
