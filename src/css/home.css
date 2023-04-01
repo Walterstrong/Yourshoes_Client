@@ -98,6 +98,7 @@
 }
 
 .homepage .category_title {
+  margin-top: 40px;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
@@ -112,7 +113,7 @@
 
 .homepage .best_restaurant_frame {
   width: 100%;
-  height: auto;
+  height: 800px;
   display: flex;
   flex-direction: row;
   background: #362264b5;
@@ -120,17 +121,17 @@
 
 .homepage .ads_restaurant_frame {
   width: 100%;
-  height: 693px;
+  height: 630px;
   display: flex;
   overflow: hidden;
-  box-shadow: 0px -62px 60px 20px rgb(217 217 217 / 40%);
-  margin-top: 186px;
-  background-color: #956dd3;
+  /* box-shadow: 0px -62px 60px 20px rgb(217 217 217 / 40%); */
+  /* margin-top: 186px; */
+  background: #362264b5;
 }
 
 .homepage .ads_video {
   width: 100%;
-  background: #0c0e12;
+  background: #362264b5;
   display: flex;
   box-shadow: 0px -8px 90px rgb(215 215 255);
   transform: scale(1.5);
@@ -138,11 +139,12 @@
 }
 
 .homepage .events_frame {
-  margin-top: 45px;
+  /* margin-top: 45px; */
   width: 100%;
   height: 700px;
   display: flex;
   overflow: "hidden";
+  background: #220f4fb5;
 }
 
 .homepage .events_main {
@@ -150,6 +152,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  background: #362264b5;
 }
 
 .homepage .events_main .events_text {

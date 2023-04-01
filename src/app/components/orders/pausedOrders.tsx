@@ -92,17 +92,31 @@ export default function PausedOrders(props: any) {
               </Box>
               <Box className={"total_price_box black_solid"}>
                 <Box className={"boxTotal"}>
-                  <p>mahsulot narxi</p>
-                  <p>${order.order_total_amount - order.order_delivery_cost}</p>
-                  <img src={"/icons/plus.svg"} style={{ marginLeft: "20px" }} />
-                  <p>yetkazish xizmati</p>
-                  <p>${order.order_delivery_cost}</p>
+                  <p>
+                    <b>product price:</b>
+                  </p>
+                  <p style={{ color: "red" }}>
+                    <b>
+                      ${order.order_total_amount - order.order_delivery_cost}
+                    </b>
+                  </p>
+                  <img src={"/icons/plus.svg"} style={{ marginLeft: "15px" }} />
+                  <p>
+                    <b>delivery price:</b>
+                  </p>
+                  <p style={{ color: "red" }}>
+                    <b>${order.order_delivery_cost}</b>
+                  </p>
                   <img
                     src={"/icons/pause.svg"}
-                    style={{ marginLeft: "20px" }}
+                    style={{ marginLeft: "15px" }}
                   />
-                  <p>jami narx</p>
-                  <p>${order.order_total_amount}</p>
+                  <p>
+                    <b>total price:</b>
+                  </p>
+                  <p style={{ color: "red" }}>
+                    <b>${order.order_total_amount}</b>
+                  </p>
                 </Box>
                 <Button
                   value={order._id}
@@ -115,7 +129,7 @@ export default function PausedOrders(props: any) {
                       "0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);",
                   }}
                 >
-                  Bekor qilish
+                  Cancel
                 </Button>
                 <Button
                   value={order._id}
@@ -129,7 +143,7 @@ export default function PausedOrders(props: any) {
                       "0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);",
                   }}
                 >
-                  To'lash
+                  Pay
                 </Button>
               </Box>
             </Box>

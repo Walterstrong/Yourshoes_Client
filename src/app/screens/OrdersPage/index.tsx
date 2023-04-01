@@ -70,9 +70,9 @@ export function OrdersPage(props: any) {
                   aria-label="basic tabs example"
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <Tab label="Buyurtmalarim" value={"1"} />
-                  <Tab label="Jarayon" value={"2"} />
-                  <Tab label="Yakunlangan" value={"3"} />
+                  <Tab label="My Orders" value={"1"} />
+                  <Tab label="On Payment" value={"2"} />
+                  <Tab label="Delivered" value={"3"} />
                 </TabList>
               </Box>
             </Box>
@@ -88,92 +88,6 @@ export function OrdersPage(props: any) {
               <FinishedOrders />
             </Stack>
           </TabContext>
-        </Stack>
-
-        <Stack className={"order_right"}>
-          <Box className={"order_info_box"}>
-            <Box
-              display={"flex"}
-              flexDirection={"column"}
-              alignItems={"center"}
-            >
-              <div className={"order_user_img"}>
-                <img
-                  src={
-                    verifiedMemberData?.mb_image
-                      ? verifiedMemberData.mb_image
-                      : "/auth/default_user.svg"
-                  }
-                  className={"order_user_avatar"}
-                />
-                <div className={"order_user_icon_box"}>
-                  <img
-                    src={"/icons/user_icon.svg"}
-                    className={"order_user_prof_img"}
-                  />
-                </div>
-              </div>
-              <span className={"order_user_name"}>
-                {verifiedMemberData?.mb_nick}
-              </span>
-              <span className={"order_user_prof"}>
-                {verifiedMemberData?.mb_type ?? "Foydalanuvchi"}
-              </span>
-            </Box>
-            <Box
-              style={{ border: "1px solid #A1A1A1" }}
-              width={"100%"}
-              sx={{ mt: "40px", mb: "8px" }}
-            ></Box>
-            <Box className={"order_user_address"}>
-              <div style={{ display: "flex" }}>
-                <LocationOnIcon />
-              </div>
-              <div className={"spec_address_txt"}>
-                {verifiedMemberData?.mb_address ?? "manzil kitirilmagan"}
-              </div>
-            </Box>
-          </Box>
-          <Box className={"order_info_box"} sx={{ mt: "15px" }}>
-            <input
-              type={"text"}
-              name={"card_number"}
-              placeholder={"Card number : 5243 4090 2002 7495"}
-              className={"card_input"}
-            />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              <input
-                type={"text"}
-                name={"card_period"}
-                placeholder={"07 / 24"}
-                className={"card_half_input"}
-              />
-              <input
-                type={"text"}
-                name={"card_cvv"}
-                placeholder={"CVV : 010"}
-                className={"card_half_input"}
-              />
-            </div>
-            <input
-              type={"text"}
-              name={"card_creator"}
-              placeholder={"Umarov Abdulloh"}
-              className={"card_input"}
-            />
-            <div className={"cards_box"}>
-              <img src={"/icons/western_card.svg"} />
-              <img src={"/icons/master_card.svg"} />
-              <img src={"/icons/paypal_card.svg"} />
-              <img src={"/icons/visa_card.svg"} />
-            </div>
-          </Box>
         </Stack>
       </Container>
     </div>

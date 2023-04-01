@@ -1,26 +1,9 @@
 import { Favorite, Visibility } from "@mui/icons-material";
-import {
-  AspectRatio,
-  Card,
-  CardOverflow,
-  CssVarsProvider,
-  IconButton,
-  Link,
-  Typography,
-} from "@mui/joy";
 import { Box, Container, Stack, Button } from "@mui/material";
-import CardContent from "@mui/joy/CardContent";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import CallIcon from "@mui/icons-material/Call";
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
-import MemberApiService from "../../apiServices/memberApiService";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import SearchIcon from "@mui/icons-material/Search";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import StarIcon from "@mui/icons-material/Star";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Checkbox from "@mui/material/Checkbox";
@@ -28,20 +11,9 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
-import MuiAccordionSummary, {
-  AccordionSummaryProps,
-} from "@mui/material/AccordionSummary";
-import MuiAccordionDetails from "@mui/material/AccordionDetails";
-// REDUX
-
-import { useSelector } from "react-redux";
-import { createSelector } from "reselect";
-
-import { Restaurant } from "../../../types/user";
 import { serverApi } from "../../lib/config";
+
+// REDUX
 import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
@@ -49,9 +21,18 @@ import {
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { verifiedMemberData } from "app/apiServices/verify";
 import { Product } from "types/product";
+import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "@reduxjs/toolkit";
+import { setBestProducts } from "./slice";
+import { createSelector } from "reselect";
 import { retrieveBestProducts } from "./selector";
+import ProductApiService from "app/apiServices/productApiService";
+import { ProductSearch, ProductSearchObj } from "types/others";
+import MemberApiService from "app/apiServices/memberApiService";
 //** REDUX SELECTOR */
-
+const actionDispatch = (dispatch: Dispatch) => ({
+  setBestProducts: (data: Product[]) => dispatch(setBestProducts(data)),
+});
 const bestProductsRetriever = createSelector(
   retrieveBestProducts,
   (bestProducts) => ({
@@ -61,41 +42,52 @@ const bestProductsRetriever = createSelector(
 
 export function BestProducts(props: any) {
   //** INITIALIZATIONS */
-
   const history = useHistory();
   const { bestProducts } = useSelector(bestProductsRetriever);
-  const refs: any = useRef([]);
-
+  const { setBestProducts } = actionDispatch(useDispatch());
+  const [productRebuild, setProductRebuild] = useState<Date>(new Date());
+  const [targetProduct, setTargetProduct] = useState<ProductSearch>({
+    page: 1,
+    limit: 25,
+    order: "product_views",
+    restaurant_mb_id: "all",
+    product_collection: "all",
+    product_size: "all",
+    product_color: "all",
+    product_type: "all",
+  });
   //** HANDLERS */
-
   const chosenProductHandler = (id: string) => {
     history.push(`/restaurant/dish/${id}`);
   };
-  const goRestaurantHandler = () => history.push("/restaurant");
-  const targetLikeBest = async (e: any, id: string) => {
+
+  const targetLikeProduct = async (e: any) => {
     try {
       assert.ok(verifiedMemberData, Definer.auth_err1);
       const memberService = new MemberApiService();
       const like_result = await memberService.memberLikeTarget({
-        like_ref_id: id,
-        group_type: "member",
+        like_ref_id: e.target.id,
+        group_type: "product",
       });
       assert.ok(like_result, Definer.auth_err1);
 
-      if (like_result.like_status > 0) {
-        e.target.style.fill = "red";
-        refs.current[like_result.like_ref_id].innerHTML++;
-      } else {
-        e.target.style.fill = "white";
-        refs.current[like_result.like_ref_id].innerHTML--;
-      }
-
       await sweetTopSmallSuccessAlert("success", 700, false);
+      setProductRebuild(new Date());
     } catch (err: any) {
-      console.log("targetLikeTop,ERROR:", err);
+      console.log("targetLikeProduct,ERROR:", err);
       sweetErrorHandling(err).then();
     }
   };
+
+  useEffect(() => {
+    const productApiService = new ProductApiService();
+    productApiService
+      .getTargetProducts(targetProduct)
+      .then((data) => {
+        setBestProducts(data);
+      })
+      .catch((err) => console.log(err));
+  }, [productRebuild]);
   return (
     <div className="best_restaurant_frame">
       {/* <img
@@ -132,7 +124,6 @@ export function BestProducts(props: any) {
 
                 return (
                   <SwiperSlide
-                    // onClick={() => chosenRestaurantHandler(product._id)}
                     style={{ cursor: "pointer", marginLeft: "5px" }}
                     key={product._id}
                     className={"restaurant_avatars"}
@@ -140,7 +131,7 @@ export function BestProducts(props: any) {
                     <Box
                       className={"dish_box"}
                       key={product._id}
-                      // onClick={() => chosenDishHandler(product._id)}
+                      onClick={() => chosenProductHandler(product._id)}
                     >
                       <Box
                         className={"dish_img"}
@@ -168,7 +159,7 @@ export function BestProducts(props: any) {
                               checkedIcon={
                                 <Favorite style={{ color: "red" }} />
                               }
-                              // onClick={targetLikeProduct}
+                              onClick={targetLikeProduct}
                               checked={
                                 product?.me_liked &&
                                 product?.me_liked[0]?.my_favorite
@@ -181,13 +172,16 @@ export function BestProducts(props: any) {
                         <Button
                           className={"view_btn"}
                           onClick={(e) => {
-                            props.onAdd(product);
                             e.stopPropagation();
+                            sweetTopSmallSuccessAlert("success", 700, false);
                           }}
                         >
                           <img
                             src={"/icons/shopping_cart.svg"}
                             style={{ display: "flex" }}
+                            onClick={(e) => {
+                              props.onAdd(product);
+                            }}
                           />
                         </Button>
                         <Button

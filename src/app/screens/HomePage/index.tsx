@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../../css/home.css";
 import { Advertisements } from "./advertisements";
-import { BestDishes } from "./bestDishes";
+
 import { BestProducts } from "./bestProducts";
 import { Events } from "./events";
 import { Recommendations } from "./recommendations";
@@ -10,7 +10,7 @@ import { NewProducts } from "./newProducts";
 // REDUX
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setNewProducts, setRandomRestaurants, setBestProducts } from "./slice";
+import { setRandomRestaurants, setBestProducts } from "./slice";
 import { Restaurant } from "../../../types/user";
 import ProductApiService from "../../apiServices/productApiService";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
@@ -22,16 +22,13 @@ import { ProductSearch, ProductSearchObj } from "types/others";
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
 
 const actionDispatch = (dispatch: Dispatch) => ({
-  setNewProducts: (data: Product[]) => dispatch(setNewProducts(data)),
-  setBestProducts: (data: Product[]) => dispatch(setBestProducts(data)),
   setRandomRestaurants: (data: Restaurant[]) =>
     dispatch(setRandomRestaurants(data)),
 });
 
 export function HomePage(props: any) {
   // ** INITIALIZATIONS *
-  const { setNewProducts, setBestProducts, setRandomRestaurants } =
-    actionDispatch(useDispatch());
+  const { setRandomRestaurants } = actionDispatch(useDispatch());
 
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
@@ -60,13 +57,6 @@ export function HomePage(props: any) {
     // backend data request
     const productApiService = new ProductApiService();
     productApiService
-      .getTargetProducts(targetProductSearchObj)
-      .then((data) => {
-        setNewProducts(data);
-      })
-      .catch((err) => console.log(err));
-
-    productApiService
       .getTargetProducts(targetProduct)
       .then((data) => {
         setBestProducts(data);
@@ -89,7 +79,6 @@ export function HomePage(props: any) {
       <RandomRestaurants />
       <NewProducts onAdd={props.onAdd} />
       <BestProducts onAdd={props.onAdd} />
-      <BestDishes />
       <Advertisements />
       <Events />
       <Recommendations />
