@@ -1,6 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import TabPanel from "@mui/lab/TabPanel";
 import React from "react";
+import moment from "moment";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
@@ -76,6 +77,9 @@ export default function FinishedOrders(props: any) {
                   </p>
                   <p style={{ color: "red" }}>
                     <b>${order.order_total_amount}</b>
+                  </p>
+                  <p className={"data_compl"} style={{ marginLeft: "150px" }}>
+                    {moment(order.createdAt).format("YY-MM-DD HH:mm")}
                   </p>
                 </Box>
               </Box>

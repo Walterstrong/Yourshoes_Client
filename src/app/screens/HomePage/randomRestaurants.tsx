@@ -45,6 +45,9 @@ export function RandomRestaurants() {
   return (
     <div className="static_frame">
       <Container>
+        {/* <Box>
+          <span className={"category_title"}>Our brands</span>
+        </Box> */}
         <Stack style={{ width: "100%", display: "flex" }} flexDirection={"row"}>
           <Swiper
             className={"restaurant_avatars_wrapper"}

@@ -17,97 +17,90 @@ export function HelpPage() {
   const [value, setValue] = React.useState("1");
   const faq = [
     {
-      question: "To'lov qanday amalga oshiriladi?",
+      question: "How the payment is made?",
       answer:
-        " To’lovni Payme, click ilovalari orqali amalga oshirishingiz mumkin!",
+        "You can make the payment through the Paypal and Master or Visa Card applications!",
     },
     {
-      question: "Buyurtmalar qancha vaqtda yetib keladi?",
+      question: "How long does it take for orders to arrive?",
       answer:
-        " Buyurtmalar harid qilgan narsangizga qarab har xil vaqtda yetkazilishi\n" +
-        "                                                mumkin. Maximum 1 soat ichida!",
-    },
-    {
-      question:
-        "saytdan foydalansam ma'lumotlarim havfsizligiga kafolat bormi?",
-      answer:
-        "albatta, bizning dasturchilamiz sizning ma'lumotlaringiz havfsizligiga kafolat berishadi",
-    },
-    {
-      question: "saytda muammo yuzaga kelsa kimga murojaat qilaman?",
-      answer:
-        "Hurmatli mijoz, iltimos adminga xat yo'llash bo'limidan foydalaning",
+        "Orders may be delivered at different times depending on what you have purchased. Maximum within 2 days!",
     },
     {
       question:
-        "Men foydalanuvchi emas Biznesmen sifatida faoliyat  yuritmoqchiman. Nima qilishim kerak?",
+        "Is there a guarantee that my data will be safe if I use the website?",
+      answer: "Of course, our developers guarantee that your data is safe",
+    },
+    {
+      question: "Who do I contact if I have a problem with the website?",
+      answer: "Dear customer, please use the mail admin section",
+    },
+    {
+      question: "I want to act as a businessman, not a user. What should I do?",
       answer:
-        "Hurmatli mijoz, saytda ko'rsatilgan telefon raqamlarga qo'ng'iroq qilishingizni so'rab qolamiz!",
+        "Dear customer, we ask you to call the telephone numbers indicated on the website!",
     },
     {
       question:
-        "Men Koreya davlatidaman. O'zbekistondagi oilam uchun Ovqat buyurtma qilmoqchiman. Visa yoki master kartasidan foydalana olamanmi?",
+        "I am in South Korea. I want to shoes for my family in Uzbekistan. Do you deliver to Uzbekistan?",
       answer:
-        "Albatta, chet eldan turib nafaqat  visa va master balkim paypal dasturidan foydalangan holda buyurtma qilishingiz mumkin! ",
+        "Unfortunately, we don't deliver our products outside of South Korea, soon We will orginize it! ",
+    },
+    {
+      question: "I want to cancel the order but I don't know how to do it",
+      answer:
+        "To cancel an order, please log in first and cancel your order by clicking the cancel button in the My Orders section.!",
+    },
+    {
+      question: "What do I need to do to pay for my order?",
+      answer:
+        "To pay for an order, you must log in and go to the My Orders page. You can make a payment through the payment button on the opened page",
+    },
+    {
+      question: "Where do i enter my card details?",
+      answer:
+        "You must enter your card details in the special place on the right side of the My Orders page",
+    },
+    {
+      question: "Do I have to leave a review after completing the order?",
+      answer:
+        "Dear customer, we do not force you to leave feedback, but your opinion is very valuable to us!",
+    },
+    {
+      question: "I want to write an article",
+      answer:
+        "To write an article, just click the write article button from the section of my page!",
+    },
+    {
+      question: "Can I also attend the live chat??",
+      answer:
+        "Of course, you can register on our site and feel free to use the Community section and leave your comments.!",
     },
     {
       question:
-        "buyurtmani bekor qilmoqchiman lekin buni qanday qilishni bilmayman",
-      answer:
-        "Buyurtmani bekor qilish uchun Avvalo login qiling va buyurtmalarim bo'limidan kerakli bo'lgan buyurtmangizni bekor qilish tugmasi orqali bekor qilsangiz bo'ladi!",
+        "What should I do so that I can find myself on my page quickly if I visit a page a lot?",
+      answer: "For this, it is enough to follow the user you want to follow!",
     },
     {
-      question: "Buyurtmani To'lov qilish uchun nima qilishim kerak?",
+      question: "I would like to contribute to the development of the website",
       answer:
-        "Buyurtma uchun to'lovni amalga oshirish uchun login qilishingiz va buyurtmalarim sahifasiga o'tishingiz lozim. Ochilgan sahifadan to'lov qilish tugmasi orqali to'lovni amalga oshira olasiz",
-    },
-    {
-      question: "karta ma'lumotlarimni qayerga kiritaman?",
-      answer:
-        "Karta ma'lumotlarini Buyurtmalarim sahifasining o'ng tomonida joylashgan maxsus joyga kiritishingiz darkor",
-    },
-    {
-      question:
-        "Buyurtmani yakunlagandan so'ng o'zimni fikrimni yozib qoldirishim shartmi?",
-      answer:
-        "Hurmatli mijoz, sizni fikr qoldirishga majburlamaymiz, lekin fikringiz biz uchun juda qadrli hisoblanadi!",
-    },
-    {
-      question: "Maqola yozishni xohlayman",
-      answer:
-        "Maqola yozish uchun sahifam bo'limidan maqola yozish tugmasini bossangiz kifoya!",
-    },
-    {
-      question: "Jonli muloqatga men ham qatnasha olamanmi?",
-      answer:
-        "albatta buning uchun saytimizdan ro'yhatdan o'ting va Jamiyat bo'limidan bemalol foydalanishingiz va o'z fikrlaringizni yozib qoldirishingiz mumkin!",
-    },
-    {
-      question:
-        "Biror bir sahifani ko'p kuzatsam uni o'zimni sahifamdan tezda topib olishim uchun nima qilishim kerak?",
-      answer:
-        "Buning uchun siz kuzatmoqchi bo'lgan foydalanuvchingizda follow bo'lishingiz kifoya qiladi!",
-    },
-    {
-      question: "Sayt rivoji uchun o'z hissamni qo'shmoqchiman",
-      answer:
-        "Albatta buning uchun adminga xat qoldirishigniz yoki berilgan telefon raqamlariga bog'lansangiz to'liqroq ma'lumot beriladi!",
+        "Of course, if you leave a letter to the admin or contact the given phone numbers, more detailed information will be provided!",
     },
   ];
   const rules = [
-    `Saytdan to'laqonli yani buyurtmalar qilish, jonli
-    muloqotlardan foydalanishingiz uchun ro'yxatdan
-    o'tishingiz shart.`,
-    `Buyurtmalaringizga to'lovni amalga oshirganingizdan so'ng
-    bekor qilishning imkoni yo'q shu sababli to'lovlarni
-    amalga oshirishdan avval tekshirib oling.`,
-    `Jonli muloqot vaqtida bexayo so'zlarni ishlatish mutlaqo
-    taqiqlanadi.`,
-    `Shaxsiy reklamalarni adminning ruxsatisiz yozish va
-    tarqatish mumkun emas.`,
-    `Maqolalaringiz odob doirasidan chiqib ketmasligi shart.`,
-    `Barcha xarakatlaringiz adminlarimiz nazorati ostida
-    bo'lani sabab iltimos talablarimizni xurmat qiling.`,
+    `Making orders from the site is complete, live
+    register to use communications
+    you must pass.`,
+    `Once you have paid for your orders
+    It is not possible to cancel the payments for this reason
+    check before doing.`,
+    `Using profanity during live chat is absolutely fine
+    is prohibited.`,
+    `Writing personal ads without admin permission and
+    cannot be distributed`,
+    `Your articles must not go beyond the bounds of decency.`,
+    `All your actions are under the control of our admins
+    Please respect our requests.`,
   ];
 
   /** HANDLERS **/
@@ -127,9 +120,13 @@ export function HelpPage() {
                 aria-label="lab API tabs example"
                 style={{ display: "flex", justifyContent: "space-between" }}
               >
-                <Tab label="Qoidalar" value={"1"} />
-                <Tab label="FAQ" value={"2"} />
-                <Tab label="Adminga xat" value={"3"} />
+                <Tab className="tab_font" label="Rules" value={"1"} />
+                <Tab
+                  className="tab_font"
+                  label="Letter to Admin"
+                  value={"3"}
+                />{" "}
+                <Tab className="tab_font" label="FAQ" value={"2"} />
               </TabList>
             </Box>
           </Box>
@@ -168,10 +165,10 @@ export function HelpPage() {
                 <Stack className={"admin_letter_box"}>
                   <Stack className={"admin_letter_container"}>
                     <Box className={"admin_letter_frame"}>
-                      <span>Adminga Xabar Qoldirish</span>
+                      <span>Letter for Admin</span>
                       <p>
-                        Assalomu alaykum! Adminga xabar qoldirish uchun pasdagi
-                        formlarni to’ldiring!{" "}
+                        Welcome! If you would like to write a letter for Admin,
+                        Please complete below form! Thank you 😊 😊 😊
                       </p>
                     </Box>
                     <form
@@ -180,26 +177,26 @@ export function HelpPage() {
                       className={"admin_letter_frame"}
                     >
                       <div className={"admin_input_box"}>
-                        <label>Ism</label>
+                        <label>Name</label>
                         <input
                           type={"text"}
                           name={"mb_nick"}
-                          placeholder={"Ism"}
+                          placeholder={"Name"}
                         />
                       </div>
                       <div className={"admin_input_box"}>
-                        <label>Elektron Manzil</label>
+                        <label>Email address</label>
                         <input
                           type={"text"}
                           name={"mb_email"}
-                          placeholder={"Elektron Manzil"}
+                          placeholder={"Email address"}
                         />
                       </div>
                       <div className={"admin_input_box"}>
-                        <label>Xabar</label>
+                        <label>Letter</label>
                         <textarea
                           name={"mb_msg"}
-                          placeholder={"Xabar"}
+                          placeholder={"Letter"}
                         ></textarea>
                       </div>
                       <Box
@@ -208,7 +205,7 @@ export function HelpPage() {
                         sx={{ mt: "30px" }}
                       >
                         <Button type={"submit"} variant="contained">
-                          Jo'natish
+                          Send
                         </Button>
                       </Box>
                     </form>

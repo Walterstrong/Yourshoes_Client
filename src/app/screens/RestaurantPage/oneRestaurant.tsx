@@ -6,7 +6,8 @@ import {
   Container,
   Stack,
 } from "@mui/material";
-
+import Rating from "@mui/material/Rating";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import RadioGroup, { useRadioGroup } from "@mui/material/RadioGroup";
 import FormControlLabel, {
   FormControlLabelProps,
@@ -31,7 +32,10 @@ import MuiAccordionSummary, {
 } from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // REDUX
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
@@ -151,7 +155,7 @@ export function OneRestaurant(props: any) {
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
       page: 1,
-      limit: 8,
+      limit: 9,
       order: "createdAt",
       restaurant_mb_id: restaurant_id,
       product_collection: "all",
@@ -219,7 +223,11 @@ export function OneRestaurant(props: any) {
     setTargetProductsSearchObj({ ...targetProductSearchObj });
   };
   //
-
+  const searchPageHandler = (event: any, value: number) => {
+    targetProductSearchObj.page = value;
+    setTargetProductsSearchObj({ ...targetProductSearchObj });
+  };
+  //
   const chosenRestaurantHandler = (id: string) => {
     setChosenRestaurantId(id);
     targetProductSearchObj.restaurant_mb_id = id;
@@ -255,7 +263,7 @@ export function OneRestaurant(props: any) {
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Stack className={"avatar_big_box"}>
             <Box className={"top_text"}>
-              <p>{chosenRestaurant?.mb_address}</p>
+              <p>{chosenRestaurant?.mb_nick}</p>
               <Box className={"Single_search_big_box"}>
                 <form className={"Single_search_form"} action={""} method={""}>
                   <input
@@ -264,12 +272,8 @@ export function OneRestaurant(props: any) {
                     name={"Single_resSearch"}
                     placeholder={"Searching"}
                   />
-                  <Button
-                    className={"Single_button_search"}
-                    // variant="contained"
-                    endIcon={<SearchIcon />}
-                  >
-                    Searching
+                  <Button className={"Single_button_search"}>
+                    <SearchIcon />
                   </Button>
                 </form>
               </Box>
@@ -571,44 +575,10 @@ export function OneRestaurant(props: any) {
                     >
                       <Button
                         className={"like_view_btn"}
-                        style={{ left: "36px" }}
-                        onClick={(e) => {
-                          e.stopPropagation();
+                        style={{
+                          left: "36px",
+                          backgroundColor: "rgba(238, 228, 228, 0.909)",
                         }}
-                      >
-                        <Badge
-                          badgeContent={product.product_likes}
-                          color="primary"
-                        >
-                          <Checkbox
-                            icon={<FavoriteBorder style={{ color: "white" }} />}
-                            id={product._id}
-                            checkedIcon={<Favorite style={{ color: "red" }} />}
-                            onClick={targetLikeProduct}
-                            checked={
-                              product?.me_liked &&
-                              product?.me_liked[0]?.my_favorite
-                                ? true
-                                : false
-                            }
-                          />
-                        </Badge>
-                      </Button>
-                      <Button
-                        className={"view_btn"}
-                        onClick={(e) => {
-                          props.onAdd(product);
-                          e.stopPropagation();
-                        }}
-                      >
-                        <img
-                          src={"/icons/shopping_cart.svg"}
-                          style={{ display: "flex" }}
-                        />
-                      </Button>
-                      <Button
-                        className={"like_view_btn"}
-                        style={{ right: "36px" }}
                       >
                         <Badge
                           badgeContent={product.product_views}
@@ -616,7 +586,7 @@ export function OneRestaurant(props: any) {
                         >
                           <Checkbox
                             icon={
-                              <RemoveRedEyeIcon style={{ color: "white" }} />
+                              <RemoveRedEyeIcon style={{ color: "#85139e" }} />
                             }
                             checkedIcon={
                               <RemoveRedEyeIcon style={{ color: "red" }} />
@@ -630,23 +600,68 @@ export function OneRestaurant(props: any) {
                           />
                         </Badge>
                       </Button>
+                      <Box></Box>
+                      <Button
+                        className={"like_view_btn"}
+                        style={{
+                          right: "36px",
+                          backgroundColor: "rgba(238, 228, 228, 0.909)",
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                      >
+                        <Badge
+                          badgeContent={product.product_likes}
+                          color="primary"
+                        >
+                          <Checkbox
+                            icon={
+                              <FavoriteBorder
+                                style={{
+                                  color: "#85139e",
+                                }}
+                              />
+                            }
+                            id={product._id}
+                            checkedIcon={<Favorite style={{ color: "red" }} />}
+                            onClick={targetLikeProduct}
+                            checked={
+                              product?.me_liked &&
+                              product?.me_liked[0]?.my_favorite
+                                ? true
+                                : false
+                            }
+                          />
+                        </Badge>
+                      </Button>
                     </Box>
                     <Box className={"dish_desc"}>
                       <div className={"review_stars"}>
-                        <StarIcon style={{ color: "#F2BD57" }} />
-                        <StarIcon style={{ color: "#F2BD57" }} />
-                        <StarIcon style={{ color: "white" }} />
-                        <StarIcon style={{ color: "white" }} />
-                        <StarIcon style={{ color: "white" }} />
+                        <Rating value={product?.product_rating} />
+                        <span className={"product_reviews"}>
+                          ({product.product_reviews})
+                        </span>
                       </div>
                       <span className={"dish_title_text"}>
                         {product.product_name}
                       </span>
 
-                      <div className={"dish_desc_text"}>
+                      <Box className={"dish_desc_text"}>
                         <MonetizationOnIcon />
                         {product.product_price}
-                      </div>
+
+                        <Button
+                          className={"view_btn"}
+                          onClick={(e) => {
+                            props.onAdd(product);
+                            e.stopPropagation();
+                            sweetTopSmallSuccessAlert("success", 700, false);
+                          }}
+                        >
+                          <ShoppingCartIcon />
+                        </Button>
+                      </Box>
                     </Box>
                   </Box>
                 );
@@ -654,108 +669,31 @@ export function OneRestaurant(props: any) {
             </Stack>
           </Stack>
         </Stack>
-      </Container>
-
-      {/* <div className={"review_for_restaurant"}>
-        <Container
-          sx={{ mt: "100px" }}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        > */}
-      {/* <Box className={"category_title"}>Oshxona haqida fikrlar</Box>
-          <Stack
-            flexDirection={"row"}
-            display={"flex"}
-            justifyContent={"space-between"}
-            width={"100%"}
-          >
-            {Array.from(Array(4).keys()).map((ele, index) => {
-              return (
-                <Box className={"review_box"} key={index}>
-                  <Box display={"flex"} justifyContent={"center"}>
-                    <img
-                      src={"/community/cute_girl.jpg"}
-                      className={"review_img"}
-                    />
-                  </Box>
-                  <span className={"review_name"}>Rayhon Asadova</span>
-                  <span className={"review_prof"}>Foydalanuvchi</span>
-                  <p className={"review_desc"}>
-                    Menga bu oshxonaning taomi juda yoqadi. Hammaga tafsiya
-                    qilaman!!!
-                  </p>
-                  <div className={"review_stars"}>
-                    <StarIcon style={{ color: "#F2BD57" }} />
-                    <StarIcon style={{ color: "#F2BD57" }} />
-                    <StarIcon style={{ color: "#F2BD57" }} />
-                    <StarIcon style={{ color: "whitesmoke" }} />
-                    <StarIcon style={{ color: "whitesmoke" }} />
-                  </div>
-                </Box>
-              );
-            })}
-          </Stack>
-        </Container>
-      </div>
-
-      <Container className="member_reviews">
-        <Box className={"category_title"}>Oshxona haqida</Box>
-        <Stack
-          display={"flex"}
-          flexDirection={"row"}
-          width={"90%"}
-          sx={{ mt: "70px" }}
-        >
-          <Box
-            className={"about_left"}
-            sx={{
-              backgroundImage: `url(${serverApi}/${chosenRestaurant?.mb_image})`,
-            }}
-          >
-            <div className={"about_left_desc"}>
-              <span>{chosenRestaurant?.mb_nick}</span>
-              <p>{chosenRestaurant?.mb_description}</p>
-            </div>
-          </Box>
-          <Box className={"about_right"}>
-            {Array.from(Array(3).keys()).map((ele, index) => {
-              return (
-                <Box display={"flex"} flexDirection={"row"} key={index}>
-                  <div className={"about_right_img"}></div>
-                  <div className={"about_right_desc"}>
-                    <span>Bizning mohir oshpazlarimiz</span>
-                    <p>
-                      Bizning oshpazlarimiz dunyo taniydigan oliygohlarda malaka
-                      oshirib kelishdan
-                    </p>
-                  </div>
-                </Box>
-              );
-            })}
-          </Box>
+        <Stack style={{ color: "white" }} className={"bottom_box"}>
+          <img className={"line_img_right"} src={"/home/papay.png"} />
+          <Pagination
+            count={
+              targetProductSearchObj.page >= 3
+                ? targetProductSearchObj.page + 1
+                : 3
+            }
+            page={targetProductSearchObj.page}
+            renderItem={(item) => (
+              <PaginationItem
+                components={{
+                  previous: ArrowBackIcon,
+                  next: ArrowForwardIcon,
+                }}
+                {...item}
+                style={{ color: "white" }}
+                color={"secondary"}
+              />
+            )}
+            onChange={searchPageHandler}
+          />
+          <img className={"line_img_left"} src={"/home/papay.png"} />
         </Stack>
-
-        <Stack
-          sx={{ mt: "60px" }}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Box className={"category_title"}>{chosenRestaurant?.mb_address}</Box>
-          <iframe
-            style={{ marginTop: "60px" }}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.363734762081!2d69.2267250514616!3d41.322703307863044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b9a0a33281d%3A0x9c5015eab678e435!2z0KDQsNC50YXQvtC9!5e0!3m2!1sko!2skr!4v1655461169573!5m2!1sko!2skr"
-            width="1320"
-            height="500"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </Stack> */}
-      {/* </Container> */}
+      </Container>
     </div>
   );
 }

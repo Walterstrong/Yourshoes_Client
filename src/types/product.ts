@@ -24,6 +24,8 @@ export interface Product {
   product_images: string[];
   product_likes: number;
   product_views: number;
+  product_rating: number;
+  product_reviews: number;
   restaurant_mb_id: string;
   createdAt: Date;
   updatedAt: Date;

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "../css/App.css";
 import "../css/navbar.css";
 import "../css/footer.css";
+import "../css/chat.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { RestaurantPage } from "./screens/RestaurantPage/index";
 import { CommunityPage } from "./screens/CommunityPage/index";
@@ -25,6 +26,8 @@ import MemberApiService from "./apiServices/memberApiService";
 import { verifiedMemberData } from "./apiServices/verify";
 import { CartItem } from "../types/others";
 import { Product } from "../types/product";
+import { CommunityChats } from "./components/chatting/communityChats";
+// import { Chatting } from "./components/chatting";
 
 function App() {
   //** INITIALIZATIONS *
@@ -201,9 +204,10 @@ function App() {
           <LoginPage />
         </Route>
         <Route path="/">
-          <HomePage />
+          <HomePage onAdd={onAdd} />
         </Route>
       </Switch>
+      <CommunityChats />
       <Footer />
       <AuthenticationModal
         loginOpen={loginOpen}
@@ -213,6 +217,7 @@ function App() {
         handleSignUpOpen={handleSignUpOpen}
         handleSignUpClose={handleSignUpClose}
       />
+      {/* <Chatting /> */}
     </Router>
   );
 }

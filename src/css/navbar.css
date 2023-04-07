@@ -35,12 +35,13 @@
 /* } */
 .format_restaurant.home_navbar {
   width: 100%;
-  height: 400px;
+  height: 100px;
   overflow: hidden;
   position: relative;
   display: flex;
-  background-image: url("/public/home/fon1.jpg");
-  background-position: center;
+  /* background-image: url("/public/home/fon1.jpg"); */
+  background-color: white;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
@@ -49,17 +50,24 @@
 
 .format_others.home_navbar {
   width: 100%;
-  height: 400px;
+  height: 100px;
   display: flex;
-
+  /* background-image: url("/public/home/fon1.jpg"); */
+  background-color: white;
+  background-position: top;
+  background-repeat: no-repeat;
   background-size: cover;
+  text-align: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 
 .home_navbar .navbar_config {
   width: 1244.69px;
   height: 46px;
   margin-left: 10px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .home_navbar .navbar_links {
@@ -92,20 +100,15 @@
 }
 
 .loginBtn:hover {
-  background: #755bb4;
-  width: auto;
-  height: auto;
   transition-delay: 0.2s;
   color: #fff;
-  font-size: 20px;
-  padding: 5px;
-  border-radius: 10px;
+  transform: scale(1.1);
 }
 
 .home_navbar .underline {
   display: block;
   content: "";
-  font-size: 20px;
+
   border: solid 2px #755bb4;
   padding: 5px;
   border-radius: 10px;
@@ -172,7 +175,7 @@
 
 .basket_frame {
   position: relative;
-  padding: 10px 4px 0px 4px;
+  /* padding: 10px 4px 0px 4px; */
   width: 450px;
   height: auto;
 
@@ -183,17 +186,21 @@
 }
 
 .basket_frame .all_check_box {
-  padding: 0px 6px;
+  /* padding: 0px 6px; */
   width: 100%;
   height: 35px;
-
+  text-align: center;
   display: flex;
+  justify-content: center;
   flex-direction: row;
   align-items: center;
   background: #d9d9d9;
-  border-width: 1px 0px;
-  border-style: solid;
-  border-color: #939393;
+  font-family: "Dancing Script";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 28px;
+  color: #197607;
 }
 
 .basket_frame .basket_info_box {
@@ -211,30 +218,47 @@
   width: 60px;
   height: 60px;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 29px;
+  border-radius: 15px;
+  margin-left: 15px;
 }
 
 .basket_info_box .product_name {
   margin-left: 11px;
-  width: 185px;
-  font-family: "Poppins";
+  width: 150px;
+
+  font-family: "fantasy";
   font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 30px;
-  color: #000000;
+  font-weight: 250;
+  font-size: 18px;
+  border-color: #000000;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+
+  line-height: 24px;
+  height: 50px;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* color: #130a64; */
+  color: #264d89;
 }
 
 .basket_info_box .product_price {
-  width: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.basket_info_box .product_price p {
+  width: auto;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  font-weight: 300;
   font-size: 15px;
   line-height: 22px;
   color: #ae0000;
 }
-
 .basket_info_box
   .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   padding: 6.5px 14px;

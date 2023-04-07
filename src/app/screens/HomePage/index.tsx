@@ -4,7 +4,7 @@ import { Advertisements } from "./advertisements";
 
 import { BestProducts } from "./bestProducts";
 import { Events } from "./events";
-import { Recommendations } from "./recommendations";
+// import { Recommendations } from "./recommendations";
 import { NewProducts } from "./newProducts";
 
 // REDUX
@@ -17,6 +17,7 @@ import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { RandomRestaurants } from "./randomRestaurants";
 import { Product } from "types/product";
 import { ProductSearch, ProductSearchObj } from "types/others";
+import { CommunityChats } from "../../components/chatting/communityChats";
 
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
@@ -81,7 +82,6 @@ export function HomePage(props: any) {
       <BestProducts onAdd={props.onAdd} />
       <Advertisements />
       <Events />
-      <Recommendations />
     </div>
   );
 }

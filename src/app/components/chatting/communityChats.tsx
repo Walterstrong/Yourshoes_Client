@@ -5,7 +5,8 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { Avatar, Box, Stack } from "@mui/material";
+import MarkChatUnreadIcon from "@mui/icons-material/MarkChatUnread";
+import { Avatar, Box, Button, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { SocketContext } from "app/context/socket";
 import { ChatGreetMsg, ChatInforMsg, ChatMessage } from "types/others";
@@ -14,6 +15,9 @@ import { sweetErrorHandling, sweetFailureProvider } from "app/lib/sweetAlert";
 import assert from "assert";
 import { Definer } from "app/lib/Definer";
 import { RippleBadge } from "app/MaterialTheme/styled";
+import CloseIcon from "@mui/icons-material/Close";
+import { useSpring } from "react-spring";
+import ReactScrollableFeed from "react-scrollable-feed";
 
 const NewMessage = (data: any) => {
   if (data.new_message.mb_id == verifiedMemberData?._id) {
@@ -23,7 +27,7 @@ const NewMessage = (data: any) => {
         style={{ display: "flex" }}
         alignItems={"flex-end"}
         justifyContent={"flex-end"}
-        sx={{ m: "10px 0px" }}
+        sx={{ m: "10px 10px" }}
       >
         <div className={"msg_right"}> {data.new_message.msg}</div>
       </Box>
@@ -45,13 +49,28 @@ const NewMessage = (data: any) => {
   }
 };
 
-export function CommunityChats() {
+export function CommunityChats(props: any) {
   /** INITIALIZATIONSS **/
   const [messagesList, setMessagesList] = useState([]);
   const socket = useContext(SocketContext);
   const [onlineUsers, setOnlineUsers] = useState<number>(0);
   const textInput: any = useRef(null);
   const [message, setMessage] = useState<string>("");
+
+  const chatContentRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const [openButton, setOpenButton] = useState(false);
+
+  const handleOpenChat = () => {
+    setOpen((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setOpenButton(true);
+    }, 5000);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   useEffect(() => {
     socket.connect();
@@ -60,7 +79,6 @@ export function CommunityChats() {
     socket?.on("connect", function () {
       console.log("CLIENT: connected!");
     });
-
     socket?.on("newMsg", function (new_message: ChatMessage) {
       console.log("CLIENT: new message!");
       messagesList.push(
@@ -142,44 +160,61 @@ export function CommunityChats() {
       sweetErrorHandling(err).then();
     }
   };
+
   return (
-    <Stack className={"chat_frame"}>
-      <Box className={"chat_top"}>
-        <div>Jonli Muloqot</div>
-        <RippleBadge
-          style={{ margin: "-30px 0 0 20px" }}
-          badgeContent={onlineUsers}
-        />
-      </Box>
-      <Box className={"chat_content"}>
-        <Stack className={"chat_main"}>
-          <Box
-            flexDirection={"row"}
-            style={{ display: "flex" }}
-            sx={{ m: "10px 0px" }}
-          >
-            <div className={"msg_left"}>Bu yer jonli muloqot</div>
-          </Box>
-          {messagesList}
+    <Stack className="chatting">
+      {openButton ? (
+        <Button className={"chat_button"} onClick={handleOpenChat}>
+          {open ? <CloseIcon /> : <MarkChatUnreadIcon />}
+        </Button>
+      ) : null}
+      <Stack className={"chat_frame3"}>
+        <Stack className={`chat_frame ${open ? "open" : ""}`}>
+          <Stack>
+            <Box className={"chat_top"}>
+              <div>Live chatting</div>
+              <RippleBadge
+                style={{ margin: "-30px 0 0 20px", color: "white" }}
+                badgeContent={onlineUsers}
+              />
+            </Box>
+            <Box
+              className={"chat_content"}
+              id="chat_content"
+              ref={chatContentRef}
+            >
+              <ReactScrollableFeed>
+                <Stack className={"chat_main"}>
+                  <Box
+                    flexDirection={"row"}
+                    style={{ display: "flex" }}
+                    sx={{ m: "10px 0px" }}
+                  >
+                    <div className={"msg_left"}>Live chatting</div>
+                  </Box>
+                  {messagesList}
+                </Stack>
+              </ReactScrollableFeed>
+            </Box>
+            <Box className={"chat_bott"}>
+              <input
+                ref={textInput}
+                type={"text"}
+                name={"message"}
+                className={"msg_input"}
+                placeholder={"Type message"}
+                onKeyDown={getKeyHandler}
+                onChange={(e) => {
+                  getInputMessageHandler(e);
+                }}
+              />
+              <button className={"send_msg_btn"} onClick={onClickHandler}>
+                <SendIcon style={{ color: "#fff" }} />
+              </button>
+            </Box>
+          </Stack>
         </Stack>
-      </Box>
-      <Box className={"chat_bott"}>
-        <input
-          ref={textInput}
-          type={"text"}
-          name={"message"}
-          className={"msg_input"}
-          placeholder={"Xabar jo'natish"}
-          onChange={getInputMessageHandler}
-          onKeyDown={getKeyHandler}
-        />
-        <button className={"send_msg_btn"} onClick={onClickHandler}>
-          <SendIcon style={{ color: "#fff" }} />
-        </button>
-      </Box>
+      </Stack>
     </Stack>
   );
-}
-function setOnlineUsers(total: any) {
-  throw new Error("Function not implemented.");
 }

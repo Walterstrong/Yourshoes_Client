@@ -65,9 +65,12 @@ export function MemberPosts(props: any) {
   return (
     <Box className={"post_content"}>
       {chosenMemberBoArticles.map((article: BoArticle) => {
-        const image_path = article.art_image
+        const art_image_url = article?.art_image
           ? `${serverApi}/${article.art_image}`
           : "/community/default_article.svg";
+        const mb_image_url = article?.member_data?.mb_image
+          ? `${serverApi}/${article?.member_data?.mb_image}`
+          : "/auth/default_user.svg";
         return (
           <Stack
             className={"all_article_box"}
@@ -77,23 +80,32 @@ export function MemberPosts(props: any) {
             <Box
               className={"all_article_img"}
               sx={{
-                backgroundImage: `url(${image_path})`,
+                backgroundImage: `url(${art_image_url})`,
               }}
             ></Box>
             <Box className={"all_article_container"}>
-              <Box alignItems={"center"} display={"flex"}>
+              <Box
+                alignItems={"flex-start"}
+                justifyContent={"flex-start"}
+                flexDirection={"row"}
+                display={"flex"}
+              >
                 <img
-                  src={
-                    article?.member_data?.mb_image
-                      ? `${serverApi}/${article.member_data.mb_image}`
-                      : "/auth/default_user.svg"
-                  }
+                  src={mb_image_url}
                   width={"35px"}
-                  height={"35px"}
-                  style={{ borderRadius: "50%", backgroundSize: "cover" }}
+                  style={{ borderRadius: "15px", backgroundSize: "cover" }}
                 />
-                <span className={"all_article_author_user"}>
-                  {article?.member_data?.mb_nick}
+                <span
+                  className={"all_article_author_user"}
+                  style={{ marginLeft: "20px", backgroundSize: "cover" }}
+                >
+                  {article?.member_data.mb_nick}
+                </span>
+                <span
+                  className={"all_article_title"}
+                  style={{ marginLeft: "80px", backgroundSize: "cover" }}
+                >
+                  {article?.bo_id}
                 </span>
               </Box>
               <Box
@@ -101,49 +113,43 @@ export function MemberPosts(props: any) {
                 flexDirection={"column"}
                 sx={{ mt: "15px" }}
               >
-                <span className={"all_article_title"}>{article?.bo_id}</span>
-                <p className={"all_article_desc"}>{article?.art_subject}</p>
+                <p className={"all_article_desc"}>"{article?.art_subject}"</p>
               </Box>
               <Box>
                 <Box
                   className={"article_share"}
                   style={{ width: "100%", height: "auto" }}
-                  sx={{ mb: "10px" }}
+                  // sx={{ ml: "15px" }}
                 >
                   <Box
                     className={"article_share_main"}
                     style={{
-                      color: "#fff",
-                      marginLeft: "150px",
+                      color: "black",
+                      marginLeft: "-20px",
                       display: "flex",
                       alignItems: "center",
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation();
+                      justifyContent: "flex-start",
                     }}
                   >
-                    <span>
-                      {moment(article?.createdAt).format("YY-MM-DD HH:mm")}
-                    </span>
+                    <span>{moment(article.createdAt).format("YY-MM-DD ")}</span>
                     <Checkbox
-                      sx={{ ml: "30px" }}
+                      style={{ color: "#85139e" }}
                       icon={<FavoriteBorder />}
-                      id={article?._id}
                       checkedIcon={<Favorite style={{ color: "red" }} />}
+                      id={article._id}
+                      onClick={targetLikeHandler}
+                      /*@ts-ignore*/
                       checked={
                         article?.me_liked && article?.me_liked[0]?.my_favorite
                           ? true
                           : false
                       }
-                      onClick={targetLikeHandler}
                     />
-
-                    <span style={{ marginRight: "18px" }}>
+                    <span style={{ marginRight: "18px", color: "#85139e" }}>
                       {article?.art_likes}
                     </span>
-
                     <Checkbox
-                      icon={<RemoveRedEyeIcon style={{ color: "white" }} />}
+                      icon={<RemoveRedEyeIcon style={{ color: "#85139e" }} />}
                       checkedIcon={
                         <RemoveRedEyeIcon style={{ color: "red" }} />
                       }
@@ -153,11 +159,12 @@ export function MemberPosts(props: any) {
                           : false
                       }
                     />
-                    <span>{article?.art_views}</span>
-
+                    <span style={{ marginLeft: "5px", color: "#85139e" }}>
+                      {article?.art_views}
+                    </span>
                     {props.actions_enabled && (
                       <DeleteIcon
-                        style={{ color: "white", marginLeft: "18px" }}
+                        style={{ color: "#85139e", marginLeft: "18px" }}
                         onClick={() => ArticleDelteHAndler(article?._id)}
                       />
                     )}

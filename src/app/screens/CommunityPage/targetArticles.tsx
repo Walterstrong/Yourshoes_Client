@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Box, Link, Stack } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -10,11 +10,13 @@ import { serverApi } from "app/lib/config";
 import MemberApiService from "app/apiServices/memberApiService";
 import assert from "assert";
 import { Definer } from "app/lib/Definer";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
 } from "app/lib/sweetAlert";
 import { verifiedMemberData } from "app/apiServices/verify";
+import CommunityApiService from "app/apiServices/communityApiService";
 
 export function TargetArticles(props: any) {
   const refs: any = useRef([]);
@@ -37,12 +39,33 @@ export function TargetArticles(props: any) {
     }
   };
 
+  const ArticleDelteHAndler = async (art_id: string) => {
+    const { setArticlesRebuild } = props;
+    try {
+      assert.ok(verifiedMemberData, Definer.auth_err1);
+      let confirmation = window.confirm("Are you sure to delete your article?");
+      if (confirmation) {
+        const communityService = new CommunityApiService();
+        const like_result = await communityService.ArticleDelte(art_id);
+        assert.ok(like_result, Definer.auth_err1);
+        await sweetTopSmallSuccessAlert("success", 700, false);
+        setArticlesRebuild(new Date());
+      }
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  };
+
   return (
-    <Stack>
+    <Stack className="community_wrap">
       {props.targetBoArticles?.map((article: BoArticle) => {
         const art_image_url = article?.art_image
           ? `${serverApi}/${article.art_image}`
           : "/community/default_article.svg";
+        const mb_image_url = article?.member_data?.mb_image
+          ? `${serverApi}/${article?.member_data?.mb_image}`
+          : "/auth/default_user.svg";
         return (
           <Link
             className={"all_article_box"}
@@ -54,14 +77,28 @@ export function TargetArticles(props: any) {
               sx={{ backgroundImage: `url(${art_image_url})` }}
             ></Box>
             <Box className={"all_article_container"}>
-              <Box alignItems={"center"} display={"flex"}>
+              <Box
+                alignItems={"flex-start"}
+                justifyContent={"flex-start"}
+                flexDirection={"row"}
+                display={"flex"}
+              >
                 <img
-                  src={"/auth/default_user.svg"}
+                  src={mb_image_url}
                   width={"35px"}
                   style={{ borderRadius: "50%", backgroundSize: "cover" }}
                 />
-                <span className={"all_article_author_user"}>
+                <span
+                  className={"all_article_author_user"}
+                  style={{ marginLeft: "20px", backgroundSize: "cover" }}
+                >
                   {article?.member_data.mb_nick}
+                </span>
+                <span
+                  className={"all_article_title"}
+                  style={{ marginLeft: "80px", backgroundSize: "cover" }}
+                >
+                  {article?.bo_id}
                 </span>
               </Box>
               <Box
@@ -69,29 +106,29 @@ export function TargetArticles(props: any) {
                 flexDirection={"column"}
                 sx={{ mt: "15px" }}
               >
-                <span className={"all_article_title"}>{article?.bo_id}</span>
-                <p className={"all_article_desc"}>{article?.art_subject}</p>
+                <p className={"all_article_desc"}>"{article?.art_subject}"</p>
               </Box>
               <Box>
                 <Box
                   className={"article_share"}
                   style={{ width: "100%", height: "auto" }}
-                  sx={{ mb: "10px" }}
+                  sx={{ ml: "25px" }}
                 >
                   <Box
                     className={"article_share_main"}
                     style={{
-                      color: "#fff",
-                      marginLeft: "150px",
+                      color: "black",
+                      // marginLeft: "150px",
                       display: "flex",
                       alignItems: "center",
+                      justifyContent: "flex-start",
                     }}
                   >
                     <span>
                       {moment(article.createdAt).format("YY-MM-DD HH:mm")}
                     </span>
                     <Checkbox
-                      sx={{ ml: "40px" }}
+                      style={{ color: "#85139e", marginLeft: "40px" }}
                       icon={<FavoriteBorder />}
                       checkedIcon={<Favorite style={{ color: "red" }} />}
                       id={article._id}
@@ -107,7 +144,7 @@ export function TargetArticles(props: any) {
                       {article?.art_likes}
                     </span>
                     <Checkbox
-                      icon={<RemoveRedEyeIcon style={{ color: "white" }} />}
+                      icon={<RemoveRedEyeIcon style={{ color: "#85139e" }} />}
                       checkedIcon={
                         <RemoveRedEyeIcon style={{ color: "red" }} />
                       }
@@ -117,9 +154,19 @@ export function TargetArticles(props: any) {
                           : false
                       }
                     />
-                    <span style={{ marginLeft: "18px" }}>
+                    <span style={{ marginLeft: "18px", color: "#85139e" }}>
                       {article?.art_views}
                     </span>
+                    {(verifiedMemberData?._id === article.member_data._id ||
+                      verifiedMemberData?.mb_type === "ADMIN") && (
+                      <DeleteIcon
+                        style={{ color: "#85139e", marginLeft: "18px" }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          ArticleDelteHAndler(article?._id);
+                        }}
+                      />
+                    )}
                   </Box>
                 </Box>
               </Box>

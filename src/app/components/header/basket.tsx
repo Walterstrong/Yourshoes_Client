@@ -13,6 +13,7 @@ import { Definer } from "../../lib/Definer";
 import OrderApiService from "../../apiServices/orderApiService";
 import { useHistory } from "react-router-dom";
 import { verifiedMemberData } from "app/apiServices/verify";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function Basket(props: any) {
   /** INITIALIZATIONS **/
@@ -23,6 +24,10 @@ export default function Basket(props: any) {
   const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = props;
   const itemsPrice = cartItems.reduce(
     (a: any, c: CartItem) => a + c.price * c.quantity,
+    0
+  );
+  const itemsPrice1 = cartItems.reduce(
+    (a: any, c: CartItem) => c.price * c.quantity,
     0
   );
   const shippingPrice = itemsPrice > 100 ? 0 : 2;
@@ -112,7 +117,7 @@ export default function Basket(props: any) {
       >
         <Stack className={"basket_frame"}>
           <Box className={"all_check_box"}>
-            {false ? <div>Cart is empty!</div> : <div>My Cart Products:</div>}
+            {false ? <div>Cart is empty!</div> : <div>Shopping List:</div>}
           </Box>
 
           <Box className={"orders_main_wrapper"}>
@@ -122,28 +127,39 @@ export default function Basket(props: any) {
                 return (
                   <Box className={"basket_info_box"}>
                     <div className={"cancel_btn"}>
-                      <CancelIcon
+                      <DeleteIcon
                         color={"primary"}
                         onClick={() => onDelete(item)}
                       />
                     </div>
                     <img src={image_path} className={"product_img"} />
                     <span className={"product_name"}>{item.name}</span>
-                    <p className={"product_price"}>
-                      ${item.price} x {item.quantity}
-                    </p>
-                    <Box sx={{ minWidth: 120 }}>
-                      <div className="col-2">
-                        <button
-                          onClick={() => onRemove(item)}
-                          className="remove"
+
+                    <Box
+                      flexDirection={"column"}
+                      sx={{ minWidth: 120, marginLeft: "20px" }}
+                    >
+                      <Box className={"product_price"}>
+                        <p>
+                          {" "}
+                          ${item.price} x {item.quantity}
+                        </p>
+                        <Box
+                          className="price_button"
+                          sx={{ marginLeft: "10px" }}
                         >
-                          -
-                        </button>{" "}
-                        <button onClick={() => onAdd(item)} className="add">
-                          +
-                        </button>
-                      </div>
+                          <button onClick={() => onAdd(item)} className="add">
+                            +
+                          </button>
+                          <button
+                            onClick={() => onRemove(item)}
+                            className="remove"
+                          >
+                            -
+                          </button>
+                        </Box>
+                      </Box>
+                      <div className="col-2"></div>
                     </Box>
                   </Box>
                 );
@@ -153,14 +169,14 @@ export default function Basket(props: any) {
           {cartItems.length > 0 ? (
             <Box className={"to_order_box"}>
               <span className={"price_text"}>
-                Jami: ${totalPrice} ({itemsPrice} + {shippingPrice})
+                Total: ${totalPrice} ({itemsPrice} + {shippingPrice})
               </span>
               <Button
                 onClick={processOrderHandler}
                 startIcon={<ShoppingCartIcon />}
                 variant={"contained"}
               >
-                Buyurtma qilish
+                Making order
               </Button>
             </Box>
           ) : (

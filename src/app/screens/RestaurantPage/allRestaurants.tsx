@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Box, Button, Container, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Pagination from "@mui/material/Pagination";
@@ -12,9 +12,6 @@ import AspectRatio from "@mui/joy/AspectRatio";
 import IconButton from "@mui/joy/IconButton";
 import Favorite from "@mui/icons-material/Favorite";
 import Typography from "@mui/joy/Typography";
-import Link from "@mui/joy/Link";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import CallIcon from "@mui/icons-material/Call";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Definer } from "../../lib/Definer";
@@ -120,10 +117,34 @@ export function AllRestaurants() {
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Box className={"fil_search_box"}>
             <Box className={"fil_box"} style={{ cursor: "pointer" }}>
-              <a onClick={() => searchHandler("mb_point")}>Best</a>
-              <a onClick={() => searchHandler("mb_views")}>Common</a>
-              <a onClick={() => searchHandler("mb_likes")}>Trend</a>
-              <a onClick={() => searchHandler("createdAt")}>New</a>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => searchHandler("mb_point")}
+              >
+                Best
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => searchHandler("mb_views")}
+              >
+                Common
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => searchHandler("mb_likes")}
+              >
+                Trend
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => searchHandler("createdAt")}
+              >
+                New
+              </Button>
             </Box>
             <Box className={"search_big_box"}>
               <form className={"search_form"} action={""} method={""}>
@@ -152,9 +173,9 @@ export function AllRestaurants() {
                     onClick={() => chosenRestaurantHandler(ele._id)}
                     variant="outlined"
                     sx={{
-                      minHeight: 380,
-                      minWidth: 300,
-                      mx: "17px",
+                      minHeight: 320,
+                      minWidth: 250,
+                      mx: "25px",
                       my: "20px",
                       cursor: "pointer",
                     }}
@@ -192,7 +213,10 @@ export function AllRestaurants() {
                         />
                       </IconButton>
                     </CardOverflow>
-                    <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
+                    <Typography
+                      level="h2"
+                      sx={{ fontSize: "md", mt: 2, color: "white" }}
+                    >
                       {ele.mb_nick}
                     </Typography>
 
@@ -248,7 +272,7 @@ export function AllRestaurants() {
             </CssVarsProvider>
           </Stack>
 
-          <Stack className={"bottom_box"}>
+          <Stack style={{ color: "white" }} className={"bottom_box"}>
             <img className={"line_img_right"} src={"/home/papay.png"} />
             <Pagination
               count={
@@ -262,6 +286,7 @@ export function AllRestaurants() {
                     next: ArrowForwardIcon,
                   }}
                   {...item}
+                  style={{ color: "white" }}
                   color={"secondary"}
                 />
               )}

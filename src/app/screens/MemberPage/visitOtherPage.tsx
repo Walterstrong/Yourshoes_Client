@@ -196,6 +196,138 @@ export function VisitOtherPage(props: any) {
       <Container maxWidth="lg" sx={{ mt: "50px", mb: "50px" }}>
         <Stack className={"my_page_frame"}>
           <TabContext value={value}>
+            <Stack className={"my_page_right"}>
+              <Box className={"order_info_box"}>
+                <Box
+                  display={"flex"}
+                  flexDirection={"column"}
+                  alignItems={"center"}
+                >
+                  <div className={"order_user_img"}>
+                    <img
+                      src={"/auth/default_user.svg"}
+                      className={"order_user_avatar"}
+                    />
+                    {/* <div className={"order_user_icon_box"}>
+                      <img src={"/icons/user_icon.svg"} />
+                    </div> */}
+                  </div>
+                  <span className={"order_user_name"}>
+                    {chosenMember?.mb_nick}
+                  </span>
+                  {/* <span className={"order_user_prof"}>
+                    {" "}
+                    {chosenMember?.mb_type}
+                  </span> */}
+                </Box>
+                <Box className={"user_media_box"}>
+                  <FacebookIcon />
+                  <InstagramIcon />
+                  <TelegramIcon />
+                  <YouTubeIcon />
+                </Box>
+                <Box
+                  display={"flex"}
+                  justifyContent={"flex-end"}
+                  // sx={{ mt: "10px" }}
+                ></Box>
+              </Box>
+
+              <Box className={"my_page_menu"}>
+                <TabList
+                  onChange={handleChange}
+                  orientation="vertical"
+                  variant="scrollable"
+                  value={value}
+                  aria-label="Vertical tabs example"
+                  sx={{ borderRight: 1, borderColor: "divider", width: "98%" }}
+                >
+                  {" "}
+                  <TabList
+                    onChange={handleChange}
+                    // aria-label="lab API tabs example"
+                  >
+                    {chosenMember?.me_followed &&
+                    chosenMember?.me_followed[0]?.my_following ? (
+                      <Tab
+                        style={{ flexDirection: "column" }}
+                        value={"4"}
+                        component={(e) => (
+                          <Button
+                            className="menu_box"
+                            value={chosenMember?._id}
+                            variant={"contained"}
+                            style={{ backgroundColor: "#f70909b8" }}
+                            onClick={unsubscribeHandler}
+                          >
+                            BEKOR QILISH
+                          </Button>
+                        )}
+                      />
+                    ) : (
+                      <Tab
+                        style={{ flexDirection: "column" }}
+                        value={"4"}
+                        component={(e) => (
+                          <Button
+                            className="menu_box"
+                            value={chosenMember?._id}
+                            variant={"contained"}
+                            style={{ backgroundColor: "#30945e" }}
+                            onClick={subscribeHandler}
+                            // @ts-ignore
+                          >
+                            FOLLOW QILISH
+                          </Button>
+                        )}
+                      />
+                    )}
+                  </TabList>
+                  <Tab
+                    style={{ flexDirection: "column" }}
+                    value={"1"}
+                    component={(e) => (
+                      <div
+                        className={`menu_box ${e} `}
+                        onClick={() => setValue("1")}
+                      >
+                        <img src={"/icons/post.svg"} />
+                        <span>Articles</span>
+                      </div>
+                    )}
+                  />
+                  <Tab
+                    style={{ flexDirection: "column" }}
+                    value={"2"}
+                    component={() => (
+                      <div
+                        className={`menu_box ${value} `}
+                        onClick={() => setValue("2")}
+                      >
+                        <img src={"/icons/followers.svg"} />
+                        <span>
+                          {" "}
+                          Followers: {chosenMember?.mb_subscriber_cnt}
+                        </span>
+                      </div>
+                    )}
+                  />
+                  <Tab
+                    style={{ flexDirection: "column" }}
+                    value={"3"}
+                    component={() => (
+                      <div
+                        className={`menu_box ${value} `}
+                        onClick={() => setValue("3")}
+                      >
+                        <img src={"/icons/following.svg"} />
+                        <span> Followings: {chosenMember?.mb_follow_cnt}</span>
+                      </div>
+                    )}
+                  />
+                </TabList>
+              </Box>
+            </Stack>
             <Stack className={"my_page_left"}>
               <Box display={"flex"} flexDirection={"column"}>
                 <TabPanel value={"1"}>
@@ -228,6 +360,7 @@ export function VisitOtherPage(props: any) {
                                 next: ArrowForwardIcon,
                               }}
                               {...item}
+                              style={{ color: "white" }}
                               color={"secondary"}
                             />
                           )}
@@ -268,153 +401,9 @@ export function VisitOtherPage(props: any) {
                 </TabPanel>
               </Box>
             </Stack>
-            <Stack className={"my_page_right"}>
-              <Box className={"order_info_box"}>
-                <Box
-                  display={"flex"}
-                  flexDirection={"column"}
-                  alignItems={"center"}
-                >
-                  <div className={"order_user_img"}>
-                    <img
-                      src={"/auth/default_user.svg"}
-                      className={"order_user_avatar"}
-                    />
-                    <div className={"order_user_icon_box"}>
-                      <img src={"/icons/user_icon.svg"} />
-                    </div>
-                  </div>
-                  <span className={"order_user_name"}>
-                    {" "}
-                    {chosenMember?.mb_nick}
-                  </span>
-                  <span className={"order_user_prof"}>
-                    {" "}
-                    {chosenMember?.mb_type}
-                  </span>
-                </Box>
-                <Box className={"user_media_box"}>
-                  <FacebookIcon />
-                  <InstagramIcon />
-                  <TelegramIcon />
-                  <YouTubeIcon />
-                </Box>
-                <Box className={"user_media_box"}>
-                  <p className={"follows"}>
-                    Followers: {chosenMember?.mb_subscriber_cnt}
-                  </p>
-                  <p className={"follows"}>
-                    Followings: {chosenMember?.mb_follow_cnt}
-                  </p>
-                </Box>
-                <p className={"user_desc"}>
-                  {chosenMember?.mb_description ??
-                    "qushimcha malumot kiritilmagan"}
-                </p>
-
-                <Box
-                  display={"flex"}
-                  justifyContent={"flex-end"}
-                  sx={{ mt: "10px" }}
-                >
-                  <TabList
-                    onChange={handleChange}
-                    aria-label="lab API tabs example"
-                  >
-                    {chosenMember?.me_followed &&
-                    chosenMember?.me_followed[0]?.my_following ? (
-                      <Tab
-                        style={{ flexDirection: "column" }}
-                        value={"4"}
-                        component={(e) => (
-                          <Button
-                            value={chosenMember?._id}
-                            variant={"contained"}
-                            style={{ backgroundColor: "#f70909b8" }}
-                            onClick={unsubscribeHandler}
-                          >
-                            BEKOR QILISH
-                          </Button>
-                        )}
-                      />
-                    ) : (
-                      <Tab
-                        style={{ flexDirection: "column" }}
-                        value={"4"}
-                        component={(e) => (
-                          <Button
-                            value={chosenMember?._id}
-                            variant={"contained"}
-                            style={{ backgroundColor: "#30945e" }}
-                            onClick={subscribeHandler}
-                            // @ts-ignore
-                          >
-                            FOLLOW QILISH
-                          </Button>
-                        )}
-                      />
-                    )}
-                  </TabList>
-                </Box>
-              </Box>
-
-              <Box className={"my_page_menu"}>
-                <TabList
-                  onChange={handleChange}
-                  orientation="vertical"
-                  variant="scrollable"
-                  value={value}
-                  aria-label="Vertical tabs example"
-                  sx={{ borderRight: 1, borderColor: "divider", width: "98%" }}
-                >
-                  <Tab
-                    style={{ flexDirection: "column" }}
-                    value={"1"}
-                    component={(e) => (
-                      <div
-                        className={`menu_box ${e} `}
-                        onClick={() => setValue("1")}
-                      >
-                        <img src={"/icons/post.svg"} />
-                        <span>Maqolalari</span>
-                      </div>
-                    )}
-                  />
-                  <Tab
-                    style={{ flexDirection: "column" }}
-                    value={"2"}
-                    component={() => (
-                      <div
-                        className={`menu_box ${value} `}
-                        onClick={() => setValue("2")}
-                      >
-                        <img src={"/icons/followers.svg"} />
-                        <span>Followers</span>
-                      </div>
-                    )}
-                  />
-                  <Tab
-                    style={{ flexDirection: "column" }}
-                    value={"3"}
-                    component={() => (
-                      <div
-                        className={`menu_box ${value} `}
-                        onClick={() => setValue("3")}
-                      >
-                        <img src={"/icons/following.svg"} />
-                        <span>Following</span>
-                      </div>
-                    )}
-                  />
-                </TabList>
-              </Box>
-            </Stack>
           </TabContext>
         </Stack>
       </Container>
     </div>
   );
-}
-function memberArticlesSearchObj(memberArticlesSearchObj: any) {
-  throw new Error("Function not implemented.");
 }

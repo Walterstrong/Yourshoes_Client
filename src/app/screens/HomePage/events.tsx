@@ -3,41 +3,68 @@ import { Box, Container, Stack } from "@mui/material";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
+import { useHistory } from "react-router-dom";
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 export function Events() {
+  const history = useHistory();
+  const chosenProductHandler = () => {
+    history.push(`/restaurant/6424af8267fd16fc1a8c416b`);
+  };
+
   const events_list = [
     {
-      title: "Boyin Foodga marhamat",
-      desc: "Yangicha Uslubda Yangicha Tam va Yangicha his",
-      author: "Abdurahmon Mufid",
-      date: "2022/09/01",
-      location: "Toshkent, Nurafshon ko'cha",
-      img: "/restaurant/boyinfood.jpg",
+      title:
+        "Nike shoes are built to last, designed to perform, and crafted with innovation in mind.",
+      img: "/best_shoes/example1.jpeg",
     },
     {
-      title: "Katta Chegirma endi Belissimoda",
-      desc: "Faqat 25 ~ 31- iyul kunlari antiqa Pitsa yegani tashrif buyuring!",
-      author: "BelissimodUz",
-      date: "2022/07/25",
-      location: "Toshkent, Chilonzod",
-      img: "/restaurant/belissimo.jpg",
+      title:
+        "With Nike shoes, you're getting more than just a shoe – you're getting a commitment to quality and excellence.",
+      img: "/best_shoes/example2.jpeg",
     },
     {
-      title: "Hali his qilmagan hisni his qilmoqchimisiz?",
-      desc: "Merhaba promokodi orqali 50% skidgani qo'lga kiriting",
-      author: "Chicken House",
-      date: "2022/09/10",
-      location: "Toshkent, Qo'yliq",
-      img: "/restaurant/merhaba.jpg",
+      title:
+        "When it comes to athletic footwear, Nike is synonymous with quality.",
+      img: "/best_shoes/example3.jpeg",
     },
     {
-      title: "Yangicha Yondashuv Endi O'zbekistonda!!",
-      desc: "🥬 O’zbekistondagi eng yirik ulgurji bozor.\n",
-      author: "Food City",
-      date: "2022/08/01",
-      location: "Toshkent, Yangi Qo'yliq bozori",
-      img: "/restaurant/food_city.jpg",
+      title:
+        "Nike shoes are designed to withstand the toughest workouts and still look great.",
+      img: "/best_shoes/example4.jpeg",
+    },
+    {
+      title:
+        "The quality of Nike shoes is unmatched – they're built to perform and last.",
+      img: "/best_shoes/example5.jpeg",
+    },
+    {
+      title:
+        "From the materials to the craftsmanship, every aspect of Nike shoes is top-notch.",
+      img: "/best_shoes/example6.jpeg",
+    },
+    {
+      title: "When you wear Nike shoes, you know you're wearing the best.",
+      img: "/best_shoes/example7.jpeg",
+    },
+    {
+      title:
+        "The durability and performance of Nike shoes make them a smart investment for any athlete.",
+      img: "/best_shoes/example8.jpeg",
+    },
+    {
+      title: "When it comes to quality, Nike shoes are second to none.",
+      img: "/best_shoes/example9.jpeg",
+    },
+    {
+      title:
+        "Whether you're a professional athlete or just someone who appreciates quality footwear, Nike has you covered.",
+      img: "/best_shoes/example10.jpeg",
+    },
+    {
+      title:
+        "With Nike shoes, you can trust that you're getting the best of the best – quality, performance, and style all in one.",
+      img: "/best_shoes/example11.jpeg",
     },
   ];
 
@@ -46,7 +73,7 @@ export function Events() {
       <Container sx={{ overflow: "hidden" }}>
         <Stack className={"events_main"}>
           <Box className={"events_text"}>
-            <span className={"category_title"}>Hodisalar</span>
+            <span className={"category_title"}>We recommend this brand</span>
           </Box>
           <Box className={"prev_next_frame"}>
             <img
@@ -81,49 +108,17 @@ export function Events() {
             {events_list.map((value, number) => {
               return (
                 <SwiperSlide className={"events_info_frame"}>
-                  <div className={"events_img"}>
+                  <Box
+                    className={"events_img"}
+                    onClick={() => chosenProductHandler()}
+                  >
                     <img src={value.img} className={"events_img"} />
-                  </div>
+                  </Box>
                   <Box className={"events_desc"}>
                     <Box className={"events_bott"}>
                       <Box className={"bott_left"}>
                         <div className={"event_title_speaker"}>
                           <strong>{value.title}</strong>
-                          <div className={"event_organizator"}>
-                            <img
-                              src={"/icons/speaker.svg"}
-                              style={{ width: "20px", marginRight: "10px" }}
-                            />
-                            <p className={"spec_text_author"}>{value.author}</p>
-                          </div>
-                        </div>
-
-                        <p
-                          className={"text_desc"}
-                          style={{ marginTop: "10px" }}
-                        >
-                          {" "}
-                          {value.desc}{" "}
-                        </p>
-
-                        <div
-                          className={"bott_info"}
-                          style={{ marginTop: "10px" }}
-                        >
-                          <div className={"bott_info_main"}>
-                            <img
-                              src={"/icons/calendar.svg"}
-                              style={{ marginRight: "10px" }}
-                            />
-                            {value.date}
-                          </div>
-                          <div className={"bott_info_main"}>
-                            <img
-                              src={"/icons/location.svg"}
-                              style={{ marginRight: "10px" }}
-                            />
-                            {value.location}
-                          </div>
                         </div>
                       </Box>
                     </Box>

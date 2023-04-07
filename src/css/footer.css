@@ -3,188 +3,61 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 509px;
-  background: #2c261e;
+  height: auto;
+  background: #23024d;
 }
 
 .footer_config .main_footer_container {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 91px;
+  margin-top: 40px;
   margin-left: 131px;
   width: 1144px;
-  height: 377px;
+  height: auto;
+}
+.info_box {
+  height: auto;
+  width: 500px;
+  margin-left: -50px;
 }
 
-.main_footer_container .main_text {
+.info h4 {
+  font-size: 22px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  margin-left: 35px;
+  font-weight: 500;
   position: relative;
-  width: 340px;
-  height: 97.22px;
-  margin-top: 19px;
+  margin-bottom: 30px;
+}
 
-  font-family: "Poppins";
-  font-style: normal;
+.info h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.info ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.info ul li a {
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 34px;
-  /* or 212% */
-
-  color: #e3c08d;
+  color: #bbbbbb;
+  margin-bottom: 30px;
+  display: block;
+  transition: all 0.3s ease;
 }
-
-.main_footer_container .contact_links {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  width: 125.28px;
-  height: 15.14px;
-  margin-top: 11.3px;
-}
-
-.main_footer_container .parts {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 118px;
-  height: 188px;
-  margin-left: 283px;
-}
-
-.parts .part_subject {
-  position: relative;
-  width: 109.98px;
-  height: 32.41px;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 34px;
-  /* or 142% */
-  color: #c5c8c9;
-}
-
-.parts .divider {
-  position: relative;
-  width: 45.4px;
-  height: 1.91px;
-  margin-top: 11.44px;
-  background: #e3c08d;
-}
-
-.parts .targets {
-  position: relative;
-  width: 118.05px;
-  height: 129.63px;
-  margin-top: 19.6px;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 34px;
-  /* or 212% */
-
-  color: #e3c08d;
-}
-
-.footer_config .liner {
-  position: relative;
-  width: 1064px;
-  height: 0px;
-  margin-top: 86px;
-  opacity: 0.2;
-  border: 1px solid #c5c8c9;
-}
-
-.footer_config .copyrights {
-  position: relative;
-  width: 344px;
-  height: 32px;
-  margin-top: 15px;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 34px;
-  /* or 212% */
-
-  color: #e3c08d;
-}
-
-.footer_config .info {
-  position: relative;
-  width: 340px;
-  height: 206px;
-}
-
-.main_footer_container .find_us {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 297px;
-  height: 210.99px;
-  margin-left: 96.39px;
-}
-
-.find_us .find {
-  position: relative;
-  width: 116.87px;
-  height: 32.91px;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 34px;
-  /* or 142% */
-  color: #c5c8c9;
-}
-
-.find_us .divider {
-  position: relative;
-  width: 45.4px;
-  height: 1.91px;
-  margin-top: 6.81px;
-  background: #e3c08d;
-}
-
-.find_us .details {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  width: 295px;
-  height: 33px;
-}
-
-.details .detail_first {
-  position: relative;
-  width: 15.01px;
-  height: 32.91px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 34px;
-  /* or 189% */
-  color: #c5c8c9;
-}
-
-.details .detail_second {
-  position: relative;
-  width: 269.12px;
-  height: 32.91px;
-  margin-left: 11.79px;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 34px;
-  /* or 212% */
-
-  color: #e3c08d;
+.info ul li a:hover {
+  color: #ffffff;
+  padding-left: 8px;
 }

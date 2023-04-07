@@ -2,7 +2,7 @@
   width: 100%;
   height: auto;
   display: flex;
-  background: #0b0e11;
+  background: #251942f5;
 }
 
 .my_page .css-heg063-MuiTabs-flexContainer {
@@ -35,10 +35,11 @@
 .my_page_left .menu_name {
   width: 100%;
   height: 70px;
-
+  margin-top: -18px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #ffffff;
+  border: 2px solid #ffffff;
 
   font-family: "Poppins";
   font-style: normal;
@@ -49,10 +50,10 @@
 
 .my_page_left .menu_content {
   margin-top: 10px;
-  width: 100%;
-  height: auto;
+  /* width: 100%; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .my_page_left .write_content {
@@ -66,51 +67,54 @@
 .my_page .menu_content .post_content {
   margin-top: 10px;
   width: 100%;
-  height: auto;
-
+  height: 1100px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .my_page .all_article_box {
-  margin-top: 20px;
-  width: 100%;
-  height: 170px;
-
+  width: 45%;
+  height: 500px;
+  margin-top: 15px;
+  margin-left: 15px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  background: #182226;
+  margin-right: 25px;
+  background: #d2dce0;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
 }
 
 .my_page .all_article_box .all_article_img {
-  width: 150px;
-  height: 150px;
-
-  border-radius: 30px 0px 0px 30px;
-  /*background: url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3160&q=80");*/
+  width: 100%;
+  height: 400px;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  position: relative;
+  border-radius: 30px 30px 0px 0px;
   background-size: cover;
 }
 
 .my_page .all_article_box .all_article_container {
-  margin-left: 15px;
-  width: 75%;
-  height: 90%;
-
+  margin-left: 25px;
+  margin-top: 15px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .my_page .all_article_author_user {
-  margin-left: 10px;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: #ffffff;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  color: black;
 }
 
 .my_page .all_article_title {
@@ -119,7 +123,7 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 33px;
-  color: #e3c08d;
+  color: rgb(114, 126, 7);
 }
 
 .my_page .all_article_desc {
@@ -127,9 +131,12 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  width: 345px;
+  font-size: 18px;
+  height: 18px;
   line-height: 26px;
-  color: #ffffff;
+  color: black;
+  border-radius: 5px;
 }
 
 .my_page .article_share {
@@ -248,7 +255,6 @@
 }
 
 .my_page_frame .my_page_right {
-  margin-left: 30px;
   width: 30%;
   height: auto;
   display: flex;
@@ -259,7 +265,7 @@
   position: relative;
   padding: 20px;
   width: 100%;
-  height: auto;
+  height: 500px;
 
   display: flex;
   flex-direction: column;
@@ -286,13 +292,21 @@
 }
 
 .my_page .order_info_box .order_user_img .order_user_avatar {
-  width: 117px;
-  height: 112px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 37px;
+  width: 350px;
+  background-size: cover;
+  height: 400px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+  border-radius: 10px;
 }
 
-.my_page .order_info_box .order_user_icon_box {
+/* .my_page .order_info_box .order_user_icon_box {
   position: absolute;
   padding: 5px;
   width: 37px;
@@ -302,7 +316,7 @@
   display: flex;
   background: rgb(209 209 209 / 33%);
   border-radius: 37px;
-}
+} */
 
 .my_page .order_user_icon_box .order_user_prof_img {
   /*filter: brightness(0) invert(1);*/
@@ -328,7 +342,7 @@
 }
 
 .my_page .order_info_box .user_media_box {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   width: 60%;
 
   display: flex;
@@ -392,6 +406,7 @@
   padding: 0px 20px;
   width: 98%;
   height: 50px;
+
   display: flex;
   flex-direction: row;
   align-items: center;

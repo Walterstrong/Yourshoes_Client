@@ -108,11 +108,11 @@ export const TuiEditor = (props: any) => {
               onChange={changeCategoryHandler}
             >
               <MenuItem value="">
-                <span>Categoriyani tanlang</span>
+                <span>Choose Category</span>
               </MenuItem>
-              <MenuItem value={"celebrity"}>Mashhurlar</MenuItem>
-              <MenuItem value={"evaluation"}>Restaurant baho</MenuItem>
-              <MenuItem value={"story"}>Mening Hikoyam</MenuItem>
+              <MenuItem value={"useful"}>Useful</MenuItem>
+              <MenuItem value={"evaluation"}>Review Product</MenuItem>
+              <MenuItem value={"story"}>My story</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -121,11 +121,11 @@ export const TuiEditor = (props: any) => {
             style={{ color: "rgb(225 255 233)", margin: "10px" }}
             variant="h3"
           >
-            Mavzu
+            Theme
           </Typography>
           <TextField
             id="filled-basic"
-            label="Mazvu"
+            label="Theme"
             variant="filled"
             style={{ width: "300px", background: "white" }}
             onChange={changeTitleHandler}

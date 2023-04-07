@@ -21,13 +21,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import moment from "moment";
-// import Rating from "@material-ui/lab/Rating";
-// import Typography from "@material-ui/core/Typography";
+
 // REDUX
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useSelector } from "react-redux";
@@ -54,17 +50,12 @@ import {
   retrieveChosenProduct,
   retrieveTargetComments,
 } from "./selector";
-import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
 import { useParams } from "react-router-dom";
 import ProductApiService from "../../apiServices/productApiService";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import MemberApiService from "../../apiServices/memberApiService";
 import CommentApiService from "../../apiServices/commentApiService";
 import { verifiedMemberData } from "app/apiServices/verify";
-import { Comment, Icon } from "semantic-ui-react";
 import { Comments } from "types/follow";
 import { CommentsSearchObj } from "../../../types/others";
 import { styled } from "@mui/material/styles";
@@ -191,13 +182,10 @@ export function ChosenDish(props: any) {
   }, [productRebuild]);
 
   //** for Creating comments *//
-
   const [open, setOpen] = useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -205,10 +193,6 @@ export function ChosenDish(props: any) {
   //** for Creating values *//
   const [rating, setRating] = useState<number | null>(0);
   const [comment, setComment] = useState<string>("");
-
-  const handleChangeRating = (event: any) => {
-    setRating(event.target.value);
-  };
 
   const handleCommentChange = (e: any) => {
     setComment(e.target.value);
@@ -224,7 +208,6 @@ export function ChosenDish(props: any) {
         group_type: "product",
       });
       assert.ok(like_result, Definer.auth_err1);
-
       await sweetTopSmallSuccessAlert("success", 700, false);
       setProductRebuild(new Date());
     } catch (err: any) {
@@ -232,6 +215,7 @@ export function ChosenDish(props: any) {
       sweetErrorHandling(err).then();
     }
   };
+
   const targetLikeComment = async (e: any) => {
     try {
       assert.ok(verifiedMemberData, Definer.auth_err1);
@@ -241,7 +225,6 @@ export function ChosenDish(props: any) {
         group_type: "comment",
       });
       assert.ok(like_result, Definer.auth_err1);
-
       await sweetTopSmallSuccessAlert("success", 700, false);
       setProductRebuild(new Date());
     } catch (err: any) {
@@ -261,7 +244,6 @@ export function ChosenDish(props: any) {
         comment_ref_product_id: chosenProduct?._id,
         comment_ref_restaurant_id: chosenProduct?.restaurant_mb_id,
       };
-
       const commentApiService = new CommentApiService();
       await commentApiService.createComment(comment_data);
       await sweetTopSmallSuccessAlert("success", 700, false);
@@ -275,9 +257,14 @@ export function ChosenDish(props: any) {
     }
   };
 
+  const passwordKeyDownHandler = (e: any) => {
+    if (e.key == "Enter") {
+      handleCommentRequest();
+    }
+  };
+
   const CommentDelteHAndler = async (art_id: string) => {
     try {
-      // stopPropagation();
       assert.ok(verifiedMemberData, Definer.auth_err1);
       let confirmation = window.confirm("Are you sure to delete your article?");
       if (confirmation) {
@@ -377,6 +364,9 @@ export function ChosenDish(props: any) {
                   // }}
                 >
                   All reviews
+                  <span className={"product_review"}>
+                    ({chosenProduct?.product_reviews})
+                  </span>
                   <Button
                     variant="text"
                     onClick={handleClickOpen}
@@ -394,7 +384,9 @@ export function ChosenDish(props: any) {
               </AccordionSummary>
               <AccordionDetails className="accordion_details">
                 {targetComments?.map((comment: Comments) => {
-                  const image_member = `${serverApi}/${comment?.member_data?.mb_image}`;
+                  const image_member = comment?.member_data?.mb_image
+                    ? `${serverApi}/${comment?.member_data?.mb_image}`
+                    : "/auth/default_user.svg";
 
                   return (
                     <Stack className={"chosen_dish_comment"}>
@@ -458,8 +450,9 @@ export function ChosenDish(props: any) {
                                   }
                                 />
                               </div>{" "}
-                              {verifiedMemberData?._id ===
-                                comment.member_data._id && (
+                              {(verifiedMemberData?._id ===
+                                comment.member_data._id ||
+                                verifiedMemberData?.mb_type === "ADMIN") && (
                                 <DeleteIcon
                                   style={{
                                     color: "black",
@@ -485,7 +478,6 @@ export function ChosenDish(props: any) {
               </AccordionDetails>
             </Accordion>
           </Stack>
-          ;
         </Stack>
         <Stack className={"chosen_dish_info_container"}>
           <Box className={"chosen_dish_info_box"}>
@@ -494,7 +486,12 @@ export function ChosenDish(props: any) {
             </strong>
             <span className={"resto_name"}>{chosenRestaurant?.mb_nick}</span>
             <Box className={"rating_box"}>
-              <Rating name="half-rating" defaultValue={3.5} precision={0.5} />
+              <div className={"review_stars"}>
+                <Rating value={chosenProduct?.product_rating} />
+                <span className={"product_reviews"}>
+                  ({chosenProduct?.product_reviews})
+                </span>
+              </div>
               <div className={"evaluation_box"}>
                 <div
                   style={{
@@ -503,21 +500,26 @@ export function ChosenDish(props: any) {
                     marginRight: "20px",
                   }}
                 >
-                  <Checkbox
-                    {...label}
-                    icon={<FavoriteBorder />}
-                    checkedIcon={<Favorite style={{ color: "red" }} />}
-                    id={chosenProduct?._id}
-                    onClick={targetLikeProduct}
-                    checked={
-                      chosenProduct?.me_liked &&
-                      chosenProduct?.me_liked[0]?.my_favorite
-                        ? true
-                        : false
-                    }
-                  />
-
-                  <span>{chosenProduct?.product_likes} ta</span>
+                  <Button
+                    style={{
+                      color: "rgba(238, 228, 228, 0.909)",
+                    }}
+                  >
+                    <Checkbox
+                      {...label}
+                      icon={<FavoriteBorder />}
+                      checkedIcon={<Favorite style={{ color: "red" }} />}
+                      id={chosenProduct?._id}
+                      onClick={targetLikeProduct}
+                      checked={
+                        chosenProduct?.me_liked &&
+                        chosenProduct?.me_liked[0]?.my_favorite
+                          ? true
+                          : false
+                      }
+                    />
+                  </Button>
+                  <span>{chosenProduct?.product_likes} </span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <Checkbox
@@ -535,7 +537,7 @@ export function ChosenDish(props: any) {
                         : false
                     }
                   />
-                  <span>{chosenProduct?.product_views} ta</span>
+                  <span>{chosenProduct?.product_views} </span>
                 </div>
               </div>
             </Box>
@@ -580,8 +582,12 @@ export function ChosenDish(props: any) {
             </div>
             <div className={"button_box"}>
               <Button
+                className={"button_box1"}
                 variant="contained"
-                onClick={() => props.onAdd(chosenProduct)}
+                onClick={() => {
+                  props.onAdd(chosenProduct);
+                  sweetTopSmallSuccessAlert("success", 700, false);
+                }}
               >
                 Add Card
               </Button>
@@ -631,6 +637,7 @@ export function ChosenDish(props: any) {
                     type="text"
                     fullWidth
                     variant="standard"
+                    onKeyPress={passwordKeyDownHandler}
                   />
                 </DialogContent>
                 <DialogActions>

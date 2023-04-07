@@ -72,11 +72,11 @@ export default function PausedOrders(props: any) {
                   const product: Product = order.product_data.filter(
                     (ele) => ele._id === item.product_id
                   )[0];
-                  const image_path = `${serverApi}/${product.product_images[0]}`;
+                  const image_path = `${serverApi}/${product?.product_images[0]}`;
                   return (
                     <Box className={"ordersName_price"}>
                       <img src={image_path} className={"orderDishImg"} />
-                      <p className={"titleDish"}>{product.product_name}</p>
+                      <p className={"titleDish"}>{product?.product_name}</p>
                       <Box className={"priceBox"}>
                         <p>${item.item_price}</p>
                         <img src={"/icons/Close.svg"} />

@@ -1,63 +1,70 @@
 import { Box, Container, Stack } from "@mui/material";
 import React from "react";
-
+import FacebookIcon from "@mui/icons-material/Facebook";
 export function Footer() {
   return (
     <div className="footer_config">
       <Container>
         <Stack className="main_footer_container">
-          <Stack flexDirection={"row"} style={{ height: "242px" }}>
+          <Stack flexDirection={"row"}>
             <Stack className="info" flexDirection={"column"}>
-              <Box>
-                <img src={"/icons/papay_footer.svg"} />
-              </Box>
-              <Box className="main_text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor Sed ut perspiciatis unde omnis iste
-              </Box>
-              <Stack className="contact_links">
-                <Box>
-                  <img src={"/icons/facebook.svg"} />
-                </Box>
-                <Box>
-                  <img src={"/icons/twitter.svg"} />
-                </Box>
-                <Box>
-                  <img src={"/icons/instagram.svg"} />
-                </Box>
-                <Box>
-                  <img src={"/icons/youtube.svg"} />
-                </Box>
-              </Stack>
-            </Stack>
-            <Stack className="parts">
-              <Box className="part_subject">Bo’limlar</Box>
-              <Box className="divider"></Box>
-              <Box className="targets">
-                Bosh Sahifa Oshxonalar Jamiyat Yordam
+              <Box className="info_box">
+                <h4>Our Platform</h4>
+                <ul>
+                  <li>
+                    <a href="#">about us</a>
+                  </li>
+                  <li>
+                    <a href="#">our services</a>
+                  </li>
+                  <li>
+                    <a href="#">privacy policy</a>
+                  </li>
+                  <li>
+                    <a href="#">affiliate program</a>
+                  </li>
+                </ul>
               </Box>
             </Stack>
-            <Stack className="find_us">
-              <Box className="find">Bizni top</Box>
-              <Box className="divider"></Box>
-              <Stack className="details" sx={{ mt: "19px" }}>
-                <Box className="detail_first">L.</Box>
-                <Box className="detail_second">Uzbekistan</Box>
-              </Stack>
-              <Stack className="details" sx={{ mt: "42px" }}>
-                <Box className="detail_first">P.</Box>
-                <Box className="detail_second">+998 - 99 266 25 62</Box>
-              </Stack>
-              <Stack className="details" sx={{ mt: "9px" }}>
-                <Box className="detail_first">E.</Box>
-                <Box className="detail_second">Papays@restaurant.com</Box>
-              </Stack>
+            <Stack className="info">
+              <Box className="info_box">
+                <h4>Getting help</h4>
+                <ul>
+                  <li>
+                    <a href="#">shipping</a>
+                  </li>
+                  <li>
+                    <a href="#">returns</a>
+                  </li>
+                  <li>
+                    <a href="#">order status</a>
+                  </li>
+                  <li>
+                    <a href="#">payment options</a>
+                  </li>
+                </ul>
+              </Box>
+            </Stack>
+            <Stack className="info">
+              <Box className="info_box">
+                <h4>On Social media</h4>
+                <ul>
+                  <li>
+                    <a>Facebook</a>
+                  </li>
+                  <li>
+                    <a>Twitter</a>
+                  </li>
+                  <li>
+                    <a>Instagram</a>
+                  </li>
+                  <li>
+                    <a>Telegram</a>
+                  </li>
+                </ul>
+              </Box>
             </Stack>
           </Stack>
-          <Box className="liner"></Box>
-          <Box className="copyrights">
-            Copyright Papays 2022, All right reserved.
-          </Box>
         </Stack>
       </Container>
     </div>

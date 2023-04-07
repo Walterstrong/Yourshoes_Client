@@ -1,5 +1,5 @@
 import { Favorite, Visibility } from "@mui/icons-material";
-import { Box, Container, Stack, Button } from "@mui/material";
+import { Box, Container, Stack, Button, Rating } from "@mui/material";
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { Definer } from "../../lib/Definer";
@@ -12,7 +12,7 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import { serverApi } from "../../lib/config";
-
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 // REDUX
 import {
   sweetErrorHandling,
@@ -142,7 +142,40 @@ export function BestProducts(props: any) {
                       >
                         <Button
                           className={"like_view_btn"}
-                          style={{ left: "36px" }}
+                          style={{
+                            left: "36px",
+                            backgroundColor: "rgba(238, 228, 228, 0.909)",
+                          }}
+                        >
+                          {" "}
+                          <Badge
+                            badgeContent={product.product_views}
+                            color="primary"
+                          >
+                            <Checkbox
+                              icon={
+                                <RemoveRedEyeIcon
+                                  style={{ color: "#85139e" }}
+                                />
+                              }
+                              checkedIcon={
+                                <RemoveRedEyeIcon style={{ color: "red" }} />
+                              }
+                              checked={
+                                product?.me_viewed &&
+                                product?.me_viewed[0]?.my_view
+                                  ? true
+                                  : false
+                              }
+                            />
+                          </Badge>
+                        </Button>
+                        <Button
+                          className={"like_view_btn"}
+                          style={{
+                            right: "36px",
+                            backgroundColor: "rgba(238, 228, 228, 0.909)",
+                          }}
                           onClick={(e) => {
                             e.stopPropagation();
                           }}
@@ -153,7 +186,7 @@ export function BestProducts(props: any) {
                           >
                             <Checkbox
                               icon={
-                                <FavoriteBorder style={{ color: "blue" }} />
+                                <FavoriteBorder style={{ color: "#85139e" }} />
                               }
                               id={product._id}
                               checkedIcon={
@@ -169,62 +202,32 @@ export function BestProducts(props: any) {
                             />
                           </Badge>
                         </Button>
-                        <Button
-                          className={"view_btn"}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            sweetTopSmallSuccessAlert("success", 700, false);
-                          }}
-                        >
-                          <img
-                            src={"/icons/shopping_cart.svg"}
-                            style={{ display: "flex" }}
-                            onClick={(e) => {
-                              props.onAdd(product);
-                            }}
-                          />
-                        </Button>
-                        <Button
-                          className={"like_view_btn"}
-                          style={{ right: "36px" }}
-                        >
-                          <Badge
-                            badgeContent={product.product_views}
-                            color="primary"
-                          >
-                            <Checkbox
-                              icon={
-                                <RemoveRedEyeIcon style={{ color: "white" }} />
-                              }
-                              checkedIcon={
-                                <RemoveRedEyeIcon style={{ color: "red" }} />
-                              }
-                              checked={
-                                product?.me_viewed &&
-                                product?.me_viewed[0]?.my_view
-                                  ? true
-                                  : false
-                              }
-                            />
-                          </Badge>
-                        </Button>
                       </Box>
                       <Box className={"dish_desc"}>
                         <div className={"review_stars"}>
-                          <StarIcon style={{ color: "#F2BD57" }} />
-                          <StarIcon style={{ color: "#F2BD57" }} />
-                          <StarIcon style={{ color: "white" }} />
-                          <StarIcon style={{ color: "white" }} />
-                          <StarIcon style={{ color: "white" }} />
+                          <Rating value={product?.product_rating} />
+                          <span className={"product_reviews"}>
+                            ({product.product_reviews})
+                          </span>
                         </div>
                         <span className={"dish_title_text"}>
                           {product.product_name}
                         </span>
 
-                        <div className={"dish_desc_text"}>
+                        <Box className={"dish_desc_text"}>
                           <MonetizationOnIcon />
                           {product.product_price}
-                        </div>
+                          <Button
+                            className={"view_btn"}
+                            onClick={(e) => {
+                              props.onAdd(product);
+                              e.stopPropagation();
+                              sweetTopSmallSuccessAlert("success", 700, false);
+                            }}
+                          >
+                            <ShoppingCartIcon />
+                          </Button>
+                        </Box>
                       </Box>
                     </Box>
                   </SwiperSlide>

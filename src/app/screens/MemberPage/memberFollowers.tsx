@@ -147,7 +147,7 @@ export function MemberFollowers(props: any) {
         );
       })}
       <Stack
-        sx={{ my: "40px" }}
+        sx={{ mt: "800px" }}
         direction="row"
         alignItems="center"
         justifyContent="center"

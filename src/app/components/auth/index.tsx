@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ModalImg = styled.img`
-  width: 62%;
-  height: 100%;
+  width: 75%;
+  height: 350px;
   border-radius: 10px;
   background: #000;
   margin-top: 9px;
@@ -125,8 +125,12 @@ export default function AuthenticationModal(props: any) {
             direction={"row"}
             sx={{ width: "800px" }}
           >
-            <ModalImg src={"/auth/password.jpeg"} alt="camera" />
-            <Stack sx={{ marginLeft: "69px", alignItems: "center" }}>
+            <ModalImg
+              src={"/auth/password1.jpg"}
+              alt="camera"
+              style={{ marginLeft: "15px", alignItems: "center" }}
+            />
+            <Stack sx={{ marginLeft: "15px", alignItems: "center" }}>
               <h2>SignUp Form</h2>
               <TextField
                 onChange={handleUsername}
@@ -182,10 +186,10 @@ export default function AuthenticationModal(props: any) {
             direction={"row"}
             sx={{ width: "700px" }}
           >
-            <ModalImg src={"/auth/password.jpeg"} alt="camera" />
+            <ModalImg src={"/auth/password1.jpg"} alt="camera" />
             <Stack
               sx={{
-                marginLeft: "65px",
+                marginLeft: "15px",
                 marginTop: "25px",
                 alignItems: "center",
               }}

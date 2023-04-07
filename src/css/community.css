@@ -8,148 +8,49 @@
   display: flex;
   width: 100%;
   height: 100%;
-  background: #0b0e11;
-}
-
-.community_page .chat_frame {
-  width: 30%;
-  height: 1150px;
-
-  display: flex;
-  flex-direction: column;
-  background: #e3f2fd;
-  border: 1px solid #ffffff;
-  border-radius: 34px;
+  background: #251942f5;
 }
 
 .community_page .community_all_frame {
-  width: 68%;
-  height: 1150px;
-
-  background: #0b0e11;
-  border: 1px solid #ffffff;
-  border-radius: 34px;
+  width: 80%;
+  height: 1100px;
+  background: #251942f5;
+  /* border: 1px solid #ffffff; */
+  border-radius: 20px;
 }
 
-.community_page .chat_frame .chat_top {
+.community_page .article_sorting {
+  margin-top: 40px;
   width: 100%;
-  height: 94px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid rgba(228, 228, 228, 0.83);
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 54px;
-  color: #000000;
-}
-
-.community_page .chat_content {
-  position: relative;
-  padding: 17px;
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: hidden;
-}
-
-.community_page .chat_content .chat_main {
-  position: relative;
-  /*padding: 17px;*/
-  width: 100%;
-  /*height: 100%;*/
-
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-}
-
-.community_page .chat_frame .chat_bott {
-  width: 100%;
-  height: 94px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid rgba(228, 228, 228, 0.83);
-}
-
-.community_page .chat_bott .msg_input {
-  padding: 20px;
-  width: 276px;
-  height: 50px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #f7f7f7;
-  border-radius: 28px;
-  border: none;
-  outline-color: #257677;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.community_page .chat_bott .send_msg_btn {
-  margin-left: 14px;
-  width: 50px;
-  height: 50px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #55a99d 0%, #007665 100%);
-  border: none;
-}
-
-.community_page .chat_main .msg_left {
-  margin-left: 10px;
-  padding: 9px;
-  width: auto;
   height: auto;
-
   display: flex;
-  background: rgba(228, 228, 228, 0.83);
-  border-radius: 20px 20px 20px 0px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.community_page .msg_right {
-  padding: 9px;
-  width: auto;
-  height: auto;
-
-  display: flex;
-  background: #d0ece8;
-  border-radius: 20px 20px 0px 20px;
-}
-
-.community_all_frame .article_tabs {
-  width: 100%;
-  height: 94px;
-
+.community_page .sorting_box {
+  margin-bottom: 10px;
+  padding: 0px 20px;
+  width: 98%;
+  height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid rgba(228, 228, 228, 0.83);
+  cursor: pointer;
+  font-family: "tahoma";
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 18px;
+  color: #1c025ad5;
+  border-radius: 10px;
+  background: #ffffff;
 }
 
 .article_main {
   width: 100%;
-  height: 100%;
-
+  height: 980px;
   display: flex;
   flex-direction: column;
 }
@@ -158,7 +59,6 @@
   margin-top: 20px;
   width: 100%;
   height: 295px;
-
   display: flex;
   flex-direction: row;
 }
@@ -167,7 +67,6 @@
   position: relative;
   width: 50%;
   height: 295px;
-
   display: flex;
   border-radius: 0px 90px 0px 0px;
   background: url("/public/community/cute_girl.jpg");
@@ -177,7 +76,6 @@
 .community_page .article_box .article_desc {
   width: 50%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
 }
@@ -186,11 +84,9 @@
   padding: 0px 15px;
   width: 100%;
   height: 90%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -202,37 +98,25 @@
 .community_page .article_share {
   width: 100%;
   height: auto;
-
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
-
-/*.community_page .article_share .article_share_main {*/
-/*    width: 227px;*/
-/*    height: 100%;*/
-
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*}*/
 
 .community_page .article_bott {
   width: 100%;
   height: 90px;
-
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-
-  border-top: 1px solid rgba(228, 228, 228, 0.83);
+  /* border-top: 1px solid rgba(228, 228, 228, 0.83); */
 }
 
 .community_page .review_box {
   margin-top: 10px;
   width: 100%;
   height: auto;
-
   display: flex;
   background: #182226;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
@@ -245,7 +129,6 @@
   margin-top: 15px;
   width: 100%;
   height: 90%;
-
   display: flex;
   flex-direction: row;
 }
@@ -254,7 +137,6 @@
   margin-left: 10px;
   width: 110px;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -281,14 +163,12 @@
   margin-left: 33px;
   width: 75%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
 }
 
 .community_page .user_info_main .user_review {
   width: 100%;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -327,43 +207,53 @@
   color: #ffffff;
 }
 
-.community_page .all_article_box {
-  width: 100%;
-  height: 175px;
-  margin-top: 15px;
+.community_page .community_wrap {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+.community_page .all_article_box {
+  width: 45%;
+  height: 500px;
+  margin-top: 15px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  background: #182226;
+  margin-right: 25px;
+  background: #d2dce0;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
 }
 
 .community_page .all_article_box .all_article_img {
-  width: 155px;
-  height: 155px;
-
-  border-radius: 30px 0px 0px 30px;
-  /*background: url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3160&q=80");*/
+  width: 100%;
+  height: 400px;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  position: relative;
+  border-radius: 30px 30px 0px 0px;
   background-size: cover;
 }
 
 .community_page .all_article_box .all_article_container {
-  margin-left: 15px;
-  width: 75%;
-  height: 90%;
+  margin-left: 25px;
+  margin-top: 15px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .community_page .all_article_author_user {
-  margin-left: 10px;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: #ffffff;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  color: black;
 }
 
 .community_page .all_article_title {
@@ -372,7 +262,7 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 33px;
-  color: #e3c08d;
+  color: black;
 }
 
 .community_page .all_article_desc {
@@ -380,9 +270,12 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  width: 345px;
+  font-size: 18px;
+  height: 18px;
   line-height: 26px;
-  color: #ffffff;
+  color: black;
+  border-radius: 5px;
 }
 
 .community_page .chat_main::-webkit-scrollbar {

@@ -27,10 +27,11 @@ export function NavbarRestaurant(props: any) {
           <NavLink to="/">
             <img
               style={{
-                width: "100px",
-                height: "100px",
+                width: "80px",
+                height: "80px",
                 cursor: "pointer",
-                // borderRadius: "24px",
+                marginTop: "-15px",
+                marginLeft: "-25px",
               }}
               src="/icons/yourshoes.png"
             />
@@ -87,6 +88,7 @@ export function NavbarRestaurant(props: any) {
                   variant="contained"
                   style={{ color: "#FFFFFF", background: "#755BB4" }}
                   onClick={props.handleLoginOpen}
+                  className="loginBtn"
                 >
                   LOGIN
                 </Button>
@@ -152,6 +154,7 @@ export function NavbarRestaurant(props: any) {
                   variant="contained"
                   style={{ color: "#FFFFFF", background: "#755BB4" }}
                   onClick={props.handleSignUpOpen}
+                  className="loginBtn"
                 >
                   Sign Up
                 </Button>

@@ -70,9 +70,9 @@ export function OrdersPage(props: any) {
                   aria-label="basic tabs example"
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <Tab label="My Orders" value={"1"} />
-                  <Tab label="On Payment" value={"2"} />
-                  <Tab label="Delivered" value={"3"} />
+                  <Tab className="tab_font" label="My Orders" value={"1"} />
+                  <Tab className="tab_font" label="On Payment" value={"2"} />
+                  <Tab className="tab_font" label="Delivered" value={"3"} />
                 </TabList>
               </Box>
             </Box>
