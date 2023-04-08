@@ -138,18 +138,28 @@
 .chatting .chat_main .msg_left {
   margin-left: 10px;
   padding: 9px;
+
+  min-width: 50px;
   width: auto;
+  max-width: 250px;
   height: auto;
   display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
   background: #66a696;
   border-radius: 20px 20px 20px 0px;
 }
 
 .chatting .msg_right {
   padding: 9px;
+  min-width: 50px;
   width: auto;
+  max-width: 250px;
+
   height: auto;
   display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
   background: #e089d1;
   border-radius: 20px 20px 0px 20px;
 }

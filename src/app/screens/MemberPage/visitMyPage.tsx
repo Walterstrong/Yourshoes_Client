@@ -87,7 +87,7 @@ export function VisitMyPage(props: any) {
   );
 
   const [memberArticlesSearchObj, setMemberArticlesSearchObj] =
-    useState<SearchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 4 });
+    useState<SearchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 6 });
   const [value, setValue] = useState("1");
   const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
   const [followRebuild, setFollowRebuild] = useState<boolean>(false);
@@ -272,7 +272,10 @@ export function VisitMyPage(props: any) {
                       alignItems="center"
                       justifyContent="center"
                     >
-                      <Box className={"bottom_box"}>
+                      <Box
+                        className={"bottom_box"}
+                        style={{ marginLeft: "300px", marginTop: "50px" }}
+                      >
                         <Pagination
                           count={
                             memberArticlesSearchObj.page >= 3

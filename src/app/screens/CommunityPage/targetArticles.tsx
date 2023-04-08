@@ -17,10 +17,11 @@ import {
 } from "app/lib/sweetAlert";
 import { verifiedMemberData } from "app/apiServices/verify";
 import CommunityApiService from "app/apiServices/communityApiService";
+import { useHistory } from "react-router-dom";
 
 export function TargetArticles(props: any) {
   const refs: any = useRef([]);
-
+  const history = useHistory();
   const targetLikeProduct = async (e: any) => {
     const { setArticlesRebuild } = props;
     try {
@@ -57,6 +58,10 @@ export function TargetArticles(props: any) {
     }
   };
 
+  // const chosenDishHandler = (id: any) => {
+  //   history.push(`/member-page/other?mb_id=${id.mb_id}&art_id=${id._id}`);
+  // };
+
   return (
     <Stack className="community_wrap">
       {props.targetBoArticles?.map((article: BoArticle) => {
@@ -75,6 +80,7 @@ export function TargetArticles(props: any) {
             <Box
               className={"all_article_img"}
               sx={{ backgroundImage: `url(${art_image_url})` }}
+              // onClick={(article) => chosenDishHandler(article)}
             ></Box>
             <Box className={"all_article_container"}>
               <Box

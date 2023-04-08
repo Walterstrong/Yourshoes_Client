@@ -21,7 +21,7 @@ export function Footer() {
                     <a href="#">privacy policy</a>
                   </li>
                   <li>
-                    <a href="#">affiliate program</a>
+                    <a href="#">our brands</a>
                   </li>
                 </ul>
               </Box>
