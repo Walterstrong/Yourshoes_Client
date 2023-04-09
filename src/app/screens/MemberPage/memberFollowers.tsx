@@ -84,7 +84,7 @@ export function MemberFollowers(props: any) {
   };
 
   return (
-    <Stack>
+    <Stack className={"followers_content"}>
       {memberFollowers.map((follower: Follower) => {
         const image_url = follower?.subscriber_member_data?.mb_image
           ? `${serverApi}/${follower.subscriber_member_data.mb_image}`
@@ -93,26 +93,30 @@ export function MemberFollowers(props: any) {
           <Box className={"follow_box"}>
             <Avatar
               alt={""}
-              style={{ cursor: "pointer" }}
+              style={{
+                cursor: "pointer",
+                width: "150px",
+                height: "180px",
+                borderRadius: "10px",
+              }}
               src={image_url}
-              sx={{ width: 89, height: 89 }}
               onClick={() => visitMemberHandler(follower?.subscriber_id)}
             />
             <div
               style={{
-                width: "400px",
+                // width: "400px",
                 display: "flex",
                 flexDirection: "column",
-                marginLeft: "25px",
+
                 height: "85%",
               }}
             >
-              <span className={"username_text"}>
+              {/* <span className={"username_text"}>
                 {follower?.subscriber_member_data?.mb_type}
-              </span>
+              </span> */}
               <span
                 className={"name_text"}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", marginBottom: "10px" }}
                 onClick={() => visitMemberHandler(follower?.subscriber_id)}
               >
                 {follower?.subscriber_member_data?.mb_nick}
@@ -131,12 +135,12 @@ export function MemberFollowers(props: any) {
               ) : (
                 <Button
                   variant={"contained"}
-                  startIcon={
-                    <img
-                      src={"/icons/follow_icon.svg"}
-                      style={{ width: "40px" }}
-                    />
-                  }
+                  // startIcon={
+                  //   <img
+                  //     src={"/icons/follow_icon.svg"}
+                  //     style={{ width: "40px" }}
+                  //   />
+                  // }
                   className={"follow_btn"}
                   onClick={(e) => subscribeHandler(e, follower?.subscriber_id)}
                 >
@@ -152,7 +156,7 @@ export function MemberFollowers(props: any) {
         alignItems="center"
         justifyContent="center"
       >
-        <Box className={"bottom_box"}>
+        <Box className={"bottom_box"} style={{ marginLeft: "300px" }}>
           <Pagination
             count={
               followersSearchObj.page >= 3 ? followersSearchObj.page + 1 : 3

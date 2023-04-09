@@ -845,12 +845,29 @@
 
 .chosen_dish_page .dish_container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   padding-top: 60px;
   padding-bottom: 60px;
 }
+.chosen_dish_page .dish_container1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  /* border: 1px solid white; */
+}
 
+.chosen_dish_page .dish_container2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 60px;
+  height: auto;
+  padding-bottom: 60px;
+  /* border: 1px solid white; */
+}
 .chosen_dish_page .chosen_dish_comment {
   display: flex;
   flex-direction: row;
@@ -862,6 +879,7 @@
   height: auto;
   display: flex;
   background: #ffffff;
+
   /* box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
     inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25); */
   /* border-radius: 100% 100% 55% 45% / 28% 31% 69% 72%; */
@@ -876,6 +894,7 @@
   min-width: 480px;
   height: auto;
   display: flex;
+  max-height: 600px;
   flex-direction: row;
   justify-content: space-between;
   margin-left: 60px;
@@ -884,7 +903,13 @@
 .chosen_dish_page .accordion_details {
   background: #1e0e3cec;
   min-width: 485px;
-  max-width: 485px;
+  max-width: 500px;
+  /* overflow: auto; */
+  overflow: hidden;
+  height: auto;
+  overflow-y: auto;
+
+  max-height: 428px;
 }
 
 .chosen_dish_comment .comment {
@@ -939,19 +964,18 @@
 .chosen_dish_comment .text {
   font-family: "Lato";
   font-style: normal;
-
+  margin-top: -5px;
   width: 400px;
   display: flex;
   padding-right: 10px;
   resize: none;
   overflow: hidden;
   height: auto;
-
-  font-size: 14px;
+  font-style: italic;
+  font-size: 16px;
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.87);
+  color: #264d89;
 }
-
 .chosen_dish_comment .comment_author {
   font-family: "Lato";
   font-style: normal;
@@ -985,7 +1009,7 @@
 .chosen_dish_page .chosen_dish_info_container {
   padding: 30px 40px;
   width: 49%;
-  height: fit-content;
+  height: 820px;
   display: flex;
   background: #ffffff;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
@@ -1182,4 +1206,172 @@
   transform: matrix(-1, 0, 0, 1, 0, 0);
   background-size: cover;
   margin-bottom: 50px;
+}
+
+/* similar products */
+
+.chosen_dish_page .restaurant_avatars_wrapper {
+  width: 100%;
+  height: 480px;
+  margin-top: 20px;
+  /* margin-left: -5px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.chosen_dish_page .dish_box {
+  margin-top: 20px;
+  margin-right: 15px;
+  width: 275px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: solid 1px white; */
+  border-radius: 15px;
+  /* background-color: white; */
+  /* background-color: #eae8e8; */
+}
+
+.chosen_dish_page .dish_box .dish_img {
+  position: relative;
+  width: 285px;
+  height: 400px;
+  background-size: cover;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.chosen_dish_page .dish_box .dish_img:hover {
+  position: relative;
+  width: 285px;
+  height: 400px;
+  background-size: cover;
+  transform: scale(1.001);
+  transition-duration: 0.8s;
+  z-index: 1;
+  background-position: center;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.chosen_dish_page .dish_box .dish_desc {
+  width: 275px;
+  display: flex;
+  height: 130px;
+  padding-left: 10px;
+  border-radius: 0px 0px 15px 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  background-color: #eae8e8;
+}
+
+.chosen_dish_page .dish_desc .review_stars {
+  margin-top: 2px;
+  width: 180px;
+  height: 20px;
+  margin-left: -4px;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+}
+
+.chosen_dish_page .dish_desc .product_reviews {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: dimgrey;
+  justify-content: center;
+  align-items: center;
+}
+
+.chosen_dish_page .dish_box .dish_desc .dish_title_text {
+  margin-top: 2px;
+  font-family: "fantasy";
+  font-style: normal;
+  font-weight: 250;
+  font-size: 18px;
+  line-height: 24px;
+  height: 48px;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* color: #130a64; */
+  color: #264d89;
+}
+
+.chosen_dish_page .dish_desc .dish_desc_text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: #85139e;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.chosen_dish_page .view_btn {
+  width: 55px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 15px;
+  color: #85139e;
+  background-color: rgba(238, 228, 228, 0.909);
+}
+
+.chosen_dish_page .dish_img:hover .view_btn {
+  opacity: 1;
+}
+
+.chosen_dish_page .like_view_btn {
+  position: absolute;
+  top: 20px;
+  padding: 5px;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  z-index: 3;
+  opacity: 0;
+  transition: 0.8s ease;
+  border-radius: 50%;
+}
+
+.chosen_dish_page .dish_img:hover .like_view_btn {
+  opacity: 1;
+}
+
+.chosen_dish_page .category_title {
+  margin-top: 40px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  margin-left: 500px;
+  margin-top: -50px;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 15px;
+  line-height: 42px;
+  background: #755bb4;
+  border: solid 2px #755bb4;
+  color: rgb(255, 255, 255);
 }

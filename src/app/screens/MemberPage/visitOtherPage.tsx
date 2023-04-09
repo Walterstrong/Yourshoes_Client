@@ -260,7 +260,7 @@ export function VisitOtherPage(props: any) {
                             style={{ backgroundColor: "#f70909b8" }}
                             onClick={unsubscribeHandler}
                           >
-                            BEKOR QILISH
+                            Follow back
                           </Button>
                         )}
                       />
@@ -277,7 +277,7 @@ export function VisitOtherPage(props: any) {
                             onClick={subscribeHandler}
                             // @ts-ignore
                           >
-                            FOLLOW QILISH
+                            Follow
                           </Button>
                         )}
                       />
@@ -331,7 +331,7 @@ export function VisitOtherPage(props: any) {
             <Stack className={"my_page_left"}>
               <Box display={"flex"} flexDirection={"column"}>
                 <TabPanel value={"1"}>
-                  <Box className={"menu_name"}>Maqolalar</Box>
+                  <Box className={"menu_name"}>Articles</Box>
                   <Box className={"menu_content"}>
                     <MemberPosts
                       actions_enabled={false}
@@ -345,7 +345,10 @@ export function VisitOtherPage(props: any) {
                       alignItems="center"
                       justifyContent="center"
                     >
-                      <Box className={"bottom_box"}>
+                      <Box
+                        className={"bottom_box"}
+                        style={{ marginLeft: "300px", marginTop: "50px" }}
+                      >
                         <Pagination
                           count={
                             memberArticlesSearchObj.page >= 3
@@ -394,7 +397,7 @@ export function VisitOtherPage(props: any) {
                 </TabPanel>
 
                 <TabPanel value={"4"}>
-                  <Box className={"menu_name"}>Tanlangan Maqola</Box>
+                  <Box className={"menu_name"}>Chosen article</Box>
                   <Box className={"menu_content"}>
                     <TViewer chosenSingleBoArticle={chosenSingleBoArticle} />
                   </Box>
