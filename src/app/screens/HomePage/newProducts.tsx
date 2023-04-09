@@ -54,7 +54,7 @@ export function NewProducts(props: any) {
     useState<ProductSearchObj>({
       page: 1,
       limit: 25,
-      order: "createdAt",
+      order: "product_reviews",
       restaurant_mb_id: "all",
       product_collection: "all",
       product_size: "all",
@@ -98,7 +98,7 @@ export function NewProducts(props: any) {
     <div className="top_restaurant_frame">
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
-          <Box className="category_title">New arrivals</Box>
+          <Box className="category_title">Most Sold</Box>
           <Stack
             style={{ width: "100%", display: "flex" }}
             flexDirection={"row"}

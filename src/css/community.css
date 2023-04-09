@@ -95,14 +95,6 @@
   color: #d4d4d4;
 }
 
-.community_page .article_share {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .community_page .article_bott {
   width: 100%;
   height: 90px;
@@ -225,7 +217,7 @@
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
 }
-
+/* article */
 .community_page .all_article_box .all_article_img {
   width: 100%;
   height: 400px;
@@ -278,6 +270,14 @@
   border-radius: 5px;
 }
 
+.community_page .article_share {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* tugadi */
 .community_page .chat_main::-webkit-scrollbar {
   width: 0;
 }

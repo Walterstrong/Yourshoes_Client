@@ -156,7 +156,7 @@ export function OneRestaurant(props: any) {
     useState<ProductSearchObj>({
       page: 1,
       limit: 9,
-      order: "createdAt",
+      order: "product_reviews",
       restaurant_mb_id: restaurant_id,
       product_collection: "all",
       product_size: "all",
@@ -411,6 +411,12 @@ export function OneRestaurant(props: any) {
                         value="product_views"
                         label="Views"
                         onClick={() => searchOrderHandler("product_views")}
+                        control={<Radio />}
+                      />
+                      <FormControlLabel
+                        value="product_reviews"
+                        label="Reviews"
+                        onClick={() => searchOrderHandler("product_reviews")}
                         control={<Radio />}
                       />
                     </RadioGroup>

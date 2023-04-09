@@ -6,7 +6,7 @@ export function Footer() {
     <div className="footer_config">
       <Container>
         <Stack className="main_footer_container">
-          <Stack flexDirection={"row"}>
+          <Stack flexDirection={"row"} justifyContent={"flex-start"}>
             <Stack className="info" flexDirection={"column"}>
               <Box className="info_box">
                 <h4>Our Platform</h4>

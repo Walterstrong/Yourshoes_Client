@@ -70,7 +70,7 @@ export function Events() {
 
   return (
     <div className={"events_frame"}>
-      <Container sx={{ overflow: "hidden" }}>
+      <Container>
         <Stack className={"events_main"}>
           <Box className={"events_text"}>
             <span className={"category_title"}>We recommend this brand</span>

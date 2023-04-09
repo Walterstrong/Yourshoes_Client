@@ -5,6 +5,7 @@
   width: 100%;
   height: auto;
   background: #23024d;
+  justify-content: flex-start;
 }
 
 .footer_config .main_footer_container {
@@ -12,14 +13,14 @@
   display: flex;
   flex-direction: column;
   margin-top: 40px;
-  margin-left: 131px;
-  width: 1144px;
+  /* margin-left: 100px; */
+  width: auto;
   height: auto;
 }
 .info_box {
   height: auto;
-  width: 500px;
-  margin-left: -50px;
+  width: auto;
+  margin-left: 200px;
 }
 
 .info h4 {

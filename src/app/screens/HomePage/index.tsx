@@ -18,6 +18,7 @@ import { RandomRestaurants } from "./randomRestaurants";
 import { Product } from "types/product";
 import { ProductSearch, ProductSearchObj } from "types/others";
 import { CommunityChats } from "../../components/chatting/communityChats";
+import { Recommendations } from "./recommendations";
 
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
@@ -82,6 +83,7 @@ export function HomePage(props: any) {
       <BestProducts onAdd={props.onAdd} />
       <Advertisements />
       <Events />
+      <Recommendations />
     </div>
   );
 }

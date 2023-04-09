@@ -199,15 +199,6 @@
   justify-content: space-between;
 }
 
-.homepage .events_info .events_info_frame {
-  position: relative;
-  width: 579px;
-  height: 700px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .homepage .events_img {
   width: 100%;
   height: 100%;
@@ -711,16 +702,82 @@
   color: #e3c08d;
 }
 
-.homepage .all_article_desc {
+/* article */
+
+.homepage .events_info .events_info_frame {
+  position: relative;
+  width: 579px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events_info_frame .all_article_img {
+  width: 100%;
+  height: 450px;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  position: relative;
+  border-radius: 30px 30px 0px 0px;
+  background-size: cover;
+}
+
+.events_info_frame .all_article_container {
+  padding-left: 15px;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding-top: 15px;
+  background-color: #eae8e8;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.events_info_frame .all_article_author_user {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  font-style: italic;
+
+  color: black;
+}
+
+.events_info_frame .all_article_title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  color: rgb(29, 140, 14);
+}
+
+.events_info_frame .all_article_desc {
   margin-top: 5px;
   font-family: "Poppins";
-  border: 0.5px solid rgb(52, 49, 49);
-  font-style: normal;
-  font-weight: 400;
-  width: 345px;
-  font-size: 14px;
-  height: 78px;
+  font-style: bold;
+  font-weight: 500;
+  width: 445px;
+  font-size: 24px;
+  height: 25px;
   line-height: 26px;
-  color: #ffffff;
+
+  color: black;
   border-radius: 5px;
 }
+
+.events_info_frame .article_share {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* tugadi */
