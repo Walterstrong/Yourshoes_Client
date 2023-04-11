@@ -24,7 +24,7 @@ export function NavbarOthers(props: any) {
           className="navbar_config"
           justifyContent={"space-between"}
         >
-          <NavLink to="/">
+          <NavLink to="/" onClick={props.setPath}>
             <img
               style={{
                 width: "80px",

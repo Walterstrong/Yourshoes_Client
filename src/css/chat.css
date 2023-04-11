@@ -23,7 +23,7 @@
 
 .chatting .chat_button {
   position: fixed;
-  bottom: 106px;
+  bottom: 80px;
   right: 20px;
   padding: 10px;
   border: none;
@@ -38,6 +38,7 @@
 }
 
 .chatting .chat_button:hover {
+  bottom: 80px;
   cursor: pointer;
   transform: scale(1.1);
   background-color: #21b30e;

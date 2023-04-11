@@ -68,7 +68,7 @@ export function CommunityChats(props: any) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setOpenButton(true);
-      setOpen(true);
+      // setOpen(true);
     }, 5000);
     return () => clearTimeout(timeoutId);
   }, []);

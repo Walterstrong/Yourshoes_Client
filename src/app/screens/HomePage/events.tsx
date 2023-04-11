@@ -75,20 +75,20 @@ export function Events() {
           <Box className={"events_text"}>
             <span className={"category_title"}>We recommend this brand</span>
           </Box>
-          <Box className={"prev_next_frame"}>
-            <img
+          <Box className={"prev_next_frame2"}>
+            {/* <img
               src={"/icons/arrow-right.svg"}
               className={"swiper-button-prev"}
             />
-            <div className={"dot_frame_pagination swiper-pagination"}></div>
+            <div className={"dot_frame_pagination swiper-pagination2"}></div>
             <img
               src={"/icons/arrow-right.svg"}
               className={"swiper-button-next"}
               style={{ transform: "rotate(-180deg)" }}
-            />
+            /> */}
           </Box>
           <Swiper
-            className={"events_info swiper-wrapper"}
+            className={"events_info swiper-wrappers"}
             slidesPerView={"auto"}
             centeredSlides={true}
             spaceBetween={30}
@@ -97,7 +97,7 @@ export function Events() {
               prevEl: ".swiper-button-prev",
             }}
             pagination={{
-              el: ".swiper-pagination",
+              el: ".swiper-pagination2",
               clickable: true,
             }}
             autoplay={{

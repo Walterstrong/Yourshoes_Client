@@ -88,7 +88,7 @@ export function MemberFollowers(props: any) {
       {memberFollowers.map((follower: Follower) => {
         const image_url = follower?.subscriber_member_data?.mb_image
           ? `${serverApi}/${follower.subscriber_member_data.mb_image}`
-          : "/auth/default_user.svg";
+          : "/auth/person.jpg";
         return (
           <Box className={"follow_box"}>
             <Avatar

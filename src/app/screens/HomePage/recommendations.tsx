@@ -108,17 +108,17 @@ export function Recommendations() {
           <Box className={"events_text"}>
             <span className={"category_title"}>Best Articles</span>
           </Box>
-          <Box className={"prev_next_frame"}>
-            <img
+          <Box className={"prev_next_frame1"}>
+            {/* <img
               src={"/icons/arrow-right.svg"}
               className={"swiper-button-prev"}
             />
-            <div className={"dot_frame_pagination swiper-pagination"}></div>
+            <div className={"dot_frame_pagination swiper-pagination1"}></div>
             <img
               src={"/icons/arrow-right.svg"}
-              className={"swiper-button-next"}
+              className={"swiper-button-next1"}
               style={{ transform: "rotate(-180deg)" }}
-            />
+            /> */}
           </Box>
           <Swiper
             className={"events_info swiper-wrapper"}
@@ -126,15 +126,15 @@ export function Recommendations() {
             centeredSlides={true}
             spaceBetween={30}
             navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
+              nextEl: ".swiper-button-next1",
+              prevEl: ".swiper-button-prev1",
             }}
             pagination={{
               el: ".swiper-pagination",
               clickable: true,
             }}
             autoplay={{
-              delay: 2000,
+              delay: 3000,
               disableOnInteraction: true,
             }}
           >
