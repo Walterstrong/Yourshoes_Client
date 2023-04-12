@@ -146,7 +146,7 @@ function App() {
           onDeleteAll={onDeleteAll}
           setOrderRebuild={setOrderRebuild}
         />
-      ) : main_path.includes("/restaurant") ? (
+      ) : main_path.includes("/shop") ? (
         <NavbarRestaurant
           setPath={setPath}
           handleLoginOpen={handleLoginOpen}
@@ -182,7 +182,7 @@ function App() {
         />
       )}
       <Switch>
-        <Route path="/restaurant">
+        <Route path="/shop">
           <RestaurantPage onAdd={onAdd} />
         </Route>
         <Route path="/community">

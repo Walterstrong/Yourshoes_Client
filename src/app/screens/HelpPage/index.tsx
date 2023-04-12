@@ -118,7 +118,7 @@ export function HelpPage() {
                 value={value}
                 onChange={handleChange}
                 aria-label="lab API tabs example"
-                style={{ display: "flex", justifyContent: "space-between" }}
+                // style={{ display: "flex", justifyContent: "space-between" }}
               >
                 <Tab className="tab_font" label="Rules" value={"1"} />
                 <Tab

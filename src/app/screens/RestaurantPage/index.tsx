@@ -6,18 +6,18 @@ import { AllRestaurants } from "./allRestaurants";
 import "../../../css/restaurant.css";
 
 export function RestaurantPage(props: any) {
-  let restaurant = useRouteMatch();
+  let shop = useRouteMatch();
 
   return (
     <div className="restaurant_page">
       <Switch>
-        <Route path={`${restaurant.path}/dish/:dish_id`}>
+        <Route path={`${shop.path}/product/:dish_id`}>
           <ChosenDish onAdd={props.onAdd} />
         </Route>
-        <Route path={`${restaurant.path}/:restaurant_id`}>
+        <Route path={`${shop.path}/:restaurant_id`}>
           <OneRestaurant onAdd={props.onAdd} />
         </Route>
-        <Route path={`${restaurant.path}`}>
+        <Route path={`${shop.path}`}>
           <AllRestaurants />
         </Route>
       </Switch>

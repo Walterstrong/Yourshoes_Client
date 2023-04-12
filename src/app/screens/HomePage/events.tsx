@@ -9,7 +9,7 @@ SwiperCore.use([Autoplay, Navigation, Pagination]);
 export function Events() {
   const history = useHistory();
   const chosenProductHandler = () => {
-    history.push(`/restaurant/6424af8267fd16fc1a8c416b`);
+    history.push(`/shop/6424af8267fd16fc1a8c416b`);
   };
 
   const events_list = [

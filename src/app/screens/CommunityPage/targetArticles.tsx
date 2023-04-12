@@ -58,10 +58,6 @@ export function TargetArticles(props: any) {
     }
   };
 
-  // const chosenDishHandler = (id: any) => {
-  //   history.push(`/member-page/other?mb_id=${id.mb_id}&art_id=${id._id}`);
-  // };
-
   return (
     <Stack className="community_wrap">
       {props.targetBoArticles?.map((article: BoArticle) => {

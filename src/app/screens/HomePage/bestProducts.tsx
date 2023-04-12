@@ -58,7 +58,7 @@ export function BestProducts(props: any) {
   });
   //** HANDLERS */
   const chosenProductHandler = (id: string) => {
-    history.push(`/restaurant/dish/${id}`);
+    history.push(`/shop/product/${id}`);
   };
 
   const targetLikeProduct = async (e: any) => {

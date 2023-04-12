@@ -79,9 +79,9 @@ export function HomePage(props: any) {
   return (
     <div className="homepage">
       <RandomRestaurants />
+      <Advertisements />
       <NewProducts onAdd={props.onAdd} />
       <BestProducts onAdd={props.onAdd} />
-      <Advertisements />
       <Events />
       <Recommendations />
     </div>

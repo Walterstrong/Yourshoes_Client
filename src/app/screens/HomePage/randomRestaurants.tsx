@@ -40,7 +40,7 @@ export function RandomRestaurants() {
   const { randomRestaurants } = useSelector(randomRestaurantsRetriever);
 
   const chosenRestaurantHandler = (id: string) => {
-    history.push(`/restaurant/${id}`);
+    history.push(`/shop/${id}`);
   };
   return (
     <div className="static_frame">

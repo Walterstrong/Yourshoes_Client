@@ -72,7 +72,7 @@ export function AllRestaurants() {
 
   //** HANDLERS */
   const chosenRestaurantHandler = (id: string) => {
-    history.push(`/restaurant/${id}`);
+    history.push(`/shop/${id}`);
     // const restaurantService = new RestaurantApiService();
     // restaurantService.getChosenRestaurant(`${id}`);
   };
@@ -115,7 +115,7 @@ export function AllRestaurants() {
     <div className="all_restaurant">
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
-          <Box className={"fil_search_box"}>
+          {/* <Box className={"fil_search_box"}>
             <Box className={"fil_box"} style={{ cursor: "pointer" }}>
               <Button
                 variant="contained"
@@ -163,64 +163,62 @@ export function AllRestaurants() {
                 </Button>
               </form>
             </Box>
-          </Box>
+          </Box> */}
+          <Box className="category_title">All Brands</Box>
           <Stack className={"all_res_box"}>
-            <CssVarsProvider>
-              {targetRestaurants.map((ele: Restaurant) => {
-                const image_path = `${serverApi}/${ele.mb_image}`;
-                return (
-                  <Card
-                    onClick={() => chosenRestaurantHandler(ele._id)}
-                    variant="outlined"
-                    sx={{
-                      minHeight: 320,
-                      minWidth: 250,
-                      mx: "25px",
-                      my: "20px",
-                      cursor: "pointer",
+            {targetRestaurants.map((ele: Restaurant) => {
+              const image_path = `${serverApi}/${ele.mb_image}`;
+              return (
+                <Stack
+                  onClick={() => chosenRestaurantHandler(ele._id)}
+                  style={{
+                    height: "300px",
+                    width: "250px",
+                    marginRight: "65px",
+                    borderRadius: "15px",
+                    marginBottom: "35px",
+                    marginTop: "25px",
+                    cursor: "pointer",
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <Box>
+                    <img
+                      src={image_path}
+                      alt=""
+                      style={{
+                        height: "300px",
+                        width: "250px",
+                        // marginRight: "35px",
+                        borderRadius: "15px",
+                        backgroundSize: "cover",
+                      }}
+                    />
+                  </Box>
+                  {/* <Button
+                    onClick={(e) => {
+                      e.stopPropagation();
                     }}
                   >
-                    <CardOverflow>
-                      <AspectRatio ratio="1">
-                        <img src={image_path} alt="" />
-                      </AspectRatio>
-                      <IconButton
-                        aria-label="Like minimal photography"
-                        size="md"
-                        variant="solid"
-                        color="neutral"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                        }}
-                        sx={{
-                          position: "absolute",
-                          zIndex: 2,
-                          borderRadius: "50%",
-                          right: "1rem",
-                          bottom: 0,
-                          transform: "translateY(50%)",
-                          color: "rgba(0,0,0,.4)",
-                        }}
-                      >
-                        <Favorite
-                          onClick={(e) => targetLikeHandler(e, ele._id)}
-                          style={{
-                            fill:
-                              ele?.me_liked && ele?.me_liked[0]?.my_favorite
-                                ? "red"
-                                : "white",
-                          }}
-                        />
-                      </IconButton>
-                    </CardOverflow>
-                    <Typography
+                    <Favorite
+                      onClick={(e) => targetLikeHandler(e, ele._id)}
+                      style={{
+                        fill:
+                          ele?.me_liked && ele?.me_liked[0]?.my_favorite
+                            ? "red"
+                            : "white",
+                      }}
+                    />
+                  </Button> */}
+
+                  {/* <Typography
                       level="h2"
                       sx={{ fontSize: "md", mt: 2, color: "white" }}
                     >
                       {ele.mb_nick}
-                    </Typography>
+                    </Typography> */}
 
-                    <CardOverflow
+                  {/* <CardOverflow
                       variant="soft"
                       sx={{
                         display: "flex",
@@ -265,11 +263,10 @@ export function AllRestaurants() {
                           sx={{ fontSize: 20, marginLeft: "5px" }}
                         />
                       </Typography>
-                    </CardOverflow>
-                  </Card>
-                );
-              })}
-            </CssVarsProvider>
+                    </CardOverflow> */}
+                </Stack>
+              );
+            })}
           </Stack>
 
           <Stack style={{ color: "white" }} className={"bottom_box"}>

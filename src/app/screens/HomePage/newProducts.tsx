@@ -53,8 +53,8 @@ export function NewProducts(props: any) {
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
       page: 1,
-      limit: 25,
-      order: "product_reviews",
+      limit: 50,
+      order: "random",
       restaurant_mb_id: "all",
       product_collection: "all",
       product_size: "all",
@@ -63,7 +63,7 @@ export function NewProducts(props: any) {
     });
   //** HANDLERS */
   const chosenDishHandler = (id: string) => {
-    history.push(`/restaurant/dish/${id}`);
+    history.push(`/shop/product/${id}`);
   };
 
   const targetLikeProduct = async (e: any) => {

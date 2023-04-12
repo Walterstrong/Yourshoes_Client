@@ -53,6 +53,8 @@ import {
   retrieveTargetComments,
   retrieveTargetProducts,
 } from "./selector";
+import "swiper/css";
+import "swiper/css/effect-cards";
 import { useParams } from "react-router-dom";
 import ProductApiService from "../../apiServices/productApiService";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
@@ -69,6 +71,7 @@ import MuiAccordionSummary, {
 } from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { ProductSearchObj, SearchObj } from "../../../types/others";
+import { EffectCards } from "swiper";
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
   setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
@@ -184,9 +187,9 @@ export function ChosenDish(props: any) {
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
       page: 1,
-      limit: 9,
+      limit: 15,
       order: "product_reviews",
-      restaurant_mb_id: "all",
+      restaurant_mb_id: chosenRestaurant?._id,
       product_collection: "all",
       product_size: "all",
       product_color: "all",
@@ -200,7 +203,7 @@ export function ChosenDish(props: any) {
     });
 
   const chosenDishHandler = (id: string) => {
-    history.push(`/restaurant/dish/${id}`);
+    history.push(`/shop/product/${id}`);
     setProductRebuild(new Date());
   };
 
@@ -345,7 +348,7 @@ export function ChosenDish(props: any) {
       <Container className="dish_container">
         <Stack className="dish_container1">
           <Stack className="chosen_dish_slider">
-            <Swiper
+            {/* <Swiper
               style={swiperStyle}
               className="dish_swiper"
               loop={true}
@@ -398,6 +401,36 @@ export function ChosenDish(props: any) {
                     }}
                   >
                     <img style={{ borderRadius: "15px" }} src={image_path} />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper> */}
+
+            <Swiper
+              effect={"cards"}
+              grabCursor={true}
+              modules={[EffectCards]}
+              className="mySwiper"
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: true,
+              }}
+            >
+              {chosenProduct?.product_images.map((ele: string) => {
+                const image_path = `${serverApi}/${ele}`;
+                return (
+                  <SwiperSlide>
+                    <img
+                      style={{
+                        borderRadius: "25px",
+                        width: "100%",
+                        height: "90%",
+                        // display: " block",
+                        // transition: "transform .3s ease",
+                        // overflow: " hidden",
+                      }}
+                      src={image_path}
+                    />
                   </SwiperSlide>
                 );
               })}
@@ -548,7 +581,11 @@ export function ChosenDish(props: any) {
               <span className={"resto_name"}>{chosenRestaurant?.mb_nick}</span>
               <Box className={"rating_box"}>
                 <div className={"review_stars"}>
-                  <Rating value={chosenProduct?.product_rating} />
+                  <Rating
+                    name="read-only"
+                    value={chosenProduct?.product_rating}
+                    readOnly
+                  />
                   <span className={"product_reviews"}>
                     ({chosenProduct?.product_reviews})
                   </span>
@@ -563,7 +600,7 @@ export function ChosenDish(props: any) {
                   >
                     <Button
                       style={{
-                        color: "rgba(238, 228, 228, 0.909)",
+                        color: "97979",
                       }}
                     >
                       <Checkbox
@@ -586,7 +623,7 @@ export function ChosenDish(props: any) {
                     <Checkbox
                       icon={
                         <RemoveRedEyeIcon
-                          style={{ color: "white" }}
+                          style={{ color: "97979" }}
                           sx={{ mr: "10px" }}
                         />
                       }

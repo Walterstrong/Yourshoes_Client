@@ -232,11 +232,11 @@ export function OneRestaurant(props: any) {
     setChosenRestaurantId(id);
     targetProductSearchObj.restaurant_mb_id = id;
     setTargetProductsSearchObj({ ...targetProductSearchObj });
-    history.push(`/restaurant/${id}`);
+    history.push(`/shop/${id}`);
   };
   //
   const chosenDishHandler = (id: string) => {
-    history.push(`/restaurant/dish/${id}`);
+    history.push(`/shop/product/${id}`);
   };
   //
   const targetLikeProduct = async (e: any) => {

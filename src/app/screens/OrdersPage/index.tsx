@@ -68,7 +68,6 @@ export function OrdersPage(props: any) {
                   onChange={handleChange}
                   value={value}
                   aria-label="basic tabs example"
-                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
                   <Tab className="tab_font" label="My Orders" value={"1"} />
                   <Tab className="tab_font" label="On Payment" value={"2"} />

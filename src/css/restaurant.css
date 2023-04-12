@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: auto;
-  background: #251942f5;
+  background: #1e103ff5;
   /* background: #251942b5;
   background: #140b28b5; */
 }
@@ -153,14 +153,40 @@
 
 .restaurant_page .all_restaurant .all_res_box {
   position: relative;
-  width: 1340px;
+  width: auto;
   height: auto;
-  margin-top: 70px;
-  margin-left: 80px;
-
+  margin-top: 25px;
+  /* margin-left: 80px; */
+  justify-content: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.all_restaurant .category_title {
+  margin-top: 40px;
+  border-radius: 15px;
+  padding: 15px;
+  background: #190645;
+  /* border: solid 2px #755bb4; */
+
+  text-align: start;
+  font-family: "Dancing Script";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 36px;
+  color: #e3c08d;
+}
+
+.order_page .order_left .tab_font {
+  text-align: start;
+  font-family: "Dancing Script";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 28px;
+  color: #e3c08d;
 }
 
 .restaurant_page .all_restaurant .restaurant_box {
@@ -871,6 +897,7 @@
 .chosen_dish_page .chosen_dish_comment {
   display: flex;
   flex-direction: row;
+
   justify-content: space-between;
   /* padding-top: 60px; */
   /* padding-bottom: 60px; */
@@ -885,7 +912,7 @@
   /* border-radius: 100% 100% 55% 45% / 28% 31% 69% 72%; */
   border-radius: 30px 30px 0px 30px;
   padding: 15px 15px 0;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 5px;
   margin-left: -14px;
 }
@@ -902,6 +929,7 @@
 
 .chosen_dish_page .accordion_details {
   background: #1e0e3cec;
+
   min-width: 485px;
   max-width: 500px;
   /* overflow: auto; */
@@ -1004,25 +1032,6 @@
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
     inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
-}
-
-.chosen_dish_page .chosen_dish_info_container {
-  padding: 30px 40px;
-  width: 49%;
-  height: 820px;
-  display: flex;
-  background: #ffffff;
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
-    inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
-}
-
-.chosen_dish_page .chosen_dish_info_container .chosen_dish_info_box {
-  /*margin-top: 30px;*/
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .chosen_dish_page .chosen_dish_info_box .dish_txt {
@@ -1374,4 +1383,57 @@
   background: #755bb4;
   border: solid 2px #755bb4;
   color: rgb(255, 255, 255);
+}
+
+.chosen_dish_page .chosen_dish_slider {
+  width: 48%;
+  /* border: 1px solid white; */
+  /* height: auto; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-left: -40px;
+
+  /* border: 1px solid red; */
+}
+
+.chosen_dish_slider .swiper {
+  width: 82%;
+  height: 750px;
+  margin-right: 22px;
+  /* border: 1px solid red; */
+  /* background-color: #08a83d; */
+}
+
+.chosen_dish_slider .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  height: 720px;
+  color: #fff;
+  background-color: #fff;
+}
+
+.chosen_dish_page .chosen_dish_info_container {
+  padding: 30px 40px;
+  width: 45%;
+  height: 812px;
+  margin-right: 15px;
+  display: flex;
+  background: #ffffff;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+.chosen_dish_page .chosen_dish_info_container .chosen_dish_info_box {
+  /*margin-top: 30px;*/
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
