@@ -62,3 +62,146 @@
   color: #ffffff;
   padding-left: 8px;
 }
+
+@media only screen and (max-width: 390px) {
+  .footer_config .main_footer_container {
+    margin-top: 30px;
+  }
+
+  .info_box {
+    height: auto;
+    width: auto;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+
+  .info h4 {
+    font-size: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .info ul li a {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}
+
+/* iPhone X, XS, 11 Pro, 12 Mini */
+@media screen and (max-width: 375px) {
+  .info_box {
+    margin-left: 10px;
+  }
+  .info h4 {
+    font-size: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .info ul li a {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}
+
+/* iPhone XR, 11, 11 Pro Max, 12, 12 Pro */
+@media screen and (max-width: 414px) {
+  .info_box {
+    margin-left: 15px;
+  }
+  .info h4 {
+    font-size: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .info ul li a {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}
+
+/* iPhone 12 Pro Max */
+@media screen and (max-width: 428px) {
+  .info_box {
+    margin-left: 20px;
+  }
+  .info h4 {
+    font-size: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .info ul li a {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Samsung Galaxy S10, S10+, S20, S20+, S21, S21+ */
+@media screen and (max-width: 360px) {
+  .info_box {
+    margin-left: 10px;
+  }
+  .info h4 {
+    font-size: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .info ul li a {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Samsung Galaxy S10e, S20 FE */
+@media screen and (max-width: 320px) {
+  .info_box {
+    margin-left: 5px;
+  }
+  .info h4 {
+    font-size: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .info ul li a {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Samsung Galaxy Note 10, Note 20 */
+@media screen and (max-width: 412px) {
+  .info_box {
+    margin-left: 15px;
+  }
+  .info h4 {
+    font-size: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .info ul li a {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Samsung Galaxy Note 10+, Note 20 Ultra */
+@media screen and (max-width: 384px) {
+  .info_box {
+    margin-left: 10px;
+  }
+  .info h4 {
+    font-size: 10px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  .info ul li a {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+}

@@ -189,7 +189,7 @@ export function ChosenDish(props: any) {
       page: 1,
       limit: 15,
       order: "product_reviews",
-      restaurant_mb_id: chosenRestaurant?._id,
+      restaurant_mb_id: chosenProduct?.restaurant_mb_id,
       product_collection: "all",
       product_size: "all",
       product_color: "all",
@@ -230,18 +230,20 @@ export function ChosenDish(props: any) {
   useEffect(() => {
     dishRelatedProcess().then();
 
-    const productService = new ProductApiService();
-    productService
-      .getTargetProducts(targetProductSearchObj)
-      .then((data) => setTargetProducts(data))
-      .catch((err) => console.log(err));
-
     const commentApiService = new CommentApiService();
     commentApiService
       .getTargetComments(targetCommentsSearchObj)
       .then((data) => setTargetComments(data))
       .catch((err) => console.log(err));
+
+    const productService = new ProductApiService();
+    productService
+      .getTargetProducts(targetProductSearchObj)
+      .then((data) => setTargetProducts(data))
+      .catch((err) => console.log(err));
   }, [productRebuild]);
+
+  // useEffect(() => {}, [productRebuild, targetProductSearchObj]);
 
   //** for Creating comments *//
   const [open, setOpen] = useState(false);
@@ -348,64 +350,6 @@ export function ChosenDish(props: any) {
       <Container className="dish_container">
         <Stack className="dish_container1">
           <Stack className="chosen_dish_slider">
-            {/* <Swiper
-              style={swiperStyle}
-              className="dish_swiper"
-              loop={true}
-              spaceBetween={10}
-              navigation={true}
-              thumbs={{ swiper: thumbsSwiper }}
-              modules={[FreeMode, Navigation, Thumbs]}
-            >
-              {chosenProduct?.product_images.map((ele: string) => {
-                const image_path = `${serverApi}/${ele}`;
-                return (
-                  <SwiperSlide>
-                    <img
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        display: " block",
-                        transition: "transform .3s ease",
-                        overflow: " hidden",
-                      }}
-                      src={image_path}
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-            <Swiper
-              onSwiper={handleSwiperInstance}
-              loop={true}
-              spaceBetween={20}
-              slidesPerView={chosenProduct?.product_images.length}
-              freeMode={true}
-              watchSlidesProgress={true}
-              modules={[FreeMode, Navigation, Thumbs]}
-              className="mySwiper"
-              style={{
-                width: "80%",
-                height: "140px",
-                marginTop: "20px",
-                // border: "solid 1px white",
-              }}
-            >
-              {chosenProduct?.product_images.map((ele: string) => {
-                const image_path = `${serverApi}/${ele}`;
-                return (
-                  <SwiperSlide
-                    style={{
-                      height: "107px",
-                      display: "flex",
-                    }}
-                  >
-                    <img style={{ borderRadius: "15px" }} src={image_path} />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper> */}
-
             <Swiper
               effect={"cards"}
               grabCursor={true}

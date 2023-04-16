@@ -10,7 +10,7 @@ import { CommunityPage } from "./screens/CommunityPage/index";
 import { OrdersPage } from "./screens/OrdersPage/index";
 import { MemberPage } from "./screens/MemberPage/index";
 import { HelpPage } from "./screens/HelpPage/index";
-import { LoginPage } from "./screens/LoginPage/index";
+import { Construction } from "./screens/ConstructionPage/index";
 import { Footer } from "./components/footer/index";
 import { NavbarHome } from "./components/header/index";
 import { NavbarRestaurant } from "./components/header/restaurant";
@@ -27,7 +27,9 @@ import { verifiedMemberData } from "./apiServices/verify";
 import { CartItem } from "../types/others";
 import { Product } from "../types/product";
 import { CommunityChats } from "./components/chatting/communityChats";
-// import { Chatting } from "./components/chatting";
+import { useHistory } from "react-router-dom";
+import { History } from "history";
+import { Snackbars } from "./lib/Snackbar";
 
 function App() {
   //** INITIALIZATIONS *
@@ -44,20 +46,19 @@ function App() {
   const cartJson: any = localStorage.getItem("cart_data");
   const current_cart: CartItem[] = JSON.parse(cartJson) ?? [];
   const [cartItems, setCartItems] = useState<CartItem[]>(current_cart);
-
+  const [openAlert, setOpenAlert] = React.useState(false);
   //** HANDLERS */
   const handleSignUpOpen = () => setSignUpOpen(true);
   const handleSignUpClose = () => setSignUpOpen(false);
   const handleLoginOpen = () => setLoginOpen(true);
   const handleLoginClose = () => setLoginOpen(false);
-
+  const history = useHistory<History>();
   const handleLogOutClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleCloseLogOut = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(null);
   };
-
   const handleLogOutRequest = async () => {
     try {
       const memberApiService = new MemberApiService();
@@ -69,7 +70,6 @@ function App() {
       sweetFailureProvider(Definer.general_err1);
     }
   };
-
   const onAdd = (product: Product) => {
     const exist: any = cartItems.find(
       (item: CartItem) => item._id === product._id
@@ -95,7 +95,6 @@ function App() {
       localStorage.setItem("cart_data", JSON.stringify(cart_updated));
     }
   };
-
   const onRemove = (item: CartItem) => {
     const item_data: any = cartItems.find(
       (ele: CartItem) => ele._id === item._id
@@ -127,6 +126,20 @@ function App() {
     setCartItems([]);
     localStorage.removeItem("cart_data");
   };
+
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
+  const handleClickOpenSnackbar = () => {
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseOpenSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+  const handleClickOpenAlert = () => {
+    history.push("/construction");
+  };
+
   return (
     <Router>
       {main_path == "/" ? (
@@ -145,6 +158,8 @@ function App() {
           onDelete={onDelete}
           onDeleteAll={onDeleteAll}
           setOrderRebuild={setOrderRebuild}
+          openAlert={openAlert}
+          handleClickOpenAlert={handleClickOpenAlert}
         />
       ) : main_path.includes("/shop") ? (
         <NavbarRestaurant
@@ -200,11 +215,19 @@ function App() {
         <Route path="/help">
           <HelpPage />
         </Route>
-        <Route path="/login">
-          <LoginPage />
+        <Route path="/construction">
+          <Construction
+            openAlert={openAlert}
+            handleClickOpenAlert={handleClickOpenAlert}
+            setPath={setPath}
+          />
         </Route>
         <Route path="/">
-          <HomePage onAdd={onAdd} />
+          <HomePage
+            onAdd={onAdd}
+            openAlert={openAlert}
+            handleClickOpenAlert={handleClickOpenAlert}
+          />
         </Route>
       </Switch>
       <CommunityChats />
@@ -217,7 +240,11 @@ function App() {
         handleSignUpOpen={handleSignUpOpen}
         handleSignUpClose={handleSignUpClose}
       />
-      {/* <Chatting /> */}
+      {/* <Snackbars
+        openSnackbar={openSnackbar}
+        handleClickOpenSnackbar={handleClickOpenSnackbar}
+        handleCloseOpenSnackbar={handleCloseOpenSnackbar}
+      /> */}
     </Router>
   );
 }

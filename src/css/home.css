@@ -5,6 +5,7 @@
 
 .homepage .static_frame {
   width: 100%;
+  height: auto;
   /* background: #362264b5; */
   background: #251942f5;
 }
@@ -113,6 +114,18 @@
   color: rgb(255, 255, 255);
 }
 
+.homepage .category_title_mobile {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  padding: 15px;
+  border-radius: 15px;
+  line-height: 42px;
+  background: #755bb4;
+  border: solid 2px #755bb4;
+  color: rgb(255, 255, 255);
+}
 .homepage .best_restaurant_frame {
   width: 100%;
   height: 800px;
@@ -731,7 +744,7 @@
 .homepage .events_info .events_info_frame {
   position: relative;
   width: 579px;
-  height: 700px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -805,3 +818,353 @@
 }
 
 /* tugadi */
+/* 
+/* for responsive */
+
+/* iPhone X, iPhone XS, iPhone 11 Pro, iPhone 12 Mini */
+@media (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  /* Add responsive styles for these devices */
+}
+
+/* iPhone XR, iPhone 11, iPhone 11 Pro Max, iPhone 12, iPhone 12 Pro */
+@media (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  /* Add responsive styles for these devices */
+}
+
+/* iPhone 12 Pro Max */
+@media (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) {
+  /* Add responsive styles for these devices */
+}
+
+/* Samsung Galaxy S20, S20+, S21, S21+ */
+@media (device-width: 360px) and (device-height: 800px) and (-webkit-device-pixel-ratio: 3) {
+  /* Add responsive styles for these devices */
+}
+
+/* Samsung Galaxy S20 Ultra, S21 Ultra */
+@media (device-width: 412px) and (device-height: 869px) and (-webkit-device-pixel-ratio: 3) {
+  /* Add responsive styles for these devices */
+}
+
+/* Samsung Galaxy Note 20, Note 20 Ultra */
+@media (device-width: 384px) and (device-height: 854px) and (-webkit-device-pixel-ratio: 3) {
+  /* Add responsive styles for these devices */
+}
+
+@media only screen and (max-width: 428px) {
+  .homepage .all_article_box {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    box-shadow: none;
+  }
+
+  .homepage .all_article_img {
+    height: 200px;
+  }
+
+  .homepage .article_container {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .homepage .events_info .events_info_frame {
+    width: 100%;
+    height: auto;
+    padding: 0 15px;
+  }
+
+  .events_info_frame .all_article_img {
+    height: 250px;
+  }
+
+  .events_info_frame .all_article_container {
+    width: 100%;
+  }
+
+  .events_info_frame .all_article_desc {
+    width: 100%;
+    font-size: 18px;
+    height: auto;
+    line-height: normal;
+  }
+
+  .events_info_frame .article_share {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .homepage .all_article_box {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    box-shadow: none;
+  }
+
+  .homepage .all_article_img {
+    height: 180px;
+  }
+
+  .homepage .article_container {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .homepage .events_info .events_info_frame {
+    width: 100%;
+    height: auto;
+    padding: 0 15px;
+  }
+
+  .events_info_frame .all_article_img {
+    height: 230px;
+  }
+
+  .events_info_frame .all_article_container {
+    width: 100%;
+  }
+
+  .events_info_frame .all_article_desc {
+    width: 100%;
+    font-size: 18px;
+    height: auto;
+    line-height: normal;
+  }
+
+  .events_info_frame .article_share {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 412px) {
+  .homepage .all_article_box {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    box-shadow: none;
+  }
+
+  .homepage .all_article_img {
+    height: 200px;
+  }
+
+  .homepage .article_container {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .homepage .events_info .events_info_frame {
+    width: 100%;
+    height: auto;
+    padding: 0 15px;
+  }
+
+  .events_info_frame .all_article_img {
+    height: 240px;
+  }
+
+  .events_info_frame .all_article_container {
+    width: 100%;
+  }
+
+  .events_info_frame .all_article_desc {
+    width: 100%;
+    font-size: 18px;
+    height: auto;
+    line-height: normal;
+  }
+
+  .events_info_frame .article_share {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .homepage .all_article_box {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    box-shadow: none;
+  }
+
+  .homepage .all_article_img {
+    height: 170px;
+  }
+
+  .homepage .article_container {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .homepage .events_info .events_info_frame {
+    width: 100%;
+    height: auto;
+    padding: 0 15px;
+  }
+
+  .events_info_frame .all_article_img {
+    height: 220px;
+  }
+
+  .events_info_frame .all_article_container {
+    width: 100%;
+  }
+
+  .events_info_frame .all_article_desc {
+    width: 100%;
+    font-size: 16px;
+    height: auto;
+    line-height: normal;
+  }
+
+  .events_info_frame .article_share {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 393px) {
+  .homepage .all_article_box {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    box-shadow: none;
+  }
+
+  .homepage .all_article_img {
+    height: 190px;
+  }
+
+  .homepage .article_container {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .homepage .events_info .events_info_frame {
+    width: 100%;
+    height: auto;
+    padding: 0 15px;
+  }
+
+  .events_info_frame .all_article_img {
+    height: 230px;
+  }
+
+  .events_info_frame .all_article_container {
+    width: 100%;
+  }
+
+  .events_info_frame .all_article_desc {
+    width: 100%;
+    font-size: 18px;
+    height: auto;
+    line-height: normal;
+  }
+
+  .events_info_frame .article_share {
+    flex-direction: column;
+  }
+}
+
+.construction_frame {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.construction_frame .mobile_user_box {
+  width: 100%;
+  max-width: 390px;
+  height: 844px;
+  border-radius: 15px;
+  background: #fffffff5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.mobile_user_box .mobile_user_text {
+  text-align: start;
+  font-family: "Dancing Script";
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  font-size: 24px;
+  line-height: 24px;
+  color: #410a76;
+}
+
+/* Media Queries for Responsiveness */
+
+/* iPhone X, XS, 11 Pro, 12 Mini */
+@media screen and (max-width: 375px) {
+  .construction_frame .mobile_user_box {
+    height: 812px;
+  }
+}
+
+/* iPhone XR, 11, 11 Pro Max, 12, 12 Pro */
+@media screen and (max-width: 414px) {
+  .construction_frame .mobile_user_box {
+    height: 896px;
+  }
+}
+
+/* iPhone 12 Pro Max */
+@media screen and (max-width: 428px) {
+  .construction_frame .mobile_user_box {
+    height: 926px;
+  }
+}
+
+/* iPhone XR, 11, 11 Pro Max, 12, 12 Pro */
+@media screen and (max-width: 414px) {
+  .construction_frame .mobile_user_box {
+    height: 896px;
+  }
+}
+
+/* Samsung Galaxy S10, S10+, S20, S20+, S21, S21+ */
+@media screen and (max-width: 360px) {
+  .construction_frame .mobile_user_box {
+    height: 760px;
+  }
+}
+
+/* Samsung Galaxy S10e, S20 FE */
+@media screen and (max-width: 320px) {
+  .construction_frame .mobile_user_box {
+    height: 692px;
+  }
+}
+
+/* Samsung Galaxy Note 10, Note 20 */
+@media screen and (max-width: 412px) {
+  .construction_frame .mobile_user_box {
+    height: 869px;
+  }
+}
+
+/* Samsung Galaxy Note 10+, Note 20 Ultra */
+@media screen and (max-width: 384px) {
+  .construction_frame .mobile_user_box {
+    height: 853px;
+  }
+}

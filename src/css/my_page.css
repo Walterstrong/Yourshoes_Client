@@ -27,7 +27,7 @@
 
 .my_page_frame .my_page_left {
   width: 70%;
-  height: auto;
+  height: fit-content;
   display: flex;
   flex-direction: column;
 }
@@ -67,18 +67,30 @@
 .my_page .menu_content .post_content {
   margin-top: 10px;
   width: 100%;
-  min-height: 500px;
+  min-height: fit-content;
   height: auto;
   max-height: 1700px;
   display: flex;
   flex-direction: row;
+
   flex-wrap: wrap;
 }
 
 .my_page .menu_content .followers_content {
   margin-top: 10px;
   width: 100%;
-  min-height: 500px;
+  min-height: fit-content;
+  height: auto;
+  max-height: 1700px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.my_page .friend_box {
+  width: 100%;
+  min-height: fit-content;
   height: auto;
   max-height: 1700px;
   display: flex;

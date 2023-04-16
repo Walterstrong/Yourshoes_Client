@@ -79,9 +79,9 @@ export default function PausedOrders(props: any) {
                       <p className={"titleDish"}>{product?.product_name}</p>
                       <Box className={"priceBox"}>
                         <p>${item.item_price}</p>
-                        <img src={"/icons/Close.svg"} />
+                        <img src={"./icons/Close.svg"} />
                         <p>{item.item_quantity}</p>
-                        <img src={"/icons/pause.svg"} />
+                        <img src={"./icons/pause.svg"} />
                         <p style={{ marginLeft: "15px" }}>
                           ${item.item_price * item.item_quantity}
                         </p>
@@ -100,7 +100,10 @@ export default function PausedOrders(props: any) {
                       ${order.order_total_amount - order.order_delivery_cost}
                     </b>
                   </p>
-                  <img src={"/icons/plus.svg"} style={{ marginLeft: "15px" }} />
+                  <img
+                    src={"./icons/plus.svg"}
+                    style={{ marginLeft: "15px" }}
+                  />
                   <p>
                     <b>delivery price:</b>
                   </p>
@@ -108,7 +111,7 @@ export default function PausedOrders(props: any) {
                     <b>${order.order_delivery_cost}</b>
                   </p>
                   <img
-                    src={"/icons/pause.svg"}
+                    src={"./icons/pause.svg"}
                     style={{ marginLeft: "15px" }}
                   />
                   <p>

@@ -29,6 +29,7 @@ import { retrieveBestProducts } from "./selector";
 import ProductApiService from "app/apiServices/productApiService";
 import { ProductSearch, ProductSearchObj } from "types/others";
 import MemberApiService from "app/apiServices/memberApiService";
+import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
 //** REDUX SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
   setBestProducts: (data: Product[]) => dispatch(setBestProducts(data)),
@@ -56,6 +57,7 @@ export function BestProducts(props: any) {
     product_color: "all",
     product_type: "all",
   });
+  const { isMobile } = useDeviceDetect();
   //** HANDLERS */
   const chosenProductHandler = (id: string) => {
     history.push(`/shop/product/${id}`);
@@ -88,155 +90,317 @@ export function BestProducts(props: any) {
       })
       .catch((err) => console.log(err));
   }, [productRebuild]);
-  return (
-    <div className="best_restaurant_frame">
-      {/* <img
-        src={"icons/line_group.svg"}
-        style={{ position: "absolute", left: "6%", transform: "rotate(90deg)" }}
-      /> */}
-      <Container sx={{ paddingTop: "23px" }}>
-        <Stack flexDirection={"column"} alignItems={"center"}>
-          <Box className="category_title">Best Products</Box>
-          <Stack
-            style={{ width: "100%", display: "flex" }}
-            flexDirection={"row"}
-          >
-            <Swiper
-              className={"restaurant_avatars_wrapper"}
-              slidesPerView={4}
-              centeredSlides={false}
-              spaceBetween={10}
-              navigation={{
-                nextEl: ".restaurant-next",
-                prevEl: ".restaurant-prev",
-              }}
-              pagination={{
-                el: ".swiper-pagination",
-                clickable: true,
-              }}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: true,
-              }}
-            >
-              {bestProducts.map((product: Product) => {
-                const image_path = `${serverApi}/${product.product_images[0]}`;
 
-                return (
-                  <SwiperSlide
-                    style={{ cursor: "pointer", marginLeft: "5px" }}
-                    key={product._id}
-                    className={"restaurant_avatars"}
-                  >
-                    <Box
-                      className={"dish_box"}
+  const handleClickOpenAlert = () => {
+    history.push("/construction");
+  };
+
+  if (isMobile()) {
+    return (
+      <div className="best_restaurant_frame">
+        <Container sx={{ paddingTop: "23px" }}>
+          <Stack flexDirection={"column"} alignItems={"center"}>
+            <Box className="category_title">Best Products</Box>
+            <Stack
+              style={{ width: "100%", display: "flex" }}
+              flexDirection={"row"}
+            >
+              <Swiper
+                className={"restaurant_avatars_wrapper"}
+                slidesPerView={1}
+                centeredSlides={false}
+                navigation={{
+                  nextEl: ".restaurant-next",
+                  prevEl: ".restaurant-prev",
+                }}
+                pagination={{
+                  el: ".swiper-pagination",
+                  clickable: true,
+                }}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: true,
+                }}
+              >
+                {bestProducts.map((product: Product) => {
+                  const image_path = `${serverApi}/${product.product_images[0]}`;
+
+                  return (
+                    <SwiperSlide
+                      style={{ cursor: "pointer", marginLeft: "5px" }}
                       key={product._id}
-                      onClick={() => chosenProductHandler(product._id)}
+                      className={"restaurant_avatars"}
                     >
                       <Box
-                        className={"dish_img"}
-                        sx={{
-                          backgroundImage: `url(${image_path})`,
-                          cursor: "pointer",
-                        }}
+                        className={"dish_box"}
+                        key={product._id}
+                        onClick={() => handleClickOpenAlert()}
                       >
-                        <Button
-                          className={"like_view_btn"}
-                          style={{
-                            left: "36px",
-                            backgroundColor: "rgba(238, 228, 228, 0.909)",
+                        <Box
+                          className={"dish_img"}
+                          sx={{
+                            backgroundImage: `url(${image_path})`,
+                            cursor: "pointer",
                           }}
                         >
-                          {" "}
-                          <Badge
-                            badgeContent={product.product_views}
-                            color="primary"
-                          >
-                            <Checkbox
-                              icon={
-                                <RemoveRedEyeIcon
-                                  style={{ color: "#85139e" }}
-                                />
-                              }
-                              checkedIcon={
-                                <RemoveRedEyeIcon style={{ color: "red" }} />
-                              }
-                              checked={
-                                product?.me_viewed &&
-                                product?.me_viewed[0]?.my_view
-                                  ? true
-                                  : false
-                              }
-                            />
-                          </Badge>
-                        </Button>
-                        <Button
-                          className={"like_view_btn"}
-                          style={{
-                            right: "36px",
-                            backgroundColor: "rgba(238, 228, 228, 0.909)",
-                          }}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                          }}
-                        >
-                          <Badge
-                            badgeContent={product.product_likes}
-                            color="primary"
-                          >
-                            <Checkbox
-                              icon={
-                                <FavoriteBorder style={{ color: "#85139e" }} />
-                              }
-                              id={product._id}
-                              checkedIcon={
-                                <Favorite style={{ color: "red" }} />
-                              }
-                              onClick={targetLikeProduct}
-                              checked={
-                                product?.me_liked &&
-                                product?.me_liked[0]?.my_favorite
-                                  ? true
-                                  : false
-                              }
-                            />
-                          </Badge>
-                        </Button>
-                      </Box>
-                      <Box className={"dish_desc"}>
-                        <div className={"review_stars"}>
-                          <Rating value={product?.product_rating} />
-                          <span className={"product_reviews"}>
-                            ({product.product_reviews})
-                          </span>
-                        </div>
-                        <span className={"dish_title_text"}>
-                          {product.product_name}
-                        </span>
-
-                        <Box className={"dish_desc_text"}>
-                          <MonetizationOnIcon />
-                          {product.product_price}
                           <Button
-                            className={"view_btn"}
-                            onClick={(e) => {
-                              props.onAdd(product);
-                              e.stopPropagation();
-                              sweetTopSmallSuccessAlert("success", 700, false);
+                            className={"like_view_btn"}
+                            style={{
+                              left: "36px",
+                              backgroundColor: "rgba(238, 228, 228, 0.909)",
                             }}
                           >
-                            <ShoppingCartIcon />
+                            {" "}
+                            <Badge
+                              badgeContent={product.product_views}
+                              color="primary"
+                            >
+                              <Checkbox
+                                icon={
+                                  <RemoveRedEyeIcon
+                                    style={{ color: "#85139e" }}
+                                  />
+                                }
+                                checkedIcon={
+                                  <RemoveRedEyeIcon style={{ color: "red" }} />
+                                }
+                                checked={
+                                  product?.me_viewed &&
+                                  product?.me_viewed[0]?.my_view
+                                    ? true
+                                    : false
+                                }
+                              />
+                            </Badge>
+                          </Button>
+                          <Button
+                            className={"like_view_btn"}
+                            style={{
+                              right: "36px",
+                              backgroundColor: "rgba(238, 228, 228, 0.909)",
+                            }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                            }}
+                          >
+                            <Badge
+                              badgeContent={product.product_likes}
+                              color="primary"
+                            >
+                              <Checkbox
+                                icon={
+                                  <FavoriteBorder
+                                    style={{ color: "#85139e" }}
+                                  />
+                                }
+                                id={product._id}
+                                checkedIcon={
+                                  <Favorite style={{ color: "red" }} />
+                                }
+                                onClick={targetLikeProduct}
+                                checked={
+                                  product?.me_liked &&
+                                  product?.me_liked[0]?.my_favorite
+                                    ? true
+                                    : false
+                                }
+                              />
+                            </Badge>
                           </Button>
                         </Box>
+                        <Box className={"dish_desc"}>
+                          <div className={"review_stars"}>
+                            <Rating value={product?.product_rating} />
+                            <span className={"product_reviews"}>
+                              ({product.product_reviews})
+                            </span>
+                          </div>
+                          <span className={"dish_title_text"}>
+                            {product.product_name}
+                          </span>
+
+                          <Box className={"dish_desc_text"}>
+                            <MonetizationOnIcon />
+                            {product.product_price}
+                            <Button
+                              className={"view_btn"}
+                              onClick={(e) => {
+                                props.onAdd(product);
+                                e.stopPropagation();
+                                sweetTopSmallSuccessAlert(
+                                  "success",
+                                  700,
+                                  false
+                                );
+                              }}
+                            >
+                              <ShoppingCartIcon />
+                            </Button>
+                          </Box>
+                        </Box>
                       </Box>
-                    </Box>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </Stack>
           </Stack>
-        </Stack>
-      </Container>
-    </div>
-  );
+        </Container>
+      </div>
+    );
+  } else {
+    return (
+      <div className="best_restaurant_frame">
+        <Container sx={{ paddingTop: "23px" }}>
+          <Stack flexDirection={"column"} alignItems={"center"}>
+            <Box className="category_title">Best Products</Box>
+            <Stack
+              style={{ width: "100%", display: "flex" }}
+              flexDirection={"row"}
+            >
+              <Swiper
+                className={"restaurant_avatars_wrapper"}
+                slidesPerView={4}
+                centeredSlides={false}
+                spaceBetween={10}
+                navigation={{
+                  nextEl: ".restaurant-next",
+                  prevEl: ".restaurant-prev",
+                }}
+                pagination={{
+                  el: ".swiper-pagination",
+                  clickable: true,
+                }}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: true,
+                }}
+              >
+                {bestProducts.map((product: Product) => {
+                  const image_path = `${serverApi}/${product.product_images[0]}`;
+
+                  return (
+                    <SwiperSlide
+                      style={{ cursor: "pointer", marginLeft: "5px" }}
+                      key={product._id}
+                      className={"restaurant_avatars"}
+                    >
+                      <Box
+                        className={"dish_box"}
+                        key={product._id}
+                        onClick={() => chosenProductHandler(product._id)}
+                      >
+                        <Box
+                          className={"dish_img"}
+                          sx={{
+                            backgroundImage: `url(${image_path})`,
+                            cursor: "pointer",
+                          }}
+                        >
+                          <Button
+                            className={"like_view_btn"}
+                            style={{
+                              left: "36px",
+                              backgroundColor: "rgba(238, 228, 228, 0.909)",
+                            }}
+                          >
+                            {" "}
+                            <Badge
+                              badgeContent={product.product_views}
+                              color="primary"
+                            >
+                              <Checkbox
+                                icon={
+                                  <RemoveRedEyeIcon
+                                    style={{ color: "#85139e" }}
+                                  />
+                                }
+                                checkedIcon={
+                                  <RemoveRedEyeIcon style={{ color: "red" }} />
+                                }
+                                checked={
+                                  product?.me_viewed &&
+                                  product?.me_viewed[0]?.my_view
+                                    ? true
+                                    : false
+                                }
+                              />
+                            </Badge>
+                          </Button>
+                          <Button
+                            className={"like_view_btn"}
+                            style={{
+                              right: "36px",
+                              backgroundColor: "rgba(238, 228, 228, 0.909)",
+                            }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                            }}
+                          >
+                            <Badge
+                              badgeContent={product.product_likes}
+                              color="primary"
+                            >
+                              <Checkbox
+                                icon={
+                                  <FavoriteBorder
+                                    style={{ color: "#85139e" }}
+                                  />
+                                }
+                                id={product._id}
+                                checkedIcon={
+                                  <Favorite style={{ color: "red" }} />
+                                }
+                                onClick={targetLikeProduct}
+                                checked={
+                                  product?.me_liked &&
+                                  product?.me_liked[0]?.my_favorite
+                                    ? true
+                                    : false
+                                }
+                              />
+                            </Badge>
+                          </Button>
+                        </Box>
+                        <Box className={"dish_desc"}>
+                          <div className={"review_stars"}>
+                            <Rating value={product?.product_rating} />
+                            <span className={"product_reviews"}>
+                              ({product.product_reviews})
+                            </span>
+                          </div>
+                          <span className={"dish_title_text"}>
+                            {product.product_name}
+                          </span>
+
+                          <Box className={"dish_desc_text"}>
+                            <MonetizationOnIcon />
+                            {product.product_price}
+                            <Button
+                              className={"view_btn"}
+                              onClick={(e) => {
+                                props.onAdd(product);
+                                e.stopPropagation();
+                                sweetTopSmallSuccessAlert(
+                                  "success",
+                                  700,
+                                  false
+                                );
+                              }}
+                            >
+                              <ShoppingCartIcon />
+                            </Button>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </Stack>
+          </Stack>
+        </Container>
+      </div>
+    );
+  }
 }

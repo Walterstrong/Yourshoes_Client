@@ -999,10 +999,10 @@
   resize: none;
   overflow: hidden;
   height: auto;
-  font-style: italic;
+  /* font-style: italic; */
   font-size: 16px;
   box-sizing: border-box;
-  color: #264d89;
+  color: #5a0868;
 }
 .chosen_dish_comment .comment_author {
   font-family: "Lato";

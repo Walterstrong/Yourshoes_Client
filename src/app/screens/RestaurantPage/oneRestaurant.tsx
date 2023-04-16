@@ -67,6 +67,10 @@ import { useHistory, useParams } from "react-router-dom";
 import ProductApiService from "../../apiServices/productApiService";
 import { verifiedMemberData } from "app/apiServices/verify";
 import { Navigation } from "swiper";
+import Fade from "react-reveal/Fade";
+import Bounce from "react-reveal/Bounce";
+import Zoom from "react-reveal/Zoom";
+
 const actionDispatch = (dispatch: Dispatch) => ({
   setRandomRestaurants: (data: Restaurant[]) =>
     dispatch(setRandomRestaurants(data)),
@@ -563,113 +567,124 @@ export function OneRestaurant(props: any) {
               </Stack>
             </Stack>
             <Stack className={"dish_wrapper"}>
-              {targetProducts.map((product: Product) => {
+              {targetProducts.map((product: Product, index) => {
                 const image_path = `${serverApi}/${product.product_images[0]}`;
 
                 return (
-                  <Box
-                    className={"dish_box"}
+                  <Zoom
                     key={product._id}
-                    onClick={() => chosenDishHandler(product._id)}
+                    up
+                    duration={2000}
+                    delay={index * 300}
                   >
                     <Box
-                      className={"dish_img"}
-                      sx={{
-                        backgroundImage: `url(${image_path})`,
-                        cursor: "pointer",
-                      }}
+                      className={"dish_box"}
+                      key={product._id}
+                      onClick={() => chosenDishHandler(product._id)}
                     >
-                      <Button
-                        className={"like_view_btn"}
-                        style={{
-                          left: "36px",
-                          backgroundColor: "rgba(238, 228, 228, 0.909)",
+                      <Box
+                        className={"dish_img"}
+                        sx={{
+                          backgroundImage: `url(${image_path})`,
+                          cursor: "pointer",
                         }}
                       >
-                        <Badge
-                          badgeContent={product.product_views}
-                          color="primary"
-                        >
-                          <Checkbox
-                            icon={
-                              <RemoveRedEyeIcon style={{ color: "#85139e" }} />
-                            }
-                            checkedIcon={
-                              <RemoveRedEyeIcon style={{ color: "red" }} />
-                            }
-                            checked={
-                              product?.me_viewed &&
-                              product?.me_viewed[0]?.my_view
-                                ? true
-                                : false
-                            }
-                          />
-                        </Badge>
-                      </Button>
-                      <Box></Box>
-                      <Button
-                        className={"like_view_btn"}
-                        style={{
-                          right: "36px",
-                          backgroundColor: "rgba(238, 228, 228, 0.909)",
-                        }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                        }}
-                      >
-                        <Badge
-                          badgeContent={product.product_likes}
-                          color="primary"
-                        >
-                          <Checkbox
-                            icon={
-                              <FavoriteBorder
-                                style={{
-                                  color: "#85139e",
-                                }}
-                              />
-                            }
-                            id={product._id}
-                            checkedIcon={<Favorite style={{ color: "red" }} />}
-                            onClick={targetLikeProduct}
-                            checked={
-                              product?.me_liked &&
-                              product?.me_liked[0]?.my_favorite
-                                ? true
-                                : false
-                            }
-                          />
-                        </Badge>
-                      </Button>
-                    </Box>
-                    <Box className={"dish_desc"}>
-                      <div className={"review_stars"}>
-                        <Rating value={product?.product_rating} />
-                        <span className={"product_reviews"}>
-                          ({product.product_reviews})
-                        </span>
-                      </div>
-                      <span className={"dish_title_text"}>
-                        {product.product_name}
-                      </span>
-
-                      <Box className={"dish_desc_text"}>
-                        <MonetizationOnIcon />
-                        {product.product_price}
-
                         <Button
-                          className={"view_btn"}
-                          onClick={(e) => {
-                            props.onAdd(product);
-                            e.stopPropagation();
-                            sweetTopSmallSuccessAlert("success", 700, false);
+                          className={"like_view_btn"}
+                          style={{
+                            left: "36px",
+                            backgroundColor: "rgba(238, 228, 228, 0.909)",
                           }}
                         >
-                          <ShoppingCartIcon />
+                          <Badge
+                            badgeContent={product.product_views}
+                            color="primary"
+                          >
+                            <Checkbox
+                              icon={
+                                <RemoveRedEyeIcon
+                                  style={{ color: "#85139e" }}
+                                />
+                              }
+                              checkedIcon={
+                                <RemoveRedEyeIcon style={{ color: "red" }} />
+                              }
+                              checked={
+                                product?.me_viewed &&
+                                product?.me_viewed[0]?.my_view
+                                  ? true
+                                  : false
+                              }
+                            />
+                          </Badge>
+                        </Button>
+                        <Box></Box>
+                        <Button
+                          className={"like_view_btn"}
+                          style={{
+                            right: "36px",
+                            backgroundColor: "rgba(238, 228, 228, 0.909)",
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        >
+                          <Badge
+                            badgeContent={product.product_likes}
+                            color="primary"
+                          >
+                            <Checkbox
+                              icon={
+                                <FavoriteBorder
+                                  style={{
+                                    color: "#85139e",
+                                  }}
+                                />
+                              }
+                              id={product._id}
+                              checkedIcon={
+                                <Favorite style={{ color: "red" }} />
+                              }
+                              onClick={targetLikeProduct}
+                              checked={
+                                product?.me_liked &&
+                                product?.me_liked[0]?.my_favorite
+                                  ? true
+                                  : false
+                              }
+                            />
+                          </Badge>
                         </Button>
                       </Box>
+                      <Box className={"dish_desc"}>
+                        <div className={"review_stars"}>
+                          <Rating value={product?.product_rating} />
+                          <span className={"product_reviews"}>
+                            ({product.product_reviews})
+                          </span>
+                        </div>
+                        <span className={"dish_title_text"}>
+                          {product.product_name}
+                        </span>
+
+                        <Box className={"dish_desc_text"}>
+                          <MonetizationOnIcon />
+                          {product.product_price}
+
+                          <Button
+                            className={"view_btn"}
+                            onClick={(e) => {
+                              props.onAdd(product);
+                              e.stopPropagation();
+                              sweetTopSmallSuccessAlert("success", 700, false);
+                            }}
+                          >
+                            <ShoppingCartIcon />
+                          </Button>
+                        </Box>
+                      </Box>
                     </Box>
-                  </Box>
+                  </Zoom>
                 );
               })}
             </Stack>

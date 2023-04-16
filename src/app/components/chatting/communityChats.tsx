@@ -18,6 +18,9 @@ import { RippleBadge } from "app/MaterialTheme/styled";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSpring } from "react-spring";
 import ReactScrollableFeed from "react-scrollable-feed";
+import Fade from "react-reveal/Fade";
+import Bounce from "react-reveal/Bounce";
+import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
 
 const NewMessage = (data: any) => {
   if (data.new_message.mb_id == verifiedMemberData?._id) {
@@ -60,7 +63,7 @@ export function CommunityChats(props: any) {
   const chatContentRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [openButton, setOpenButton] = useState(false);
-
+  const { isMobile } = useDeviceDetect();
   const handleOpenChat = () => {
     setOpen((prevState) => !prevState);
   };
@@ -162,60 +165,67 @@ export function CommunityChats(props: any) {
     }
   };
 
-  return (
-    <Stack className="chatting">
-      {openButton ? (
-        <Button className={"chat_button"} onClick={handleOpenChat}>
-          {open ? <CloseIcon /> : <MarkChatUnreadIcon />}
-        </Button>
-      ) : null}
-      <Stack className={"chat_frame3"}>
-        <Stack className={`chat_frame ${open ? "open" : ""}`}>
-          <Stack>
-            <Box className={"chat_top"}>
-              <div>Live chatting</div>
-              <RippleBadge
-                style={{ margin: "-30px 0 0 20px", color: "white" }}
-                badgeContent={onlineUsers}
-              />
-            </Box>
-            <Box
-              className={"chat_content"}
-              id="chat_content"
-              ref={chatContentRef}
-            >
-              <ReactScrollableFeed>
-                <Stack className={"chat_main"}>
-                  <Box
-                    flexDirection={"row"}
-                    style={{ display: "flex" }}
-                    sx={{ m: "10px 0px" }}
-                  >
-                    <div className={"msg_left"}>Live chatting</div>
-                  </Box>
-                  {messagesList}
-                </Stack>
-              </ReactScrollableFeed>
-            </Box>
-            <Box className={"chat_bott"}>
-              <input
-                ref={textInput}
-                type={"text"}
-                name={"message"}
-                className={"msg_input"}
-                placeholder={"Type message"}
-                onKeyDown={getKeyHandler}
-                onChange={(e) => {
-                  getInputMessageHandler(e);
-                }}
-              />
-              <button className={"send_msg_btn"} onClick={onClickHandler}>
-                <SendIcon style={{ color: "#fff" }} />
-              </button>
-            </Box>
+  if (!isMobile()) {
+    return (
+      <Stack className="chatting">
+        {openButton ? (
+          <Button className={"chat_button"} onClick={handleOpenChat}>
+            {open ? <CloseIcon /> : <MarkChatUnreadIcon />}
+          </Button>
+        ) : null}
+
+        <Stack className={"chat_frame3"}>
+          <Stack className={`chat_frame ${open ? "open" : ""}`}>
+            <Fade right>
+              <Stack>
+                <Box className={"chat_top"}>
+                  <div>Live chatting</div>
+                  <RippleBadge
+                    style={{ margin: "-30px 0 0 20px", color: "white" }}
+                    badgeContent={onlineUsers}
+                  />
+                </Box>
+                <Box
+                  className={"chat_content"}
+                  id="chat_content"
+                  ref={chatContentRef}
+                >
+                  <ReactScrollableFeed>
+                    <Stack className={"chat_main"}>
+                      <Box
+                        flexDirection={"row"}
+                        style={{ display: "flex" }}
+                        sx={{ m: "10px 0px" }}
+                      >
+                        <div className={"msg_left"}>Live chatting</div>
+                      </Box>
+                      {messagesList}
+                    </Stack>
+                  </ReactScrollableFeed>
+                </Box>
+                <Box className={"chat_bott"}>
+                  <input
+                    ref={textInput}
+                    type={"text"}
+                    name={"message"}
+                    className={"msg_input"}
+                    placeholder={"Type message"}
+                    onKeyDown={getKeyHandler}
+                    onChange={(e) => {
+                      getInputMessageHandler(e);
+                    }}
+                  />
+                  <button className={"send_msg_btn"} onClick={onClickHandler}>
+                    <SendIcon style={{ color: "#fff" }} />
+                  </button>
+                </Box>
+              </Stack>
+            </Fade>
           </Stack>
         </Stack>
       </Stack>
-    </Stack>
-  );
+    );
+  } else {
+    return null;
+  }
 }

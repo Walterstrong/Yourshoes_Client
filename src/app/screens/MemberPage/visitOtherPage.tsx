@@ -347,7 +347,7 @@ export function VisitOtherPage(props: any) {
                     >
                       <Box
                         className={"bottom_box"}
-                        style={{ marginLeft: "300px", marginTop: "50px" }}
+                        style={{ marginLeft: "300px", marginTop: "10px" }}
                       >
                         <Pagination
                           count={

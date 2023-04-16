@@ -51,12 +51,14 @@ export default function ProcessOrders(props: any) {
     <TabPanel value={"2"}>
       <Stack>
         {processOrders?.map((order: Order) => {
+          const mb_image_url =
+            verifiedMemberData?.mb_image ?? "/auth/default_user.svg";
           return (
             <Stack className={"order_card"}>
               <Stack className={"order_card_full"}>
                 <Stack className={"card_details"}>
                   <p>Card Details</p>
-                  <img src={"brands/burak.jpeg"} />
+                  <img src={mb_image_url} />
                 </Stack>
                 <Box className={"card_type"}>Card type</Box>
                 <Stack className={"card_images"}>

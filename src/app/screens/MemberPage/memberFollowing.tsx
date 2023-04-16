@@ -49,7 +49,7 @@ export function MemberFollowing(props: any) {
   const { setMemberFollowings } = actionDispatch(useDispatch());
   const { memberFollowings } = useSelector(memberFollowingsRetriever);
   const [followingsSearchObj, setFollowingsSearchObj] =
-    useState<FollowSearchObj>({ page: 1, limit: 5, mb_id: mb_id });
+    useState<FollowSearchObj>({ page: 1, limit: 6, mb_id: mb_id });
 
   useEffect(() => {
     const followService = new FollowApiService();
@@ -86,66 +86,68 @@ export function MemberFollowing(props: any) {
     document.location.reload();
   };
   return (
-    <Stack className={"followers_content"}>
-      {memberFollowings.map((following: Following) => {
-        const image_url = following?.follow_member_data?.mb_image
-          ? `${serverApi}/${following.follow_member_data.mb_image}`
-          : "/auth/person.jpg";
-        return (
-          <Box className={"follow_box"}>
-            <Avatar
-              alt={""}
-              src={image_url}
-              style={{
-                cursor: "pointer",
-                width: "150px",
-                height: "180px",
-                borderRadius: "10px",
-              }}
-              onClick={() => visitMemberHandler(following?.follow_id)}
-            />
-            <div
-              style={{
-                // width: "400px",
-                display: "flex",
-                flexDirection: "column",
+    <Stack className="friend_box">
+      <Stack className={"followers_content"}>
+        {memberFollowings.map((following: Following) => {
+          const image_url = following?.follow_member_data?.mb_image
+            ? `${serverApi}/${following.follow_member_data.mb_image}`
+            : "/auth/person.jpg";
+          return (
+            <Box className={"follow_box"}>
+              <Avatar
+                alt={""}
+                src={image_url}
+                style={{
+                  cursor: "pointer",
+                  width: "150px",
+                  height: "180px",
+                  borderRadius: "10px",
+                }}
+                onClick={() => visitMemberHandler(following?.follow_id)}
+              />
+              <div
+                style={{
+                  // width: "400px",
+                  display: "flex",
+                  flexDirection: "column",
 
-                height: "85%",
-              }}
-            >
-              {" "}
-              {/* <span className={"username_text"}>
+                  height: "85%",
+                }}
+              >
+                {" "}
+                {/* <span className={"username_text"}>
                 {following?.follow_member_data?.mb_type}
               </span> */}
-              <span
-                className={"name_text"}
-                onClick={() => visitMemberHandler(following?.follow_id)}
-                style={{ cursor: "pointer", marginBottom: "10px" }}
-              >
-                {following?.follow_member_data?.mb_nick}
-              </span>
-            </div>
+                <span
+                  className={"name_text"}
+                  onClick={() => visitMemberHandler(following?.follow_id)}
+                  style={{ cursor: "pointer", marginBottom: "10px" }}
+                >
+                  {following?.follow_member_data?.mb_nick}
+                </span>
+              </div>
 
-            {props.actions_enabled && (
-              <Button
-                variant={"contained"}
-                // startIcon={
-                //   // <img
-                //   //   src={"/icons/follow_icon.svg"}
-                //   //   style={{ width: "40px", marginLeft: "16px" }}
-                //   // />
-                // }
-                className={"follow_cancel_btn"}
-                onClick={(e) => unsubscribeHandler(e, following?.follow_id)}
-              >
-                Cancel Following
-              </Button>
-            )}
-          </Box>
-        );
-      })}
+              {props.actions_enabled && (
+                <Button
+                  variant={"contained"}
+                  // startIcon={
+                  //   // <img
+                  //   //   src={"/icons/follow_icon.svg"}
+                  //   //   style={{ width: "40px", marginLeft: "16px" }}
+                  //   // />
+                  // }
+                  className={"follow_cancel_btn"}
+                  onClick={(e) => unsubscribeHandler(e, following?.follow_id)}
+                >
+                  Cancel Following
+                </Button>
+              )}
+            </Box>
+          );
+        })}
+      </Stack>
       <Stack
-        sx={{ mt: "800px" }}
+        sx={{ mt: "100px", ml: "-300px" }}
         direction="row"
         alignItems="center"
         justifyContent="center"
@@ -163,6 +165,7 @@ export function MemberFollowing(props: any) {
                   next: ArrowForwardIcon,
                 }}
                 {...item}
+                style={{ color: "white" }}
                 color={"secondary"}
               />
             )}

@@ -34,6 +34,8 @@ import { setTargetRestaurants } from "./slice";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { SearchObj } from "../../../types/others";
 import { verifiedMemberData } from "app/apiServices/verify";
+import Fade from "react-reveal/Fade";
+import Bounce from "react-reveal/Bounce";
 
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
@@ -115,156 +117,40 @@ export function AllRestaurants() {
     <div className="all_restaurant">
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
-          {/* <Box className={"fil_search_box"}>
-            <Box className={"fil_box"} style={{ cursor: "pointer" }}>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => searchHandler("mb_point")}
-              >
-                Best
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => searchHandler("mb_views")}
-              >
-                Common
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => searchHandler("mb_likes")}
-              >
-                Trend
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => searchHandler("createdAt")}
-              >
-                New
-              </Button>
-            </Box>
-            <Box className={"search_big_box"}>
-              <form className={"search_form"} action={""} method={""}>
-                <input
-                  type={"search"}
-                  className={"searchInput"}
-                  name={"resSearch"}
-                  placeholder={"Searching"}
-                />
-                <Button
-                  className={"button_search"}
-                  variant="contained"
-                  endIcon={<SearchIcon />}
-                >
-                  Searching
-                </Button>
-              </form>
-            </Box>
-          </Box> */}
           <Box className="category_title">All Brands</Box>
           <Stack className={"all_res_box"}>
             {targetRestaurants.map((ele: Restaurant) => {
               const image_path = `${serverApi}/${ele.mb_image}`;
               return (
-                <Stack
-                  onClick={() => chosenRestaurantHandler(ele._id)}
-                  style={{
-                    height: "300px",
-                    width: "250px",
-                    marginRight: "65px",
-                    borderRadius: "15px",
-                    marginBottom: "35px",
-                    marginTop: "25px",
-                    cursor: "pointer",
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <Box>
-                    <img
-                      src={image_path}
-                      alt=""
-                      style={{
-                        height: "300px",
-                        width: "250px",
-                        // marginRight: "35px",
-                        borderRadius: "15px",
-                        backgroundSize: "cover",
-                      }}
-                    />
-                  </Box>
-                  {/* <Button
-                    onClick={(e) => {
-                      e.stopPropagation();
+                <Bounce bottom duration={2000}>
+                  <Stack
+                    onClick={() => chosenRestaurantHandler(ele._id)}
+                    style={{
+                      height: "300px",
+                      width: "250px",
+                      marginRight: "65px",
+                      borderRadius: "15px",
+                      marginBottom: "35px",
+                      marginTop: "25px",
+                      cursor: "pointer",
+                      backgroundSize: "cover",
                     }}
                   >
-                    <Favorite
-                      onClick={(e) => targetLikeHandler(e, ele._id)}
-                      style={{
-                        fill:
-                          ele?.me_liked && ele?.me_liked[0]?.my_favorite
-                            ? "red"
-                            : "white",
-                      }}
-                    />
-                  </Button> */}
-
-                  {/* <Typography
-                      level="h2"
-                      sx={{ fontSize: "md", mt: 2, color: "white" }}
-                    >
-                      {ele.mb_nick}
-                    </Typography> */}
-
-                  {/* <CardOverflow
-                      variant="soft"
-                      sx={{
-                        display: "flex",
-                        gap: 1.5,
-                        py: 1.5,
-                        px: "var(--Card-padding)",
-                        borderTop: "1px solid",
-                        borderColor: "neutral.outlinedBorder",
-                        bgcolor: "background.level1",
-                      }}
-                    >
-                      <Typography
-                        level="body3"
-                        sx={{
-                          fontWeight: "md",
-                          color: "text.secondary",
-                          alignItems: "center",
-                          display: "flex",
+                    <Box>
+                      <img
+                        src={image_path}
+                        alt=""
+                        style={{
+                          height: "300px",
+                          width: "250px",
+                          // marginRight: "35px",
+                          borderRadius: "15px",
+                          backgroundSize: "cover",
                         }}
-                      >
-                        {ele.mb_views}
-                        <VisibilityIcon
-                          sx={{ fontSize: 20, marginLeft: "5px" }}
-                        />
-                      </Typography>
-                      <Box sx={{ width: 2, bgcolor: "divider" }} />
-                      <Typography
-                        level="body3"
-                        sx={{
-                          fontWeight: "md",
-                          color: "text.secondary",
-                          alignItems: "center",
-                          display: "flex",
-                        }}
-                      >
-                        <div
-                          ref={(element) => (refs.current[ele._id] = element)}
-                        >
-                          {ele.mb_likes}
-                        </div>
-                        <FavoriteIcon
-                          sx={{ fontSize: 20, marginLeft: "5px" }}
-                        />
-                      </Typography>
-                    </CardOverflow> */}
-                </Stack>
+                      />
+                    </Box>
+                  </Stack>
+                </Bounce>
               );
             })}
           </Stack>
