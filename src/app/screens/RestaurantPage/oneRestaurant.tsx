@@ -70,6 +70,7 @@ import { Navigation } from "swiper";
 import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 import Zoom from "react-reveal/Zoom";
+import Rotate from "react-reveal/Rotate";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setRandomRestaurants: (data: Restaurant[]) =>
@@ -159,7 +160,7 @@ export function OneRestaurant(props: any) {
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
       page: 1,
-      limit: 9,
+      limit: 6,
       order: "product_reviews",
       restaurant_mb_id: restaurant_id,
       product_collection: "all",
@@ -423,6 +424,12 @@ export function OneRestaurant(props: any) {
                         onClick={() => searchOrderHandler("product_reviews")}
                         control={<Radio />}
                       />
+                      <FormControlLabel
+                        value="discount.value"
+                        label="On Sale"
+                        onClick={() => searchOrderHandler("discount.value")}
+                        control={<Radio />}
+                      />
                     </RadioGroup>
                   </AccordionDetails>
                 </Accordion>
@@ -569,12 +576,12 @@ export function OneRestaurant(props: any) {
             <Stack className={"dish_wrapper"}>
               {targetProducts.map((product: Product, index) => {
                 const image_path = `${serverApi}/${product.product_images[0]}`;
-
+                let discountedPrice = Math.floor(product.discountedPrice);
                 return (
-                  <Zoom
+                  <Fade
                     key={product._id}
-                    up
-                    duration={2000}
+                    bottom
+                    duration={1500}
                     delay={index * 300}
                   >
                     <Box
@@ -589,40 +596,48 @@ export function OneRestaurant(props: any) {
                           cursor: "pointer",
                         }}
                       >
-                        <Button
-                          className={"like_view_btn"}
-                          style={{
-                            left: "36px",
-                            backgroundColor: "rgba(238, 228, 228, 0.909)",
-                          }}
-                        >
-                          <Badge
-                            badgeContent={product.product_views}
-                            color="primary"
-                          >
-                            <Checkbox
-                              icon={
-                                <RemoveRedEyeIcon
-                                  style={{ color: "#85139e" }}
+                        <Box className="discount_fon">
+                          {product.discountedPrice !== 0 ? (
+                            `${product.discount?.value}%Sale`
+                          ) : (
+                            <Button
+                              className={"like_view_btn"}
+                              style={{
+                                top: "1px",
+                                left: "5px",
+                                backgroundColor: "rgba(238, 228, 228, 0.909)",
+                              }}
+                            >
+                              <Badge
+                                badgeContent={product.product_views}
+                                color="primary"
+                              >
+                                <Checkbox
+                                  icon={
+                                    <RemoveRedEyeIcon
+                                      style={{ color: "#85139e" }}
+                                    />
+                                  }
+                                  checkedIcon={
+                                    <RemoveRedEyeIcon
+                                      style={{ color: "red" }}
+                                    />
+                                  }
+                                  checked={
+                                    product?.me_viewed &&
+                                    product?.me_viewed[0]?.my_view
+                                      ? true
+                                      : false
+                                  }
                                 />
-                              }
-                              checkedIcon={
-                                <RemoveRedEyeIcon style={{ color: "red" }} />
-                              }
-                              checked={
-                                product?.me_viewed &&
-                                product?.me_viewed[0]?.my_view
-                                  ? true
-                                  : false
-                              }
-                            />
-                          </Badge>
-                        </Button>
-                        <Box></Box>
+                              </Badge>
+                            </Button>
+                          )}
+                        </Box>
                         <Button
                           className={"like_view_btn"}
                           style={{
-                            right: "36px",
+                            right: "25px",
                             backgroundColor: "rgba(238, 228, 228, 0.909)",
                           }}
                           onClick={(e) => {
@@ -668,8 +683,35 @@ export function OneRestaurant(props: any) {
                         </span>
 
                         <Box className={"dish_desc_text"}>
-                          <MonetizationOnIcon />
-                          {product.product_price}
+                          {product.discountedPrice ? (
+                            <>
+                              <MonetizationOnIcon
+                                style={{
+                                  color: "red",
+                                }}
+                              />
+                              <span
+                                style={{ color: "red", fontWeight: "bold" }}
+                              >
+                                {discountedPrice}
+                              </span>
+                              <span
+                                style={{
+                                  textDecoration: "line-through",
+                                  marginLeft: "8px",
+                                  // textDecorationColor: "red",
+                                  textDecorationThickness: "0.8px",
+                                }}
+                              >
+                                {product.product_price}
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              <MonetizationOnIcon />
+                              <span>{product.product_price}</span>
+                            </>
+                          )}
 
                           <Button
                             className={"view_btn"}
@@ -679,12 +721,30 @@ export function OneRestaurant(props: any) {
                               sweetTopSmallSuccessAlert("success", 700, false);
                             }}
                           >
-                            <ShoppingCartIcon />
+                            {product.discountedPrice ? (
+                              <ShoppingCartIcon
+                                style={{
+                                  left: "60px",
+                                  position: "absolute",
+                                  width: "100px",
+                                  height: "30px",
+                                }}
+                              />
+                            ) : (
+                              <ShoppingCartIcon
+                                style={{
+                                  left: "100px",
+                                  position: "absolute",
+                                  width: "100px",
+                                  height: "30px",
+                                }}
+                              />
+                            )}
                           </Button>
                         </Box>
                       </Box>
                     </Box>
-                  </Zoom>
+                  </Fade>
                 );
               })}
             </Stack>

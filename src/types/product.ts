@@ -16,7 +16,7 @@ export interface Product {
   product_collection: string;
   product_status: string;
   product_price: number;
-  product_discount: number;
+  discount: Discount[];
   product_left_cnt: number;
   product_size: string;
   product_volume: number;
@@ -29,6 +29,15 @@ export interface Product {
   restaurant_mb_id: string;
   createdAt: Date;
   updatedAt: Date;
+  discountedPrice: number;
+  sortDiscountValue: number;
   me_liked: MeLiked[];
   me_viewed: MeViewed[];
+}
+
+export interface Discount {
+  type: string;
+  value: number;
+  startDate: Date;
+  endDate: Date;
 }

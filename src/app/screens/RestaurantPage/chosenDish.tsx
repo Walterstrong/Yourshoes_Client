@@ -188,8 +188,8 @@ export function ChosenDish(props: any) {
     useState<ProductSearchObj>({
       page: 1,
       limit: 15,
-      order: "product_reviews",
-      restaurant_mb_id: chosenProduct?.restaurant_mb_id,
+      order: "product_likes",
+      restaurant_mb_id: "all",
       product_collection: "all",
       product_size: "all",
       product_color: "all",
@@ -345,6 +345,11 @@ export function ChosenDish(props: any) {
       sweetErrorHandling(err).then();
     }
   };
+  // const chosenProduct: Product | null = null;
+
+  const discountedPrice: number = Math.floor(
+    chosenProduct?.discountedPrice ?? 0
+  );
   return (
     <div className="chosen_dish_page">
       <Container className="dish_container">
@@ -362,6 +367,7 @@ export function ChosenDish(props: any) {
             >
               {chosenProduct?.product_images.map((ele: string) => {
                 const image_path = `${serverApi}/${ele}`;
+                let discountedPrice = Math.floor(chosenProduct.discountedPrice);
                 return (
                   <SwiperSlide>
                     <img
@@ -522,7 +528,19 @@ export function ChosenDish(props: any) {
               <strong className={"dish_txt"}>
                 {chosenProduct?.product_name}
               </strong>
-              <span className={"resto_name"}>{chosenRestaurant?.mb_nick}</span>
+              <span className={"resto_name"}>{chosenRestaurant?.mb_nick}</span>{" "}
+              {chosenProduct?.discountedPrice ? (
+                <span
+                  style={{
+                    marginTop: "8px",
+                    color: "red",
+                    textDecoration: "underline",
+                    textDecorationColor: "#5d5959",
+                  }}
+                >
+                  {chosenProduct?.discount.value}% Sale
+                </span>
+              ) : null}
               <Box className={"rating_box"}>
                 <div className={"review_stars"}>
                   <Rating
@@ -586,7 +604,7 @@ export function ChosenDish(props: any) {
                 </div>
               </Box>
               <p className={"dish_desc_info"}>
-                <h2>Product description</h2>
+                <h2 style={{ color: "#060864" }}> Product description</h2>
                 <ul>
                   <li>Made in USA or Imported</li>
                   <li>Rubber sole</li>
@@ -613,7 +631,6 @@ export function ChosenDish(props: any) {
                   </li>
                 </ul>
               </p>
-
               <Marginer
                 direction="horizontal"
                 height="1"
@@ -622,7 +639,31 @@ export function ChosenDish(props: any) {
               />
               <div className={"dish_price_box"}>
                 <span>Price:</span>
-                <span>${chosenProduct?.product_price}</span>
+                {chosenProduct?.discountedPrice ? (
+                  <>
+                    {" "}
+                    <span
+                      style={{
+                        textDecoration: "line-through",
+                        marginLeft: "8px",
+                        // textDecorationColor: "red",
+                        textDecorationThickness: "0.8px",
+
+                        color: "#85139e",
+                        position: "absolute",
+                        right: "185px",
+                        zIndex: "3",
+                      }}
+                    >
+                      {chosenProduct?.product_price}
+                    </span>{" "}
+                    <span style={{ color: "red", fontWeight: "bold" }}>
+                      ${discountedPrice}
+                    </span>{" "}
+                  </>
+                ) : (
+                  <span>${chosenProduct?.product_price}</span>
+                )}
               </div>
               <div className={"button_box"}>
                 <Button
@@ -636,7 +677,6 @@ export function ChosenDish(props: any) {
                   Add Card
                 </Button>
               </div>
-
               <div>
                 <Dialog open={open} onClose={handleClose}>
                   <DialogTitle></DialogTitle>
@@ -739,7 +779,7 @@ export function ChosenDish(props: any) {
             >
               {targetProducts.map((product: Product) => {
                 const image_path = `${serverApi}/${product.product_images[0]}`;
-
+                let discountedPrice = Math.floor(product.discountedPrice);
                 return (
                   <SwiperSlide
                     style={{ cursor: "pointer", marginLeft: "5px" }}
@@ -760,36 +800,44 @@ export function ChosenDish(props: any) {
                           cursor: "pointer",
                         }}
                       >
-                        <Button
-                          className={"like_view_btn"}
-                          style={{
-                            left: "36px",
-                            backgroundColor: "rgba(238, 228, 228, 0.909)",
-                          }}
-                        >
-                          <Badge
-                            badgeContent={product.product_views}
-                            color="primary"
-                          >
-                            <Checkbox
-                              icon={
-                                <RemoveRedEyeIcon
-                                  style={{ color: "#85139e" }}
+                        <Box className="discount_fon">
+                          {product.discountedPrice !== 0 ? (
+                            `${product.discount?.value}%Sale`
+                          ) : (
+                            <Button
+                              className={"like_view_btn"}
+                              style={{
+                                top: "1px",
+                                left: "5px",
+                                backgroundColor: "rgba(238, 228, 228, 0.909)",
+                              }}
+                            >
+                              <Badge
+                                badgeContent={product.product_views}
+                                color="primary"
+                              >
+                                <Checkbox
+                                  icon={
+                                    <RemoveRedEyeIcon
+                                      style={{ color: "#85139e" }}
+                                    />
+                                  }
+                                  checkedIcon={
+                                    <RemoveRedEyeIcon
+                                      style={{ color: "red" }}
+                                    />
+                                  }
+                                  checked={
+                                    product?.me_viewed &&
+                                    product?.me_viewed[0]?.my_view
+                                      ? true
+                                      : false
+                                  }
                                 />
-                              }
-                              checkedIcon={
-                                <RemoveRedEyeIcon style={{ color: "red" }} />
-                              }
-                              checked={
-                                product?.me_viewed &&
-                                product?.me_viewed[0]?.my_view
-                                  ? true
-                                  : false
-                              }
-                            />
-                          </Badge>
-                        </Button>
-                        <Box></Box>
+                              </Badge>
+                            </Button>
+                          )}
+                        </Box>
                         <Button
                           className={"like_view_btn"}
                           style={{
@@ -839,8 +887,35 @@ export function ChosenDish(props: any) {
                         </span>
 
                         <Box className={"dish_desc_text"}>
-                          <MonetizationOnIcon />
-                          {product.product_price}
+                          {product.discountedPrice ? (
+                            <>
+                              <MonetizationOnIcon
+                                style={{
+                                  color: "red",
+                                }}
+                              />
+                              <span
+                                style={{ color: "red", fontWeight: "bold" }}
+                              >
+                                {discountedPrice}
+                              </span>
+                              <span
+                                style={{
+                                  textDecoration: "line-through",
+                                  marginLeft: "8px",
+                                  // textDecorationColor: "red",
+                                  textDecorationThickness: "0.8px",
+                                }}
+                              >
+                                {product.product_price}
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              <MonetizationOnIcon />
+                              <span>{product.product_price}</span>
+                            </>
+                          )}
 
                           <Button
                             className={"view_btn"}
@@ -850,7 +925,25 @@ export function ChosenDish(props: any) {
                               sweetTopSmallSuccessAlert("success", 700, false);
                             }}
                           >
-                            <ShoppingCartIcon />
+                            {product.discountedPrice ? (
+                              <ShoppingCartIcon
+                                style={{
+                                  left: "60px",
+                                  position: "absolute",
+                                  width: "100px",
+                                  height: "30px",
+                                }}
+                              />
+                            ) : (
+                              <ShoppingCartIcon
+                                style={{
+                                  left: "100px",
+                                  position: "absolute",
+                                  width: "100px",
+                                  height: "30px",
+                                }}
+                              />
+                            )}
                           </Button>
                         </Box>
                       </Box>

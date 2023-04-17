@@ -83,16 +83,29 @@ function App() {
       setCartItems(cart_updated);
       localStorage.setItem("cart_data", JSON.stringify(cart_updated));
     } else {
-      const new_item: CartItem = {
-        _id: product._id,
-        quantity: 1,
-        name: product.product_name,
-        price: product.product_price,
-        image: product.product_images[0],
-      };
-      const cart_updated = [...cartItems, { ...new_item }];
-      setCartItems(cart_updated);
-      localStorage.setItem("cart_data", JSON.stringify(cart_updated));
+      if (product.discountedPrice !== 0) {
+        const new_item: CartItem = {
+          _id: product._id,
+          quantity: 1,
+          name: product.product_name,
+          price: product.discountedPrice,
+          image: product.product_images[0],
+        };
+        const cart_updated = [...cartItems, { ...new_item }];
+        setCartItems(cart_updated);
+        localStorage.setItem("cart_data", JSON.stringify(cart_updated));
+      } else {
+        const new_item: CartItem = {
+          _id: product._id,
+          quantity: 1,
+          name: product.product_name,
+          price: product.discountedPrice,
+          image: product.product_images[0],
+        };
+        const cart_updated = [...cartItems, { ...new_item }];
+        setCartItems(cart_updated);
+        localStorage.setItem("cart_data", JSON.stringify(cart_updated));
+      }
     }
   };
   const onRemove = (item: CartItem) => {

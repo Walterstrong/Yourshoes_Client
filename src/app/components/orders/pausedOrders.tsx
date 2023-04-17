@@ -81,7 +81,7 @@ export default function PausedOrders(props: any) {
                         <p>${item.item_price}</p>
                         <img src={"./icons/Close.svg"} />
                         <p>{item.item_quantity}</p>
-                        <img src={"./icons/pause.svg"} />
+                        <img src={"./icons/Pause.svg"} />
                         <p style={{ marginLeft: "15px" }}>
                           ${item.item_price * item.item_quantity}
                         </p>
@@ -101,7 +101,7 @@ export default function PausedOrders(props: any) {
                     </b>
                   </p>
                   <img
-                    src={"./icons/plus.svg"}
+                    src={"./icons/Plus.svg"}
                     style={{ marginLeft: "15px" }}
                   />
                   <p>
@@ -111,7 +111,7 @@ export default function PausedOrders(props: any) {
                     <b>${order.order_delivery_cost}</b>
                   </p>
                   <img
-                    src={"./icons/pause.svg"}
+                    src={"./icons/Pause.svg"}
                     style={{ marginLeft: "15px" }}
                   />
                   <p>

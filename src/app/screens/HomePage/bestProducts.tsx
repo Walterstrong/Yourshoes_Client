@@ -50,7 +50,7 @@ export function BestProducts(props: any) {
   const [targetProduct, setTargetProduct] = useState<ProductSearch>({
     page: 1,
     limit: 25,
-    order: "product_views",
+    order: "product_reviews",
     restaurant_mb_id: "all",
     product_collection: "all",
     product_size: "all",
@@ -129,12 +129,13 @@ export function BestProducts(props: any) {
                     <SwiperSlide
                       style={{ cursor: "pointer", marginLeft: "5px" }}
                       key={product._id}
+                      onClick={handleClickOpenAlert}
                       className={"restaurant_avatars"}
                     >
                       <Box
                         className={"dish_box"}
                         key={product._id}
-                        onClick={() => handleClickOpenAlert()}
+                        onClick={() => handleClickOpenAlert}
                       >
                         <Box
                           className={"dish_img"}
@@ -143,40 +144,48 @@ export function BestProducts(props: any) {
                             cursor: "pointer",
                           }}
                         >
-                          <Button
-                            className={"like_view_btn"}
-                            style={{
-                              left: "36px",
-                              backgroundColor: "rgba(238, 228, 228, 0.909)",
-                            }}
-                          >
-                            {" "}
-                            <Badge
-                              badgeContent={product.product_views}
-                              color="primary"
-                            >
-                              <Checkbox
-                                icon={
-                                  <RemoveRedEyeIcon
-                                    style={{ color: "#85139e" }}
+                          <Box className="discount_fon">
+                            {product.discountedPrice !== 0 ? (
+                              `${product.discount?.value}%Sale`
+                            ) : (
+                              <Button
+                                className={"like_view_btn"}
+                                style={{
+                                  top: "1px",
+                                  left: "5px",
+                                  backgroundColor: "rgba(238, 228, 228, 0.909)",
+                                }}
+                              >
+                                <Badge
+                                  badgeContent={product.product_views}
+                                  color="primary"
+                                >
+                                  <Checkbox
+                                    icon={
+                                      <RemoveRedEyeIcon
+                                        style={{ color: "#85139e" }}
+                                      />
+                                    }
+                                    checkedIcon={
+                                      <RemoveRedEyeIcon
+                                        style={{ color: "red" }}
+                                      />
+                                    }
+                                    checked={
+                                      product?.me_viewed &&
+                                      product?.me_viewed[0]?.my_view
+                                        ? true
+                                        : false
+                                    }
                                   />
-                                }
-                                checkedIcon={
-                                  <RemoveRedEyeIcon style={{ color: "red" }} />
-                                }
-                                checked={
-                                  product?.me_viewed &&
-                                  product?.me_viewed[0]?.my_view
-                                    ? true
-                                    : false
-                                }
-                              />
-                            </Badge>
-                          </Button>
+                                </Badge>
+                              </Button>
+                            )}
+                          </Box>
                           <Button
                             className={"like_view_btn"}
                             style={{
-                              right: "36px",
+                              right: "25px",
                               backgroundColor: "rgba(238, 228, 228, 0.909)",
                             }}
                             onClick={(e) => {
@@ -190,7 +199,9 @@ export function BestProducts(props: any) {
                               <Checkbox
                                 icon={
                                   <FavoriteBorder
-                                    style={{ color: "#85139e" }}
+                                    style={{
+                                      color: "#85139e",
+                                    }}
                                   />
                                 }
                                 id={product._id}
@@ -220,21 +231,41 @@ export function BestProducts(props: any) {
                           </span>
 
                           <Box className={"dish_desc_text"}>
-                            <MonetizationOnIcon />
-                            {product.product_price}
-                            <Button
-                              className={"view_btn"}
-                              onClick={(e) => {
-                                props.onAdd(product);
-                                e.stopPropagation();
-                                sweetTopSmallSuccessAlert(
-                                  "success",
-                                  700,
-                                  false
-                                );
-                              }}
-                            >
-                              <ShoppingCartIcon />
+                            {product.discountedPrice ? (
+                              <>
+                                <MonetizationOnIcon
+                                  style={{
+                                    color: "red",
+                                  }}
+                                />
+                                <span
+                                  style={{ color: "red", fontWeight: "bold" }}
+                                >
+                                  {product.discountedPrice}
+                                </span>
+                                <span
+                                  style={{
+                                    textDecoration: "line-through",
+                                    marginLeft: "8px",
+                                  }}
+                                >
+                                  {product.product_price}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <MonetizationOnIcon />
+                                <span>{product.product_price}</span>
+                              </>
+                            )}
+
+                            <Button className={"view_btn"}>
+                              <ShoppingCartIcon
+                                style={{
+                                  right: "-70px",
+                                  position: "absolute",
+                                }}
+                              />
                             </Button>
                           </Box>
                         </Box>
@@ -278,7 +309,7 @@ export function BestProducts(props: any) {
               >
                 {bestProducts.map((product: Product) => {
                   const image_path = `${serverApi}/${product.product_images[0]}`;
-
+                  let discountedPrice = Math.floor(product.discountedPrice);
                   return (
                     <SwiperSlide
                       style={{ cursor: "pointer", marginLeft: "5px" }}
@@ -297,40 +328,48 @@ export function BestProducts(props: any) {
                             cursor: "pointer",
                           }}
                         >
-                          <Button
-                            className={"like_view_btn"}
-                            style={{
-                              left: "36px",
-                              backgroundColor: "rgba(238, 228, 228, 0.909)",
-                            }}
-                          >
-                            {" "}
-                            <Badge
-                              badgeContent={product.product_views}
-                              color="primary"
-                            >
-                              <Checkbox
-                                icon={
-                                  <RemoveRedEyeIcon
-                                    style={{ color: "#85139e" }}
+                          <Box className="discount_fon">
+                            {product.discountedPrice !== 0 ? (
+                              `${product.discount?.value}%Sale`
+                            ) : (
+                              <Button
+                                className={"like_view_btn"}
+                                style={{
+                                  top: "1px",
+                                  left: "5px",
+                                  backgroundColor: "rgba(238, 228, 228, 0.909)",
+                                }}
+                              >
+                                <Badge
+                                  badgeContent={product.product_views}
+                                  color="primary"
+                                >
+                                  <Checkbox
+                                    icon={
+                                      <RemoveRedEyeIcon
+                                        style={{ color: "#85139e" }}
+                                      />
+                                    }
+                                    checkedIcon={
+                                      <RemoveRedEyeIcon
+                                        style={{ color: "red" }}
+                                      />
+                                    }
+                                    checked={
+                                      product?.me_viewed &&
+                                      product?.me_viewed[0]?.my_view
+                                        ? true
+                                        : false
+                                    }
                                   />
-                                }
-                                checkedIcon={
-                                  <RemoveRedEyeIcon style={{ color: "red" }} />
-                                }
-                                checked={
-                                  product?.me_viewed &&
-                                  product?.me_viewed[0]?.my_view
-                                    ? true
-                                    : false
-                                }
-                              />
-                            </Badge>
-                          </Button>
+                                </Badge>
+                              </Button>
+                            )}
+                          </Box>
                           <Button
                             className={"like_view_btn"}
                             style={{
-                              right: "36px",
+                              right: "25px",
                               backgroundColor: "rgba(238, 228, 228, 0.909)",
                             }}
                             onClick={(e) => {
@@ -344,7 +383,9 @@ export function BestProducts(props: any) {
                               <Checkbox
                                 icon={
                                   <FavoriteBorder
-                                    style={{ color: "#85139e" }}
+                                    style={{
+                                      color: "#85139e",
+                                    }}
                                   />
                                 }
                                 id={product._id}
@@ -374,8 +415,36 @@ export function BestProducts(props: any) {
                           </span>
 
                           <Box className={"dish_desc_text"}>
-                            <MonetizationOnIcon />
-                            {product.product_price}
+                            {product.discountedPrice ? (
+                              <>
+                                <MonetizationOnIcon
+                                  style={{
+                                    color: "red",
+                                  }}
+                                />
+                                <span
+                                  style={{ color: "red", fontWeight: "bold" }}
+                                >
+                                  {discountedPrice}
+                                </span>
+                                <span
+                                  style={{
+                                    textDecoration: "line-through",
+                                    marginLeft: "8px",
+                                    // textDecorationColor: "red",
+                                    textDecorationThickness: "0.8px",
+                                  }}
+                                >
+                                  {product.product_price}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <MonetizationOnIcon />
+                                <span>{product.product_price}</span>
+                              </>
+                            )}
+
                             <Button
                               className={"view_btn"}
                               onClick={(e) => {
@@ -388,7 +457,25 @@ export function BestProducts(props: any) {
                                 );
                               }}
                             >
-                              <ShoppingCartIcon />
+                              {product.discountedPrice ? (
+                                <ShoppingCartIcon
+                                  style={{
+                                    left: "60px",
+                                    position: "absolute",
+                                    width: "100px",
+                                    height: "30px",
+                                  }}
+                                />
+                              ) : (
+                                <ShoppingCartIcon
+                                  style={{
+                                    left: "100px",
+                                    position: "absolute",
+                                    width: "100px",
+                                    height: "30px",
+                                  }}
+                                />
+                              )}
                             </Button>
                           </Box>
                         </Box>

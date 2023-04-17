@@ -31,6 +31,7 @@ import { retrieveNewProducts } from "./selector";
 import ProductApiService from "app/apiServices/productApiService";
 import { ProductSearchObj } from "types/others";
 import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
+import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 const actionDispatch = (dispatch: Dispatch) => ({
   setNewProducts: (data: Product[]) => dispatch(setNewProducts(data)),
 });
@@ -51,11 +52,13 @@ export function NewProducts(props: any) {
   const refs: any = useRef([]);
   const { setNewProducts } = actionDispatch(useDispatch());
   const [productRebuild, setProductRebuild] = useState<Date>(new Date());
+  const [timeRemaining, setTimeRemaining] = useState<string>("");
+
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
       page: 1,
-      limit: 50,
-      order: "random",
+      limit: 15,
+      order: "discount.value",
       restaurant_mb_id: "all",
       product_collection: "all",
       product_size: "all",
@@ -63,10 +66,10 @@ export function NewProducts(props: any) {
       product_type: "all",
     });
   //** HANDLERS */
+
   const chosenDishHandler = (id: string) => {
     history.push(`/shop/product/${id}`);
   };
-
   const targetLikeProduct = async (e: any) => {
     try {
       assert.ok(verifiedMemberData, Definer.auth_err1);
@@ -105,7 +108,7 @@ export function NewProducts(props: any) {
       <div className="top_restaurant_frame">
         <Container>
           <Stack flexDirection={"column"} alignItems={"center"}>
-            <Box className="category_title_mobile">Most Sold</Box>
+            <Box className="category_title_mobile">On Sale</Box>
             <Stack
               style={{ width: "100%", display: "flex" }}
               flexDirection={"row"}
@@ -134,11 +137,12 @@ export function NewProducts(props: any) {
                     <SwiperSlide
                       style={{ cursor: "pointer", marginLeft: "5px" }}
                       key={product._id}
+                      onClick={handleClickOpenAlert}
                     >
                       <Box
                         className={"dish_box"}
-                        onClick={() => handleClickOpenAlert()}
-                        // style={marginRight:"0",}
+                        key={product._id}
+                        onClick={() => handleClickOpenAlert}
                       >
                         <Box
                           className={"dish_img"}
@@ -147,40 +151,48 @@ export function NewProducts(props: any) {
                             cursor: "pointer",
                           }}
                         >
-                          <Button
-                            className={"like_view_btn"}
-                            style={{
-                              left: "36px",
-                              backgroundColor: "rgba(238, 228, 228, 0.909)",
-                            }}
-                          >
-                            <Badge
-                              badgeContent={product.product_views}
-                              color="primary"
-                            >
-                              <Checkbox
-                                icon={
-                                  <RemoveRedEyeIcon
-                                    style={{ color: "#85139e" }}
+                          <Box className="discount_fon">
+                            {product.discountedPrice !== 0 ? (
+                              `${product.discount?.value}%Sale`
+                            ) : (
+                              <Button
+                                className={"like_view_btn"}
+                                style={{
+                                  top: "1px",
+                                  left: "5px",
+                                  backgroundColor: "rgba(238, 228, 228, 0.909)",
+                                }}
+                              >
+                                <Badge
+                                  badgeContent={product.product_views}
+                                  color="primary"
+                                >
+                                  <Checkbox
+                                    icon={
+                                      <RemoveRedEyeIcon
+                                        style={{ color: "#85139e" }}
+                                      />
+                                    }
+                                    checkedIcon={
+                                      <RemoveRedEyeIcon
+                                        style={{ color: "red" }}
+                                      />
+                                    }
+                                    checked={
+                                      product?.me_viewed &&
+                                      product?.me_viewed[0]?.my_view
+                                        ? true
+                                        : false
+                                    }
                                   />
-                                }
-                                checkedIcon={
-                                  <RemoveRedEyeIcon style={{ color: "red" }} />
-                                }
-                                checked={
-                                  product?.me_viewed &&
-                                  product?.me_viewed[0]?.my_view
-                                    ? true
-                                    : false
-                                }
-                              />
-                            </Badge>
-                          </Button>
-                          <Box></Box>
+                                </Badge>
+                              </Button>
+                            )}
+                          </Box>
                           <Button
                             className={"like_view_btn"}
                             style={{
-                              right: "36px",
+                              right: "25px",
                               backgroundColor: "rgba(238, 228, 228, 0.909)",
                             }}
                             onClick={(e) => {
@@ -203,7 +215,7 @@ export function NewProducts(props: any) {
                                 checkedIcon={
                                   <Favorite style={{ color: "red" }} />
                                 }
-                                onClick={targetLikeProduct}
+                                onClick={() => handleClickOpenAlert}
                                 checked={
                                   product?.me_liked &&
                                   product?.me_liked[0]?.my_favorite
@@ -226,22 +238,46 @@ export function NewProducts(props: any) {
                           </span>
 
                           <Box className={"dish_desc_text"}>
-                            <MonetizationOnIcon />
-                            {product.product_price}
+                            {product.discountedPrice ? (
+                              <>
+                                <MonetizationOnIcon
+                                  style={{
+                                    color: "red",
+                                  }}
+                                />
+                                <span
+                                  style={{ color: "red", fontWeight: "bold" }}
+                                >
+                                  {product.discountedPrice}
+                                </span>
+                                <span
+                                  style={{
+                                    textDecoration: "line-through",
+                                    marginLeft: "8px",
+                                    // textDecorationThickness: "0.25px",
+                                    textDecorationLine: "0.1px",
+                                  }}
+                                >
+                                  {product.product_price}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <MonetizationOnIcon />
+                                <span>{product.product_price}</span>
+                              </>
+                            )}
 
                             <Button
                               className={"view_btn"}
-                              onClick={(e) => {
-                                props.onAdd(product);
-                                e.stopPropagation();
-                                sweetTopSmallSuccessAlert(
-                                  "success",
-                                  700,
-                                  false
-                                );
-                              }}
+                              onClick={() => handleClickOpenAlert}
                             >
-                              <ShoppingCartIcon />
+                              <ShoppingCartIcon
+                                style={{
+                                  right: "-70px",
+                                  position: "absolute",
+                                }}
+                              />
                             </Button>
                           </Box>
                         </Box>
@@ -260,7 +296,7 @@ export function NewProducts(props: any) {
       <div className="top_restaurant_frame">
         <Container>
           <Stack flexDirection={"column"} alignItems={"center"}>
-            <Box className="category_title">Most Sold</Box>
+            <Box className="category_title">On Sale</Box>
             <Stack
               style={{ width: "100%", display: "flex" }}
               flexDirection={"row"}
@@ -285,7 +321,7 @@ export function NewProducts(props: any) {
               >
                 {newProducts.map((product: Product) => {
                   const image_path = `${serverApi}/${product.product_images[0]}`;
-
+                  let discountedPrice = Math.floor(product.discountedPrice);
                   return (
                     <SwiperSlide
                       style={{ cursor: "pointer", marginLeft: "5px" }}
@@ -303,40 +339,48 @@ export function NewProducts(props: any) {
                             cursor: "pointer",
                           }}
                         >
-                          <Button
-                            className={"like_view_btn"}
-                            style={{
-                              left: "36px",
-                              backgroundColor: "rgba(238, 228, 228, 0.909)",
-                            }}
-                          >
-                            <Badge
-                              badgeContent={product.product_views}
-                              color="primary"
-                            >
-                              <Checkbox
-                                icon={
-                                  <RemoveRedEyeIcon
-                                    style={{ color: "#85139e" }}
+                          <Box className="discount_fon">
+                            {product.discountedPrice !== 0 ? (
+                              `${product.discount?.value}%Sale`
+                            ) : (
+                              <Button
+                                className={"like_view_btn"}
+                                style={{
+                                  top: "1px",
+                                  left: "5px",
+                                  backgroundColor: "rgba(238, 228, 228, 0.909)",
+                                }}
+                              >
+                                <Badge
+                                  badgeContent={product.product_views}
+                                  color="primary"
+                                >
+                                  <Checkbox
+                                    icon={
+                                      <RemoveRedEyeIcon
+                                        style={{ color: "#85139e" }}
+                                      />
+                                    }
+                                    checkedIcon={
+                                      <RemoveRedEyeIcon
+                                        style={{ color: "red" }}
+                                      />
+                                    }
+                                    checked={
+                                      product?.me_viewed &&
+                                      product?.me_viewed[0]?.my_view
+                                        ? true
+                                        : false
+                                    }
                                   />
-                                }
-                                checkedIcon={
-                                  <RemoveRedEyeIcon style={{ color: "red" }} />
-                                }
-                                checked={
-                                  product?.me_viewed &&
-                                  product?.me_viewed[0]?.my_view
-                                    ? true
-                                    : false
-                                }
-                              />
-                            </Badge>
-                          </Button>
-                          <Box></Box>
+                                </Badge>
+                              </Button>
+                            )}
+                          </Box>
                           <Button
                             className={"like_view_btn"}
                             style={{
-                              right: "36px",
+                              right: "25px",
                               backgroundColor: "rgba(238, 228, 228, 0.909)",
                             }}
                             onClick={(e) => {
@@ -382,8 +426,35 @@ export function NewProducts(props: any) {
                           </span>
 
                           <Box className={"dish_desc_text"}>
-                            <MonetizationOnIcon />
-                            {product.product_price}
+                            {product.discountedPrice ? (
+                              <>
+                                <MonetizationOnIcon
+                                  style={{
+                                    color: "red",
+                                  }}
+                                />
+                                <span
+                                  style={{ color: "red", fontWeight: "bold" }}
+                                >
+                                  {discountedPrice}
+                                </span>
+                                <span
+                                  style={{
+                                    textDecoration: "line-through",
+                                    marginLeft: "8px",
+                                    // textDecorationColor: "red",
+                                    textDecorationThickness: "0.8px",
+                                  }}
+                                >
+                                  {product.product_price}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <MonetizationOnIcon />
+                                <span>{product.product_price}</span>
+                              </>
+                            )}
 
                             <Button
                               className={"view_btn"}
@@ -397,7 +468,25 @@ export function NewProducts(props: any) {
                                 );
                               }}
                             >
-                              <ShoppingCartIcon />
+                              {product.discountedPrice ? (
+                                <ShoppingCartIcon
+                                  style={{
+                                    left: "60px",
+                                    position: "absolute",
+                                    width: "100px",
+                                    height: "30px",
+                                  }}
+                                />
+                              ) : (
+                                <ShoppingCartIcon
+                                  style={{
+                                    left: "100px",
+                                    position: "absolute",
+                                    width: "100px",
+                                    height: "30px",
+                                  }}
+                                />
+                              )}
                             </Button>
                           </Box>
                         </Box>

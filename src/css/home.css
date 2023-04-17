@@ -511,6 +511,27 @@
   opacity: 1;
 }
 
+.top_restaurant_frame .discount_fon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  opacity: 0.8;
+  /* border-radius: 50%;
+  background-color: rgb(239, 237, 232);
+  width: 50px;
+  height: 50px; */
+  font-family: "Times";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 .top_restaurant_frame .ordered {
   width: 163px;
   height: 50px;
@@ -672,6 +693,28 @@
   opacity: 0;
   transition: 0.8s ease;
   border-radius: 50%;
+}
+
+.best_restaurant_frame .discount_fon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  opacity: 0.8;
+  /* border-radius: 50%;
+  background-color: rgb(239, 237, 232);
+  width: 50px;
+  height: 50px; */
+  font-family: "Times";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .best_restaurant_frame .dish_img:hover .like_view_btn {
