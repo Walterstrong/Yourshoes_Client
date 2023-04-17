@@ -163,6 +163,7 @@ export function OneRestaurant(props: any) {
       limit: 6,
       order: "product_reviews",
       restaurant_mb_id: restaurant_id,
+      product_name: "all",
       product_collection: "all",
       product_size: "all",
       product_color: "all",
@@ -197,10 +198,23 @@ export function OneRestaurant(props: any) {
       .catch((err) => console.log(err));
   }, [chosenRestaurantId, targetProductSearchObj, productRebuild]);
 
+  const handleSearchIconClick = () => {
+    // Perform the search with the searchValue
+    console.log(
+      "targetProductSearchObj.product_name:",
+      targetProductSearchObj.product_name
+    );
+  };
   //** HANDLERS */
   const searchOrderHandler = (order: string) => {
     targetProductSearchObj.page = 1;
     targetProductSearchObj.order = order;
+    setTargetProductsSearchObj({ ...targetProductSearchObj });
+  };
+  //
+  const changeNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    targetProductSearchObj.page = 1;
+    targetProductSearchObj.product_name = event.target.value;
     setTargetProductsSearchObj({ ...targetProductSearchObj });
   };
   //
@@ -276,9 +290,10 @@ export function OneRestaurant(props: any) {
                     className={"Single_searchInput"}
                     name={"Single_resSearch"}
                     placeholder={"Searching"}
+                    onChange={changeNameHandler}
                   />
                   <Button className={"Single_button_search"}>
-                    <SearchIcon />
+                    <SearchIcon onClick={handleSearchIconClick} />
                   </Button>
                 </form>
               </Box>

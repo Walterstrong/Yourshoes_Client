@@ -59,6 +59,7 @@ export function NewProducts(props: any) {
       page: 1,
       limit: 15,
       order: "discount.value",
+      product_name: "all",
       restaurant_mb_id: "all",
       product_collection: "all",
       product_size: "all",

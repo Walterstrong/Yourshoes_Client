@@ -190,6 +190,7 @@ export function ChosenDish(props: any) {
       limit: 15,
       order: "product_likes",
       restaurant_mb_id: "all",
+      product_name: "all",
       product_collection: "all",
       product_size: "all",
       product_color: "all",

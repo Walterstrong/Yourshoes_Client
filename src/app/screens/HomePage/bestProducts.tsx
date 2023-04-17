@@ -49,9 +49,10 @@ export function BestProducts(props: any) {
   const [productRebuild, setProductRebuild] = useState<Date>(new Date());
   const [targetProduct, setTargetProduct] = useState<ProductSearch>({
     page: 1,
-    limit: 25,
+    limit: 15,
     order: "product_reviews",
     restaurant_mb_id: "all",
+    product_name: "all",
     product_collection: "all",
     product_size: "all",
     product_color: "all",
