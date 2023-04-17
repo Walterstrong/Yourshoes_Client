@@ -84,11 +84,12 @@ function App() {
       localStorage.setItem("cart_data", JSON.stringify(cart_updated));
     } else {
       if (product.discountedPrice !== 0) {
+        let discountedPrice = Math.floor(product.discountedPrice);
         const new_item: CartItem = {
           _id: product._id,
           quantity: 1,
           name: product.product_name,
-          price: product.discountedPrice,
+          price: discountedPrice,
           image: product.product_images[0],
         };
         const cart_updated = [...cartItems, { ...new_item }];
@@ -99,7 +100,7 @@ function App() {
           _id: product._id,
           quantity: 1,
           name: product.product_name,
-          price: product.discountedPrice,
+          price: product.product_price,
           image: product.product_images[0],
         };
         const cart_updated = [...cartItems, { ...new_item }];

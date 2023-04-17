@@ -20,6 +20,7 @@ export interface ProductSearch {
   page: number;
   limit: number;
   order: string;
+  product_name: string;
   restaurant_mb_id?: string;
   product_collection?: string;
   product_size?: string;

@@ -611,44 +611,42 @@ export function OneRestaurant(props: any) {
                           cursor: "pointer",
                         }}
                       >
-                        <Box className="discount_fon">
-                          {product.discountedPrice !== 0 ? (
-                            `${product.discount?.value}%Sale`
-                          ) : (
-                            <Button
-                              className={"like_view_btn"}
-                              style={{
-                                top: "1px",
-                                left: "5px",
-                                backgroundColor: "rgba(238, 228, 228, 0.909)",
-                              }}
+                        {product.discountedPrice !== 0 ? (
+                          <Box className="discount_fon">
+                            {product.discount?.value}%
+                          </Box>
+                        ) : (
+                          <Button
+                            className={"like_view_btn"}
+                            style={{
+                              left: "25px",
+                              backgroundColor: "rgba(238, 228, 228, 0.909)",
+                            }}
+                          >
+                            <Badge
+                              badgeContent={product.product_views}
+                              color="primary"
                             >
-                              <Badge
-                                badgeContent={product.product_views}
-                                color="primary"
-                              >
-                                <Checkbox
-                                  icon={
-                                    <RemoveRedEyeIcon
-                                      style={{ color: "#85139e" }}
-                                    />
-                                  }
-                                  checkedIcon={
-                                    <RemoveRedEyeIcon
-                                      style={{ color: "red" }}
-                                    />
-                                  }
-                                  checked={
-                                    product?.me_viewed &&
-                                    product?.me_viewed[0]?.my_view
-                                      ? true
-                                      : false
-                                  }
-                                />
-                              </Badge>
-                            </Button>
-                          )}
-                        </Box>
+                              <Checkbox
+                                icon={
+                                  <RemoveRedEyeIcon
+                                    style={{ color: "#85139e" }}
+                                  />
+                                }
+                                checkedIcon={
+                                  <RemoveRedEyeIcon style={{ color: "red" }} />
+                                }
+                                checked={
+                                  product?.me_viewed &&
+                                  product?.me_viewed[0]?.my_view
+                                    ? true
+                                    : false
+                                }
+                              />
+                            </Badge>
+                          </Button>
+                        )}
+
                         <Button
                           className={"like_view_btn"}
                           style={{
@@ -728,34 +726,26 @@ export function OneRestaurant(props: any) {
                             </>
                           )}
 
-                          <Button
-                            className={"view_btn"}
-                            onClick={(e) => {
-                              props.onAdd(product);
-                              e.stopPropagation();
-                              sweetTopSmallSuccessAlert("success", 700, false);
-                            }}
-                          >
-                            {product.discountedPrice ? (
-                              <ShoppingCartIcon
-                                style={{
-                                  left: "60px",
-                                  position: "absolute",
-                                  width: "100px",
-                                  height: "30px",
-                                }}
-                              />
-                            ) : (
-                              <ShoppingCartIcon
-                                style={{
-                                  left: "100px",
-                                  position: "absolute",
-                                  width: "100px",
-                                  height: "30px",
-                                }}
-                              />
-                            )}
-                          </Button>
+                          <Box>
+                            <ShoppingCartIcon
+                              style={{
+                                bottom: "35px",
+                                right: "60px",
+                                position: "absolute",
+                                width: "100px",
+                                height: "30px",
+                              }}
+                              onClick={(e) => {
+                                props.onAdd(product);
+                                e.stopPropagation();
+                                sweetTopSmallSuccessAlert(
+                                  "success",
+                                  700,
+                                  false
+                                );
+                              }}
+                            />
+                          </Box>
                         </Box>
                       </Box>
                     </Box>

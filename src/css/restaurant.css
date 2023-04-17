@@ -592,16 +592,16 @@
   left: 20px;
   z-index: 3;
   opacity: 0.8;
-  /* border-radius: 50%;
-  background-color: rgb(239, 237, 232);
-  width: 50px;
-  height: 50px; */
-  font-family: "Times";
+  border-radius: 10px;
+  background-color: red;
+  width: 60px;
+  height: 30px;
+  font-family: "fantasy";
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
   line-height: 30px;
-  color: red;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1099,7 +1099,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
-  line-height: 36px;
+  line-height: 28px;
   color: #000000;
 }
 
@@ -1148,7 +1148,7 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 28px;
-  margin-top: -15px;
+  margin-top: -20px;
   color: #5d5959;
 }
 
@@ -1158,16 +1158,16 @@
   left: 20px;
   z-index: 3;
   opacity: 0.8;
-  /* border-radius: 50%;
-  background-color: rgb(239, 237, 232);
-  width: 50px;
-  height: 50px; */
-  font-family: "Times";
+  border-radius: 10px;
+  background-color: red;
+  width: 60px;
+  height: 30px;
+  font-family: "fantasy";
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
   line-height: 30px;
-  color: red;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
