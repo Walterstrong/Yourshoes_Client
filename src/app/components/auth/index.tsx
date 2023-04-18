@@ -70,7 +70,7 @@ export default function AuthenticationModal(props: any) {
       window.location.reload();
     } catch (err) {
       console.log(err);
-      props.handleSignupClose();
+      props.handleSignUpClose();
       sweetErrorHandling(err).then();
     }
   };

@@ -797,6 +797,7 @@ export function OneRestaurant(props: any) {
         <Stack style={{ color: "white" }} className={"bottom_box"}>
           <img className={"line_img_right"} src={"/home/papay.png"} />
           <Pagination
+            style={{ marginLeft: "75px" }}
             count={
               targetProductSearchObj.page >= 3
                 ? targetProductSearchObj.page + 1

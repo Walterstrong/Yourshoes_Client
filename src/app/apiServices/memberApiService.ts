@@ -47,8 +47,14 @@ class MemberApiService {
       console.log(member);
       return member;
     } catch (err: any) {
-      console.log(`ERR::: signupRequest ${err.message}`);
-      throw err;
+      if (err.response?.status === 400) {
+        // Handle the specific error for duplicate mb_nick
+        console.log(`ERR::: signupRequest: ${err.response?.data?.message}`);
+        throw new Error(err.response?.data?.message);
+      } else {
+        console.log(`ERR::: signupRequest ${err.message}`);
+        throw err;
+      }
     }
   }
 

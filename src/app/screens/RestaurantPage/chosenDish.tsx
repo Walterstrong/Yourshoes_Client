@@ -302,6 +302,20 @@ export function ChosenDish(props: any) {
       clearInterval(interval);
     };
   }, [chosenProduct]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeRemainingArray(
+        targetProducts.map((product: Product) =>
+          formatTimeRemaining(product.discount.endDate)
+        )
+      );
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [targetProducts]);
   //** for Creating comments *//
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {

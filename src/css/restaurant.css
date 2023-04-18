@@ -948,6 +948,16 @@
   color: #85139e;
 }
 
+.restaurant_page .chosen_dish_page .dish_img .discount_timer {
+  display: block;
+  position: absolute;
+  top: 25px;
+  left: 100px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #85139e;
+}
+
 .restaurant_page .chosen_dish_page .discount_timer_one {
   display: block;
   position: relative;
@@ -956,6 +966,7 @@
   font-weight: bold;
   color: #85139e;
 }
+
 .chosen_dish_page .dish_container {
   display: flex;
   flex-direction: column;
