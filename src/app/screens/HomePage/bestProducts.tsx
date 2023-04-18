@@ -58,10 +58,32 @@ export function BestProducts(props: any) {
     product_color: "all",
     product_type: "all",
   });
+  const [timeRemainingArray, setTimeRemainingArray] = useState<string[]>([]);
   const { isMobile } = useDeviceDetect();
   //** HANDLERS */
   const chosenProductHandler = (id: string) => {
     history.push(`/shop/product/${id}`);
+  };
+
+  const formatTimeRemaining = (endTime: string): string => {
+    const now = new Date();
+    const endDate = new Date(endTime);
+    const diff = endDate.getTime() - now.getTime();
+
+    if (diff <= 0) {
+      return "00:00:00";
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    return `${days > 0 ? `${days}d ` : ""}${hours
+      .toString()
+      .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   const targetLikeProduct = async (e: any) => {
@@ -96,6 +118,20 @@ export function BestProducts(props: any) {
     history.push("/construction");
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeRemainingArray(
+        bestProducts.map((product: Product) =>
+          formatTimeRemaining(product.discount.endDate)
+        )
+      );
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [bestProducts]);
+
   if (isMobile()) {
     return (
       <div className="best_restaurant_frame">
@@ -123,7 +159,7 @@ export function BestProducts(props: any) {
                   disableOnInteraction: true,
                 }}
               >
-                {bestProducts.map((product: Product) => {
+                {bestProducts.map((product: Product, index: number) => {
                   const image_path = `${serverApi}/${product.product_images[0]}`;
 
                   return (
@@ -220,6 +256,11 @@ export function BestProducts(props: any) {
                               />
                             </Badge>
                           </Button>
+                          <span className={"discount_timer"}>
+                            {timeRemainingArray[index] !== "00:00:00"
+                              ? timeRemainingArray[index]
+                              : ""}
+                          </span>
                         </Box>
                         <Box className={"dish_desc"}>
                           <div className={"review_stars"}>
@@ -309,7 +350,7 @@ export function BestProducts(props: any) {
                   disableOnInteraction: true,
                 }}
               >
-                {bestProducts.map((product: Product) => {
+                {bestProducts.map((product: Product, index: number) => {
                   const image_path = `${serverApi}/${product.product_images[0]}`;
                   let discountedPrice = Math.floor(product.discountedPrice);
                   return (
@@ -367,7 +408,6 @@ export function BestProducts(props: any) {
                               </Badge>
                             </Button>
                           )}
-
                           <Button
                             className={"like_view_btn"}
                             style={{
@@ -404,6 +444,11 @@ export function BestProducts(props: any) {
                               />
                             </Badge>
                           </Button>
+                          <span className={"discount_timer"}>
+                            {timeRemainingArray[index] !== "00:00:00"
+                              ? timeRemainingArray[index]
+                              : ""}
+                          </span>
                         </Box>
                         <Box className={"dish_desc"}>
                           <div className={"review_stars"}>

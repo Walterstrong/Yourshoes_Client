@@ -183,7 +183,10 @@ export function ChosenDish(props: any) {
   const { targetProducts } = useSelector(targetProductsRetriever);
 
   const [productRebuild, setProductRebuild] = useState<Date>(new Date());
-
+  const [timeRemainingArray, setTimeRemainingArray] = useState<string[]>([]);
+  const [timeRemainingArrayOne, setTimeRemainingArrayOne] = useState<string[]>(
+    []
+  );
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
       page: 1,
@@ -207,7 +210,47 @@ export function ChosenDish(props: any) {
     history.push(`/shop/product/${id}`);
     setProductRebuild(new Date());
   };
+  const formatTimeRemaining = (endTime: string): string => {
+    const now = new Date();
+    const endDate = new Date(endTime);
+    const diff = endDate.getTime() - now.getTime();
 
+    if (diff <= 0) {
+      return "00:00:00";
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    return `${days > 0 ? `${days}d ` : ""}${hours
+      .toString()
+      .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  };
+
+  const formatTimeRemainingOne = (endTime: string): string => {
+    const now = new Date();
+    const endDate = new Date(endTime);
+    const diff = endDate.getTime() - now.getTime();
+
+    if (diff <= 0) {
+      return "00:00:00";
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    return `${days > 0 ? `${days}d ` : ""}${hours
+      .toString()
+      .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  };
   const chosenCommentHandler = (id: string) => {
     targetCommentsSearchObj.comment_ref_product_id = id;
     setTargetCommentSearchObj({ ...targetCommentsSearchObj });
@@ -244,8 +287,21 @@ export function ChosenDish(props: any) {
       .catch((err) => console.log(err));
   }, [productRebuild]);
 
-  // useEffect(() => {}, [productRebuild, targetProductSearchObj]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (chosenProduct) {
+        setTimeRemainingArrayOne([
+          formatTimeRemainingOne(chosenProduct.discount.endDate),
+        ]);
+      } else {
+        setTimeRemainingArrayOne([]);
+      }
+    }, 1000);
 
+    return () => {
+      clearInterval(interval);
+    };
+  }, [chosenProduct]);
   //** for Creating comments *//
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -531,16 +587,23 @@ export function ChosenDish(props: any) {
               </strong>
               <span className={"resto_name"}>{chosenRestaurant?.mb_nick}</span>{" "}
               {chosenProduct?.discountedPrice ? (
-                <span
-                  style={{
-                    marginTop: "8px",
-                    color: "red",
-                    textDecoration: "underline",
-                    textDecorationColor: "#5d5959",
-                  }}
-                >
-                  {chosenProduct?.discount.value}% Sale
-                </span>
+                <>
+                  <span
+                    style={{
+                      marginTop: "8px",
+                      color: "red",
+                      textDecoration: "underline",
+                      textDecorationColor: "#5d5959",
+                    }}
+                  >
+                    {chosenProduct?.discount.value}% Sale
+                  </span>{" "}
+                  <span className={"discount_timer_one"}>
+                    {timeRemainingArrayOne[0] !== "00:00:00"
+                      ? timeRemainingArrayOne[0]
+                      : ""}
+                  </span>{" "}
+                </>
               ) : null}
               <Box className={"rating_box"}>
                 <div className={"review_stars"}>
@@ -652,7 +715,7 @@ export function ChosenDish(props: any) {
 
                         color: "#85139e",
                         position: "absolute",
-                        right: "500px",
+                        right: "200px",
                         zIndex: "3",
                       }}
                     >
@@ -778,7 +841,7 @@ export function ChosenDish(props: any) {
                 disableOnInteraction: true,
               }}
             >
-              {targetProducts.map((product: Product) => {
+              {targetProducts.map((product: Product, index: number) => {
                 const image_path = `${serverApi}/${product.product_images[0]}`;
                 let discountedPrice = Math.floor(product.discountedPrice);
                 return (
@@ -873,6 +936,11 @@ export function ChosenDish(props: any) {
                             />
                           </Badge>
                         </Button>
+                        <span className={"discount_timer"}>
+                          {timeRemainingArray[index] !== "00:00:00"
+                            ? timeRemainingArray[index]
+                            : ""}
+                        </span>
                       </Box>
                       <Box className={"dish_desc"}>
                         <div className={"review_stars"}>

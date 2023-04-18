@@ -52,7 +52,28 @@ export function NewProducts(props: any) {
   const refs: any = useRef([]);
   const { setNewProducts } = actionDispatch(useDispatch());
   const [productRebuild, setProductRebuild] = useState<Date>(new Date());
-  const [timeRemaining, setTimeRemaining] = useState<string>("");
+  const [timeRemainingArray, setTimeRemainingArray] = useState<string[]>([]);
+
+  const formatTimeRemaining = (endTime: string): string => {
+    const now = new Date();
+    const endDate = new Date(endTime);
+    const diff = endDate.getTime() - now.getTime();
+
+    if (diff <= 0) {
+      return "00:00:00";
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    return `${days > 0 ? `${days}d ` : ""}${hours
+      .toString()
+      .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  };
 
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
@@ -104,6 +125,20 @@ export function NewProducts(props: any) {
     props.setPath();
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeRemainingArray(
+        newProducts.map((product: Product) =>
+          formatTimeRemaining(product.discount.endDate)
+        )
+      );
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [newProducts]);
+
   if (isMobile()) {
     return (
       <div className="top_restaurant_frame">
@@ -131,7 +166,7 @@ export function NewProducts(props: any) {
                   disableOnInteraction: true,
                 }}
               >
-                {newProducts.map((product: Product) => {
+                {newProducts.map((product: Product, index: number) => {
                   const image_path = `${serverApi}/${product.product_images[0]}`;
 
                   return (
@@ -226,6 +261,11 @@ export function NewProducts(props: any) {
                               />
                             </Badge>
                           </Button>
+                          <span className={"discount_timer"}>
+                            {timeRemainingArray[index] !== "00:00:00"
+                              ? timeRemainingArray[index]
+                              : ""}
+                          </span>
                         </Box>
                         <Box className={"dish_desc"}>
                           <div className={"review_stars"}>
@@ -329,7 +369,7 @@ export function NewProducts(props: any) {
                   disableOnInteraction: true,
                 }}
               >
-                {newProducts.map((product: Product) => {
+                {newProducts.map((product: Product, index: number) => {
                   const image_path = `${serverApi}/${product.product_images[0]}`;
                   let discountedPrice = Math.floor(product.discountedPrice);
                   return (
@@ -424,6 +464,11 @@ export function NewProducts(props: any) {
                               />
                             </Badge>
                           </Button>
+                          <span className={"discount_timer"}>
+                            {timeRemainingArray[index] !== "00:00:00"
+                              ? timeRemainingArray[index]
+                              : ""}
+                          </span>
                         </Box>
                         <Box className={"dish_desc"}>
                           <div className={"review_stars"}>

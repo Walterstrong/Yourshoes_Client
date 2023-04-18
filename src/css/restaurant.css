@@ -586,6 +586,15 @@
   border-radius: 50%;
 }
 
+.restaurant_page .single_restaurant .discount_timer {
+  display: block;
+  position: absolute;
+  top: 25px;
+  left: 100px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #85139e;
+}
 .restaurant_page .single_restaurant .discount_fon {
   position: absolute;
   top: 20px;
@@ -929,6 +938,24 @@
   /* background: #140b28b5; */
 }
 
+.restaurant_page .chosen_dish_page .discount_timer {
+  display: block;
+  position: absolute;
+  top: 25px;
+  left: 100px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #85139e;
+}
+
+.restaurant_page .chosen_dish_page .discount_timer_one {
+  display: block;
+  position: relative;
+
+  font-size: 12px;
+  font-weight: bold;
+  color: #85139e;
+}
 .chosen_dish_page .dish_container {
   display: flex;
   flex-direction: column;
