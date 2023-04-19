@@ -646,9 +646,15 @@ export function OneRestaurant(props: any) {
                         }}
                       >
                         {product.discountedPrice !== 0 ? (
-                          <Box className="discount_fon">
-                            {product.discount?.value}%
-                          </Box>
+                          product.discount?.type === "amount" ? (
+                            <Box className="discount_fon">
+                              -{product.discount?.value}
+                            </Box>
+                          ) : (
+                            <Box className="discount_fon">
+                              {product.discount?.value}%
+                            </Box>
+                          )
                         ) : (
                           <Button
                             className={"like_view_btn"}
@@ -717,11 +723,11 @@ export function OneRestaurant(props: any) {
                             />
                           </Badge>
                         </Button>
-                        <span className={"discount_timer"}>
-                          {timeRemainingArray[index] !== "00:00:00"
-                            ? timeRemainingArray[index]
-                            : ""}
-                        </span>
+                        {product.discountedPrice ? (
+                          <span className={"discount_timer"}>
+                            {timeRemainingArray[index]}
+                          </span>
+                        ) : null}
                       </Box>
                       <Box className={"dish_desc"}>
                         <div className={"review_stars"}>

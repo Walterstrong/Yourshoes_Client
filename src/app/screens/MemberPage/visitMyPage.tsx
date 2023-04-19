@@ -30,6 +30,7 @@ import {
   setChosenMember,
   setChosenMemberBoArticles,
   setChosenSingleBoArticle,
+  setTargetComments,
 } from "./slice";
 import { Member, Restaurant } from "../../../types/user";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
@@ -37,12 +38,17 @@ import {
   retrieveChosenMember,
   retrieveChosenMemberBoArticles,
   retrieveChosenSingleBoArticle,
+  retrieveTargetComments,
 } from "./selector";
 import { BoArticle, SearchMemberArticlesObj } from "types/boArticle";
 import { sweetErrorHandling, sweetFailureProvider } from "app/lib/sweetAlert";
 import CommunityApiService from "app/apiServices/communityApiService";
 import MemberApiService from "app/apiServices/memberApiService";
 import { verifiedMemberData } from "app/apiServices/verify";
+import { AllComments } from "./allComments";
+import { Comments } from "types/follow";
+import CommentApiService from "app/apiServices/commentApiService";
+import { CommentsSearchObj } from "types/others";
 
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -51,6 +57,7 @@ const actionDispatch = (dispatch: Dispatch) => ({
     dispatch(setChosenMemberBoArticles(data)),
   setChosenSingleBoArticle: (data: BoArticle) =>
     dispatch(setChosenSingleBoArticle(data)),
+  setTargetComments: (data: Comments[]) => dispatch(setTargetComments(data)),
 });
 
 // REDUX SELECTOR
@@ -72,6 +79,13 @@ const chosenSingleBoArticleRetriever = createSelector(
     chosenSingleBoArticle,
   })
 );
+
+const targetCommentsRetriever = createSelector(
+  retrieveTargetComments,
+  (targetComments) => ({
+    targetComments,
+  })
+);
 export function VisitMyPage(props: any) {
   /** INITIALIZATIONSS **/
 
@@ -79,19 +93,27 @@ export function VisitMyPage(props: any) {
     setChosenMember,
     setChosenMemberBoArticles,
     setChosenSingleBoArticle,
+    setTargetComments,
   } = actionDispatch(useDispatch());
   const { chosenMember } = useSelector(chosenMemberRetriever);
   const { chosenSingleBoArticle } = useSelector(chosenSingleBoArticleRetriever);
   const { chosenMemberBoArticles } = useSelector(
     chosenMemberBoArticlesRetriever
   );
+  const { targetComments } = useSelector(targetCommentsRetriever);
 
   const [memberArticlesSearchObj, setMemberArticlesSearchObj] =
     useState<SearchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 6 });
   const [value, setValue] = useState("1");
   const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
+  const [commentsRebuild, setCommentsRebuild] = useState<Date>(new Date());
   const [followRebuild, setFollowRebuild] = useState<boolean>(false);
-
+  const [targetCommentsSearchObj, setTargetCommentSearchObj] =
+    useState<CommentsSearchObj>({
+      page: 1,
+      limit: 25,
+      comment_ref_product_id: "all",
+    });
   useEffect(() => {
     if (!verifiedMemberData) {
       sweetFailureProvider("Please login first", true, true);
@@ -109,6 +131,15 @@ export function VisitMyPage(props: any) {
       .catch((err) => console.log(err));
   }, [memberArticlesSearchObj, articlesRebuild, followRebuild]);
   /** HANDLERS **/
+
+  useEffect(() => {
+    const commentApiService = new CommentApiService();
+    commentApiService
+      .getTargetComments(targetCommentsSearchObj)
+      .then((data) => setTargetComments(data))
+      .catch((err) => console.log(err));
+  }, [commentsRebuild]);
+
   const handleChange = (event: any, newValue: string) => {
     setValue(newValue);
   };
@@ -151,22 +182,10 @@ export function VisitMyPage(props: any) {
                       src={verifiedMemberData?.mb_image}
                       className={"order_user_avatar"}
                     />
-                    <div className={"order_user_icon_box"}>
-                      {/* <img
-                        src={
-                          chosenMember?.mb_type === "RESTAURANT"
-                            ? "/icons/restaurant.svg"
-                            : "/icons/user_icon.svg"
-                        }
-                      /> */}
-                    </div>
                   </div>
                   <span className={"order_user_name"}>
                     {chosenMember?.mb_nick}
                   </span>
-                  {/* <span className={"order_user_prof"}>
-                    {chosenMember?.mb_type}
-                  </span> */}
                 </Box>
                 <Box className={"user_media_box"}>
                   <FacebookIcon />
@@ -252,6 +271,21 @@ export function VisitMyPage(props: any) {
                       </div>
                     )}
                   />
+                  {verifiedMemberData?.mb_type === "ADMIN" && (
+                    <Tab
+                      style={{ flexDirection: "column" }}
+                      value={"7"}
+                      component={() => (
+                        <div
+                          className={`menu_box ${value} `}
+                          onClick={() => setValue("7")}
+                        >
+                          <SettingsIcon />
+                          <span>All Comments</span>
+                        </div>
+                      )}
+                    />
+                  )}
                 </TabList>
               </Box>
             </Stack>
@@ -339,6 +373,16 @@ export function VisitMyPage(props: any) {
                   <Box className={"menu_name"}>Chosen article</Box>
                   <Box className={"menu_content"}>
                     <TViewer chosenSingleBoArticle={chosenSingleBoArticle} />
+                  </Box>
+                </TabPanel>
+                <TabPanel value={"7"}>
+                  <Box className={"menu_name"}>All comments</Box>
+                  <Box className={"menu_content"}>
+                    <AllComments
+                      targetComments={targetComments}
+                      commentsRebuild={commentsRebuild}
+                      setCommentsRebuild={setCommentsRebuild}
+                    />
                   </Box>
                 </TabPanel>
 

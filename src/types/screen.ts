@@ -54,4 +54,5 @@ export interface MemberPageState {
   chosenSingleBoArticle: BoArticle | null;
   memberFollowers: Follower[];
   memberFollowings: Following[];
+  targetComments: Comments[];
 }

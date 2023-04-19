@@ -606,3 +606,93 @@
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.allcomments_page .comment {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  width: 90%;
+  box-sizing: border-box;
+  height: auto;
+}
+
+.allcomments_page .all_comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  display: flex;
+  background: #ffffff;
+  border-radius: 30px 30px 0px 30px;
+  padding: 15px 15px 0;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: -14px;
+}
+
+.allcomments_page .metadata {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15.25px;
+  border: 1px solid white;
+  color: rgba(59, 12, 12, 0.556);
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
+  padding-bottom: 5px;
+}
+
+.allcomments_page .days {
+  padding-left: 10px;
+  box-sizing: border-box;
+  margin-left: 15px;
+}
+
+.allcomments_page .comment_avatar {
+  border-radius: 15px;
+  margin-right: 5px;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.allcomments_page .comment_avatar .comment_avatar_image {
+  border-radius: 40px;
+  margin-right: 5px;
+  width: 60px;
+  height: 60px;
+  /* margin-left: -10px; */
+  box-sizing: border-box;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.allcomments_page .text {
+  font-family: "Lato";
+  font-style: normal;
+  margin-top: -5px;
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  padding-right: 10px;
+  resize: none;
+  overflow: hidden;
+  height: auto;
+  /* font-style: italic; */
+  font-size: 16px;
+  box-sizing: border-box;
+  color: #5a0868;
+}
+.allcomments_page .comment_author {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 17px;
+  color: rgba(0, 0, 0, 0.87);
+}

@@ -27,3 +27,8 @@ export const retrieveMemberFollowings = createSelector(
   selectMemberPage,
   (MemberPage) => MemberPage.memberFollowings
 );
+
+export const retrieveTargetComments = createSelector(
+  selectMemberPage,
+  (MemberPage) => MemberPage.targetComments
+);

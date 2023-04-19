@@ -8,6 +8,7 @@ const initialState: MemberPageState = {
   chosenSingleBoArticle: null,
   memberFollowers: [],
   memberFollowings: [],
+  targetComments: [],
 };
 
 const memberPageSlice = createSlice({
@@ -29,6 +30,9 @@ const memberPageSlice = createSlice({
     setMemberFollowings: (state, action) => {
       state.memberFollowings = action.payload;
     },
+    setTargetComments: (state, action) => {
+      state.targetComments = action.payload;
+    },
   },
 });
 
@@ -38,6 +42,7 @@ export const {
   setChosenSingleBoArticle,
   setMemberFollowers,
   setMemberFollowings,
+  setTargetComments,
 } = memberPageSlice.actions;
 
 const MemberPageReducer = memberPageSlice.reducer;

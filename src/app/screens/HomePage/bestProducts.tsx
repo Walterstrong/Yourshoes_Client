@@ -161,7 +161,7 @@ export function BestProducts(props: any) {
               >
                 {bestProducts.map((product: Product, index: number) => {
                   const image_path = `${serverApi}/${product.product_images[0]}`;
-
+                  let discountedPrice = Math.floor(product.discountedPrice);
                   return (
                     <SwiperSlide
                       style={{ cursor: "pointer", marginLeft: "5px" }}
@@ -182,9 +182,15 @@ export function BestProducts(props: any) {
                           }}
                         >
                           {product.discountedPrice !== 0 ? (
-                            <Box className="discount_fon">
-                              {product.discount?.value}%
-                            </Box>
+                            product.discount?.type === "amount" ? (
+                              <Box className="discount_fon">
+                                -{product.discount?.value}
+                              </Box>
+                            ) : (
+                              <Box className="discount_fon">
+                                {product.discount?.value}%
+                              </Box>
+                            )
                           ) : (
                             <Button
                               className={"like_view_btn"}
@@ -256,11 +262,11 @@ export function BestProducts(props: any) {
                               />
                             </Badge>
                           </Button>
-                          <span className={"discount_timer"}>
-                            {timeRemainingArray[index] !== "00:00:00"
-                              ? timeRemainingArray[index]
-                              : ""}
-                          </span>
+                          {product.discountedPrice ? (
+                            <span className={"discount_timer"}>
+                              {timeRemainingArray[index]}
+                            </span>
+                          ) : null}
                         </Box>
                         <Box className={"dish_desc"}>
                           <div className={"review_stars"}>
@@ -284,7 +290,7 @@ export function BestProducts(props: any) {
                                 <span
                                   style={{ color: "red", fontWeight: "bold" }}
                                 >
-                                  {product.discountedPrice}
+                                  {discountedPrice}
                                 </span>
                                 <span
                                   style={{
@@ -372,9 +378,15 @@ export function BestProducts(props: any) {
                           }}
                         >
                           {product.discountedPrice !== 0 ? (
-                            <Box className="discount_fon">
-                              {product.discount?.value}%
-                            </Box>
+                            product.discount?.type === "amount" ? (
+                              <Box className="discount_fon">
+                                -{product.discount?.value}
+                              </Box>
+                            ) : (
+                              <Box className="discount_fon">
+                                {product.discount?.value}%
+                              </Box>
+                            )
                           ) : (
                             <Button
                               className={"like_view_btn"}
@@ -444,11 +456,12 @@ export function BestProducts(props: any) {
                               />
                             </Badge>
                           </Button>
-                          <span className={"discount_timer"}>
-                            {timeRemainingArray[index] !== "00:00:00"
-                              ? timeRemainingArray[index]
-                              : ""}
-                          </span>
+
+                          {product.discountedPrice ? (
+                            <span className={"discount_timer"}>
+                              {timeRemainingArray[index]}
+                            </span>
+                          ) : null}
                         </Box>
                         <Box className={"dish_desc"}>
                           <div className={"review_stars"}>

@@ -188,9 +188,15 @@ export function NewProducts(props: any) {
                           }}
                         >
                           {product.discountedPrice !== 0 ? (
-                            <Box className="discount_fon">
-                              {product.discount?.value}%
-                            </Box>
+                            product.discount?.type === "amount" ? (
+                              <Box className="discount_fon">
+                                -{product.discount?.value}
+                              </Box>
+                            ) : (
+                              <Box className="discount_fon">
+                                {product.discount?.value}%
+                              </Box>
+                            )
                           ) : (
                             <Button
                               className={"like_view_btn"}
@@ -390,9 +396,15 @@ export function NewProducts(props: any) {
                           }}
                         >
                           {product.discountedPrice !== 0 ? (
-                            <Box className="discount_fon">
-                              {product.discount?.value}%
-                            </Box>
+                            product.discount?.type === "amount" ? (
+                              <Box className="discount_fon">
+                                -{product.discount?.value}
+                              </Box>
+                            ) : (
+                              <Box className="discount_fon">
+                                {product.discount?.value}%
+                              </Box>
+                            )
                           ) : (
                             <Button
                               className={"like_view_btn"}
