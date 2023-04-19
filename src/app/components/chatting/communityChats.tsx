@@ -21,8 +21,6 @@ import ReactScrollableFeed from "react-scrollable-feed";
 import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
-import useSound from "use-sound";
-import yourSoundFile from "../../../assets/audio/your-sound-file.mp3";
 
 const NewMessage = (data: any) => {
   if (data.new_message.mb_id == verifiedMemberData?._id) {
@@ -61,15 +59,11 @@ export function CommunityChats(props: any) {
   const [onlineUsers, setOnlineUsers] = useState<number>(0);
   const textInput: any = useRef(null);
   const [message, setMessage] = useState<string>("");
-  const [shouldPlaySound, setShouldPlaySound] = useState(false);
 
   const chatContentRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [openButton, setOpenButton] = useState(false);
   const { isMobile } = useDeviceDetect();
-  const [playSound] = useSound(yourSoundFile);
-  const audio = new Audio(yourSoundFile);
-
   const handleOpenChat = () => {
     setOpen((prevState) => !prevState);
   };
@@ -82,9 +76,6 @@ export function CommunityChats(props: any) {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  // ... Other code ...
-  // ... Other code ...
-
   useEffect(() => {
     socket.connect();
     console.log("SOCKET CONNECTED");
@@ -92,7 +83,6 @@ export function CommunityChats(props: any) {
     socket?.on("connect", function () {
       console.log("CLIENT: connected!");
     });
-
     socket?.on("newMsg", function (new_message: ChatMessage) {
       console.log("CLIENT: new message!");
       messagesList.push(
@@ -100,11 +90,6 @@ export function CommunityChats(props: any) {
         <NewMessage new_message={new_message} key={messagesList.length} />
       );
       setMessagesList([...messagesList]);
-
-      if (!open && new_message.mb_id !== verifiedMemberData?._id) {
-        audio.play();
-        setOpen(true);
-      }
     });
 
     socket?.on("greetMsg", function (msg: ChatGreetMsg) {
@@ -133,17 +118,6 @@ export function CommunityChats(props: any) {
       socket.disconnect();
     };
   }, [socket]);
-
-  useEffect(() => {
-    if (shouldPlaySound) {
-      playSound();
-      setShouldPlaySound(false);
-    }
-  }, [shouldPlaySound, playSound]);
-
-  // ... Rest of the code ...
-
-  // ... Rest of the code ...
 
   //**HANDLERS */
   const getInputMessageHandler = useCallback(
