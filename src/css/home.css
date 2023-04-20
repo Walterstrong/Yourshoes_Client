@@ -511,6 +511,17 @@
   opacity: 1;
 }
 
+.top_restaurant_frame .dish_text_box {
+  /* margin-top: 5px; */
+
+  /* color: #85139e; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  width: 100%;
+}
 .top_restaurant_frame .discount_timer {
   display: block;
   position: absolute;
@@ -666,6 +677,17 @@
   align-items: center;
 }
 
+.best_restaurant_frame .dish_text_box {
+  /* margin-top: 5px; */
+
+  /* color: #85139e; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  width: 100%;
+}
 .best_restaurant_frame .discount_timer {
   display: block;
   position: absolute;

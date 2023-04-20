@@ -514,6 +514,17 @@
   justify-content: center;
   align-items: center;
 }
+.restaurant_page .single_restaurant .dish_text_box {
+  /* margin-top: 5px; */
+
+  /* color: #85139e; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  width: 100%;
+}
 
 .restaurant_page .single_restaurant .view_btn {
   width: 55px;
@@ -948,6 +959,17 @@
   color: #85139e;
 }
 
+.restaurant_page .chosen_dish_page .dish_text_box {
+  /* margin-top: 5px; */
+
+  /* color: #85139e; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  width: 100%;
+}
 .restaurant_page .chosen_dish_page .dish_img .discount_timer {
   display: block;
   position: absolute;

@@ -493,45 +493,62 @@ export function NewProducts(props: any) {
                             {product.product_name}
                           </span>
 
-                          <Box className={"dish_desc_text"}>
-                            {product.discountedPrice ? (
-                              <>
-                                <MonetizationOnIcon
-                                  style={{
-                                    color: "red",
-                                  }}
-                                />
-                                <span
-                                  style={{ color: "red", fontWeight: "bold" }}
-                                >
-                                  {discountedPrice}
-                                </span>
-                                <span
-                                  style={{
-                                    textDecoration: "line-through",
-                                    marginLeft: "8px",
-                                    // textDecorationColor: "red",
-                                    textDecorationThickness: "0.8px",
-                                  }}
-                                >
-                                  {product.product_price}
-                                </span>
-                              </>
-                            ) : (
-                              <>
-                                <MonetizationOnIcon />
-                                <span>{product.product_price}</span>
-                              </>
-                            )}
-
+                          <Box className="dish_text_box">
+                            <Box className={"dish_desc_text"}>
+                              {product.discountedPrice ? (
+                                <>
+                                  <MonetizationOnIcon
+                                    style={{
+                                      color: "red",
+                                    }}
+                                  />
+                                  <span
+                                    style={{ color: "red", fontWeight: "bold" }}
+                                  >
+                                    {discountedPrice}
+                                  </span>
+                                  <span
+                                    style={{
+                                      textDecoration: "line-through",
+                                      marginLeft: "8px",
+                                      // textDecorationColor: "red",
+                                      textDecorationThickness: "0.8px",
+                                    }}
+                                  >
+                                    {product.product_price}
+                                  </span>
+                                </>
+                              ) : (
+                                <>
+                                  <MonetizationOnIcon />
+                                  <span>{product.product_price}</span>
+                                </>
+                              )}
+                            </Box>
                             <Box>
                               <ShoppingCartIcon
                                 style={{
-                                  bottom: "15px",
-                                  right: "60px",
-                                  position: "absolute",
-                                  width: "100px",
+                                  marginRight: "20px",
+                                  color: "#85139e",
+                                  position: "relative",
+                                  width: "80px",
                                   height: "30px",
+                                  transition:
+                                    "transform 0.7s ease, margin-right 0.3s ease",
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.transform =
+                                    "rotate(-15deg) translateX(0px)";
+                                  e.currentTarget.style.marginRight = "10px";
+                                  e.currentTarget.style.color = "10px";
+                                  e.currentTarget.style.color = "red";
+                                  e.currentTarget.style.opacity = "0.8";
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.transform =
+                                    "rotate(0deg) translateX(0px)";
+                                  e.currentTarget.style.marginRight = "20px";
+                                  e.currentTarget.style.color = "#85139e";
                                 }}
                                 onClick={(e) => {
                                   props.onAdd(product);

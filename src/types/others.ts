@@ -15,6 +15,8 @@ export interface ProductSearchObj {
   product_size?: string;
   product_color?: string;
   product_type?: string;
+  min_price?: number;
+  max_price?: number;
 }
 export interface ProductSearch {
   page: number;

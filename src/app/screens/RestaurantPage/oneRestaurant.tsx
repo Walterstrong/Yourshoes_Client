@@ -71,6 +71,8 @@ import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 import Zoom from "react-reveal/Zoom";
 import Rotate from "react-reveal/Rotate";
+import Slider from "@mui/material/Slider";
+import React from "react";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setRandomRestaurants: (data: Restaurant[]) =>
@@ -109,6 +111,38 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
     marginLeft: theme.spacing(1),
   },
 }));
+
+function valuetext(value: number) {
+  return `${value}`;
+}
+
+interface RangeSliderProps {
+  onSliderChange: (minPrice: number, maxPrice: number) => void;
+}
+
+export default function RangeSlider({ onSliderChange }: RangeSliderProps) {
+  const [value, setValue] = React.useState<number[]>([10, 200]);
+
+  const handleChange = (event: Event, newValue: number | number[]) => {
+    setValue(newValue as number[]);
+    if (Array.isArray(newValue)) {
+      onSliderChange(newValue[0], newValue[1]);
+    }
+  };
+
+  return (
+    <Box sx={{ width: 170 }}>
+      <Slider
+        getAriaLabel={() => "Min && Max price"}
+        value={value}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+        getAriaValueText={valuetext}
+        max={200} // Add this line to set the maximum value
+      />
+    </Box>
+  );
+}
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
@@ -255,6 +289,13 @@ export function OneRestaurant(props: any) {
   const searchCollectionHandler = (collection: string) => {
     targetProductSearchObj.page = 1;
     targetProductSearchObj.product_collection = collection;
+    setTargetProductsSearchObj({ ...targetProductSearchObj });
+  };
+  //
+  const searchPriceRangeHandler = (minPrice: number, maxPrice: number) => {
+    targetProductSearchObj.page = 1;
+    targetProductSearchObj.min_price = minPrice;
+    targetProductSearchObj.max_price = maxPrice;
     setTargetProductsSearchObj({ ...targetProductSearchObj });
   };
   //
@@ -428,6 +469,23 @@ export function OneRestaurant(props: any) {
                           control={<Radio />}
                         />
                       </RadioGroup>
+                    </Typography>
+                  </AccordionDetails>{" "}
+                </Accordion>{" "}
+                <Accordion
+                  expanded={expanded === "panel9"}
+                  onChange={handleChange("panel9")}
+                  // className="filter_box"
+                >
+                  <AccordionSummary
+                    aria-controls="panel9d-content"
+                    id="panel9d-header"
+                  >
+                    <Typography>Min and MaxPrice</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      <RangeSlider onSliderChange={searchPriceRangeHandler} />
                     </Typography>
                   </AccordionDetails>
                 </Accordion>{" "}
@@ -739,46 +797,62 @@ export function OneRestaurant(props: any) {
                         <span className={"dish_title_text"}>
                           {product.product_name}
                         </span>
-
-                        <Box className={"dish_desc_text"}>
-                          {product.discountedPrice ? (
-                            <>
-                              <MonetizationOnIcon
-                                style={{
-                                  color: "red",
-                                }}
-                              />
-                              <span
-                                style={{ color: "red", fontWeight: "bold" }}
-                              >
-                                {discountedPrice}
-                              </span>
-                              <span
-                                style={{
-                                  textDecoration: "line-through",
-                                  marginLeft: "8px",
-                                  // textDecorationColor: "red",
-                                  textDecorationThickness: "0.8px",
-                                }}
-                              >
-                                {product.product_price}
-                              </span>
-                            </>
-                          ) : (
-                            <>
-                              <MonetizationOnIcon />
-                              <span>{product.product_price}</span>
-                            </>
-                          )}
-
+                        <Box className="dish_text_box">
+                          <Box className={"dish_desc_text"}>
+                            {product.discountedPrice ? (
+                              <>
+                                <MonetizationOnIcon
+                                  style={{
+                                    color: "red",
+                                  }}
+                                />
+                                <span
+                                  style={{ color: "red", fontWeight: "bold" }}
+                                >
+                                  {discountedPrice}
+                                </span>
+                                <span
+                                  style={{
+                                    textDecoration: "line-through",
+                                    marginLeft: "8px",
+                                    // textDecorationColor: "red",
+                                    textDecorationThickness: "0.8px",
+                                  }}
+                                >
+                                  {product.product_price}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                <MonetizationOnIcon />
+                                <span>{product.product_price}</span>
+                              </>
+                            )}
+                          </Box>
                           <Box>
                             <ShoppingCartIcon
                               style={{
-                                bottom: "35px",
-                                right: "60px",
-                                position: "absolute",
-                                width: "100px",
+                                marginRight: "20px",
+                                color: "#85139e",
+                                position: "relative",
+                                width: "80px",
                                 height: "30px",
+                                transition:
+                                  "transform 0.7s ease, margin-right 0.3s ease",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.transform =
+                                  "rotate(-15deg) translateX(0px)";
+                                e.currentTarget.style.marginRight = "10px";
+                                e.currentTarget.style.color = "10px";
+                                e.currentTarget.style.color = "red";
+                                e.currentTarget.style.opacity = "0.8";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.transform =
+                                  "rotate(0deg) translateX(0px)";
+                                e.currentTarget.style.marginRight = "20px";
+                                e.currentTarget.style.color = "#85139e";
                               }}
                               onClick={(e) => {
                                 props.onAdd(product);
