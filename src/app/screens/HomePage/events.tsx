@@ -76,56 +76,54 @@ export function Events(props: any) {
   ];
   if (isMobile()) {
     return (
-      <div className={"events_frame"}>
-        <Container>
-          <Stack className={"events_main"}>
-            <Box className={"events_text"}>
-              <span className={"category_title"}>We recommend this brand</span>
-            </Box>
-            <Box className={"prev_next_frame2"}></Box>
-            <Swiper
-              className={"events_info swiper-wrappers"}
-              slidesPerView={"auto"}
-              centeredSlides={true}
-              spaceBetween={30}
-              navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              }}
-              pagination={{
-                el: ".swiper-pagination2",
-                clickable: true,
-              }}
-              autoplay={{
-                delay: 2000,
-                disableOnInteraction: true,
-              }}
-            >
-              {events_list.map((value, number) => {
-                return (
-                  <SwiperSlide className={"events_info_frame"}>
-                    <Box
-                      className={"events_img"}
-                      onClick={() => handleClickOpenAlert()}
-                    >
-                      <img src={value.img} className={"events_img"} />
-                    </Box>
-                    <Box className={"events_desc"}>
-                      <Box className={"events_bott"}>
-                        <Box className={"bott_left"}>
-                          <div className={"event_title_speaker"}>
-                            <strong>{value.title}</strong>
-                          </div>
-                        </Box>
+      <Container className={"events_frame"}>
+        <Stack className={"events_main"}>
+          <Box className={"events_text"}>
+            <span className={"category_title"}>We recommend this brand</span>
+          </Box>
+          <Box className={"prev_next_frame2"}></Box>
+          <Swiper
+            className={"events_info swiper-wrappers"}
+            slidesPerView={"auto"}
+            centeredSlides={true}
+            spaceBetween={30}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            pagination={{
+              el: ".swiper-pagination2",
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: true,
+            }}
+          >
+            {events_list.map((value, number) => {
+              return (
+                <SwiperSlide className={"events_info_frame"}>
+                  <Box
+                    className={"events_img"}
+                    onClick={() => handleClickOpenAlert()}
+                  >
+                    <img src={value.img} className={"events_img"} />
+                  </Box>
+                  <Box className={"events_desc"}>
+                    <Box className={"events_bott"}>
+                      <Box className={"bott_left"}>
+                        <div className={"event_title_speaker"}>
+                          <strong>{value.title}</strong>
+                        </div>
                       </Box>
                     </Box>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </Stack>
-        </Container>
-      </div>
+                  </Box>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </Stack>
+      </Container>
     );
   } else {
     return (

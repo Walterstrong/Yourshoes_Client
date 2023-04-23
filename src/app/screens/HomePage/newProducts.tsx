@@ -141,211 +141,208 @@ export function NewProducts(props: any) {
 
   if (isMobile()) {
     return (
-      <div className="top_restaurant_frame">
-        <Container>
-          <Stack flexDirection={"column"} alignItems={"center"}>
-            <Box className="category_title_mobile">On Sale</Box>
-            <Stack
-              style={{ width: "100%", display: "flex" }}
-              flexDirection={"row"}
+      <Container className="top_restaurant_frame">
+        <Stack flexDirection={"column"} alignItems={"center"}>
+          <Box className="category_title_mobile">On Sale</Box>
+          <Stack
+            style={{ width: "100%", display: "flex" }}
+            flexDirection={"row"}
+          >
+            <Swiper
+              className={"restaurant_avatars_wrapper"}
+              slidesPerView={1}
+              centeredSlides={false}
+              navigation={{
+                nextEl: ".restaurant-next",
+                prevEl: ".restaurant-prev",
+              }}
+              pagination={{
+                el: ".swiper-pagination",
+                clickable: true,
+              }}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: true,
+              }}
             >
-              <Swiper
-                className={"restaurant_avatars_wrapper"}
-                slidesPerView={1}
-                centeredSlides={false}
-                navigation={{
-                  nextEl: ".restaurant-next",
-                  prevEl: ".restaurant-prev",
-                }}
-                pagination={{
-                  el: ".swiper-pagination",
-                  clickable: true,
-                }}
-                autoplay={{
-                  delay: 4000,
-                  disableOnInteraction: true,
-                }}
-              >
-                {newProducts.map((product: Product, index: number) => {
-                  const image_path = `${serverApi}/${product.product_images[0]}`;
+              {newProducts.map((product: Product, index: number) => {
+                const image_path = `${serverApi}/${product.product_images[0]}`;
+                let discountedPrice = Math.floor(product.discountedPrice);
 
-                  return (
-                    <SwiperSlide
-                      style={{ cursor: "pointer", marginLeft: "5px" }}
+                return (
+                  <SwiperSlide
+                    style={{ cursor: "pointer", marginLeft: "5px" }}
+                    key={product._id}
+                    onClick={handleClickOpenAlert}
+                  >
+                    <Box
+                      className={"dish_box"}
                       key={product._id}
-                      onClick={handleClickOpenAlert}
+                      onClick={() => handleClickOpenAlert}
                     >
                       <Box
-                        className={"dish_box"}
-                        key={product._id}
-                        onClick={() => handleClickOpenAlert}
+                        className={"dish_img"}
+                        sx={{
+                          backgroundImage: `url(${image_path})`,
+                          cursor: "pointer",
+                        }}
                       >
-                        <Box
-                          className={"dish_img"}
-                          sx={{
-                            backgroundImage: `url(${image_path})`,
-                            cursor: "pointer",
-                          }}
-                        >
-                          {product.discountedPrice !== 0 ? (
-                            product.discount?.type === "amount" ? (
-                              <Box className="discount_fon">
-                                -{product.discount?.value}
-                              </Box>
-                            ) : (
-                              <Box className="discount_fon">
-                                {product.discount?.value}%
-                              </Box>
-                            )
+                        {product.discountedPrice !== 0 ? (
+                          product.discount?.type === "amount" ? (
+                            <Box className="discount_fon">
+                              -{product.discount?.value}
+                            </Box>
                           ) : (
-                            <Button
-                              className={"like_view_btn"}
-                              style={{
-                                left: "25px",
-                                backgroundColor: "rgba(238, 228, 228, 0.909)",
-                              }}
-                            >
-                              <Badge
-                                badgeContent={product.product_views}
-                                color="primary"
-                              >
-                                <Checkbox
-                                  icon={
-                                    <RemoveRedEyeIcon
-                                      style={{ color: "#85139e" }}
-                                    />
-                                  }
-                                  checkedIcon={
-                                    <RemoveRedEyeIcon
-                                      style={{ color: "red" }}
-                                    />
-                                  }
-                                  checked={
-                                    product?.me_viewed &&
-                                    product?.me_viewed[0]?.my_view
-                                      ? true
-                                      : false
-                                  }
-                                />
-                              </Badge>
-                            </Button>
-                          )}
-
+                            <Box className="discount_fon">
+                              {product.discount?.value}%
+                            </Box>
+                          )
+                        ) : (
                           <Button
                             className={"like_view_btn"}
                             style={{
-                              right: "25px",
-                              // backgroundColor: "rgba(238, 228, 228, 0.909)",
-                            }}
-                            onClick={(e) => {
-                              e.stopPropagation();
+                              left: "25px",
+                              backgroundColor: "rgba(238, 228, 228, 0.909)",
                             }}
                           >
                             <Badge
-                              badgeContent={product.product_likes}
+                              badgeContent={product.product_views}
                               color="primary"
                             >
                               <Checkbox
                                 icon={
-                                  <FavoriteBorder
-                                    style={{
-                                      color: "#85139e",
-                                    }}
+                                  <RemoveRedEyeIcon
+                                    style={{ color: "#85139e" }}
                                   />
                                 }
-                                id={product._id}
                                 checkedIcon={
-                                  <Favorite style={{ color: "red" }} />
+                                  <RemoveRedEyeIcon style={{ color: "red" }} />
                                 }
-                                onClick={() => handleClickOpenAlert}
                                 checked={
-                                  product?.me_liked &&
-                                  product?.me_liked[0]?.my_favorite
+                                  product?.me_viewed &&
+                                  product?.me_viewed[0]?.my_view
                                     ? true
                                     : false
                                 }
                               />
                             </Badge>
                           </Button>
-                          <span className={"discount_timer"}>
-                            {timeRemainingArray[index] !== "00:00:00"
-                              ? timeRemainingArray[index]
-                              : ""}
-                          </span>
-                        </Box>
-                        <Box className={"dish_desc"}>
-                          <div className={"review_stars"}>
-                            <Rating value={product?.product_rating} />
-                            <span className={"product_reviews"}>
-                              ({product.product_reviews})
-                            </span>
-                          </div>
-                          <span className={"dish_title_text"}>
-                            {product.product_name}
-                          </span>
+                        )}
 
-                          <Box className={"dish_desc_text"}>
-                            {product.discountedPrice ? (
-                              <>
-                                <MonetizationOnIcon
+                        <Button
+                          className={"like_view_btn"}
+                          style={{
+                            right: "25px",
+                            // backgroundColor: "rgba(238, 228, 228, 0.909)",
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        >
+                          <Badge
+                            badgeContent={product.product_likes}
+                            color="primary"
+                          >
+                            <Checkbox
+                              icon={
+                                <FavoriteBorder
                                   style={{
-                                    color: "red",
+                                    color: "#85139e",
                                   }}
                                 />
-                                <span
-                                  style={{ color: "red", fontWeight: "bold" }}
-                                >
-                                  {product.discountedPrice}
-                                </span>
-                                <span
-                                  style={{
-                                    textDecoration: "line-through",
-                                    marginLeft: "8px",
-                                    // textDecorationThickness: "0.25px",
-                                    textDecorationLine: "0.1px",
-                                  }}
-                                >
-                                  {product.product_price}
-                                </span>
-                              </>
-                            ) : (
-                              <>
-                                <MonetizationOnIcon />
-                                <span>{product.product_price}</span>
-                              </>
-                            )}
+                              }
+                              id={product._id}
+                              checkedIcon={
+                                <Favorite style={{ color: "red" }} />
+                              }
+                              onClick={() => handleClickOpenAlert}
+                              checked={
+                                product?.me_liked &&
+                                product?.me_liked[0]?.my_favorite
+                                  ? true
+                                  : false
+                              }
+                            />
+                          </Badge>
+                        </Button>
+                        <span className={"discount_timer"}>
+                          {timeRemainingArray[index] !== "00:00:00"
+                            ? timeRemainingArray[index]
+                            : ""}
+                        </span>
+                      </Box>
+                      <Box className={"dish_desc"}>
+                        <div className={"review_stars"}>
+                          <Rating value={product?.product_rating} />
+                          <span className={"product_reviews"}>
+                            ({product.product_reviews})
+                          </span>
+                        </div>
+                        <span className={"dish_title_text"}>
+                          {product.product_name}
+                        </span>
 
-                            <Box>
-                              <ShoppingCartIcon
+                        <Box className={"dish_desc_text"}>
+                          {product.discountedPrice ? (
+                            <>
+                              <MonetizationOnIcon
                                 style={{
-                                  bottom: "15px",
-                                  right: "60px",
-                                  position: "absolute",
-                                  width: "100px",
-                                  height: "30px",
-                                }}
-                                onClick={(e) => {
-                                  props.onAdd(product);
-                                  e.stopPropagation();
-                                  sweetTopSmallSuccessAlert(
-                                    "success",
-                                    700,
-                                    false
-                                  );
+                                  color: "red",
                                 }}
                               />
-                            </Box>
+                              <span
+                                style={{ color: "red", fontWeight: "bold" }}
+                              >
+                                {discountedPrice}
+                              </span>
+                              <span
+                                style={{
+                                  textDecoration: "line-through",
+                                  marginLeft: "8px",
+                                  // textDecorationThickness: "0.25px",
+                                  textDecorationLine: "0.1px",
+                                }}
+                              >
+                                {product.product_price}
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              <MonetizationOnIcon />
+                              <span>{product.product_price}</span>
+                            </>
+                          )}
+
+                          <Box>
+                            <ShoppingCartIcon
+                              style={{
+                                bottom: "15px",
+                                right: "60px",
+                                position: "absolute",
+                                width: "100px",
+                                height: "30px",
+                              }}
+                              onClick={(e) => {
+                                props.onAdd(product);
+                                e.stopPropagation();
+                                sweetTopSmallSuccessAlert(
+                                  "success",
+                                  700,
+                                  false
+                                );
+                              }}
+                            />
                           </Box>
                         </Box>
                       </Box>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
-            </Stack>
+                    </Box>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           </Stack>
-        </Container>
-      </div>
+        </Stack>
+      </Container>
     );
   } else {
     return (

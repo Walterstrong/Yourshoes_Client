@@ -134,199 +134,195 @@ export function BestProducts(props: any) {
 
   if (isMobile()) {
     return (
-      <div className="best_restaurant_frame">
-        <Container sx={{ paddingTop: "23px" }}>
-          <Stack flexDirection={"column"} alignItems={"center"}>
-            <Box className="category_title">Best Products</Box>
-            <Stack
-              style={{ width: "100%", display: "flex" }}
-              flexDirection={"row"}
+      <Container sx={{ paddingTop: "23px" }} className="best_restaurant_frame">
+        <Stack flexDirection={"column"} alignItems={"center"}>
+          <Box className="category_title">Best Products</Box>
+          <Stack
+            style={{ width: "100%", display: "flex" }}
+            flexDirection={"row"}
+          >
+            <Swiper
+              className={"restaurant_avatars_wrapper"}
+              slidesPerView={1}
+              centeredSlides={false}
+              navigation={{
+                nextEl: ".restaurant-next",
+                prevEl: ".restaurant-prev",
+              }}
+              pagination={{
+                el: ".swiper-pagination",
+                clickable: true,
+              }}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: true,
+              }}
             >
-              <Swiper
-                className={"restaurant_avatars_wrapper"}
-                slidesPerView={1}
-                centeredSlides={false}
-                navigation={{
-                  nextEl: ".restaurant-next",
-                  prevEl: ".restaurant-prev",
-                }}
-                pagination={{
-                  el: ".swiper-pagination",
-                  clickable: true,
-                }}
-                autoplay={{
-                  delay: 4000,
-                  disableOnInteraction: true,
-                }}
-              >
-                {bestProducts.map((product: Product, index: number) => {
-                  const image_path = `${serverApi}/${product.product_images[0]}`;
-                  let discountedPrice = Math.floor(product.discountedPrice);
-                  return (
-                    <SwiperSlide
-                      style={{ cursor: "pointer", marginLeft: "5px" }}
+              {bestProducts.map((product: Product, index: number) => {
+                const image_path = `${serverApi}/${product.product_images[0]}`;
+                let discountedPrice = Math.floor(product.discountedPrice);
+                return (
+                  <SwiperSlide
+                    style={{ cursor: "pointer", marginLeft: "5px" }}
+                    key={product._id}
+                    onClick={handleClickOpenAlert}
+                    className={"restaurant_avatars"}
+                  >
+                    <Box
+                      className={"dish_box"}
                       key={product._id}
-                      onClick={handleClickOpenAlert}
-                      className={"restaurant_avatars"}
+                      onClick={() => handleClickOpenAlert}
                     >
                       <Box
-                        className={"dish_box"}
-                        key={product._id}
-                        onClick={() => handleClickOpenAlert}
+                        className={"dish_img"}
+                        sx={{
+                          backgroundImage: `url(${image_path})`,
+                          cursor: "pointer",
+                        }}
                       >
-                        <Box
-                          className={"dish_img"}
-                          sx={{
-                            backgroundImage: `url(${image_path})`,
-                            cursor: "pointer",
-                          }}
-                        >
-                          {product.discountedPrice !== 0 ? (
-                            product.discount?.type === "amount" ? (
-                              <Box className="discount_fon">
-                                -{product.discount?.value}
-                              </Box>
-                            ) : (
-                              <Box className="discount_fon">
-                                {product.discount?.value}%
-                              </Box>
-                            )
+                        {product.discountedPrice !== 0 ? (
+                          product.discount?.type === "amount" ? (
+                            <Box className="discount_fon">
+                              -{product.discount?.value}
+                            </Box>
                           ) : (
-                            <Button
-                              className={"like_view_btn"}
-                              style={{
-                                top: "1px",
-                                left: "5px",
-                                backgroundColor: "rgba(238, 228, 228, 0.909)",
-                              }}
-                            >
-                              <Badge
-                                badgeContent={product.product_views}
-                                color="primary"
-                              >
-                                <Checkbox
-                                  icon={
-                                    <RemoveRedEyeIcon
-                                      style={{ color: "#85139e" }}
-                                    />
-                                  }
-                                  checkedIcon={
-                                    <RemoveRedEyeIcon
-                                      style={{ color: "red" }}
-                                    />
-                                  }
-                                  checked={
-                                    product?.me_viewed &&
-                                    product?.me_viewed[0]?.my_view
-                                      ? true
-                                      : false
-                                  }
-                                />
-                              </Badge>
-                            </Button>
-                          )}
-
+                            <Box className="discount_fon">
+                              {product.discount?.value}%
+                            </Box>
+                          )
+                        ) : (
                           <Button
                             className={"like_view_btn"}
                             style={{
-                              right: "25px",
+                              top: "1px",
+                              left: "5px",
                               backgroundColor: "rgba(238, 228, 228, 0.909)",
-                            }}
-                            onClick={(e) => {
-                              e.stopPropagation();
                             }}
                           >
                             <Badge
-                              badgeContent={product.product_likes}
+                              badgeContent={product.product_views}
                               color="primary"
                             >
                               <Checkbox
                                 icon={
-                                  <FavoriteBorder
-                                    style={{
-                                      color: "#85139e",
-                                    }}
+                                  <RemoveRedEyeIcon
+                                    style={{ color: "#85139e" }}
                                   />
                                 }
-                                id={product._id}
                                 checkedIcon={
-                                  <Favorite style={{ color: "red" }} />
+                                  <RemoveRedEyeIcon style={{ color: "red" }} />
                                 }
-                                onClick={targetLikeProduct}
                                 checked={
-                                  product?.me_liked &&
-                                  product?.me_liked[0]?.my_favorite
+                                  product?.me_viewed &&
+                                  product?.me_viewed[0]?.my_view
                                     ? true
                                     : false
                                 }
                               />
                             </Badge>
                           </Button>
-                          {product.discountedPrice ? (
-                            <span className={"discount_timer"}>
-                              {timeRemainingArray[index]}
-                            </span>
-                          ) : null}
-                        </Box>
-                        <Box className={"dish_desc"}>
-                          <div className={"review_stars"}>
-                            <Rating value={product?.product_rating} />
-                            <span className={"product_reviews"}>
-                              ({product.product_reviews})
-                            </span>
-                          </div>
-                          <span className={"dish_title_text"}>
-                            {product.product_name}
-                          </span>
+                        )}
 
-                          <Box className={"dish_desc_text"}>
-                            {product.discountedPrice ? (
-                              <>
-                                <MonetizationOnIcon
+                        <Button
+                          className={"like_view_btn"}
+                          style={{
+                            right: "25px",
+                            backgroundColor: "rgba(238, 228, 228, 0.909)",
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        >
+                          <Badge
+                            badgeContent={product.product_likes}
+                            color="primary"
+                          >
+                            <Checkbox
+                              icon={
+                                <FavoriteBorder
                                   style={{
-                                    color: "red",
+                                    color: "#85139e",
                                   }}
                                 />
-                                <span
-                                  style={{ color: "red", fontWeight: "bold" }}
-                                >
-                                  {discountedPrice}
-                                </span>
-                                <span
-                                  style={{
-                                    textDecoration: "line-through",
-                                    marginLeft: "8px",
-                                  }}
-                                >
-                                  {product.product_price}
-                                </span>
-                              </>
-                            ) : (
-                              <>
-                                <MonetizationOnIcon />
-                                <span>{product.product_price}</span>
-                              </>
-                            )}
+                              }
+                              id={product._id}
+                              checkedIcon={
+                                <Favorite style={{ color: "red" }} />
+                              }
+                              onClick={targetLikeProduct}
+                              checked={
+                                product?.me_liked &&
+                                product?.me_liked[0]?.my_favorite
+                                  ? true
+                                  : false
+                              }
+                            />
+                          </Badge>
+                        </Button>
+                        {product.discountedPrice ? (
+                          <span className={"discount_timer"}>
+                            {timeRemainingArray[index]}
+                          </span>
+                        ) : null}
+                      </Box>
+                      <Box className={"dish_desc"}>
+                        <div className={"review_stars"}>
+                          <Rating value={product?.product_rating} />
+                          <span className={"product_reviews"}>
+                            ({product.product_reviews})
+                          </span>
+                        </div>
+                        <span className={"dish_title_text"}>
+                          {product.product_name}
+                        </span>
 
-                            <Button className={"view_btn"}>
-                              <ShoppingCartIcon
+                        <Box className={"dish_desc_text"}>
+                          {product.discountedPrice ? (
+                            <>
+                              <MonetizationOnIcon
                                 style={{
-                                  right: "-70px",
-                                  position: "absolute",
+                                  color: "red",
                                 }}
                               />
-                            </Button>
-                          </Box>
+                              <span
+                                style={{ color: "red", fontWeight: "bold" }}
+                              >
+                                {discountedPrice}
+                              </span>
+                              <span
+                                style={{
+                                  textDecoration: "line-through",
+                                  marginLeft: "8px",
+                                }}
+                              >
+                                {product.product_price}
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              <MonetizationOnIcon />
+                              <span>{product.product_price}</span>
+                            </>
+                          )}
+
+                          <Button className={"view_btn"}>
+                            <ShoppingCartIcon
+                              style={{
+                                right: "-70px",
+                                position: "absolute",
+                              }}
+                            />
+                          </Button>
                         </Box>
                       </Box>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
-            </Stack>
+                    </Box>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           </Stack>
-        </Container>
-      </div>
+        </Stack>
+      </Container>
     );
   } else {
     return (
