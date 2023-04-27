@@ -611,6 +611,7 @@ export function ChosenDish(props: any) {
               <Box className={"rating_box"}>
                 <div className={"review_stars"}>
                   <Rating
+                    key={chosenProduct?._id}
                     name="read-only"
                     value={chosenProduct?.product_rating}
                     readOnly
