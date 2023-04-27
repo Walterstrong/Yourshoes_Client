@@ -1,17 +1,14 @@
 import { Logout } from "@mui/icons-material";
 import {
-  Badge,
   Box,
   Button,
   Container,
-  IconButton,
   Stack,
   Menu,
   MenuItem,
   ListItem,
 } from "@mui/material";
 import { verifiedMemberData } from "app/apiServices/verify";
-import React from "react";
 import { NavLink } from "react-router-dom";
 import Basket from "./basket";
 

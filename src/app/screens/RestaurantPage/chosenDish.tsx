@@ -150,26 +150,15 @@ export function ChosenDish(props: any) {
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
-  function handleSwiperInstance(swiper: any) {
-    setThumbsSwiper(swiper);
-  }
+
   type SwiperStyleProps = {
     "--swiper-navigation-color": string;
     "--swiper-pagination-color": string;
   };
 
-  const swiperStyle: React.CSSProperties & SwiperStyleProps = {
-    // width: "80%",
-    // height: "140px",
-    // marginTop: "20px",
-    "--swiper-navigation-color": "red",
-    "--swiper-pagination-color": "blue",
-  };
   //** INITIALIZATIONS */
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   let { dish_id } = useParams<{ dish_id: string }>();
-
-  const [value, setValue] = useState("2");
 
   const {
     setChosenRestaurant,

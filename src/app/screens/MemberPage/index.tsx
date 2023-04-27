@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@mui/material";
+
 import { Route, Switch, useRouteMatch, useLocation } from "react-router-dom";
 
 import "../../../css/my_page.css";

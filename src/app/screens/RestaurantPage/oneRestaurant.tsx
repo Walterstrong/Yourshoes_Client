@@ -8,15 +8,13 @@ import {
 } from "@mui/material";
 import Rating from "@mui/material/Rating";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import RadioGroup, { useRadioGroup } from "@mui/material/RadioGroup";
-import FormControlLabel, {
-  FormControlLabelProps,
-} from "@mui/material/FormControlLabel";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import StarIcon from "@mui/icons-material/Star";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -56,7 +54,7 @@ import {
   setTargetProducts,
 } from "./slice";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
-import { ProductSearchObj, SearchObj } from "../../../types/others";
+import { ProductSearchObj } from "../../../types/others";
 import { Product } from "../../../types/product";
 import {
   retrieveRandomRestaurants,
@@ -66,11 +64,9 @@ import {
 import { useHistory, useParams } from "react-router-dom";
 import ProductApiService from "../../apiServices/productApiService";
 import { verifiedMemberData } from "app/apiServices/verify";
-import { Navigation } from "swiper";
+
 import Fade from "react-reveal/Fade";
-import Bounce from "react-reveal/Bounce";
-import Zoom from "react-reveal/Zoom";
-import Rotate from "react-reveal/Rotate";
+
 import Slider from "@mui/material/Slider";
 import React from "react";
 

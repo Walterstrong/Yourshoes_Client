@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../../../css/home.css";
 import { Advertisements } from "./advertisements";
-
 import { BestProducts } from "./bestProducts";
 import { Events } from "./events";
-// import { Recommendations } from "./recommendations";
 import { NewProducts } from "./newProducts";
-
-// REDUX
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setRandomRestaurants, setBestProducts } from "./slice";
@@ -58,7 +54,6 @@ export function HomePage(props: any) {
   });
 
   useEffect(() => {
-    // backend data request
     const productApiService = new ProductApiService();
     productApiService
       .getTargetProducts(targetProduct)

@@ -58,7 +58,7 @@ export function Recommendations(props: any) {
         bo_id: "all",
         page: 1,
         limit: 10,
-        order: "art_views",
+        order: "createdAt",
       })
       .then((data) => setBestBoArticles(data))
       .catch((err) => console.log(err));

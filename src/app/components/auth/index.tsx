@@ -10,6 +10,9 @@ import { sweetErrorHandling } from "../../lib/sweetAlert";
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
 import MemberApiService from "../../apiServices/memberApiService";
+import { IconButton, InputAdornment, OutlinedInput } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { InputLabel, FormControl } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -41,6 +44,7 @@ export default function AuthenticationModal(props: any) {
   const [mb_nick, set_mb_nick] = useState<string>("");
   const [mb_phone, set_mb_phone] = useState<number>(0);
   const [mb_password, set_mb_password] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   //**HANDLERS*/
   const handleUsername = (e: any) => {
@@ -51,6 +55,16 @@ export default function AuthenticationModal(props: any) {
   };
   const handlePassword = (e: any) => {
     set_mb_password(e.target.value);
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
   };
 
   const handleSignupRequest = async () => {
@@ -146,13 +160,29 @@ export default function AuthenticationModal(props: any) {
                 label="phone number"
                 variant="outlined"
               />
-              <TextField
-                onChange={handlePassword}
-                id="outlined-basic"
-                label="password"
-                variant="outlined"
-                onKeyPress={passwordKeyDownHandler}
-              />
+              <FormControl variant="outlined">
+                <InputLabel htmlFor="signup-password">password</InputLabel>
+                <OutlinedInput
+                  id="signup-password"
+                  type={showPassword ? "text" : "password"}
+                  onChange={handlePassword}
+                  label="password"
+                  onKeyPress={passwordKeyDownHandler}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+
               <Fab
                 onClick={handleSignupRequest}
                 sx={{ marginTop: "30px", width: "120px" }}
@@ -202,13 +232,29 @@ export default function AuthenticationModal(props: any) {
                 variant="outlined"
                 sx={{ my: "10px" }}
               />
-              <TextField
-                onChange={handlePassword}
-                id="outlined-basic"
-                label="password"
-                variant="outlined"
-                onKeyPress={passwordKeyDownHandler}
-              />
+              <FormControl variant="outlined">
+                <InputLabel htmlFor="login-password">password</InputLabel>
+                <OutlinedInput
+                  id="login-password"
+                  type={showPassword ? "text" : "password"}
+                  onChange={handlePassword}
+                  label="password"
+                  onKeyPress={passwordKeyDownHandler}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+
               <Fab
                 onClick={handleLoginRequest}
                 sx={{ marginTop: "27px", width: "120px" }}

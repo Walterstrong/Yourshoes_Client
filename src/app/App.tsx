@@ -1,4 +1,3 @@
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import "../css/App.css";
 import "../css/navbar.css";
@@ -29,7 +28,6 @@ import { Product } from "../types/product";
 import { CommunityChats } from "./components/chatting/communityChats";
 import { useHistory } from "react-router-dom";
 import { History } from "history";
-import { Snackbars } from "./lib/Snackbar";
 
 function App() {
   //** INITIALIZATIONS *

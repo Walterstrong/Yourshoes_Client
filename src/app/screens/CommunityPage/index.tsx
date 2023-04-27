@@ -9,9 +9,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
 import { TargetArticles } from "./targetArticles";
-
 // REDUX
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
