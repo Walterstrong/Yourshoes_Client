@@ -1269,6 +1269,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
+  margin-top: -15px;
   line-height: 22px;
   color: #ffffff;
   background-color: #08a83d;
@@ -1575,4 +1576,119 @@
   height: auto;
   display: flex;
   flex-direction: column;
+}
+.statistics {
+  position: absolute;
+  top: 66.5px;
+  left: 0px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #901a6d;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  z-index: 999;
+  height: auto;
+  width: 310px;
+}
+
+.statistics .ratings_stat {
+  margin-top: 15px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: space-around;
+}
+
+.statistics .ratings_stat .product_reviewss {
+  margin-left: 10px;
+  color: rgb(18, 74, 137);
+}
+.statistics .product_reviews_count {
+  margin-left: 10px;
+  margin-top: 10px;
+  position: relative;
+  color: rgb(13, 66, 123);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.chosen_dish_page .product_reviews {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 25px;
+  color: dimgrey;
+  justify-content: center;
+  align-items: center;
+}
+
+.chosen_dish_page .product_rating_percentage {
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+/* .dish_container2 */
+
+.dish_container2 .statistics {
+  position: absolute;
+  top: 360px;
+  left: -15px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #901a6d;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  z-index: 999;
+  height: auto;
+  width: 310px;
+}
+
+.dish_container2 .statistics .ratings_stat {
+  margin-top: 15px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: space-around;
+}
+
+.dish_container2 .statistics .ratings_stat .product_reviewss {
+  margin-left: 10px;
+  color: rgb(18, 74, 137);
+}
+.dish_container2 .statistics .product_reviews_count {
+  margin-left: 10px;
+  margin-top: 10px;
+  position: relative;
+  color: rgb(13, 66, 123);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.dish_container2 .chosen_dish_page .product_reviews {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 25px;
+  color: dimgrey;
+  justify-content: center;
+  align-items: center;
+}
+
+.dish_container2 .chosen_dish_page .product_rating_percentage {
+  margin-left: 5px;
+  margin-top: 10px;
 }

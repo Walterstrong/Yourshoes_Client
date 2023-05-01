@@ -106,8 +106,9 @@
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
+  width: fit-content;
   padding: 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   line-height: 42px;
   background: #755bb4;
   border: solid 2px #755bb4;

@@ -33,6 +33,7 @@ export interface Product {
   sortDiscountValue: number;
   me_liked: MeLiked[];
   me_viewed: MeViewed[];
+  product_ratings: ProductRating[];
 }
 
 export interface Discount {
@@ -40,4 +41,10 @@ export interface Discount {
   value: number;
   startDate: Date;
   endDate: Date;
+}
+
+export interface ProductRating {
+  product_rating: number;
+  count: number;
+  percentage: number;
 }

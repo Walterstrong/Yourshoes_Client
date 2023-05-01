@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Container, Stack, Box, Badge } from "@mui/material";
+import { useState, useEffect, useRef } from "react";
+import { Container, Stack, Box, Badge, LinearProgress } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Marginer from "../../components/marginer";
@@ -46,7 +46,7 @@ import {
   setTargetComments,
   setTargetProducts,
 } from "./slice";
-import { Product } from "../../../types/product";
+import { Product, ProductRating } from "../../../types/product";
 import {
   retrieveChosenRestaurant,
   retrieveChosenProduct,
@@ -72,6 +72,8 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { ProductSearchObj, SearchObj } from "../../../types/others";
 import { EffectCards } from "swiper";
+import { makeStyles } from "@material-ui/core/styles";
+import ProgressBar from "app/components/others/linear";
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
   setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
@@ -142,24 +144,21 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({}));
 
 export function ChosenDish(props: any) {
-  //accordion
+  const [isStatisticsVisible, setIsStatisticsVisible] = useState(false);
+
   const history = useHistory();
+  const chosenDishInfoRef = useRef<HTMLDivElement>(null);
   const [expanded, setExpanded] = useState<string | false>("panel2");
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
+      setIsStatisticsVisible(false);
     };
-
-  type SwiperStyleProps = {
-    "--swiper-navigation-color": string;
-    "--swiper-pagination-color": string;
-  };
 
   //** INITIALIZATIONS */
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   let { dish_id } = useParams<{ dish_id: string }>();
-
   const {
     setChosenRestaurant,
     setChosenProduct,
@@ -197,6 +196,9 @@ export function ChosenDish(props: any) {
 
   const chosenDishHandler = (id: string) => {
     history.push(`/shop/product/${id}`);
+    if (chosenDishInfoRef.current) {
+      chosenDishInfoRef.current.scrollIntoView({ behavior: "smooth" });
+    }
     setProductRebuild(new Date());
   };
   const formatTimeRemaining = (endTime: string): string => {
@@ -405,7 +407,6 @@ export function ChosenDish(props: any) {
       sweetErrorHandling(err).then();
     }
   };
-  // const chosenProduct: Product | null = null;
 
   const discountedPrice: number = Math.floor(
     chosenProduct?.discountedPrice ?? 0
@@ -435,9 +436,6 @@ export function ChosenDish(props: any) {
                         borderRadius: "25px",
                         width: "100%",
                         height: "90%",
-                        // display: " block",
-                        // transition: "transform .3s ease",
-                        // overflow: " hidden",
                       }}
                       src={image_path}
                     />
@@ -463,14 +461,54 @@ export function ChosenDish(props: any) {
                       color: "black",
                       fontSize: "15.25px",
                     }}
-                    // onClick={(e) => {
-                    //   e.stopPropagation();
-                    // }}
                   >
-                    All reviews
-                    <span className={"product_review"}>
-                      ({chosenProduct?.product_reviews})
+                    <span
+                      className={"product_review"}
+                      onMouseEnter={() => setIsStatisticsVisible(true)}
+                      onMouseLeave={() => setIsStatisticsVisible(false)}
+                    >
+                      All reviews ({chosenProduct?.product_reviews})
                     </span>
+                    {isStatisticsVisible &&
+                      chosenProduct?.product_reviews !== 0 && (
+                        <div className="statistics">
+                          <Stack>
+                            <Stack>
+                              <div className={"ratings_stat"}>
+                                <Rating
+                                  key={chosenProduct?._id}
+                                  name="read-only"
+                                  value={chosenProduct?.product_rating}
+                                  readOnly
+                                />
+                                <span className={"product_reviewss"}>
+                                  {chosenProduct?.product_rating} out of 5
+                                </span>
+                              </div>
+                              <div className={"product_reviews_count"}>
+                                <span>
+                                  {chosenProduct?.product_reviews} global
+                                  ratings
+                                </span>
+                              </div>
+                            </Stack>
+                            <Stack className={"product_rating_percentage"}>
+                              {chosenProduct?.product_ratings.map(
+                                (rating: ProductRating) => {
+                                  return (
+                                    <Stack>
+                                      <ProgressBar
+                                        value={rating.percentage}
+                                        value2={rating.product_rating}
+                                      />
+                                    </Stack>
+                                  );
+                                }
+                              )}
+                            </Stack>
+                          </Stack>
+                        </div>
+                      )}
                     <Button
                       variant="text"
                       onClick={handleClickOpen}
@@ -583,7 +621,11 @@ export function ChosenDish(props: any) {
               </Accordion>
             </Stack>
           </Stack>
-          <Stack className={"chosen_dish_info_container"}>
+          <Stack
+            ref={chosenDishInfoRef}
+            component="div"
+            className={"chosen_dish_info_container"}
+          >
             <Box className={"chosen_dish_info_box"}>
               <strong className={"dish_txt"}>
                 {chosenProduct?.product_name}
@@ -600,12 +642,12 @@ export function ChosenDish(props: any) {
                     }}
                   >
                     {chosenProduct?.discount.value}% Sale
-                  </span>{" "}
+                  </span>
                   <span className={"discount_timer_one"}>
                     {timeRemainingArrayOne[0] !== "00:00:00"
                       ? timeRemainingArrayOne[0]
                       : ""}
-                  </span>{" "}
+                  </span>
                 </>
               ) : null}
               <Box className={"rating_box"}>
@@ -709,14 +751,11 @@ export function ChosenDish(props: any) {
                 <span>Price:</span>
                 {chosenProduct?.discountedPrice ? (
                   <>
-                    {" "}
                     <span
                       style={{
                         textDecoration: "line-through",
                         marginLeft: "8px",
-                        // textDecorationColor: "red",
                         textDecorationThickness: "0.8px",
-
                         color: "#85139e",
                         position: "absolute",
                         right: "200px",
@@ -724,10 +763,10 @@ export function ChosenDish(props: any) {
                       }}
                     >
                       {chosenProduct?.product_price}
-                    </span>{" "}
+                    </span>
                     <span style={{ color: "red", fontWeight: "bold" }}>
                       ${discountedPrice}
-                    </span>{" "}
+                    </span>
                   </>
                 ) : (
                   <span>${chosenProduct?.product_price}</span>
@@ -821,7 +860,6 @@ export function ChosenDish(props: any) {
           </Stack>
         </Stack>
         <Stack className="dish_container2">
-          {" "}
           <Box className="category_title">Similar products</Box>
           <Stack
             style={{ width: "100%", display: "flex" }}
@@ -957,7 +995,7 @@ export function ChosenDish(props: any) {
                           <Rating value={product?.product_rating} />
                           <span className={"product_reviews"}>
                             ({product.product_reviews})
-                          </span>
+                          </span>{" "}
                         </div>
                         <span className={"dish_title_text"}>
                           {product.product_name}

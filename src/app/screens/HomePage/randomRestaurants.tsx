@@ -78,45 +78,55 @@ export function RandomRestaurants(props: any) {
     return (
       <div className="static_frame">
         <Container>
-          <Stack
-            style={{ width: "100%", display: "flex" }}
-            flexDirection={"row"}
-          >
-            <Swiper
-              className={"restaurant_avatars_wrapper"}
-              slidesPerView={6}
-              centeredSlides={false}
-              spaceBetween={30}
-              navigation={{
-                nextEl: ".restaurant-next",
-                prevEl: ".restaurant-prev",
-              }}
-              pagination={{
-                el: ".swiper-pagination",
-                clickable: true,
-              }}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: true,
-              }}
+          {" "}
+          <Stack flexDirection={"column"} alignItems={"center"}>
+            {" "}
+            <Box className="category_title">All Brands</Box>
+            <Stack
+              style={{ width: "100%", display: "flex" }}
+              flexDirection={"row"}
             >
-              {randomRestaurants.map((ele: Restaurant, index) => {
-                const image_path = `${serverApi}/${ele.mb_image}`;
-                return (
-                  <Fade key={ele._id} right duration={2000} delay={index * 300}>
-                    <SwiperSlide
-                      onClick={() => chosenRestaurantHandler(ele._id)}
-                      style={{ cursor: "pointer" }}
+              <Swiper
+                className={"restaurant_avatars_wrapper"}
+                slidesPerView={6}
+                centeredSlides={false}
+                spaceBetween={30}
+                navigation={{
+                  nextEl: ".restaurant-next",
+                  prevEl: ".restaurant-prev",
+                }}
+                pagination={{
+                  el: ".swiper-pagination",
+                  clickable: true,
+                }}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: true,
+                }}
+              >
+                {randomRestaurants.map((ele: Restaurant, index) => {
+                  const image_path = `${serverApi}/${ele.mb_image}`;
+                  return (
+                    <Fade
                       key={ele._id}
-                      className={"restaurant_avatars"}
+                      right
+                      duration={2000}
+                      delay={index * 300}
                     >
-                      <img src={image_path} />
-                      <span>{ele.mb_nick}</span>
-                    </SwiperSlide>
-                  </Fade>
-                );
-              })}
-            </Swiper>
+                      <SwiperSlide
+                        onClick={() => chosenRestaurantHandler(ele._id)}
+                        style={{ cursor: "pointer" }}
+                        key={ele._id}
+                        className={"restaurant_avatars"}
+                      >
+                        <img src={image_path} />
+                        <span>{ele.mb_nick}</span>
+                      </SwiperSlide>
+                    </Fade>
+                  );
+                })}
+              </Swiper>
+            </Stack>
           </Stack>
         </Container>
       </div>
