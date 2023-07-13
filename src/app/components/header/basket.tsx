@@ -26,10 +26,7 @@ export default function Basket(props: any) {
     (a: any, c: CartItem) => a + c.price * c.quantity,
     0
   );
-  const itemsPrice1 = cartItems.reduce(
-    (a: any, c: CartItem) => c.price * c.quantity,
-    0
-  );
+
   const shippingPrice = itemsPrice > 100 ? 0 : 2;
   const totalPrice = itemsPrice + shippingPrice;
 
@@ -52,6 +49,7 @@ export default function Basket(props: any) {
       props.setOrderRebuild(new Date());
       history.push("/orders");
     } catch (err: any) {
+      handleClose();
       console.log(err);
       sweetErrorHandling(err).then();
     }
@@ -76,7 +74,11 @@ export default function Basket(props: any) {
               borderRadius: "24px",
             }}
           >
-            <img style={{ padding: "6px" }} src={"/icons/shopping_cart.svg"} />
+            <img
+              style={{ padding: "6px" }}
+              src={"/icons/shopping_cart.svg"}
+              alt=""
+            />
           </Box>
         </Badge>
       </IconButton>
@@ -132,7 +134,7 @@ export default function Basket(props: any) {
                         onClick={() => onDelete(item)}
                       />
                     </div>
-                    <img src={image_path} className={"product_img"} />
+                    <img src={image_path} className={"product_img"} alt="" />
                     <span className={"product_name"}>{item.name}</span>
 
                     <Box

@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import React, { useState, useEffect, useRef } from "react";
 
 export function Advertisements(): React.ReactElement {

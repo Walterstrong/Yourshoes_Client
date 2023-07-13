@@ -1,10 +1,10 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import Button from "@mui/material/Button";
+
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
@@ -32,8 +32,8 @@ import {
   setChosenSingleBoArticle,
   setTargetComments,
 } from "./slice";
-import { Member, Restaurant } from "../../../types/user";
-import RestaurantApiService from "../../apiServices/restaurantApiService";
+import { Member } from "../../../types/user";
+
 import {
   retrieveChosenMember,
   retrieveChosenMemberBoArticles,
@@ -129,6 +129,7 @@ export function VisitMyPage(props: any) {
       .getChosenMember(verifiedMemberData?._id)
       .then((data) => setChosenMember(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [memberArticlesSearchObj, articlesRebuild, followRebuild]);
   /** HANDLERS **/
 
@@ -138,6 +139,7 @@ export function VisitMyPage(props: any) {
       .getTargetComments(targetCommentsSearchObj)
       .then((data) => setTargetComments(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commentsRebuild]);
 
   const handleChange = (event: any, newValue: string) => {
@@ -181,6 +183,7 @@ export function VisitMyPage(props: any) {
                     <img
                       src={verifiedMemberData?.mb_image}
                       className={"order_user_avatar"}
+                      alt=""
                     />
                   </div>
                   <span className={"order_user_name"}>
@@ -212,7 +215,7 @@ export function VisitMyPage(props: any) {
                         className={`menu_box ${value} `}
                         onClick={() => setValue("1")}
                       >
-                        <img src={"/icons/post.svg"} />
+                        <img src={"/icons/post.svg"} alt="" />
                         <span>My articles</span>
                       </div>
                     )}
@@ -225,7 +228,7 @@ export function VisitMyPage(props: any) {
                         className={`menu_box ${value} `}
                         onClick={() => setValue("2")}
                       >
-                        <img src={"/icons/followers.svg"} />
+                        <img src={"/icons/followers.svg"} alt="" />
                         <span>
                           Followers: {chosenMember?.mb_subscriber_cnt}
                         </span>
@@ -240,7 +243,7 @@ export function VisitMyPage(props: any) {
                         className={`menu_box ${value} `}
                         onClick={() => setValue("3")}
                       >
-                        <img src={"/icons/following.svg"} />
+                        <img src={"/icons/following.svg"} alt="" />
                         <span> Followings: {chosenMember?.mb_follow_cnt}</span>
                       </div>
                     )}
@@ -253,7 +256,7 @@ export function VisitMyPage(props: any) {
                         className={`menu_box ${value} `}
                         onClick={() => setValue("4")}
                       >
-                        <img src={"/icons/post.svg"} />
+                        <img src={"/icons/post.svg"} alt="" />
                         <span>Write article</span>
                       </div>
                     )}

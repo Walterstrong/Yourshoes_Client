@@ -65,7 +65,7 @@ export function RandomRestaurants(props: any) {
                   key={ele._id}
                   className={"restaurant_avatars"}
                 >
-                  <img src={image_path} />
+                  <img src={image_path} alt="" />
                   <span>{ele.mb_nick}</span>
                 </SwiperSlide>
               );
@@ -119,7 +119,7 @@ export function RandomRestaurants(props: any) {
                         key={ele._id}
                         className={"restaurant_avatars"}
                       >
-                        <img src={image_path} />
+                        <img src={image_path} alt="" />
                         <span>{ele.mb_nick}</span>
                       </SwiperSlide>
                     </Fade>

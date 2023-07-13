@@ -3,7 +3,7 @@ import "../css/App.css";
 import "../css/navbar.css";
 import "../css/footer.css";
 import "../css/chat.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { RestaurantPage } from "./screens/RestaurantPage/index";
 import { CommunityPage } from "./screens/CommunityPage/index";
 import { OrdersPage } from "./screens/OrdersPage/index";
@@ -22,7 +22,6 @@ import {
 } from "./lib/sweetAlert";
 import { Definer } from "./lib/Definer";
 import MemberApiService from "./apiServices/memberApiService";
-import { verifiedMemberData } from "./apiServices/verify";
 import { CartItem } from "../types/others";
 import { Product } from "../types/product";
 import { CommunityChats } from "./components/chatting/communityChats";
@@ -30,21 +29,22 @@ import { useHistory } from "react-router-dom";
 import { History } from "history";
 
 function App() {
-  //** INITIALIZATIONS *
+  //** INITIALIZATIONS **//
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [path, setPath] = useState();
   const main_path = window.location.pathname;
   const [signUpOpen, setSignUpOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [orderRebuild, setOrderRebuild] = useState<Date>(new Date());
-
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-
   const cartJson: any = localStorage.getItem("cart_data");
   const current_cart: CartItem[] = JSON.parse(cartJson) ?? [];
   const [cartItems, setCartItems] = useState<CartItem[]>(current_cart);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [openAlert, setOpenAlert] = React.useState(false);
+
   //** HANDLERS */
   const handleSignUpOpen = () => setSignUpOpen(true);
   const handleSignUpClose = () => setSignUpOpen(false);
@@ -139,22 +139,13 @@ function App() {
     localStorage.removeItem("cart_data");
   };
 
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
-
-  const handleClickOpenSnackbar = () => {
-    setOpenSnackbar(true);
-  };
-
-  const handleCloseOpenSnackbar = () => {
-    setOpenSnackbar(false);
-  };
   const handleClickOpenAlert = () => {
     history.push("/construction");
   };
 
   return (
     <Router>
-      {main_path == "/" ? (
+      {main_path === "/" ? (
         <NavbarHome
           setPath={setPath}
           handleLoginOpen={handleLoginOpen}
@@ -252,11 +243,6 @@ function App() {
         handleSignUpOpen={handleSignUpOpen}
         handleSignUpClose={handleSignUpClose}
       />
-      {/* <Snackbars
-        openSnackbar={openSnackbar}
-        handleClickOpenSnackbar={handleClickOpenSnackbar}
-        handleCloseOpenSnackbar={handleCloseOpenSnackbar}
-      /> */}
     </Router>
   );
 }

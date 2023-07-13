@@ -31,8 +31,7 @@ import {
   setChosenMemberBoArticles,
   setChosenSingleBoArticle,
 } from "./slice";
-import { Member, Restaurant } from "../../../types/user";
-import RestaurantApiService from "../../apiServices/restaurantApiService";
+import { Member } from "../../../types/user";
 import {
   retrieveChosenMember,
   retrieveChosenMemberBoArticles,
@@ -122,6 +121,7 @@ export function VisitOtherPage(props: any) {
       .getMemberCommunityArticles(memberArticlesSearchObj)
       .then((data) => setChosenMemberBoArticles(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [memberArticlesSearchObj, chosen_mb_id, articlesRebuild, followRebuild]);
 
   useEffect(() => {
@@ -134,6 +134,7 @@ export function VisitOtherPage(props: any) {
       .getChosenMember(memberArticlesSearchObj.mb_id)
       .then((data) => setChosenMember(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [verifiedMemberData, chosen_mb_id, followRebuild]);
 
   /** HANDLERS **/
@@ -207,6 +208,7 @@ export function VisitOtherPage(props: any) {
                     <img
                       src={"/auth/default_user.svg"}
                       className={"order_user_avatar"}
+                      alt=""
                     />
                     {/* <div className={"order_user_icon_box"}>
                       <img src={"/icons/user_icon.svg"} />
@@ -291,7 +293,7 @@ export function VisitOtherPage(props: any) {
                         className={`menu_box ${e} `}
                         onClick={() => setValue("1")}
                       >
-                        <img src={"/icons/post.svg"} />
+                        <img src={"/icons/post.svg"} alt="" />
                         <span>Articles</span>
                       </div>
                     )}
@@ -304,7 +306,7 @@ export function VisitOtherPage(props: any) {
                         className={`menu_box ${value} `}
                         onClick={() => setValue("2")}
                       >
-                        <img src={"/icons/followers.svg"} />
+                        <img src={"/icons/followers.svg"} alt="" />
                         <span>
                           {" "}
                           Followers: {chosenMember?.mb_subscriber_cnt}
@@ -320,7 +322,7 @@ export function VisitOtherPage(props: any) {
                         className={`menu_box ${value} `}
                         onClick={() => setValue("3")}
                       >
-                        <img src={"/icons/following.svg"} />
+                        <img src={"/icons/following.svg"} alt="" />
                         <span> Followings: {chosenMember?.mb_follow_cnt}</span>
                       </div>
                     )}

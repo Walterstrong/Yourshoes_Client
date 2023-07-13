@@ -1,10 +1,10 @@
-import { Favorite, Visibility } from "@mui/icons-material";
+import { Favorite} from "@mui/icons-material";
 import { Box, Container, Stack, Button, Rating } from "@mui/material";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 import { useHistory } from "react-router-dom";
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
-import StarIcon from "@mui/icons-material/Star";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -18,7 +18,7 @@ import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
 } from "../../lib/sweetAlert";
-import RestaurantApiService from "../../apiServices/restaurantApiService";
+
 import { verifiedMemberData } from "app/apiServices/verify";
 import { Product } from "types/product";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +27,7 @@ import { setBestProducts } from "./slice";
 import { createSelector } from "reselect";
 import { retrieveBestProducts } from "./selector";
 import ProductApiService from "app/apiServices/productApiService";
-import { ProductSearch, ProductSearchObj } from "types/others";
+import { ProductSearch} from "types/others";
 import MemberApiService from "app/apiServices/memberApiService";
 import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
 //** REDUX SELECTOR */

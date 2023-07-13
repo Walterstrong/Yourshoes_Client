@@ -232,6 +232,7 @@ export function OneRestaurant(props: any) {
       })
       .then((data) => setRandomRestaurants(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chosenRestaurantId]);
 
   useEffect(() => {
@@ -247,6 +248,7 @@ export function OneRestaurant(props: any) {
       .getTargetProducts(targetProductSearchObj)
       .then((data) => setTargetProducts(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chosenRestaurantId, targetProductSearchObj, productRebuild]);
 
   useEffect(() => {
@@ -400,7 +402,7 @@ export function OneRestaurant(props: any) {
                     key={ele._id}
                     className={"restaurant_avatars"}
                   >
-                    <img src={image_path} />
+                    <img src={image_path} alt="" />
                     <span>{ele.mb_nick}</span>
                   </SwiperSlide>
                 );
@@ -893,7 +895,7 @@ export function OneRestaurant(props: any) {
             )}
             onChange={searchPageHandler}
           />
-          <img className={"line_img_left"} src={"/home/papay.png"} />
+          <img className={"line_img_left"} src={"/home/papay.png"} alt="" />
         </Stack>
       </Container>
     </div>

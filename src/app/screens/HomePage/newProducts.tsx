@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Button, Container } from "@mui/material";
 import { Stack } from "@mui/system";
 import { Favorite } from "@mui/icons-material";

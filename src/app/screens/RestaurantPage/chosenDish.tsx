@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Container, Stack, Box, Badge, LinearProgress } from "@mui/material";
+import { Container, Stack, Box, Badge } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Marginer from "../../components/marginer";
@@ -12,8 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CreateIcon from "@mui/icons-material/Create";
-import { FreeMode, Navigation, Thumbs } from "swiper";
-import { Favorite, FavoriteBorder, WindowTwoTone } from "@mui/icons-material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import Checkbox from "@mui/material/Checkbox";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -70,9 +69,9 @@ import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import { ProductSearchObj, SearchObj } from "../../../types/others";
+import { ProductSearchObj } from "../../../types/others";
 import { EffectCards } from "swiper";
-import { makeStyles } from "@material-ui/core/styles";
+
 import ProgressBar from "app/components/others/linear";
 // REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -362,7 +361,7 @@ export function ChosenDish(props: any) {
   const handleCommentRequest = async () => {
     try {
       assert.ok(verifiedMemberData, Definer.auth_err1);
-      const is_fulfilled = comment != "" && rating != 0;
+      const is_fulfilled = comment !== "" && rating !== 0;
       assert.ok(is_fulfilled, Definer.input_err1);
       const comment_data = {
         comment_content: comment,
@@ -384,7 +383,7 @@ export function ChosenDish(props: any) {
   };
 
   const passwordKeyDownHandler = (e: any) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       handleCommentRequest();
     }
   };
@@ -438,6 +437,7 @@ export function ChosenDish(props: any) {
                         height: "90%",
                       }}
                       src={image_path}
+                      alt=""
                     />
                   </SwiperSlide>
                 );

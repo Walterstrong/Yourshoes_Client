@@ -4,17 +4,13 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
 // REDUX
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setMemberFollowers, setMemberFollowings } from "./slice";
-import { Member } from "../../../types/user";
-import RestaurantApiService from "../../apiServices/restaurantApiService";
+import { setMemberFollowers } from "./slice";
 import { retrieveMemberFollowers } from "./selector";
-import { BoArticle } from "types/boArticle";
 import { Follower, FollowSearchObj } from "types/follow";
 import FollowApiService from "app/apiServices/followApiService";
 import { serverApi } from "app/lib/config";
@@ -55,6 +51,7 @@ export function MemberFollowers(props: any) {
       .getMemberFollowers(followersSearchObj)
       .then((data) => setMemberFollowers(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [followersSearchObj, followRebuild]);
 
   //** HANDLERS */
@@ -105,16 +102,12 @@ export function MemberFollowers(props: any) {
               />
               <div
                 style={{
-                  // width: "400px",
                   display: "flex",
                   flexDirection: "column",
 
                   height: "85%",
                 }}
               >
-                {/* <span className={"username_text"}>
-                {follower?.subscriber_member_data?.mb_type}
-              </span> */}
                 <span
                   className={"name_text"}
                   style={{ cursor: "pointer", marginBottom: "10px" }}
@@ -136,12 +129,6 @@ export function MemberFollowers(props: any) {
                 ) : (
                   <Button
                     variant={"contained"}
-                    // startIcon={
-                    //   <img
-                    //     src={"/icons/follow_icon.svg"}
-                    //     style={{ width: "40px" }}
-                    //   />
-                    // }
                     className={"follow_btn"}
                     onClick={(e) =>
                       subscribeHandler(e, follower?.subscriber_id)

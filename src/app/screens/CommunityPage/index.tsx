@@ -13,14 +13,6 @@ import { TargetArticles } from "./targetArticles";
 // REDUX
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { Restaurant } from "../../../types/user";
-import { serverApi } from "../../lib/config";
-import { Definer } from "../../lib/Definer";
-import assert from "assert";
-import {
-  sweetErrorHandling,
-  sweetTopSmallSuccessAlert,
-} from "../../lib/sweetAlert";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { BoArticle, SearchArticlesObj } from "types/boArticle";
@@ -43,11 +35,8 @@ const targetBoArticlesRetriever = createSelector(
 );
 export function CommunityPage(props: any) {
   /** INITIALIZATIONSS **/
-
-  //**//
   const { setTargetBoArticles } = actionDispatch(useDispatch());
   const { targetBoArticles } = useSelector(targetBoArticlesRetriever);
-  //**//
   const [value, setValue] = React.useState("1");
   const [articlesRebuild, setArticlesRebuild] = useState<Date>(new Date());
   const [searchArticlesObj, setSearchArticlesObj] = useState<SearchArticlesObj>(
@@ -64,6 +53,7 @@ export function CommunityPage(props: any) {
       .getTargetArticles(searchArticlesObj)
       .then((data) => setTargetBoArticles(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchArticlesObj, articlesRebuild]);
 
   /** HANDLERS **/

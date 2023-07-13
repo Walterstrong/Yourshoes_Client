@@ -1,5 +1,5 @@
-import React, { ChangeEvent, useRef, useState } from "react";
-import { Box, Container, Stack } from "@mui/material";
+import React from "react";
+import { Box, Stack } from "@mui/material";
 import moment from "moment";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -46,7 +46,6 @@ export function MemberPosts(props: any) {
 
   const ArticleDelteHAndler = async (art_id: string) => {
     try {
-      // stopPropagation();
       assert.ok(verifiedMemberData, Definer.auth_err1);
       let confirmation = window.confirm("Are you sure to delete your article?");
       if (confirmation) {
@@ -94,6 +93,7 @@ export function MemberPosts(props: any) {
                   src={mb_image_url}
                   width={"35px"}
                   style={{ borderRadius: "15px", backgroundSize: "cover" }}
+                  alt=""
                 />
                 <span
                   className={"all_article_author_user"}

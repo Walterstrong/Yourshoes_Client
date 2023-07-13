@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { Box, Link, Stack } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -17,11 +16,8 @@ import {
 } from "app/lib/sweetAlert";
 import { verifiedMemberData } from "app/apiServices/verify";
 import CommunityApiService from "app/apiServices/communityApiService";
-import { useHistory } from "react-router-dom";
 
 export function TargetArticles(props: any) {
-  const refs: any = useRef([]);
-  const history = useHistory();
   const targetLikeProduct = async (e: any) => {
     const { setArticlesRebuild } = props;
     try {
@@ -89,6 +85,7 @@ export function TargetArticles(props: any) {
                   src={mb_image_url}
                   width={"35px"}
                   style={{ borderRadius: "50%", backgroundSize: "cover" }}
+                  alt=""
                 />
                 <span
                   className={"all_article_author_user"}

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Box, Container, Stack } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Stack } from "@mui/material";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Button from "@mui/material/Button";
 import { verifiedMemberData } from "app/apiServices/verify";
@@ -88,6 +88,7 @@ export function MySettings(props: any) {
           style={{ borderRadius: "50%" }}
           width={"100px"}
           height={"100px"}
+          alt=""
         />
         <div className={"media_change_box"}>
           <span>Upload image</span>

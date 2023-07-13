@@ -10,12 +10,9 @@ import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setMemberFollowers, setMemberFollowings } from "./slice";
-import { Member } from "../../../types/user";
-import RestaurantApiService from "../../apiServices/restaurantApiService";
-import { retrieveMemberFollowers, retrieveMemberFollowings } from "./selector";
-import { BoArticle } from "types/boArticle";
-import { Follower, Following, FollowSearchObj } from "types/follow";
+import { setMemberFollowings } from "./slice";
+import { retrieveMemberFollowings } from "./selector";
+import { Following, FollowSearchObj } from "types/follow";
 import FollowApiService from "app/apiServices/followApiService";
 import { serverApi } from "app/lib/config";
 import assert from "assert";
@@ -57,6 +54,7 @@ export function MemberFollowing(props: any) {
       .getMemberFollowings(followingsSearchObj)
       .then((data) => setMemberFollowings(data))
       .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [followingsSearchObj, followRebuild]);
 
   //** HANDLERS */
@@ -130,12 +128,6 @@ export function MemberFollowing(props: any) {
               {props.actions_enabled && (
                 <Button
                   variant={"contained"}
-                  // startIcon={
-                  //   // <img
-                  //   //   src={"/icons/follow_icon.svg"}
-                  //   //   style={{ width: "40px", marginLeft: "16px" }}
-                  //   // />
-                  // }
                   className={"follow_cancel_btn"}
                   onClick={(e) => unsubscribeHandler(e, following?.follow_id)}
                 >

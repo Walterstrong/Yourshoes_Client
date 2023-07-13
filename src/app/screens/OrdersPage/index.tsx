@@ -4,7 +4,6 @@ import "../../../css/order.css";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PausedOrders from "../../components/orders/pausedOrders";
 import ProcessOrders from "../../components/orders/processOrders";
 import FinishedOrders from "../../components/orders/finishedOrders";
@@ -16,8 +15,6 @@ import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setFinishedOrders, setPausedOrders, setProcessOrders } from "./slice";
 import OrderApiService from "../../apiServices/orderApiService";
-import { verifiedMemberData } from "../../apiServices/verify";
-import { Member } from "../../../types/user";
 
 /** REDUX SLICE  **/
 
@@ -46,6 +43,7 @@ export function OrdersPage(props: any) {
       .getMyOrders("finished")
       .then((data) => setFinishedOrders(data))
       .catch((err) => console.log(err));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.orderRebuild]);
 
   /** HANDLERS **/

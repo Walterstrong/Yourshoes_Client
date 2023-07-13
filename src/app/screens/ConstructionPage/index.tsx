@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Container, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
 import { NavLink } from "react-router-dom";
 
@@ -31,6 +31,7 @@ export function Construction(props: any) {
                       // borderRadius: "24px",
                     }}
                     src="/icons/yourshoes.png"
+                    alt=""
                   />
                 </NavLink>
               </Stack>

@@ -1,11 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
-import { Avatar, Box, Button, Container, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { Restaurant } from "../../../types/user";
 import { serverApi } from "../../lib/config";
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
@@ -20,11 +19,10 @@ import {
 } from "../../lib/sweetAlert";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { BoArticle, SearchArticlesObj } from "types/boArticle";
+import { BoArticle } from "types/boArticle";
 import { setBestBoArticles } from "./slice";
 import { retrieveBestBoArticles } from "./selector";
 import CommunityApiService from "app/apiServices/communityApiService";
-import TViewer from "app/components/tuiEditor/TViewer";
 import { useEffect, useRef, useState } from "react";
 import { verifiedMemberData } from "app/apiServices/verify";
 import MemberApiService from "app/apiServices/memberApiService";
@@ -48,8 +46,8 @@ export function Recommendations(props: any) {
   const history = useHistory();
   const { setBestBoArticles } = actionDispatch(useDispatch());
   const { bestBoArticles } = useSelector(bestBoArticlesRetriever);
-  const refs: any = useRef([]);
   const [productRebuild, setProductRebuild] = useState<Date>(new Date());
+
   useEffect(() => {
     const communityService = new CommunityApiService();
 
@@ -164,6 +162,7 @@ export function Recommendations(props: any) {
                           borderRadius: "50%",
                           backgroundSize: "cover",
                         }}
+                        alt=""
                       />
                       <span
                         className={"all_article_author_user"}
@@ -326,6 +325,7 @@ export function Recommendations(props: any) {
                             borderRadius: "50%",
                             backgroundSize: "cover",
                           }}
+                          alt=""
                         />
                         <span
                           className={"all_article_author_user"}
