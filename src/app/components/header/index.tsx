@@ -1,10 +1,8 @@
 import { Logout } from "@mui/icons-material";
 import {
-  Badge,
   Box,
   Button,
   Container,
-  IconButton,
   Stack,
   Menu,
   MenuItem,
@@ -12,23 +10,14 @@ import {
 } from "@mui/material";
 import { verifiedMemberData } from "app/apiServices/verify";
 import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import {
-  sweetTopSuccessAlert,
-  sweetTopSmallSuccessAlert,
-} from "../../lib/sweetAlert";
 import Basket from "./basket";
-import { useHistory } from "react-router-dom";
-import { History } from "history";
+import Fade from "react-reveal/Fade";
+
 export function NavbarHome(props: any) {
   //**INITIALIZATIONSS**/
-  const history = useHistory<History>();
   const { isMobile } = useDeviceDetect();
-  const handlePushConstruction = () => {
-    history.push("/construction");
-    props.setPath();
-  };
 
   if (isMobile()) {
     return (
@@ -45,9 +34,9 @@ export function NavbarHome(props: any) {
                   width: "100px",
                   height: "100px",
                   cursor: "pointer",
-                  // borderRadius: "24px",
                 }}
                 src="/icons/yourshoes.png"
+                alt=""
               />
             </NavLink>
             <Stack
@@ -115,6 +104,7 @@ export function NavbarHome(props: any) {
                       height: "48px",
                       borderRadius: "24px",
                     }}
+                    alt=""
                     src={verifiedMemberData.mb_image}
                     onClick={props.handleLogOutClick}
                   />
@@ -199,6 +189,7 @@ export function NavbarHome(props: any) {
                   cursor: "pointer",
                   // borderRadius: "24px",
                 }}
+                alt=""
                 src="/icons/yourshoes.png"
               />
             </NavLink>
@@ -270,6 +261,7 @@ export function NavbarHome(props: any) {
                     }}
                     src={verifiedMemberData.mb_image}
                     onClick={props.handleLogOutClick}
+                    alt=""
                   />
                 )}
                 <Menu
@@ -331,6 +323,49 @@ export function NavbarHome(props: any) {
               </Box>
             </Stack>
           </Stack>
+          {/* <Stack className="head_information" justifyContent={"row"}>
+            <Stack
+              justifyContent={"column"}
+              style={{ marginTop: "86px", marginLeft: "24px" }}
+            >
+              <div>
+                <Fade bottom cascade delay={500}>
+                  <div>Welcome to our unique shoe marketplace!</div>
+                </Fade>
+                <Fade bottom cascade delay={1000}>
+                  <div>Explore a diverse range of brand shoes as a buyer.</div>
+                </Fade>
+                <Fade bottom cascade delay={1500}>
+                  <div>
+                    Or create your own brand and start selling your designs.
+                  </div>
+                </Fade>
+                <Fade bottom cascade delay={2000}>
+                  <div>
+                    Sign up as a seller and kickstart your shoe business today.
+                  </div>
+                </Fade>
+              </div>
+
+              <Box sx={{ mt: "90px" }}>
+                {!verifiedMemberData ? (
+                  <Button
+                    variant="contained"
+                    style={{
+                      width: "210px",
+                      height: "60px",
+                      background: "#1976d2",
+                      color: "#FFFFFF",
+                    }}
+                    onClick={props.handleSignUpOpen}
+                  >
+                    RO’YHATDAN O’TISH
+                  </Button>
+                ) : null}
+              </Box>
+            </Stack>
+            <Box className="big_img"></Box>
+          </Stack> */}
         </Container>
       </div>
     );

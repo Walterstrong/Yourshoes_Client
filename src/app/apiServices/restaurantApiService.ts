@@ -15,7 +15,7 @@ class RestaurantApiService {
 
   async getNewProducts() {
     try {
-      const url = "/restaurants?order=top&page=1&limit=4";
+      const url = "/brands?order=top&page=1&limit=4";
       const result = await axios.get(this.path + url, {
         withCredentials: true,
       });
@@ -32,7 +32,7 @@ class RestaurantApiService {
 
   async getBestProducts(data: SearchObj) {
     try {
-      const url = `/restaurants?order=${data.order}&page=${data.page}&limit=${data.limit}`;
+      const url = `/brands?order=${data.order}&page=${data.page}&limit=${data.limit}`;
       const result = await axios.get(this.path + url, {
         withCredentials: true,
       });
@@ -51,7 +51,7 @@ class RestaurantApiService {
 
   async getRestaurants(data: SearchObj) {
     try {
-      const url = `/restaurants?order=${data.order}&page=${data.page}&limit=${data.limit}`;
+      const url = `/brands?order=${data.order}&page=${data.page}&limit=${data.limit}`;
       const result = await axios.get(this.path + url, {
         withCredentials: true,
       });
@@ -70,7 +70,7 @@ class RestaurantApiService {
 
   async getChosenRestaurant(id: string) {
     try {
-      const url = `/restaurants/${id}`;
+      const url = `/brands/${id}`;
       const result = await axios.get(this.path + url, {
         withCredentials: true,
       });

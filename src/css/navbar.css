@@ -10,17 +10,16 @@
   background-size: cover;
   text-align: center;
   justify-content: center;
-  animation: zoomInOut 15s infinite alternate ease-in-out;
 }
 
-@keyframes zoomInOut {
+/* @keyframes zoomInOut {
   0% {
     background-size: 100% 100%;
   }
   100% {
     background-size: 120% 120%;
   }
-}
+} */
 
 /* @keyframes change {
   0% {
@@ -91,10 +90,14 @@
 .home_navbar .hover-line a {
   color: #755bb4;
   font-family: "Arial Rounded MT Bold";
-
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 20px;
+  width: auto;
+  height: auto;
 }
 
 .home_navbar .hover-line a:hover {
@@ -105,34 +108,22 @@
   color: #fff;
   font-size: 20px;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-.loginBtn:hover {
+.home_navbar .hover-line .underline {
+  background: #755bb4;
+  width: auto;
+  height: auto;
   transition-delay: 0.2s;
-  color: #fff;
-  transform: scale(1.1);
-}
-
-.home_navbar .underline {
-  display: block;
-  content: "";
-
-  border: solid 2px #755bb4;
+  font-size: 20px;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-.home_navbar .hover-line:after {
-  display: block;
-  content: "";
-  transform: scaleX(0);
-  transition: transform 250ms ease-in-out;
+.home_navbar .hover-line a.underline {
+  color: #fff;
 }
-.home_navbar .hover-line:hover:after {
-  transform: scaleX(1);
-}
-
 .home_navbar .head_information {
   display: flex;
   flex-direction: row;
@@ -168,26 +159,16 @@
   color: #d5d5d5;
 }
 
-/* .home_navbar .big_img {
-  position: relative;
-  width: 277px;
-  height: 277px;
-  margin-top: 41px;
-  margin-left: 494px;
-  background: url("/public/home/blister555.png");
-  border-radius: 90px 0 0 0;
-  filter: invert(46%) blur(1px);
-  background-size: cover;
-} */
-
-/* START BASKET */
+.loginBtn:hover {
+  transition-delay: 0.2s;
+  color: #fff;
+  transform: scale(1.1);
+}
 
 .basket_frame {
   position: relative;
-  /* padding: 10px 4px 0px 4px; */
   width: 450px;
   height: auto;
-
   display: flex;
   flex-direction: column;
   background: #ffffff;
@@ -195,7 +176,6 @@
 }
 
 .basket_frame .all_check_box {
-  /* padding: 0px 6px; */
   width: 100%;
   height: 35px;
   text-align: center;
