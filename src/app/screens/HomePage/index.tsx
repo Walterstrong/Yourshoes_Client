@@ -14,6 +14,7 @@ import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { RandomRestaurants } from "./randomRestaurants";
 import { ProductSearch } from "types/others";
 import { Recommendations } from "./recommendations";
+import { AboutUs } from "./aboutUs";
 
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
@@ -61,6 +62,7 @@ export function HomePage(props: any) {
 
   return (
     <div className="homepage">
+      {/* //<AboutUs /> */}
       <Advertisements />
       <RandomRestaurants
         openAlert={props.openAlert}

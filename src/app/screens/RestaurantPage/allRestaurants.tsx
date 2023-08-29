@@ -59,7 +59,6 @@ export function AllRestaurants() {
       .getRestaurants(targetSearchObject)
       .then((data) => setTargetRestaurants(data))
       .catch((err) => console.log(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetSearchObject]);
 
   //** HANDLERS */
@@ -105,6 +104,7 @@ export function AllRestaurants() {
       sweetErrorHandling(err).then();
     }
   };
+
   return (
     <div className="all_restaurant">
       <Container>

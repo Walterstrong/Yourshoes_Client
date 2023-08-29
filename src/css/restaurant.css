@@ -1385,7 +1385,7 @@
   border-radius: 15px;
 }
 
-.chosen_dish_page .dish_box .dish_img {
+.chosen_dish_page .dish_container2 .dish_box .dish_img {
   position: relative;
   width: 285px;
   height: 400px;
@@ -1393,7 +1393,7 @@
   border-radius: 15px 15px 0px 0px;
 }
 
-.chosen_dish_page .dish_box .dish_img:hover {
+.chosen_dish_page .dish_container2 .dish_box .dish_img:hover {
   position: relative;
   width: 285px;
   height: 400px;

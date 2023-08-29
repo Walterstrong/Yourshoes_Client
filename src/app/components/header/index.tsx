@@ -323,49 +323,54 @@ export function NavbarHome(props: any) {
               </Box>
             </Stack>
           </Stack>
-          {/* <Stack className="head_information" justifyContent={"row"}>
+          <Stack className="head_information" justifyContent={"row"}>
             <Stack
               justifyContent={"column"}
               style={{ marginTop: "86px", marginLeft: "24px" }}
             >
               <div>
                 <Fade bottom cascade delay={500}>
-                  <div>Welcome to our unique shoe marketplace!</div>
+                  <div className="textOnHeader">Welcome to our store!</div>
                 </Fade>
                 <Fade bottom cascade delay={1000}>
-                  <div>Explore a diverse range of brand shoes as a buyer.</div>
-                </Fade>
-                <Fade bottom cascade delay={1500}>
-                  <div>
-                    Or create your own brand and start selling your designs.
+                  <div className="textOnHeader">
+                    Explore brand shoes as a buyer.
                   </div>
                 </Fade>
+                {/* <Fade bottom cascade delay={1500}>
+                  <div className="textOnHeader">Or create your own brand.</div>
+                </Fade>
+                <Fade bottom cascade delay={1500}>
+                  <div className="textOnHeader">
+                    Start selling your designs.
+                  </div>
+                </Fade> */}
                 <Fade bottom cascade delay={2000}>
-                  <div>
-                    Sign up as a seller and kickstart your shoe business today.
+                  <div className="textOnHeader">
+                    Or Sign up as a seller and start your business now.
                   </div>
                 </Fade>
               </div>
-
-              <Box sx={{ mt: "90px" }}>
-                {!verifiedMemberData ? (
-                  <Button
-                    variant="contained"
-                    style={{
-                      width: "210px",
-                      height: "60px",
-                      background: "#1976d2",
-                      color: "#FFFFFF",
-                    }}
-                    onClick={props.handleSignUpOpen}
-                  >
-                    RO’YHATDAN O’TISH
-                  </Button>
-                ) : null}
-              </Box>
+              <Fade bottom cascade delay={2500}>
+                <Box sx={{ mt: "40px" }}>
+                  {!verifiedMemberData ? (
+                    <Button
+                      className="signUpBrand"
+                      variant="contained"
+                      style={{ color: "#FFFFFF" }}
+                      onClick={() =>
+                        (window.location.href =
+                          "http://waltersproject.com:3003/shoes")
+                      }
+                    >
+                      Sign Up
+                    </Button>
+                  ) : null}
+                </Box>
+              </Fade>
             </Stack>
             <Box className="big_img"></Box>
-          </Stack> */}
+          </Stack>
         </Container>
       </div>
     );

@@ -205,22 +205,24 @@ export function VisitOtherPage(props: any) {
                   alignItems={"center"}
                 >
                   <div className={"order_user_img"}>
-                    <img
-                      src={"/auth/default_user.svg"}
-                      className={"order_user_avatar"}
-                      alt=""
-                    />
-                    {/* <div className={"order_user_icon_box"}>
-                      <img src={"/icons/user_icon.svg"} />
-                    </div> */}
+                    {chosenMember?.mb_image ? (
+                      <img
+                        src={chosenMember?.mb_image}
+                        className={"order_user_avatar"}
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        src={"/auth/default_user.svg"}
+                        className={"order_user_avatar"}
+                        alt=""
+                      />
+                    )}
                   </div>
+
                   <span className={"order_user_name"}>
                     {chosenMember?.mb_nick}
                   </span>
-                  {/* <span className={"order_user_prof"}>
-                    {" "}
-                    {chosenMember?.mb_type}
-                  </span> */}
                 </Box>
                 <Box className={"user_media_box"}>
                   <FacebookIcon />

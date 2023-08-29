@@ -100,6 +100,14 @@
   background: #251942f5;
 }
 
+.homepage .about_us_frame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  background: #251942f5;
+}
+
 .homepage .category_title {
   margin-top: 40px;
   font-family: "Roboto";

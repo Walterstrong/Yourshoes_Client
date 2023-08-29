@@ -5,11 +5,46 @@
   position: relative;
   display: flex;
   background-image: url("/public/home/fon1.jpg");
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
   justify-content: center;
+}
+
+.home_navbar .head_information {
+  display: flex;
+  flex-direction: row;
+  width: 1290px;
+  height: 477px;
+  margin: 250px;
+  margin-left: -90px;
+}
+
+.format.home_navbar .textOnHeader {
+  color: #127607b7;
+  font-family: "Arial Rounded MT Bold";
+  font-size: 20px;
+  padding: 5px;
+  margin-top: 20px;
+  transition: all 0.2s;
+  font-size: 25px;
+  width: auto;
+  height: auto;
+}
+
+.format.home_navbar .signUpBrand {
+  background-color: #aa0774b7;
+  color: white;
+  font-size: 15px;
+  width: 150px;
+  height: 45px;
+}
+
+.format.home_navbar .signUpBrand:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: #127607b7;
 }
 
 /* @keyframes zoomInOut {
@@ -123,12 +158,6 @@
 
 .home_navbar .hover-line a.underline {
   color: #fff;
-}
-.home_navbar .head_information {
-  display: flex;
-  flex-direction: row;
-  width: 1290px;
-  height: 477px;
 }
 
 .home_navbar .define_restaurant {

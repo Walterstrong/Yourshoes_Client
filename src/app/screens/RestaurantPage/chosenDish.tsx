@@ -25,7 +25,7 @@ import FormControl from "@mui/material/FormControl";
 import moment from "moment";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 // REDUX
-import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { Restaurant } from "../../../types/user";
@@ -367,7 +367,7 @@ export function ChosenDish(props: any) {
         comment_content: comment,
         product_rating: rating,
         comment_ref_product_id: chosenProduct?._id,
-        comment_ref_restaurant_id: chosenProduct?.restaurant_mb_id,
+        comment_ref_brand_id: chosenProduct?.restaurant_mb_id,
       };
       const commentApiService = new CommentApiService();
       await commentApiService.createComment(comment_data);
@@ -575,9 +575,9 @@ export function ChosenDish(props: any) {
                                   </span>
                                   <Checkbox
                                     sx={{ mt: "-11px" }}
-                                    icon={<ThumbUpOffAltIcon />}
+                                    icon={<ThumbUpAltIcon />}
                                     checkedIcon={
-                                      <ThumbUpOffAltIcon
+                                      <ThumbUpAltIcon
                                         style={{ color: "red" }}
                                       />
                                     }

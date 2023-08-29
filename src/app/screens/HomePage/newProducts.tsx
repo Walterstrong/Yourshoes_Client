@@ -34,6 +34,7 @@ import ProductApiService from "app/apiServices/productApiService";
 import { ProductSearchObj } from "types/others";
 import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
+
 const actionDispatch = (dispatch: Dispatch) => ({
   setNewProducts: (data: Product[]) => dispatch(setNewProducts(data)),
 });
@@ -89,7 +90,6 @@ export function NewProducts(props: any) {
       product_color: "all",
       product_type: "all",
     });
-  //** HANDLERS */
 
   const chosenDishHandler = (id: string) => {
     history.push(`/shop/product/${id}`);
