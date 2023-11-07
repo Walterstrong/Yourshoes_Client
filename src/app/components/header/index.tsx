@@ -337,14 +337,6 @@ export function NavbarHome(props: any) {
                     Explore brand shoes as a buyer.
                   </div>
                 </Fade>
-                {/* <Fade bottom cascade delay={1500}>
-                  <div className="textOnHeader">Or create your own brand.</div>
-                </Fade>
-                <Fade bottom cascade delay={1500}>
-                  <div className="textOnHeader">
-                    Start selling your designs.
-                  </div>
-                </Fade> */}
                 <Fade bottom cascade delay={2000}>
                   <div className="textOnHeader">
                     Or Sign up as a seller and start your business now.

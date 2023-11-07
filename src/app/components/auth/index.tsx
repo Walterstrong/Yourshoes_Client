@@ -69,7 +69,8 @@ export default function AuthenticationModal(props: any) {
 
   const handleSignupRequest = async () => {
     try {
-      const is_fulfilled = mb_nick != "" && mb_phone != 0 && mb_password != "";
+      const is_fulfilled =
+        mb_nick !== "" && mb_phone !== 0 && mb_password !== "";
       assert.ok(is_fulfilled, Definer.input_err1);
       const signup_data = {
         mb_nick: mb_nick,
@@ -91,7 +92,7 @@ export default function AuthenticationModal(props: any) {
 
   const handleLoginRequest = async () => {
     try {
-      const is_fulfilled = mb_nick != "" && mb_password != "";
+      const is_fulfilled = mb_nick !== "" && mb_password !== "";
       assert.ok(is_fulfilled, Definer.input_err1);
       const login_data = {
         mb_nick: mb_nick,
@@ -111,9 +112,9 @@ export default function AuthenticationModal(props: any) {
   };
 
   const passwordKeyDownHandler = (e: any) => {
-    if (e.key == "Enter" && props.signUpOpen) {
+    if (e.key === "Enter" && props.signUpOpen) {
       handleSignupRequest();
-    } else if (e.key == "Enter" && props.loginOpen) {
+    } else if (e.key === "Enter" && props.loginOpen) {
       handleLoginRequest();
     }
   };

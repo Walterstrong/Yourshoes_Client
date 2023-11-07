@@ -47,35 +47,6 @@
   background-color: #127607b7;
 }
 
-/* @keyframes zoomInOut {
-  0% {
-    background-size: 100% 100%;
-  }
-  100% {
-    background-size: 120% 120%;
-  }
-} */
-
-/* @keyframes change {
-  0% {
-    background-image: url("/public/home/fon3.jpg");
-  }
-  100% {
-    background-image: url("/public/home/fon1.jpg");
-  }
-  /* 40% {
-    background-image: url("/public/home/fon3.jpg");
-  }
-  60% {
-    background-image: url("/public/home/fon1.jpg");
-  }
-  80% {
-    background-image: url("/public/home/fon2.jpg");
-  }
-  100% {
-    background-image: url("/public/home/fon3.jpg");
-  } */
-/* } */
 .format_restaurant.home_navbar {
   width: 100%;
   height: 100px;
