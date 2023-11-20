@@ -26,7 +26,7 @@ export interface Product {
   product_views: number;
   product_rating: number;
   product_reviews: number;
-  restaurant_mb_id: string;
+  brand_mb_id: string;
   createdAt: Date;
   updatedAt: Date;
   discountedPrice: number;

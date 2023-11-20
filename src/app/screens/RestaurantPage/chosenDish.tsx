@@ -179,7 +179,7 @@ export function ChosenDish(props: any) {
       page: 1,
       limit: 15,
       order: "product_likes",
-      restaurant_mb_id: "all",
+      brand_mb_id: "all",
       product_name: "all",
       product_collection: "all",
       product_size: "all",
@@ -253,7 +253,7 @@ export function ChosenDish(props: any) {
       setChosenProduct(product);
       const restaurantService = new RestaurantApiService();
       const restaurant = await restaurantService.getChosenRestaurant(
-        product.restaurant_mb_id
+        product.brand_mb_id
       );
       setChosenRestaurant(restaurant);
     } catch (err: any) {
@@ -367,7 +367,7 @@ export function ChosenDish(props: any) {
         comment_content: comment,
         product_rating: rating,
         comment_ref_product_id: chosenProduct?._id,
-        comment_ref_brand_id: chosenProduct?.restaurant_mb_id,
+        comment_ref_brand_id: chosenProduct?.brand_mb_id,
       };
       const commentApiService = new CommentApiService();
       await commentApiService.createComment(comment_data);

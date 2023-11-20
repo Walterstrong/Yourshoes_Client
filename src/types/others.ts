@@ -9,7 +9,7 @@ export interface ProductSearchObj {
   page: number;
   limit: number;
   order: string;
-  restaurant_mb_id?: string;
+  brand_mb_id?: string;
   product_name: string;
   product_collection?: string;
   product_size?: string;
@@ -34,6 +34,7 @@ export interface CommentsSearchObj {
   page: number;
   limit: number;
   comment_ref_product_id?: string;
+  comment_ref_brand_id?: string;
 }
 
 export interface MemberLiken {
