@@ -23,7 +23,6 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { setTargetRestaurants } from "./slice";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { SearchObj } from "../../../types/others";
-import { verifiedMemberData } from "app/apiServices/verify";
 import Bounce from "react-reveal/Bounce";
 
 // REDUX SLICE
@@ -49,9 +48,8 @@ export function AllRestaurants() {
   const [targetSearchObject, setTargetSearchObject] = useState<SearchObj>({
     page: 1,
     limit: 8,
-    order: "mb_point",
+    order: "random",
   });
-  const refs: any = useRef([]);
 
   useEffect(() => {
     const restaurantService = new RestaurantApiService();
@@ -64,45 +62,11 @@ export function AllRestaurants() {
   //** HANDLERS */
   const chosenRestaurantHandler = (id: string) => {
     history.push(`/shop/${id}`);
-    // const restaurantService = new RestaurantApiService();
-    // restaurantService.getChosenRestaurant(`${id}`);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const searchHandler = (category: string) => {
-    targetSearchObject.page = 1;
-    targetSearchObject.order = category;
-    setTargetSearchObject({ ...targetSearchObject });
-  };
   const handlePaginationChange = (event: any, value: number) => {
     targetSearchObject.page = value;
     setTargetSearchObject({ ...targetSearchObject });
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const targetLikeHandler = async (e: any, id: string) => {
-    try {
-      assert.ok(verifiedMemberData, Definer.auth_err1);
-      const memberService = new MemberApiService();
-      const like_result = await memberService.memberLikeTarget({
-        like_ref_id: id,
-        group_type: "member",
-      });
-      assert.ok(like_result, Definer.auth_err1);
-
-      if (like_result.like_status > 0) {
-        e.target.style.fill = "red";
-        refs.current[like_result.like_ref_id].innerHTML++;
-      } else {
-        e.target.style.fill = "white";
-        refs.current[like_result.like_ref_id].innerHTML--;
-      }
-
-      await sweetTopSmallSuccessAlert("success", 700, false);
-    } catch (err: any) {
-      console.log("targetLikeTop,ERROR:", err);
-      sweetErrorHandling(err).then();
-    }
   };
 
   return (
@@ -111,7 +75,7 @@ export function AllRestaurants() {
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Box className="category_title">All Brands</Box>
           <Stack className={"all_res_box"}>
-            {targetRestaurants.map((ele: Restaurant) => {
+            {targetRestaurants?.map((ele: Restaurant) => {
               const image_path = `${serverApi}/${ele.mb_image}`;
               return (
                 <Bounce bottom duration={2000}>

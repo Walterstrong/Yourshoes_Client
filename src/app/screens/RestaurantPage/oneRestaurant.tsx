@@ -175,7 +175,7 @@ export function OneRestaurant(props: any) {
   //** INITIALIZATIONS */
   const history = useHistory();
   //**//
-  let { restaurant_id } = useParams<{ restaurant_id: string }>();
+  let { brand_id } = useParams<{ brand_id: string }>();
   //**//
   const { setRandomRestaurants, setChosenRestaurant, setTargetProducts } =
     actionDispatch(useDispatch());
@@ -185,14 +185,14 @@ export function OneRestaurant(props: any) {
   const { targetProducts } = useSelector(targetProductsRetriever);
   //**//
   const [chosenRestaurantId, setChosenRestaurantId] =
-    useState<string>(restaurant_id);
+    useState<string>(brand_id);
 
   const [targetProductSearchObj, setTargetProductsSearchObj] =
     useState<ProductSearchObj>({
       page: 1,
       limit: 6,
       order: "product_reviews",
-      restaurant_mb_id: restaurant_id,
+      brand_mb_id: brand_id,
       product_name: "all",
       product_collection: "all",
       product_size: "all",
@@ -322,7 +322,7 @@ export function OneRestaurant(props: any) {
   //
   const chosenRestaurantHandler = (id: string) => {
     setChosenRestaurantId(id);
-    targetProductSearchObj.restaurant_mb_id = id;
+    targetProductSearchObj.brand_mb_id = id;
     setTargetProductsSearchObj({ ...targetProductSearchObj });
     history.push(`/shop/${id}`);
   };
@@ -393,7 +393,7 @@ export function OneRestaurant(props: any) {
                 prevEl: ".restaurant-prev",
               }}
             >
-              {randomRestaurants.map((ele: Restaurant) => {
+              {randomRestaurants?.map((ele: Restaurant) => {
                 const image_path = `${serverApi}/${ele.mb_image}`;
                 return (
                   <SwiperSlide

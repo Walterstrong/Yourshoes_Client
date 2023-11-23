@@ -23,7 +23,7 @@ export interface ProductSearch {
   limit: number;
   order: string;
   product_name: string;
-  restaurant_mb_id?: string;
+  brand_mb_id?: string;
   product_collection?: string;
   product_size?: string;
   product_color?: string;

@@ -1,6 +1,6 @@
-import { Favorite} from "@mui/icons-material";
+import { Favorite } from "@mui/icons-material";
 import { Box, Container, Stack, Button, Rating } from "@mui/material";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
@@ -27,7 +27,7 @@ import { setBestProducts } from "./slice";
 import { createSelector } from "reselect";
 import { retrieveBestProducts } from "./selector";
 import ProductApiService from "app/apiServices/productApiService";
-import { ProductSearch} from "types/others";
+import { ProductSearch } from "types/others";
 import MemberApiService from "app/apiServices/memberApiService";
 import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
 //** REDUX SELECTOR */
@@ -51,7 +51,7 @@ export function BestProducts(props: any) {
     page: 1,
     limit: 15,
     order: "product_reviews",
-    restaurant_mb_id: "all",
+    brand_mb_id: "all",
     product_name: "all",
     product_collection: "all",
     product_size: "all",

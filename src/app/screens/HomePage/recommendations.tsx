@@ -23,7 +23,7 @@ import { BoArticle } from "types/boArticle";
 import { setBestBoArticles } from "./slice";
 import { retrieveBestBoArticles } from "./selector";
 import CommunityApiService from "app/apiServices/communityApiService";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { verifiedMemberData } from "app/apiServices/verify";
 import MemberApiService from "app/apiServices/memberApiService";
 import DeleteIcon from "@mui/icons-material/Delete";

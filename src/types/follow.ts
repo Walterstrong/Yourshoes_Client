@@ -38,7 +38,7 @@ export interface Comments {
   comment_likes: number;
   mb_id: string;
   comment_ref_product_id: string;
-  comment_ref_restaurant_id: string;
+  comment_ref_brand_id: string;
   product_rating: number;
   createdAt?: Date;
   member_data: MemberComment;
