@@ -159,7 +159,7 @@ export function BestProducts(props: any) {
               }}
             >
               {bestProducts.map((product: Product, index: number) => {
-                const image_path = `http://178.16.142.232:3003//${product.product_images[0]}`;
+                const image_path = `http://178.16.142.232:3003/${product.product_images[0]}`;
                 let discountedPrice = Math.floor(product.discountedPrice);
                 return (
                   <SwiperSlide
@@ -353,7 +353,7 @@ export function BestProducts(props: any) {
                 }}
               >
                 {bestProducts.map((product: Product, index: number) => {
-                  const image_path = `http://178.16.142.232:3003//${product.product_images[0]}`;
+                  const image_path = `http://178.16.142.232:3003/${product.product_images[0]}`;
                   let discountedPrice = Math.floor(product.discountedPrice);
                   return (
                     <SwiperSlide

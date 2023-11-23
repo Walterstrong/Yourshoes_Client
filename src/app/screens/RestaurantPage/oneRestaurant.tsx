@@ -394,7 +394,7 @@ export function OneRestaurant(props: any) {
               }}
             >
               {randomRestaurants?.map((ele: Restaurant) => {
-                const image_path = `http://178.16.142.232:3003//${ele.mb_image}`;
+                const image_path = `http://178.16.142.232:3003/${ele.mb_image}`;
                 return (
                   <SwiperSlide
                     onClick={() => chosenRestaurantHandler(ele._id)}
@@ -680,7 +680,7 @@ export function OneRestaurant(props: any) {
             </Stack>
             <Stack className={"dish_wrapper"}>
               {targetProducts.map((product: Product, index: number) => {
-                const image_path = `http://178.16.142.232:3003//${product.product_images[0]}`;
+                const image_path = `http://178.16.142.232:3003/${product.product_images[0]}`;
                 let discountedPrice = Math.floor(product.discountedPrice);
                 return (
                   <Fade

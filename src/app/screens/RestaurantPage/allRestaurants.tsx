@@ -75,7 +75,7 @@ export function AllRestaurants() {
           <Box className="category_title">All Brands</Box>
           <Stack className={"all_res_box"}>
             {targetRestaurants?.map((ele: Restaurant) => {
-              const image_path = `http://178.16.142.232:3003//${ele.mb_image}`;
+              const image_path = `http://178.16.142.232:3003/${ele.mb_image}`;
               return (
                 <Bounce bottom duration={2000}>
                   <Stack

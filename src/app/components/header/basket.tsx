@@ -125,7 +125,7 @@ export default function Basket(props: any) {
           <Box className={"orders_main_wrapper"}>
             <Box className={"orders_wrapper"}>
               {cartItems?.map((item: CartItem) => {
-                const image_path = `http://178.16.142.232:3003//${item.image}`;
+                const image_path = `http://178.16.142.232:3003/${item.image}`;
                 return (
                   <Box className={"basket_info_box"}>
                     <div className={"cancel_btn"}>

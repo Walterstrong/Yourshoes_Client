@@ -56,7 +56,7 @@ export function RandomRestaurants(props: any) {
             }}
           >
             {randomRestaurants.map((ele: Restaurant) => {
-              const image_path = `http://178.16.142.232:3003//${ele.mb_image}`;
+              const image_path = `http://178.16.142.232:3003/${ele.mb_image}`;
               return (
                 <SwiperSlide
                   // onClick={props.handleClickOpenAlert}
@@ -105,7 +105,7 @@ export function RandomRestaurants(props: any) {
                 }}
               >
                 {randomRestaurants.map((ele: Restaurant, index) => {
-                  const image_path = `http://178.16.142.232:3003//${ele.mb_image}`;
+                  const image_path = `http://178.16.142.232:3003/${ele.mb_image}`;
                   return (
                     <Fade
                       key={ele._id}
