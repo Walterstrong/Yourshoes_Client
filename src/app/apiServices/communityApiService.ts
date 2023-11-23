@@ -1,4 +1,4 @@
-import { serverApi } from "app/lib/config";
+import { http://localhost:3003 } from "app/lib/config";
 import axios from "axios";
 import assert from "assert";
 import { Definer } from "../lib/Definer";
@@ -14,7 +14,7 @@ class CommunityApiService {
   private readonly path: string;
 
   constructor() {
-    this.path = serverApi;
+    this.path = http://localhost:3003;
   }
 
   public async getTargetArticles(data: SearchArticlesObj) {

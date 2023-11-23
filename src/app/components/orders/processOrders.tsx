@@ -14,7 +14,7 @@ import { verifiedMemberData } from "../../apiServices/verify";
 import { Member } from "../../../types/user";
 import { Order } from "../../../types/order";
 import { Product } from "../../../types/product";
-import { serverApi } from "../../lib/config";
+import { http://localhost:3003 } from "../../lib/config";
 
 // REDUX SELECTOR
 const processOrdersRetriever = createSelector(
@@ -173,7 +173,7 @@ export default function ProcessOrders(props: any) {
 //       const product: Product = order.product_data.filter(
 //         (ele) => ele._id === item.product_id
 //       )[0];
-//       const image_path = `${serverApi}/${product.product_images[0]}`;
+//       const image_path = `${http://localhost:3003}/${product.product_images[0]}`;
 //       return (
 //         <Box className={"ordersName_price"}>
 //           <img src={image_path} className={"orderDishImg"} />

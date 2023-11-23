@@ -1,5 +1,5 @@
 import { CookieSharp } from "@mui/icons-material";
-import { serverApi } from "app/lib/config";
+import { http://localhost:3003 } from "app/lib/config";
 import Cookies from "universal-cookie";
 import MemberApiService from "./memberApiService";
 
@@ -14,7 +14,7 @@ if (cookies.get("access_token")) {
   member_data = memberDataJson ? JSON.parse(memberDataJson) : null;
   if (member_data) {
     member_data.mb_image = member_data.mb_image
-      ? `${serverApi}/${member_data.mb_image}`
+      ? `${http://localhost:3003}/${member_data.mb_image}`
       : "/auth/default_user.svg";
   }
 } else {

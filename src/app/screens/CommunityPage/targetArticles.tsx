@@ -5,7 +5,7 @@ import Favorite from "@mui/icons-material/Favorite";
 import Checkbox from "@mui/material/Checkbox";
 import moment from "moment";
 import { BoArticle } from "types/boArticle";
-import { serverApi } from "app/lib/config";
+import { http://localhost:3003 } from "app/lib/config";
 import MemberApiService from "app/apiServices/memberApiService";
 import assert from "assert";
 import { Definer } from "app/lib/Definer";
@@ -58,10 +58,10 @@ export function TargetArticles(props: any) {
     <Stack className="community_wrap">
       {props.targetBoArticles?.map((article: BoArticle) => {
         const art_image_url = article?.art_image
-          ? `${serverApi}/${article.art_image}`
+          ? `${http://localhost:3003}/${article.art_image}`
           : "/community/default_article.svg";
         const mb_image_url = article?.member_data?.mb_image
-          ? `${serverApi}/${article?.member_data?.mb_image}`
+          ? `${http://localhost:3003}/${article?.member_data?.mb_image}`
           : "/auth/default_user.svg";
         return (
           <Link

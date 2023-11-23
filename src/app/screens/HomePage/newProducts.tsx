@@ -5,7 +5,7 @@ import { Stack } from "@mui/system";
 import { Favorite } from "@mui/icons-material";
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import { serverApi } from "../../lib/config";
+import { http://localhost:3003 } from "../../lib/config";
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -168,7 +168,7 @@ export function NewProducts(props: any) {
               }}
             >
               {newProducts.map((product: Product, index: number) => {
-                const image_path = `${serverApi}/${product.product_images[0]}`;
+                const image_path = `${http://localhost:3003}/${product.product_images[0]}`;
                 let discountedPrice = Math.floor(product.discountedPrice);
 
                 return (
@@ -375,7 +375,7 @@ export function NewProducts(props: any) {
                 }}
               >
                 {newProducts.map((product: Product, index: number) => {
-                  const image_path = `${serverApi}/${product.product_images[0]}`;
+                  const image_path = `${http://localhost:3003}/${product.product_images[0]}`;
                   let discountedPrice = Math.floor(product.discountedPrice);
                   return (
                     <SwiperSlide

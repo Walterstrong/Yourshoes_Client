@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { BoArticleInput } from "types/boArticle";
 import CommunityApiService from "app/apiServices/communityApiService";
-import { serverApi } from "app/lib/config";
+import { http://localhost:3003 } from "app/lib/config";
 import assert from "assert";
 import {
   sweetErrorHandling,
@@ -42,7 +42,7 @@ export const TuiEditor = (props: any) => {
 
       communityArticleData.art_image = image_name;
       setCommunityArticleData({ ...communityArticleData });
-      const source = `${serverApi}/${image_name}`;
+      const source = `${http://localhost:3003}/${image_name}`;
       return source;
     } catch (err) {
       console.log(`ERROR::: uploadImage, ${err}`);

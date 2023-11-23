@@ -13,7 +13,7 @@ import { setMemberFollowers } from "./slice";
 import { retrieveMemberFollowers } from "./selector";
 import { Follower, FollowSearchObj } from "types/follow";
 import FollowApiService from "app/apiServices/followApiService";
-import { serverApi } from "app/lib/config";
+import { http://localhost:3003 } from "app/lib/config";
 import assert from "assert";
 import { Definer } from "app/lib/Definer";
 import {
@@ -85,7 +85,7 @@ export function MemberFollowers(props: any) {
       <Stack className={"followers_content"}>
         {memberFollowers.map((follower: Follower) => {
           const image_url = follower?.subscriber_member_data?.mb_image
-            ? `${serverApi}/${follower.subscriber_member_data.mb_image}`
+            ? `${http://localhost:3003}/${follower.subscriber_member_data.mb_image}`
             : "/auth/person.jpg";
           return (
             <Box className={"follow_box"}>

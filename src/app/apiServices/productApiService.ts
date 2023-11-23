@@ -1,6 +1,6 @@
 import axios from "axios";
 import assert from "assert";
-import { serverApi } from "../lib/config";
+import { http://localhost:3003 } from "../lib/config";
 import { Product } from "../../types/product";
 import { Definer } from "../lib/Definer";
 import { ProductSearchObj } from "../../types/others";
@@ -8,7 +8,7 @@ class ProductApiService {
   private readonly path: string;
 
   constructor() {
-    this.path = serverApi;
+    this.path = http://localhost:3003;
     // bu yerda url pathi hosil qilib olinayabdi
   }
 

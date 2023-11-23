@@ -1,6 +1,6 @@
 import assert from "assert";
 import axios from "axios";
-import { serverApi } from "../lib/config";
+import { http://localhost:3003 } from "../lib/config";
 import { CartItem } from "../../types/others";
 import { Definer } from "../lib/Definer";
 import { AnyARecord } from "dns";
@@ -9,7 +9,7 @@ class OrderApiService {
   private readonly path: string;
 
   constructor() {
-    this.path = serverApi;
+    this.path = http://localhost:3003;
   }
 
   async createOrder(data: CartItem[]) {
