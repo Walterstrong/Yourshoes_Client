@@ -11,7 +11,7 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
-import { http://localhost:3003 } from "../../lib/config";
+
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 // REDUX
 import {
@@ -159,7 +159,7 @@ export function BestProducts(props: any) {
               }}
             >
               {bestProducts.map((product: Product, index: number) => {
-                const image_path = `${http://localhost:3003}/${product.product_images[0]}`;
+                const image_path = `http://localhost:3003//${product.product_images[0]}`;
                 let discountedPrice = Math.floor(product.discountedPrice);
                 return (
                   <SwiperSlide
@@ -353,7 +353,7 @@ export function BestProducts(props: any) {
                 }}
               >
                 {bestProducts.map((product: Product, index: number) => {
-                  const image_path = `${http://localhost:3003}/${product.product_images[0]}`;
+                  const image_path = `http://localhost:3003//${product.product_images[0]}`;
                   let discountedPrice = Math.floor(product.discountedPrice);
                   return (
                     <SwiperSlide

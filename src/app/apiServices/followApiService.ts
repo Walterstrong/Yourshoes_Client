@@ -1,4 +1,3 @@
-import { http://localhost:3003 } from "app/lib/config";
 import axios from "axios";
 import assert from "assert";
 import { Definer } from "../lib/Definer";
@@ -9,12 +8,13 @@ import {
   SearchMemberArticlesObj,
 } from "types/boArticle";
 import { Follower, Following, FollowSearchObj } from "types/follow";
+import { http } from "app/lib/config";
 
 class FollowApiService {
   private readonly path: string;
 
   constructor() {
-    this.path = http://localhost:3003;
+    this.path = "http://localhost:3003";
   }
 
   public async getMemberFollowers(data: FollowSearchObj): Promise<Follower[]> {

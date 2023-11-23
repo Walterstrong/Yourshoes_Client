@@ -5,7 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { http://localhost:3003 } from "app/lib/config";
+
 import { BoArticle } from "types/boArticle";
 import assert from "assert";
 import { Definer } from "app/lib/Definer";
@@ -65,10 +65,10 @@ export function MemberPosts(props: any) {
     <Box className={"post_content"}>
       {chosenMemberBoArticles.map((article: BoArticle) => {
         const art_image_url = article?.art_image
-          ? `${http://localhost:3003}/${article.art_image}`
+          ? `http://localhost:3003/${article.art_image}`
           : "/community/default_article.svg";
         const mb_image_url = article?.member_data?.mb_image
-          ? `${http://localhost:3003}/${article?.member_data?.mb_image}`
+          ? `http://localhost:3003/${article?.member_data?.mb_image}`
           : "/auth/default_user.svg";
         return (
           <Stack

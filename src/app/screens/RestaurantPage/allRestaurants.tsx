@@ -17,7 +17,6 @@ import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrieveTargetRestaurants } from "./selector";
 import { Restaurant } from "../../../types/user";
-import { http://localhost:3003 } from "../../lib/config";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setTargetRestaurants } from "./slice";
@@ -76,7 +75,7 @@ export function AllRestaurants() {
           <Box className="category_title">All Brands</Box>
           <Stack className={"all_res_box"}>
             {targetRestaurants?.map((ele: Restaurant) => {
-              const image_path = `${http://localhost:3003}/${ele.mb_image}`;
+              const image_path = `http://localhost:3003//${ele.mb_image}`;
               return (
                 <Bounce bottom duration={2000}>
                   <Stack

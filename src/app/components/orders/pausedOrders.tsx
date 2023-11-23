@@ -8,7 +8,7 @@ import { createSelector } from "reselect";
 import { retrievePausedOrders } from "../../screens/OrdersPage/selector";
 import { Order } from "../../../types/order";
 import { Product } from "../../../types/product";
-import { http://localhost:3003 } from "../../lib/config";
+
 import { sweetErrorHandling } from "../../lib/sweetAlert";
 import OrderApiService from "../../apiServices/orderApiService";
 
@@ -72,7 +72,7 @@ export default function PausedOrders(props: any) {
                   const product: Product = order.product_data.filter(
                     (ele) => ele._id === item.product_id
                   )[0];
-                  const image_path = `${http://localhost:3003}/${product?.product_images[0]}`;
+                  const image_path = `http://localhost:3003//${product?.product_images[0]}`;
                   return (
                     <Box className={"ordersName_price"}>
                       <img src={image_path} className={"orderDishImg"} />

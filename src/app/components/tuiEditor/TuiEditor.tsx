@@ -14,18 +14,17 @@ import {
 } from "@mui/material";
 import { BoArticleInput } from "types/boArticle";
 import CommunityApiService from "app/apiServices/communityApiService";
-import { http://localhost:3003 } from "app/lib/config";
+
 import assert from "assert";
 import {
   sweetErrorHandling,
   sweetTopSmallSuccessAlert,
 } from "app/lib/sweetAlert";
 import { Definer } from "app/lib/Definer";
-import { useHistory } from "react-router-dom";
 
 export const TuiEditor = (props: any) => {
   /** INITIALIZATIONSS **/
-  const history = useHistory();
+
   const editorRef = useRef();
   const [communityArticleData, setCommunityArticleData] =
     useState<BoArticleInput>({
@@ -42,7 +41,7 @@ export const TuiEditor = (props: any) => {
 
       communityArticleData.art_image = image_name;
       setCommunityArticleData({ ...communityArticleData });
-      const source = `${http://localhost:3003}/${image_name}`;
+      const source = `${serverApi}/${image_name}`;
       return source;
     } catch (err) {
       console.log(`ERROR::: uploadImage, ${err}`);

@@ -1,4 +1,3 @@
-import { http://localhost:3003 } from "app/lib/config";
 import axios from "axios";
 import assert from "assert";
 import { Definer } from "../lib/Definer";
@@ -9,12 +8,13 @@ import {
   SearchArticlesObj,
   SearchMemberArticlesObj,
 } from "types/boArticle";
+import { http } from "app/lib/config";
 
 class CommunityApiService {
   private readonly path: string;
 
   constructor() {
-    this.path = http://localhost:3003;
+    this.path = "http://localhost:3003";
   }
 
   public async getTargetArticles(data: SearchArticlesObj) {

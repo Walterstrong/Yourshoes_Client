@@ -4,7 +4,7 @@ import { createSelector } from "reselect";
 import { retrieveRandomRestaurants } from "./selector";
 import { Restaurant } from "types/user";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { http://localhost:3003 } from "app/lib/config";
+
 import { useHistory } from "react-router-dom";
 import useDeviceDetect from "app/lib/responsive/useDeviceDetect";
 import Fade from "react-reveal/Fade";
@@ -56,7 +56,7 @@ export function RandomRestaurants(props: any) {
             }}
           >
             {randomRestaurants.map((ele: Restaurant) => {
-              const image_path = `${http://localhost:3003}/${ele.mb_image}`;
+              const image_path = `http://localhost:3003//${ele.mb_image}`;
               return (
                 <SwiperSlide
                   // onClick={props.handleClickOpenAlert}
@@ -105,7 +105,7 @@ export function RandomRestaurants(props: any) {
                 }}
               >
                 {randomRestaurants.map((ele: Restaurant, index) => {
-                  const image_path = `${http://localhost:3003}/${ele.mb_image}`;
+                  const image_path = `http://localhost:3003//${ele.mb_image}`;
                   return (
                     <Fade
                       key={ele._id}

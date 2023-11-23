@@ -6,7 +6,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import React from "react";
 import { CartItem } from "../../../types/others";
-import { http://localhost:3003 } from "../../lib/config";
+
 import { sweetErrorHandling } from "../../lib/sweetAlert";
 import assert from "assert";
 import { Definer } from "../../lib/Definer";
@@ -125,7 +125,7 @@ export default function Basket(props: any) {
           <Box className={"orders_main_wrapper"}>
             <Box className={"orders_wrapper"}>
               {cartItems?.map((item: CartItem) => {
-                const image_path = `${http://localhost:3003}/${item.image}`;
+                const image_path = `http://localhost:3003//${item.image}`;
                 return (
                   <Box className={"basket_info_box"}>
                     <div className={"cancel_btn"}>

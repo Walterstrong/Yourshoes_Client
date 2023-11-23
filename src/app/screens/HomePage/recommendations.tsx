@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { http://localhost:3003 } from "../../lib/config";
+
 import { Definer } from "../../lib/Definer";
 import assert from "assert";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -131,10 +131,10 @@ export function Recommendations(props: any) {
           >
             {bestBoArticles?.map((article: BoArticle) => {
               const art_image_url = article?.art_image
-                ? `${http://localhost:3003}/${article.art_image}`
+                ? `http://localhost:3003/${article.art_image}`
                 : "/community/default_article.svg";
               const mb_image_url = article?.member_data?.mb_image
-                ? `${http://localhost:3003}/${article?.member_data?.mb_image}`
+                ? `http://localhost:3003/${article?.member_data?.mb_image}`
                 : "/auth/default_user.svg";
               return (
                 <SwiperSlide className={"events_info_frame"}>
@@ -294,10 +294,10 @@ export function Recommendations(props: any) {
             >
               {bestBoArticles?.map((article: BoArticle) => {
                 const art_image_url = article?.art_image
-                  ? `${http://localhost:3003}/${article.art_image}`
+                  ? `http://localhost:3003/${article.art_image}`
                   : "/community/default_article.svg";
                 const mb_image_url = article?.member_data?.mb_image
-                  ? `${http://localhost:3003}/${article?.member_data?.mb_image}`
+                  ? `http://localhost:3003/${article?.member_data?.mb_image}`
                   : "/auth/default_user.svg";
                 return (
                   <SwiperSlide className={"events_info_frame"}>

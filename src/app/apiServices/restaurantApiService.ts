@@ -1,6 +1,6 @@
 import axios from "axios";
 import assert from "assert";
-import { http://localhost:3003 } from "../lib/config";
+
 import { Restaurant } from "../../types/user";
 import { SearchObj } from "../../types/others";
 import { Definer } from "../lib/Definer";
@@ -10,7 +10,7 @@ class RestaurantApiService {
   private readonly path: string;
 
   constructor() {
-    this.path = http://localhost:3003;
+    this.path = "http://localhost:3003";
   }
 
   async getNewProducts() {

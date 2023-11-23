@@ -1,6 +1,6 @@
 import axios from "axios";
 import assert from "assert";
-import { http://localhost:3003 } from "../lib/config";
+
 import { Definer } from "../lib/Definer";
 import { Member, MemberUpdateData } from "../../types/user";
 import { MemberLiken } from "../../types/others";
@@ -9,7 +9,7 @@ class MemberApiService {
   private readonly path: string;
 
   constructor() {
-    this.path = http://localhost:3003;
+    this.path = "http://localhost:3003";
     // bu yerda url pathi hosil qilib olinayabdi
   }
 

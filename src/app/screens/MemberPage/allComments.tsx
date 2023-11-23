@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Rating, Stack } from "@mui/material";
 import moment from "moment";
 import Checkbox from "@mui/material/Checkbox";
-import { http://localhost:3003 } from "app/lib/config";
 
 import assert from "assert";
 import { Definer } from "app/lib/Definer";
@@ -17,7 +16,7 @@ import CommentApiService from "app/apiServices/commentApiService";
 import { Comments } from "types/follow";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 export function AllComments(props: any) {
-  const { targetComments,  setCommentsRebuild } = props;
+  const { targetComments, setCommentsRebuild } = props;
 
   //** HANDLERS */
 
@@ -63,7 +62,7 @@ export function AllComments(props: any) {
         <Stack className="accordion_comment">
           {targetComments?.map((comment: Comments) => {
             const image_member = comment?.member_data?.mb_image
-              ? `${http://localhost:3003}/${comment?.member_data?.mb_image}`
+              ? `http://localhost:3003/${comment?.member_data?.mb_image}`
               : "/auth/default_user.svg";
             return (
               <Stack className={"all_comment"}>
