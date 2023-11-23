@@ -88,7 +88,7 @@ export function MemberFollowing(props: any) {
       <Stack className={"followers_content"}>
         {memberFollowings.map((following: Following) => {
           const image_url = following?.follow_member_data?.mb_image
-            ? `http://localhost:3003/${following.follow_member_data.mb_image}`
+            ? `http://178.16.142.232:3003/${following.follow_member_data.mb_image}`
             : "/auth/person.jpg";
           return (
             <Box className={"follow_box"}>

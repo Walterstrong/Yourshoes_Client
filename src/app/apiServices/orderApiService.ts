@@ -9,7 +9,7 @@ class OrderApiService {
   private readonly path: string;
 
   constructor() {
-    this.path = "http://localhost:3003";
+    this.path = "http://178.16.142.232:3003";
   }
 
   async createOrder(data: CartItem[]) {

@@ -62,7 +62,7 @@ export function AllComments(props: any) {
         <Stack className="accordion_comment">
           {targetComments?.map((comment: Comments) => {
             const image_member = comment?.member_data?.mb_image
-              ? `http://localhost:3003/${comment?.member_data?.mb_image}`
+              ? `http://178.16.142.232:3003/${comment?.member_data?.mb_image}`
               : "/auth/default_user.svg";
             return (
               <Stack className={"all_comment"}>

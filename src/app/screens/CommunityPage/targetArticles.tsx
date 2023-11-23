@@ -58,10 +58,10 @@ export function TargetArticles(props: any) {
     <Stack className="community_wrap">
       {props.targetBoArticles?.map((article: BoArticle) => {
         const art_image_url = article?.art_image
-          ? `http://localhost:3003/${article.art_image}`
+          ? `http://178.16.142.232:3003/${article.art_image}`
           : "/community/default_article.svg";
         const mb_image_url = article?.member_data?.mb_image
-          ? `http://localhost:3003/${article?.member_data?.mb_image}`
+          ? `http://178.16.142.232:3003/${article?.member_data?.mb_image}`
           : "/auth/default_user.svg";
         return (
           <Link

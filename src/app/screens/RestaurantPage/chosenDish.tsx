@@ -426,7 +426,7 @@ export function ChosenDish(props: any) {
               }}
             >
               {chosenProduct?.product_images.map((ele: string) => {
-                const image_path = `http://localhost:3003//${ele}`;
+                const image_path = `http://178.16.142.232:3003//${ele}`;
                 let discountedPrice = Math.floor(chosenProduct.discountedPrice);
                 return (
                   <SwiperSlide>
@@ -527,7 +527,7 @@ export function ChosenDish(props: any) {
                 <AccordionDetails className="accordion_details">
                   {targetComments?.map((comment: Comments) => {
                     const image_member = comment?.member_data?.mb_image
-                      ? `http://localhost:3003/${comment?.member_data?.mb_image}`
+                      ? `http://178.16.142.232:3003/${comment?.member_data?.mb_image}`
                       : "/auth/default_user.svg";
 
                     return (
@@ -884,7 +884,7 @@ export function ChosenDish(props: any) {
               }}
             >
               {targetProducts.map((product: Product, index: number) => {
-                const image_path = `http://localhost:3003//${product.product_images[0]}`;
+                const image_path = `http://178.16.142.232:3003//${product.product_images[0]}`;
                 let discountedPrice = Math.floor(product.discountedPrice);
                 return (
                   <SwiperSlide

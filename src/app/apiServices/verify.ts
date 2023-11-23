@@ -14,7 +14,7 @@ if (cookies.get("access_token")) {
   member_data = memberDataJson ? JSON.parse(memberDataJson) : null;
   if (member_data) {
     member_data.mb_image = member_data.mb_image
-      ? `http://localhost:3003/${member_data.mb_image}`
+      ? `http://178.16.142.232:3003/${member_data.mb_image}`
       : "/auth/default_user.svg";
   }
 } else {
