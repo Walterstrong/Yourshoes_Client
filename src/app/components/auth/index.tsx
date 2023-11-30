@@ -110,7 +110,7 @@ export default function AuthenticationModal(props: any) {
       sweetErrorHandling(err).then();
     }
   };
-
+  //
   const passwordKeyDownHandler = (e: any) => {
     if (e.key === "Enter" && props.signUpOpen) {
       handleSignupRequest();
