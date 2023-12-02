@@ -98,8 +98,6 @@ export function CommunityPage(props: any) {
                       // aria-label="Vertical tabs example"
                       style={{ borderColor: "white" }}
                       sx={{
-                        // borderRight: 1,
-                        // borderColor: "divider",
                         width: "98%",
                       }}
                     >
@@ -156,7 +154,7 @@ export function CommunityPage(props: any) {
                     </TabPanel>
                   </Box>
                 </Stack>
-              </TabContext>{" "}
+              </TabContext>
             </Stack>
             <Box className={"article_bott"}>
               <Pagination

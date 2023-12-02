@@ -49,8 +49,7 @@ import assert from "assert";
 import FollowApiService from "app/apiServices/followApiService";
 import { Definer } from "app/lib/Definer";
 import { verifiedMemberData } from "app/apiServices/verify";
-
-// REDUX SLICE
+import { serverApi } from "app/lib/config";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setChosenMember: (data: Member) => dispatch(setChosenMember(data)),
@@ -93,6 +92,7 @@ export function VisitOtherPage(props: any) {
   const { chosenMemberBoArticles } = useSelector(
     chosenMemberBoArticlesRetriever
   );
+  const image_path = `${serverApi}/${chosenMember?.mb_image}`;
   const [value, setValue] = useState("1");
   const [memberArticlesSearchObj, setMemberArticlesSearchObj] =
     useState<SearchMemberArticlesObj>({
@@ -129,9 +129,10 @@ export function VisitOtherPage(props: any) {
       history.push("/member-page");
     }
 
+    console.log("chosen_mb_id", chosen_mb_id);
     const memberService = new MemberApiService();
     memberService
-      .getChosenMember(memberArticlesSearchObj.mb_id)
+      .getChosenMember(chosen_mb_id)
       .then((data) => setChosenMember(data))
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -207,7 +208,7 @@ export function VisitOtherPage(props: any) {
                   <div className={"order_user_img"}>
                     {chosenMember?.mb_image ? (
                       <img
-                        src={chosenMember?.mb_image}
+                        src={image_path}
                         className={"order_user_avatar"}
                         alt=""
                       />
@@ -246,11 +247,7 @@ export function VisitOtherPage(props: any) {
                   aria-label="Vertical tabs example"
                   sx={{ borderRight: 1, borderColor: "divider", width: "98%" }}
                 >
-                  {" "}
-                  <TabList
-                    onChange={handleChange}
-                    // aria-label="lab API tabs example"
-                  >
+                  <TabList onChange={handleChange}>
                     {chosenMember?.me_followed &&
                     chosenMember?.me_followed[0]?.my_following ? (
                       <Tab
@@ -310,7 +307,6 @@ export function VisitOtherPage(props: any) {
                       >
                         <img src={"/icons/followers.svg"} alt="" />
                         <span>
-                          {" "}
                           Followers: {chosenMember?.mb_subscriber_cnt}
                         </span>
                       </div>

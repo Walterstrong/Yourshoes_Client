@@ -18,8 +18,9 @@ import { verifiedMemberData } from "app/apiServices/verify";
 import CommunityApiService from "app/apiServices/communityApiService";
 
 export function TargetArticles(props: any) {
+  const { setArticlesRebuild } = props;
   const targetLikeProduct = async (e: any) => {
-    const { setArticlesRebuild } = props;
+    // const { setArticlesRebuild } = props;
     try {
       assert.ok(verifiedMemberData, Definer.auth_err1);
       const memberService = new MemberApiService();
@@ -37,7 +38,6 @@ export function TargetArticles(props: any) {
   };
 
   const ArticleDelteHAndler = async (art_id: string) => {
-    const { setArticlesRebuild } = props;
     try {
       assert.ok(verifiedMemberData, Definer.auth_err1);
       let confirmation = window.confirm("Are you sure to delete your article?");

@@ -78,9 +78,7 @@ export function RandomRestaurants(props: any) {
     return (
       <div className="static_frame">
         <Container>
-          {" "}
           <Stack flexDirection={"column"} alignItems={"center"}>
-            {" "}
             <Box className="category_title">All Brands</Box>
             <Stack
               style={{ width: "100%", display: "flex" }}

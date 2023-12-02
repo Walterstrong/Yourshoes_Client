@@ -1,16 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Definer } from "../../lib/Definer";
-import assert from "assert";
-import {
-  sweetErrorHandling,
-  sweetTopSmallSuccessAlert,
-} from "../../lib/sweetAlert";
-import MemberApiService from "../../apiServices/memberApiService";
 import { useHistory } from "react-router-dom";
 // REDUX
 import { useSelector } from "react-redux";
@@ -23,7 +16,6 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { setTargetRestaurants } from "./slice";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 import { SearchObj } from "../../../types/others";
-import Bounce from "react-reveal/Bounce";
 
 // REDUX SLICE
 // bu yerda Restaurant[] nomli datani setTopRestaurantsga yuborilayabdi,
@@ -78,35 +70,33 @@ export function AllRestaurants() {
             {targetRestaurants?.map((ele: Restaurant) => {
               const image_path = `${serverApi}/${ele.mb_image}`;
               return (
-                <Bounce bottom duration={2000}>
-                  <Stack
-                    onClick={() => chosenRestaurantHandler(ele._id)}
-                    style={{
-                      height: "300px",
-                      width: "250px",
-                      marginRight: "65px",
-                      borderRadius: "15px",
-                      marginBottom: "35px",
-                      marginTop: "25px",
-                      cursor: "pointer",
-                      backgroundSize: "cover",
-                    }}
-                  >
-                    <Box>
-                      <img
-                        src={image_path}
-                        alt=""
-                        style={{
-                          height: "300px",
-                          width: "250px",
-                          // marginRight: "35px",
-                          borderRadius: "15px",
-                          backgroundSize: "cover",
-                        }}
-                      />
-                    </Box>
-                  </Stack>
-                </Bounce>
+                <Stack
+                  onClick={() => chosenRestaurantHandler(ele._id)}
+                  style={{
+                    height: "300px",
+                    width: "250px",
+                    marginRight: "65px",
+                    borderRadius: "15px",
+                    marginBottom: "35px",
+                    marginTop: "25px",
+                    cursor: "pointer",
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <Box>
+                    <img
+                      src={image_path}
+                      alt=""
+                      style={{
+                        height: "300px",
+                        width: "250px",
+                        // marginRight: "35px",
+                        borderRadius: "15px",
+                        backgroundSize: "cover",
+                      }}
+                    />
+                  </Box>
+                </Stack>
               );
             })}
           </Stack>

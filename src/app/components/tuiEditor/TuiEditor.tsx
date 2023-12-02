@@ -54,13 +54,19 @@ export const TuiEditor = (props: any) => {
     setCommunityArticleData({ ...communityArticleData });
   };
 
-  const changeTitleHandler = useCallback(
-    (e: any) => {
-      communityArticleData.art_subject = e.target.value;
-      setCommunityArticleData({ ...communityArticleData });
-    },
-    [communityArticleData.art_subject]
-  );
+  const changeTitleHandler = useCallback((e: any) => {
+    communityArticleData.art_subject = e.target.value;
+    setCommunityArticleData({ ...communityArticleData });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // const changeTitleHandler = useCallback((e: any) => {
+  //   e.persist();
+  //   setCommunityArticleData((prevState) => ({
+  //     ...prevState,
+  //     art_subject: e.target.value,
+  //   }));
+  // }, []);
 
   const handleRegisterButton = async () => {
     try {
@@ -80,7 +86,6 @@ export const TuiEditor = (props: any) => {
       await sweetTopSmallSuccessAlert("Article is created successfully!");
       props.setArticlesRebuild(new Date());
       props.setValue("1");
-      //history.push("/member-page");
     } catch (err) {
       console.log(`ERROR::: handleRegisterButton, ${err}`);
       sweetErrorHandling(err).then();

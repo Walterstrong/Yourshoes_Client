@@ -234,6 +234,7 @@ export function NavbarHome(props: any) {
                 </NavLink>
               </Box>
 
+              {/* Basket component */}
               <Basket
                 cartItems={props.cartItems}
                 onAdd={props.onAdd}
@@ -323,46 +324,46 @@ export function NavbarHome(props: any) {
               </Box>
             </Stack>
           </Stack>
-          <Stack className="head_information" justifyContent={"row"}>
-            <Stack
-              justifyContent={"column"}
-              style={{ marginTop: "86px", marginLeft: "24px" }}
-            >
-              <div>
-                <Fade bottom cascade delay={500}>
-                  <div className="textOnHeader">Welcome to our store!</div>
-                </Fade>
-                <Fade bottom cascade delay={1000}>
-                  <div className="textOnHeader">
-                    Explore brand shoes as a buyer.
-                  </div>
-                </Fade>
-                <Fade bottom cascade delay={2000}>
-                  <div className="textOnHeader">
-                    Or Sign up as a seller and start your business now.
-                  </div>
-                </Fade>
-              </div>
-              <Fade bottom cascade delay={2500}>
-                <Box sx={{ mt: "40px" }}>
-                  {!verifiedMemberData ? (
+          {verifiedMemberData?.mb_type !== "BRAND" ? (
+            <Stack className="head_information" justifyContent={"row"}>
+              <Stack
+                justifyContent={"column"}
+                style={{ marginTop: "86px", marginLeft: "24px" }}
+              >
+                <div>
+                  <Fade bottom cascade delay={500}>
+                    <div className="textOnHeader">Welcome to our store!</div>
+                  </Fade>
+                  <Fade bottom cascade delay={1000}>
+                    <div className="textOnHeader">
+                      Explore brand shoes as a buyer.
+                    </div>
+                  </Fade>
+                  <Fade bottom cascade delay={2000}>
+                    <div className="textOnHeader">
+                      Or Sign up as a seller and start your business now.
+                    </div>
+                  </Fade>
+                </div>
+                <Fade bottom cascade delay={2500}>
+                  <Box sx={{ mt: "40px" }}>
                     <Button
                       className="signUpBrand"
                       variant="contained"
                       style={{ color: "#FFFFFF" }}
                       onClick={() =>
                         (window.location.href =
-                          "http://waltersproject.com:3003/shoes")
+                          "http://178.16.142.232:3003/shoes")
                       }
                     >
                       Sign Up
                     </Button>
-                  ) : null}
-                </Box>
-              </Fade>
+                  </Box>
+                </Fade>
+              </Stack>
+              <Box className="big_img"></Box>
             </Stack>
-            <Box className="big_img"></Box>
-          </Stack>
+          ) : null}
         </Container>
       </div>
     );

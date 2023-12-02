@@ -22,7 +22,20 @@ const actionDispatch = (dispatch: Dispatch) => ({
 
 export function HomePage(props: any) {
   // ** INITIALIZATIONS *
+  const { setRandomRestaurants } = actionDispatch(useDispatch());
 
+  useEffect(() => {
+    const restaurantApiService = new RestaurantApiService();
+    restaurantApiService
+      .getRestaurants({
+        page: 1,
+        limit: 10,
+        order: "random",
+      })
+      .then((data) => setRandomRestaurants(data))
+      .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="homepage">
       <Advertisements />
