@@ -12,7 +12,7 @@ export function Events(props: any) {
   const { isMobile } = useDeviceDetect();
   // const { isMobile } = useDeviceDetect();
   const chosenProductHandler = () => {
-    history.push(`/shop/6424af8267fd16fc1a8c416b`);
+    history.push(`/shop/6560f929756e64c986996b55`);
   };
 
   const handleClickOpenAlert = () => {

@@ -38,7 +38,6 @@ export function HomePage(props: any) {
   }, []);
   return (
     <div className="homepage">
-      <Advertisements />
       <RandomRestaurants
         openAlert={props.openAlert}
         handleClickOpenAlert={props.handleClickOpenAlert}
@@ -50,12 +49,14 @@ export function HomePage(props: any) {
         handleClickOpenAlert={props.handleClickOpenAlert}
         handleCloseAlert={props.handleCloseAlert}
       />
+
       <BestProducts
         onAdd={props.onAdd}
         openAlert={props.openAlert}
         handleClickOpenAlert={props.handleClickOpenAlert}
         handleCloseAlert={props.handleCloseAlert}
       />
+      <Advertisements />
       <Events
         openAlert={props.openAlert}
         handleClickOpenAlert={props.handleClickOpenAlert}
